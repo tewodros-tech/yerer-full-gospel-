@@ -1,115 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sermons | Yerer Full Gospel Believers Church</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sermons | የረር ሙሉወንጌል ቤተክርስቲያን</title>
+    <meta name="description" content="Browse our sermon archive. Watch or listen to messages from Yerer Full Gospel Believers Church." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #FDF8F0; color: #2C2418; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FCF8F0;
+            color: #1F1A14;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
         h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .btn-primary { background: #C49A6C; color: white; padding: 14px 32px; border-radius: 40px; text-decoration: none; font-weight: 600; display: inline-block; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 20px; }
-        .sermon-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s; }
-        .sermon-card:hover { transform: translateY(-5px); }
-        @media (max-width: 768px) { .sermon-grid { grid-template-columns: 1fr !important; } }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #B58B5C;
+            color: white;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(181, 139, 92, 0.35);
+            letter-spacing: 0.3px;
+        }
+        .btn-primary:hover {
+            background: #9F7349;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(181, 139, 92, 0.45);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #B58B5C;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #B58B5C;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #B58B5C;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .btn-outline-light {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .btn-outline-light:hover {
+            background: white;
+            color: #1F1A14;
+            border-color: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            color: #1F1A14;
+            letter-spacing: -0.5px;
+        }
+        .section-title span { color: #B58B5C; }
+        .section-subtitle {
+            text-align: center;
+            color: #6B5E4E;
+            margin-bottom: 56px;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            padding: 36px 28px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+            transition: all 0.35s ease;
+            border: 1px solid rgba(181, 139, 92, 0.06);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            background: #1F1A14;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .sermon-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+            transition: all 0.35s ease;
+            border: 1px solid rgba(181, 139, 92, 0.06);
+        }
+        .sermon-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+        }
+        .sermon-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .sermon-card .content {
+            padding: 24px;
+        }
+        .sermon-card .tag {
+            background: #F8F4EC;
+            padding: 4px 16px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            color: #B58B5C;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sermon-card h3 {
+            font-size: 1.4rem;
+            margin: 12px 0 6px;
+        }
+        .sermon-card .meta {
+            color: #5F5545;
+            font-size: 0.9rem;
+        }
+        .sermon-card .meta i { color: #B58B5C; margin-right: 4px; }
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 60px;
+            border: 2px solid #B58B5C;
+            background: transparent;
+            color: #B58B5C;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #B58B5C;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            nav .container { flex-direction: column; gap: 12px; }
+            .sermon-card img { height: 160px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation (same as homepage) -->
-    <nav style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; flex-wrap: wrap;">
-            <div class="logo" style="font-size: 1.5rem; font-weight: 700; color: #C49A6C;">
-                <i class="fas fa-church" style="margin-right: 10px;"></i>
-                Yerer Full Gospel
+<!-- ===== NAVIGATION ===== -->
+<nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-church" style="font-size: 1.8rem; color: #B58B5C;"></i>
+            <div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: #B58B5C; line-height: 1.2;">የረር ሙሉወንጌል</div>
+                <div style="font-size: 0.7rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
             </div>
-            <div style="display: flex; gap: 30px; flex-wrap: wrap;">
-                <a href="index.html" style="text-decoration: none; color: #2C2418;">Home</a>
-                <a href="about.html" style="text-decoration: none; color: #2C2418;">About</a>
-                <a href="sermons.html" style="text-decoration: none; color: #C49A6C; font-weight: 500;">Sermons</a>
-                <a href="events.html" style="text-decoration: none; color: #2C2418;">Events</a>
-                <a href="give.html" style="text-decoration: none; color: #2C2418;">Give</a>
-            </div>
-            <div><a href="prayer.html" class="btn-primary" style="padding: 10px 24px;">Prayer Request</a></div>
+        </a>
+        <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
+            <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
+            <a href="sermons.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Sermons</a>
+            <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
+            <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Give</a>
+            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Hero -->
-    <section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 80px 0; text-align: center;">
-        <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 20px;">Sermons</h1>
-            <p style="font-size: 1.2rem;">Strengthen your faith with the Word of God</p>
-            <div style="margin-top: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                <input type="text" id="searchInput" placeholder="🔍 Search sermons by title, speaker, or Bible verse..." style="width: 100%; padding: 15px; border-radius: 40px; border: none; font-size: 1rem;">
+<!-- ===== SERMONS HERO ===== -->
+<section style="position: relative; background: #1A1A2A; color: white; padding: 100px 0 80px; overflow: hidden; text-align: center;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(20,18,14,0.9) 0%, rgba(26,26,42,0.85) 100%); z-index: 0;"></div>
+    <div style="position: absolute; top: -30%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(181,139,92,0.08) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+        <span style="background: rgba(181,139,92,0.2); padding: 8px 28px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(181,139,92,0.15); display: inline-block;">Sermon Archive</span>
+        <h1 style="font-size: 4rem; margin: 24px 0 16px; line-height: 1.1; font-weight: 800;">The <span style="color: #D4A574;">Word</span> of God</h1>
+        <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 10px; color: #D4C8B8; font-weight: 300;">Browse our collection of life-changing messages from the heart of Yerer Full Gospel.</p>
+        <p style="font-size: 1.1rem; color: #B8A898;">Faith comes by hearing, and hearing by the Word of God — Romans 10:17</p>
+    </div>
+</section>
+
+<!-- ===== FEATURED SERMON (Latest) ===== -->
+<section style="padding: 80px 0; background: #FFFFFF;">
+    <div class="container">
+        <h2 class="section-title">Featured <span>Sermon</span></h2>
+        <p class="section-subtitle">This week's message to strengthen your faith</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/loF3h7flvEU?si=1ZxrZwmxGXp-q6YA" title="Featured Sermon" allowfullscreen></iframe>
+            </div>
+            <div>
+                <span style="background: #F8F4EC; padding: 6px 20px; border-radius: 60px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #B58B5C; font-weight: 600;">Latest</span>
+                <h3 style="font-size: 2.2rem; margin: 18px 0 12px; font-weight: 700;">Walking in the Spirit</h3>
+                <p style="color: #5F5545; margin-bottom: 6px;"><i class="fas fa-user" style="color: #B58B5C;"></i> Pastor Yohannes</p>
+                <p style="color: #5F5545; margin-bottom: 18px;"><i class="fas fa-calendar" style="color: #B58B5C;"></i> June 15, 2026</p>
+                <p style="margin-bottom: 28px; color: #2F2921;">Discover how to live a Spirit-filled life, operate in the gifts, and bear fruit that remains. This powerful message will transform your walk with God.</p>
+                <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                    <a href="#" class="btn-primary" style="padding: 12px 28px;"><i class="fas fa-play"></i> Watch Now</a>
+                    <a href="#" class="btn-secondary" style="padding: 12px 28px;"><i class="fas fa-download"></i> Notes</a>
+                    <a href="#" style="color: #B58B5C; text-decoration: none; align-self: center;"><i class="fab fa-whatsapp" style="margin-right: 6px;"></i> Share</a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sermons Grid -->
-    <section style="padding: 60px 0;">
-        <div class="container">
-            <div class="sermon-grid" id="sermonGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-                <!-- Sermon cards will be populated by JavaScript -->
-            </div>
+<!-- ===== SERMON FILTERS ===== -->
+<section style="padding: 40px 0; background: #F8F4EC;">
+    <div class="container">
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button class="filter-btn active">All Sermons</button>
+            <button class="filter-btn">Pastor Yohannes</button>
+            <button class="filter-btn">Pastor Sara</button>
+            <button class="filter-btn">Guest Speakers</button>
+            <button class="filter-btn">Series</button>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script>
-        const sermons = [
-            { title: "Walking in the Spirit", speaker: "Pastor [Name]", date: "June 15, 2026", verse: "Galatians 5:16", duration: "42 min", views: "1.2k", series: "Spirit-Filled Living" },
-            { title: "The Baptism of the Holy Spirit", speaker: "Pastor [Name]", date: "June 8, 2026", verse: "Acts 2:4", duration: "48 min", views: "2.1k", series: "Spirit-Filled Living" },
-            { title: "Divine Healing Today", speaker: "Pastor [Name]", date: "June 1, 2026", verse: "Isaiah 53:5", duration: "55 min", views: "3.4k", series: "Miracles & Healing" },
-            { title: "Faith That Moves Mountains", speaker: "Pastor [Name]", date: "May 25, 2026", verse: "Matthew 17:20", duration: "38 min", views: "987", series: "Faith Series" },
-            { title: "The Power of Prayer", speaker: "Pastor [Name]", date: "May 18, 2026", verse: "James 5:16", duration: "45 min", views: "1.5k", series: "Prayer Life" },
-            { title: "Spiritual Warfare", speaker: "Pastor [Name]", date: "May 11, 2026", verse: "Ephesians 6:12", duration: "52 min", views: "2.2k", series: "Victory in Christ" }
-        ];
-
-        function renderSermons(filter = "") {
-            const grid = document.getElementById("sermonGrid");
-            const filtered = sermons.filter(s => 
-                s.title.toLowerCase().includes(filter.toLowerCase()) ||
-                s.speaker.toLowerCase().includes(filter.toLowerCase()) ||
-                s.verse.toLowerCase().includes(filter.toLowerCase()) ||
-                s.series.toLowerCase().includes(filter.toLowerCase())
-            );
+<!-- ===== SERMON GRID ===== -->
+<section style="padding: 60px 0 80px; background: #F8F4EC;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px;">
             
-            grid.innerHTML = filtered.map(sermon => `
-                <div class="sermon-card">
-                    <img src="https://via.placeholder.com/400x200.png?text=${encodeURIComponent(sermon.title)}" alt="${sermon.title}" style="width: 100%; height: 200px; object-fit: cover;">
-                    <div style="padding: 25px;">
-                        <span style="background: #C49A6C20; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;">${sermon.series}</span>
-                        <h3 style="margin: 15px 0 10px; font-size: 1.3rem;">${sermon.title}</h3>
-                        <p style="color: #666; margin-bottom: 8px;"><i class="fas fa-user"></i> ${sermon.speaker}</p>
-                        <p style="color: #666; margin-bottom: 8px;"><i class="fas fa-calendar"></i> ${sermon.date}</p>
-                        <p style="color: #666; margin-bottom: 8px;"><i class="fas fa-bible"></i> ${sermon.verse}</p>
-                        <p style="color: #666; margin-bottom: 15px;"><i class="fas fa-clock"></i> ${sermon.duration} • ${sermon.views} views</p>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="#" class="btn-primary" style="padding: 10px 20px; font-size: 0.9rem;"><i class="fas fa-play"></i> Watch</a>
-                            <a href="#" style="color: #C49A6C; text-decoration: none; align-self: center;"><i class="fas fa-download"></i> Notes</a>
-                        </div>
+            <!-- Sermon 1 -->
+            <div class="sermon-card">
+                <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&h=400&fit=crop&crop=center" alt="Sermon" />
+                <div class="content">
+                    <span class="tag">Pastor Yohannes</span>
+                    <h3>Walking in the Spirit</h3>
+                    <p style="color: #5F5545; margin: 8px 0;">Discover the power of a Spirit-led life and how to bear fruit that remains.</p>
+                    <p class="meta"><i class="fas fa-calendar"></i> June 15, 2026</p>
+                    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-play"></i> Watch</a>
+                        <a href="#" class="btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Notes</a>
                     </div>
                 </div>
-            `).join("");
-        }
-        
-        renderSermons();
-        document.getElementById("searchInput").addEventListener("input", (e) => renderSermons(e.target.value));
-    </script>
-
-    <!-- Footer -->
-    <footer style="background: #1a1a1a; color: #999; padding: 60px 0 30px; margin-top: 60px;">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-                <div><h3 style="color: white;">Yerer Full Gospel</h3><p>Worship in Spirit and Truth</p></div>
-                <div><h3 style="color: white;">Quick Links</h3><p><a href="index.html" style="color: #999;">Home</a> | <a href="about.html" style="color: #999;">About</a> | <a href="sermons.html" style="color: #999;">Sermons</a></p></div>
-                <div><h3 style="color: white;">Contact</h3><p>Yerer, Ethiopia | +251-XXX-XXX</p></div>
             </div>
-            <div style="text-align: center; padding-top: 30px;"><p>&copy; 2026 Yerer Full Gospel Believers Church</p></div>
+            
+            <!-- Sermon 2 -->
+            <div class="sermon-card">
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop&crop=center" alt="Sermon" />
+                <div class="content">
+                    <span class="tag">Pastor Sara</span>
+                    <h3>Prayer That Moves Mountains</h3>
+                    <p style="color: #5F5545; margin: 8px 0;">Learn the principles of effective prayer that bring breakthrough and transformation.</p>
+                    <p class="meta"><i class="fas fa-calendar"></i> June 8, 2026</p>
+                    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-play"></i> Watch</a>
+                        <a href="#" class="btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Notes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sermon 3 -->
+            <div class="sermon-card">
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop&crop=center" alt="Sermon" />
+                <div class="content">
+                    <span class="tag">Pastor Yohannes</span>
+                    <h3>The Baptism of the Holy Spirit</h3>
+                    <p style="color: #5F5545; margin: 8px 0;">Understanding the promise of the Father and the power of the Holy Spirit in your life.</p>
+                    <p class="meta"><i class="fas fa-calendar"></i> June 1, 2026</p>
+                    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-play"></i> Watch</a>
+                        <a href="#" class="btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Notes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sermon 4 -->
+            <div class="sermon-card">
+                <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&h=400&fit=crop&crop=center" alt="Sermon" />
+                <div class="content">
+                    <span class="tag">Pastor Sara</span>
+                    <h3>Healing for the Brokenhearted</h3>
+                    <p style="color: #5F5545; margin: 8px 0;">God's heart for those who are hurting and His power to restore and heal.</p>
+                    <p class="meta"><i class="fas fa-calendar"></i> May 25, 2026</p>
+                    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-play"></i> Watch</a>
+                        <a href="#" class="btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Notes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sermon 5 -->
+            <div class="sermon-card">
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=400&fit=crop&crop=center" alt="Sermon" />
+                <div class="content">
+                    <span class="tag">Guest Speaker</span>
+                    <h3>Faith That Overcomes</h3>
+                    <p style="color: #5F5545; margin: 8px 0;">Building unshakable faith in the midst of life's storms and challenges.</p>
+                    <p class="meta"><i class="fas fa-calendar"></i> May 18, 2026</p>
+                    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-play"></i> Watch</a>
+                        <a href="#" class="btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Notes</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sermon 6 -->
+            <div class="sermon-card">
+                <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&h=400&fit=crop&crop=center" alt="Sermon" />
+                <div class="content">
+                    <span class="tag">Pastor Yohannes</span>
+                    <h3>The Power of Worship</h3>
+                    <p style="color: #5F5545; margin: 8px 0;">Entering into God's presence through authentic worship and praise.</p>
+                    <p class="meta"><i class="fas fa-calendar"></i> May 11, 2026</p>
+                    <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="#" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-play"></i> Watch</a>
+                        <a href="#" class="btn-secondary" style="padding: 8px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Notes</a>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-    </footer>
+        
+        <!-- Load More -->
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="#" class="btn-secondary">Load More Sermons <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERMON SERIES ===== -->
+<section style="padding: 80px 0; background: white;">
+    <div class="container">
+        <h2 class="section-title">Sermon <span>Series</span></h2>
+        <p class="section-subtitle">Explore our themed series for deeper study</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px;">
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-book-open" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">The Book of Acts</h3>
+                <p style="color: #5F5545;">The birth of the Church and the power of the Holy Spirit</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Explore →</a>
+            </div>
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-heart" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">The Love of God</h3>
+                <p style="color: #5F5545;">Understanding the depth and breadth of God's unconditional love</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Explore →</a>
+            </div>
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-dove" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">The Holy Spirit</h3>
+                <p style="color: #5F5545;">Discover the person and work of the Holy Spirit in your life</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Explore →</a>
+            </div>
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-hands-praying" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">Spiritual Warfare</h3>
+                <p style="color: #5F5545;">Equipping believers for victorious living in Christ</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Explore →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SUBSCRIBE TO PODCAST ===== -->
+<section style="padding: 80px 0; background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%); color: white; text-align: center;">
+    <div class="container">
+        <h2 style="font-size: 2.8rem; margin-bottom: 12px;">Subscribe to Our <span style="color: #D4A574;">Podcast</span></h2>
+        <p style="font-size: 1.15rem; margin-bottom: 36px; max-width: 640px; margin-left: auto; margin-right: auto; color: #C0B8A8;">Never miss a message. Listen on your favorite platform.</p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="#" class="btn-primary" style="background: #B58B5C; padding: 16px 36px;"><i class="fab fa-spotify" style="margin-right: 10px;"></i>Spotify</a>
+            <a href="#" class="btn-primary" style="background: #B58B5C; padding: 16px 36px;"><i class="fab fa-apple" style="margin-right: 10px;"></i>Apple Podcasts</a>
+            <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 36px;"><i class="fab fa-google-play" style="margin-right: 10px;"></i>Google Podcasts</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="background: #14100C; color: #A09888; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.04);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል</h3>
+                <p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p>
+                <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-telegram"></i>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
+                <p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
+                <p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
+                <p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p>
+                <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p>
+                <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3>
+                <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p>
+                <p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p>
+                <p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3>
+                <div style="font-size: 2.6rem; font-weight: 700; color: #D4A574;">347</div>
+                <p style="margin-bottom: 8px;">prayers prayed this week</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;">
+            <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
