@@ -1,3 +1,6 @@
+<!-- ============================================================ -->
+<!--  ABOUT PAGE  (about.html)                                    -->
+<!-- ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,17 +9,11 @@
     <title>About Us | የረር ሙሉወንጌል ቤተክርስቲያን</title>
     <meta name="description" content="Learn about Yerer Full Gospel Believers Church. Our history, mission, vision, pastors, and core values." />
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             background: #FCF8F0;
@@ -24,16 +21,12 @@
             line-height: 1.7;
             scroll-behavior: smooth;
         }
-        h1, h2, h3, .logo {
-            font-family: 'Playfair Display', serif;
-        }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 28px;
         }
-        
-        /* Buttons */
         .btn-primary {
             display: inline-block;
             background: #B58B5C;
@@ -93,9 +86,7 @@
             color: #1F1A14;
             letter-spacing: -0.5px;
         }
-        .section-title span {
-            color: #B58B5C;
-        }
+        .section-title span { color: #B58B5C; }
         .section-subtitle {
             text-align: center;
             color: #6B5E4E;
@@ -129,11 +120,7 @@
             color: #B58B5C;
             font-family: 'Playfair Display', serif;
         }
-        .stat-label {
-            color: #5F5545;
-            font-weight: 500;
-            margin-top: 4px;
-        }
+        .stat-label { color: #5F5545; font-weight: 500; margin-top: 4px; }
         .pastor-card {
             display: flex;
             gap: 40px;
@@ -176,11 +163,7 @@
             background: #FFFFFF;
             box-shadow: 0 12px 40px rgba(0,0,0,0.06);
         }
-        .value-card i {
-            font-size: 2.5rem;
-            color: #B58B5C;
-            margin-bottom: 16px;
-        }
+        .value-card i { font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px; }
         @media (max-width: 768px) {
             .section-title { font-size: 2rem; }
             .container { padding: 0 16px; }
@@ -197,16 +180,16 @@
 <!-- ===== NAVIGATION ===== -->
 <nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
-        <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
             <i class="fas fa-church" style="font-size: 1.8rem; color: #B58B5C;"></i>
             <div>
                 <div style="font-size: 1.2rem; font-weight: 700; color: #B58B5C; line-height: 1.2;">የረር ሙሉወንጌል</div>
                 <div style="font-size: 0.7rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
             </div>
-        </div>
+        </a>
         <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
-            <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
-            <a href="#" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">About</a>
+            <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
+            <a href="about.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">About</a>
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Give</a>
@@ -232,12 +215,11 @@
     </div>
 </section>
 
-<!-- ===== OUR STORY / HISTORY ===== -->
+<!-- ===== OUR HISTORY ===== -->
 <section id="history" style="padding: 80px 0; background: #FFFFFF;">
     <div class="container">
         <h2 class="section-title">Our <span>History</span></h2>
         <p class="section-subtitle">From a small gathering to a global movement — God's faithfulness through the years</p>
-        
         <div style="max-width: 900px; margin: 0 auto;">
             <div class="timeline-item">
                 <div class="timeline-year">1988</div>
@@ -383,7 +365,7 @@
     </div>
 </section>
 
-<!-- ===== CHURCH STATS ===== -->
+<!-- ===== STATS ===== -->
 <section style="padding: 60px 0; background: white;">
     <div class="container">
         <div class="stat-grid">
@@ -475,8 +457,8 @@
             </div>
             <div>
                 <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
-                <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
-                <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
+                <p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
+                <p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p>
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p>
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p>
