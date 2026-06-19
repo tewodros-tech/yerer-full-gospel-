@@ -7,7 +7,7 @@
     <meta name="description" content="A Spirit-filled church in Yerer, Ethiopia. Join us for worship, healing, and community. Sunday 10 AM | Wednesday 6:30 PM | Friday 7 PM" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -21,7 +21,8 @@
             font-family: 'Inter', sans-serif;
             background: #FCF8F0;
             color: #1F1A14;
-            line-height: 1.6;
+            line-height: 1.7;
+            scroll-behavior: smooth;
         }
         h1, h2, h3, .logo {
             font-family: 'Playfair Display', serif;
@@ -118,7 +119,7 @@
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             border-radius: 28px;
             overflow: hidden;
@@ -133,29 +134,38 @@
             height: 100%;
             border: 0;
         }
-        .video-placeholder {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(145deg, #2A231C, #1F1A14);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            transition: opacity 0.3s;
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            text-align: center;
         }
-        .video-placeholder i {
-            font-size: 4.5rem;
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
             color: #B58B5C;
-            margin-bottom: 16px;
-            text-shadow: 0 0 40px rgba(181,139,92,0.3);
+            font-family: 'Playfair Display', serif;
         }
-        .video-placeholder span {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            letter-spacing: 1px;
+        .stat-label {
+            color: #5F5545;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+        .pastor-card {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: white;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+        }
+        .pastor-card img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #B58B5C;
         }
         @media (max-width: 768px) {
             .section-title { font-size: 2rem; }
@@ -163,6 +173,8 @@
             nav .container { flex-direction: column; gap: 12px; }
             .hero h1 { font-size: 2.4rem !important; }
             .hero .amharic-title { font-size: 1.8rem !important; }
+            .pastor-card { flex-direction: column; text-align: center; padding: 28px; }
+            .pastor-card img { width: 140px; height: 140px; }
         }
     </style>
 </head>
@@ -190,18 +202,16 @@
 </nav>
 
 <!-- ===== HERO with VIDEO BACKGROUND ===== -->
-<section style="position: relative; background: #1A1A2A; color: white; padding: 0; overflow: hidden; min-height: 90vh; display: flex; align-items: center;">
-    <!-- Video Background (muted autoplay) -->
+<section style="position: relative; background: #1A1A2A; color: white; padding: 0; overflow: hidden; min-height: 95vh; display: flex; align-items: center;">
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
-        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.45;">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
             <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-            <!-- fallback image -->
         </video>
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(20,18,14,0.85) 0%, rgba(26,26,42,0.75) 100%);"></div>
     </div>
     <div class="container" style="position: relative; z-index: 2; padding: 80px 0; text-align: center;">
         <span style="background: rgba(181,139,92,0.2); padding: 8px 28px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(181,139,92,0.15); display: inline-block; backdrop-filter: blur(4px);">የረር ሙሉወንጌል ቤተክርስቲያን</span>
-        <h1 class="amharic-title" style="font-size: 3.8rem; margin: 24px 0 8px; line-height: 1.1; font-weight: 800; font-family: 'Playfair Display', serif;">Worship in <span style="color: #D4A574;">Spirit</span> <br>and <span style="color: #D4A574;">Truth</span></h1>
+        <h1 class="amharic-title" style="font-size: 4.2rem; margin: 24px 0 8px; line-height: 1.1; font-weight: 800; font-family: 'Playfair Display', serif;">Worship in <span style="color: #D4A574;">Spirit</span> <br>and <span style="color: #D4A574;">Truth</span></h1>
         <p style="font-size: 1.3rem; margin-bottom: 8px; color: #D4C8B8; font-weight: 300;">ዮሐንስ 4:24 · John 4:24</p>
         <p style="font-size: 1.1rem; margin-bottom: 36px; color: #B8A898;">Yerer, Ethiopia · A church for all nations</p>
         <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
@@ -209,7 +219,6 @@
             <a href="#" class="btn-outline-light" style="padding: 16px 44px;">I'M NEW HERE</a>
             <a href="#" class="btn-outline-light" style="padding: 16px 44px;">GIVE</a>
         </div>
-        <!-- Countdown -->
         <div style="margin-top: 56px; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; gap: 20px; padding: 12px 34px; border-radius: 80px; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06);">
             <i class="fas fa-clock" style="color: #D4A574; font-size: 1.2rem;"></i>
             <div style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Next Service</div>
@@ -252,31 +261,81 @@
     </div>
 </section>
 
+<!-- ===== CHURCH STATS ===== -->
+<section style="padding: 60px 0; background: #F8F4EC;">
+    <div class="container">
+        <div class="stat-grid">
+            <div>
+                <div class="stat-number">1,247</div>
+                <div class="stat-label">Members</div>
+            </div>
+            <div>
+                <div class="stat-number">38</div>
+                <div class="stat-label">Nations Represented</div>
+            </div>
+            <div>
+                <div class="stat-number">12</div>
+                <div class="stat-label">Ministries</div>
+            </div>
+            <div>
+                <div class="stat-number">5K+</div>
+                <div class="stat-label">Lives Touched</div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===== WHAT WE BELIEVE ===== -->
-<section style="padding: 80px 0; background: #F8F4EC;">
+<section style="padding: 80px 0; background: #FFFFFF;">
     <div class="container">
         <h2 class="section-title">What We <span>Believe</span></h2>
         <p class="section-subtitle">The Full Gospel distinctives that shape our faith</p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
-            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
-                <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-cross"></i></div>
+            <div style="text-align: center; background: #F8F4EC; padding: 32px 20px; border-radius: 28px; transition: transform 0.3s;">
+                <div style="background: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-cross"></i></div>
                 <h3 style="font-size: 1.3rem;">Salvation</h3>
                 <p style="color: #5F5545; margin-top: 8px;">By grace through faith in Jesus</p>
             </div>
-            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
-                <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-dove"></i></div>
+            <div style="text-align: center; background: #F8F4EC; padding: 32px 20px; border-radius: 28px; transition: transform 0.3s;">
+                <div style="background: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-dove"></i></div>
                 <h3 style="font-size: 1.3rem;">Holy Spirit Baptism</h3>
                 <p style="color: #5F5545; margin-top: 8px;">With evidence of tongues</p>
             </div>
-            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
-                <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-hand-holding-heart"></i></div>
+            <div style="text-align: center; background: #F8F4EC; padding: 32px 20px; border-radius: 28px; transition: transform 0.3s;">
+                <div style="background: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-hand-holding-heart"></i></div>
                 <h3 style="font-size: 1.3rem;">Divine Healing</h3>
                 <p style="color: #5F5545; margin-top: 8px;">By His stripes we are healed</p>
             </div>
-            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
-                <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-cloud-sun"></i></div>
+            <div style="text-align: center; background: #F8F4EC; padding: 32px 20px; border-radius: 28px; transition: transform 0.3s;">
+                <div style="background: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-cloud-sun"></i></div>
                 <h3 style="font-size: 1.3rem;">Second Coming</h3>
                 <p style="color: #5F5545; margin-top: 8px;">Jesus is coming soon</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MEET OUR PASTORS ===== -->
+<section style="padding: 80px 0; background: #F8F4EC;">
+    <div class="container">
+        <h2 class="section-title">Meet Our <span>Pastors</span></h2>
+        <p class="section-subtitle">Shepherds after God's own heart, leading with love and truth</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px;">
+            <div class="pastor-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Pastor Yohannes" />
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 4px;">Pastor Yohannes</h3>
+                    <p style="color: #B58B5C; font-weight: 600; margin-bottom: 12px;">Senior Pastor</p>
+                    <p style="color: #5F5545;">A servant of God with a heart for the nations. Pastor Yohannes has been leading Yerer Full Gospel for over 15 years, preaching the uncompromised Word with power and grace.</p>
+                </div>
+            </div>
+            <div class="pastor-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face" alt="Pastor Sara" />
+                <div>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 4px;">Pastor Sara</h3>
+                    <p style="color: #B58B5C; font-weight: 600; margin-bottom: 12px;">Associate Pastor</p>
+                    <p style="color: #5F5545;">Passionate about worship and discipleship, Pastor Sara oversees the music ministry and women's fellowship. She brings a spirit of excellence and prophetic insight.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -288,9 +347,7 @@
         <h2 class="section-title">Latest <span>Sermon</span></h2>
         <p class="section-subtitle">Strengthen your faith with the Word of God</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-            <!-- Video embed (placeholder) -->
             <div class="video-wrapper">
-                <!-- Replace src with actual YouTube/Vimeo embed -->
                 <iframe src="https://www.youtube.com/embed/loF3h7flvEU?si=1ZxrZwmxGXp-q6YA" title="Sermon" allowfullscreen></iframe>
             </div>
             <div>
@@ -309,8 +366,45 @@
     </div>
 </section>
 
-<!-- ===== TESTIMONIES ===== -->
+<!-- ===== SERMON ARCHIVE ===== -->
 <section style="padding: 80px 0; background: #F8F4EC;">
+    <div class="container">
+        <h2 class="section-title">Sermon <span>Archive</span></h2>
+        <p class="section-subtitle">Catch up on messages you may have missed</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px;">
+            <div class="card" style="padding: 24px;">
+                <span style="background: #F8F4EC; padding: 4px 16px; border-radius: 60px; font-size: 0.7rem; color: #B58B5C; font-weight: 600;">June 8</span>
+                <h4 style="font-size: 1.2rem; margin: 12px 0 6px;">The Power of Prayer</h4>
+                <p style="color: #5F5545; font-size: 0.95rem;">Pastor Sara</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Watch <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card" style="padding: 24px;">
+                <span style="background: #F8F4EC; padding: 4px 16px; border-radius: 60px; font-size: 0.7rem; color: #B58B5C; font-weight: 600;">June 1</span>
+                <h4 style="font-size: 1.2rem; margin: 12px 0 6px;">Faith That Moves Mountains</h4>
+                <p style="color: #5F5545; font-size: 0.95rem;">Pastor Yohannes</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Watch <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card" style="padding: 24px;">
+                <span style="background: #F8F4EC; padding: 4px 16px; border-radius: 60px; font-size: 0.7rem; color: #B58B5C; font-weight: 600;">May 25</span>
+                <h4 style="font-size: 1.2rem; margin: 12px 0 6px;">The Baptism of the Holy Spirit</h4>
+                <p style="color: #5F5545; font-size: 0.95rem;">Pastor Yohannes</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Watch <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card" style="padding: 24px;">
+                <span style="background: #F8F4EC; padding: 4px 16px; border-radius: 60px; font-size: 0.7rem; color: #B58B5C; font-weight: 600;">May 18</span>
+                <h4 style="font-size: 1.2rem; margin: 12px 0 6px;">Healing for the Brokenhearted</h4>
+                <p style="color: #5F5545; font-size: 0.95rem;">Pastor Sara</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500; display: inline-block; margin-top: 12px;">Watch <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" class="btn-secondary">View All Sermons <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIES ===== -->
+<section style="padding: 80px 0; background: white;">
     <div class="container">
         <h2 class="section-title">God Is <span>Moving</span></h2>
         <p class="section-subtitle">Real testimonies from our church family</p>
@@ -346,6 +440,37 @@
     </div>
 </section>
 
+<!-- ===== UPCOMING EVENTS ===== -->
+<section style="padding: 80px 0; background: #F8F4EC;">
+    <div class="container">
+        <h2 class="section-title">Upcoming <span>Events</span></h2>
+        <p class="section-subtitle">Join us for these special gatherings</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-users" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">Youth Conference</h3>
+                <p style="color: #B58B5C; font-weight: 600;">July 10-12, 2026</p>
+                <p style="color: #5F5545; margin: 8px 0;">Empowering the next generation</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Learn More →</a>
+            </div>
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-pray" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">24-Hour Prayer Watch</h3>
+                <p style="color: #B58B5C; font-weight: 600;">July 24-25, 2026</p>
+                <p style="color: #5F5545; margin: 8px 0;">Night of intercession</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Learn More →</a>
+            </div>
+            <div class="card" style="text-align: center; border-bottom: 4px solid #B58B5C;">
+                <i class="fas fa-music" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 12px;"></i>
+                <h3 style="font-size: 1.3rem;">Worship Night</h3>
+                <p style="color: #B58B5C; font-weight: 600;">August 7, 2026</p>
+                <p style="color: #5F5545; margin: 8px 0;">A night of praise and adoration</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Learn More →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ===== GIVE SECTION ===== -->
 <section style="padding: 80px 0; background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%); color: white; text-align: center;">
     <div class="container">
@@ -356,7 +481,6 @@
             <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 40px;">Building Fund</a>
             <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 40px;">Missions</a>
         </div>
-        <!-- Thermometer -->
         <div style="max-width: 540px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem;">
                 <span>Building Fund Progress</span>
@@ -366,6 +490,36 @@
                 <div style="width: 37%; background: linear-gradient(90deg, #B58B5C, #D4A574); height: 100%; border-radius: 40px; transition: width 0.6s;"></div>
             </div>
             <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">37% of goal reached. Help us reach $50,000!</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GET INVOLVED ===== -->
+<section style="padding: 80px 0; background: white;">
+    <div class="container">
+        <h2 class="section-title">Get <span>Involved</span></h2>
+        <p class="section-subtitle">There's a place for you to serve and grow</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px;">
+            <div style="text-align: center; padding: 30px; background: #F8F4EC; border-radius: 28px;">
+                <i class="fas fa-people-arrows" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Small Groups</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Connect, grow, and share life together</p>
+            </div>
+            <div style="text-align: center; padding: 30px; background: #F8F4EC; border-radius: 28px;">
+                <i class="fas fa-hands-helping" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Volunteer</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Use your gifts to serve the church</p>
+            </div>
+            <div style="text-align: center; padding: 30px; background: #F8F4EC; border-radius: 28px;">
+                <i class="fas fa-globe-africa" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Missions</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Take the gospel to the nations</p>
+            </div>
+            <div style="text-align: center; padding: 30px; background: #F8F4EC; border-radius: 28px;">
+                <i class="fas fa-chalkboard-teacher" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Discipleship</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Grow deeper in your faith</p>
+            </div>
         </div>
     </div>
 </section>
