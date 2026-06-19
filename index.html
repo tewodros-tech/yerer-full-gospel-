@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yerer Full Gospel | Spirit & Truth</title>
+    <title>የረር ሙሉወንጌል ቤተክርስቲያን | Yerer Full Gospel</title>
     <meta name="description" content="A Spirit-filled church in Yerer, Ethiopia. Join us for worship, healing, and community. Sunday 10 AM | Wednesday 6:30 PM | Friday 7 PM" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
     <style>
@@ -27,36 +27,36 @@
             font-family: 'Playfair Display', serif;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px;
         }
         
-        /* buttons */
+        /* Buttons */
         .btn-primary {
             display: inline-block;
             background: #B58B5C;
             color: white;
-            padding: 14px 34px;
+            padding: 14px 38px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(181, 139, 92, 0.3);
+            box-shadow: 0 8px 24px rgba(181, 139, 92, 0.35);
             letter-spacing: 0.3px;
         }
         .btn-primary:hover {
             background: #9F7349;
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(181, 139, 92, 0.4);
+            box-shadow: 0 14px 34px rgba(181, 139, 92, 0.45);
         }
         .btn-secondary {
             display: inline-block;
             background: transparent;
             color: #B58B5C;
-            padding: 14px 34px;
+            padding: 14px 38px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 600;
@@ -68,19 +68,19 @@
             color: white;
             transform: translateY(-2px);
         }
-        .btn-outline {
+        .btn-outline-light {
             display: inline-block;
             background: transparent;
             color: white;
-            padding: 14px 34px;
+            padding: 14px 38px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 600;
-            border: 2px solid rgba(255,255,255,0.6);
+            border: 2px solid rgba(255,255,255,0.5);
             transition: all 0.3s ease;
             backdrop-filter: blur(4px);
         }
-        .btn-outline:hover {
+        .btn-outline-light:hover {
             background: white;
             color: #1F1A14;
             border-color: white;
@@ -88,7 +88,7 @@
         .section-title {
             text-align: center;
             font-size: 2.8rem;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: #1F1A14;
             letter-spacing: -0.5px;
         }
@@ -100,7 +100,7 @@
             color: #6B5E4E;
             margin-bottom: 56px;
             font-size: 1.15rem;
-            max-width: 650px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -110,28 +110,73 @@
             padding: 36px 28px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.04);
             transition: all 0.35s ease;
-            border: 1px solid rgba(181, 139, 92, 0.08);
+            border: 1px solid rgba(181, 139, 92, 0.06);
         }
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 24px 56px rgba(0,0,0,0.08);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            background: #1F1A14;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-placeholder {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(145deg, #2A231C, #1F1A14);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .video-placeholder i {
+            font-size: 4.5rem;
+            color: #B58B5C;
+            margin-bottom: 16px;
+            text-shadow: 0 0 40px rgba(181,139,92,0.3);
+        }
+        .video-placeholder span {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            letter-spacing: 1px;
         }
         @media (max-width: 768px) {
             .section-title { font-size: 2rem; }
             .container { padding: 0 16px; }
             nav .container { flex-direction: column; gap: 12px; }
-            .hero h1 { font-size: 2.2rem !important; }
+            .hero h1 { font-size: 2.4rem !important; }
+            .hero .amharic-title { font-size: 1.8rem !important; }
         }
     </style>
 </head>
 <body>
 
 <!-- ===== NAVIGATION ===== -->
-<nav style="background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.15);">
+<nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
-        <div class="logo" style="font-size: 1.6rem; font-weight: 700; color: #B58B5C; display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-church" style="font-size: 1.8rem;"></i>
-            <span>Yerer Full Gospel</span>
+        <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-church" style="font-size: 1.8rem; color: #B58B5C;"></i>
+            <div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: #B58B5C; line-height: 1.2;">የረር ሙሉወንጌል</div>
+                <div style="font-size: 0.7rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
+            </div>
         </div>
         <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
@@ -139,28 +184,35 @@
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
             <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Give</a>
-            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live</a>
+            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
     </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<section style="background: linear-gradient(145deg, #1A1A2A 0%, #1E2A3A 100%); color: white; padding: 100px 0 80px; text-align: center; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -40%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(181,139,92,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
-    <div style="position: absolute; bottom: -30%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(181,139,92,0.05) 0%, transparent 70%); border-radius: 50%;"></div>
-    <div class="container" style="position: relative; z-index: 2;">
-        <span style="background: rgba(181,139,92,0.2); padding: 8px 24px; border-radius: 60px; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(181,139,92,0.2);">YERER FULL GOSPEL BELIEVERS CHURCH</span>
-        <h1 style="font-size: 4rem; margin: 28px 0 16px; line-height: 1.15; font-weight: 700;">Worship in <span style="color: #D4A574;">Spirit</span> <br>and <span style="color: #D4A574;">Truth</span></h1>
-        <p style="font-size: 1.3rem; margin-bottom: 32px; color: #C0B8A8; font-weight: 300;">John 4:24 · Experiencing God's presence together</p>
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <a href="#" class="btn-primary" style="background: #B58B5C; padding: 16px 40px; font-size: 1.05rem;"><i class="fas fa-play" style="margin-right: 10px;"></i>WATCH LIVE</a>
-            <a href="#" class="btn-outline" style="padding: 16px 40px;">I'M NEW HERE</a>
-            <a href="#" class="btn-outline" style="padding: 16px 40px;">GIVE</a>
+<!-- ===== HERO with VIDEO BACKGROUND ===== -->
+<section style="position: relative; background: #1A1A2A; color: white; padding: 0; overflow: hidden; min-height: 90vh; display: flex; align-items: center;">
+    <!-- Video Background (muted autoplay) -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; opacity: 0.45;">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            <!-- fallback image -->
+        </video>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(20,18,14,0.85) 0%, rgba(26,26,42,0.75) 100%);"></div>
+    </div>
+    <div class="container" style="position: relative; z-index: 2; padding: 80px 0; text-align: center;">
+        <span style="background: rgba(181,139,92,0.2); padding: 8px 28px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(181,139,92,0.15); display: inline-block; backdrop-filter: blur(4px);">የረር ሙሉወንጌል ቤተክርስቲያን</span>
+        <h1 class="amharic-title" style="font-size: 3.8rem; margin: 24px 0 8px; line-height: 1.1; font-weight: 800; font-family: 'Playfair Display', serif;">Worship in <span style="color: #D4A574;">Spirit</span> <br>and <span style="color: #D4A574;">Truth</span></h1>
+        <p style="font-size: 1.3rem; margin-bottom: 8px; color: #D4C8B8; font-weight: 300;">ዮሐንስ 4:24 · John 4:24</p>
+        <p style="font-size: 1.1rem; margin-bottom: 36px; color: #B8A898;">Yerer, Ethiopia · A church for all nations</p>
+        <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
+            <a href="#" class="btn-primary" style="background: #B58B5C; padding: 16px 44px; font-size: 1.05rem;"><i class="fas fa-play" style="margin-right: 10px;"></i>WATCH LIVE</a>
+            <a href="#" class="btn-outline-light" style="padding: 16px 44px;">I'M NEW HERE</a>
+            <a href="#" class="btn-outline-light" style="padding: 16px 44px;">GIVE</a>
         </div>
         <!-- Countdown -->
-        <div style="margin-top: 56px; background: rgba(255,255,255,0.07); display: inline-flex; align-items: center; gap: 20px; padding: 12px 32px; border-radius: 80px; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06);">
+        <div style="margin-top: 56px; background: rgba(255,255,255,0.06); display: inline-flex; align-items: center; gap: 20px; padding: 12px 34px; border-radius: 80px; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06);">
             <i class="fas fa-clock" style="color: #D4A574; font-size: 1.2rem;"></i>
-            <div style="font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7;">Next Service</div>
+            <div style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7;">Next Service</div>
             <div style="font-size: 1.8rem; font-weight: 600; font-family: 'Inter', monospace; letter-spacing: 2px; color: #D4A574;" id="countdown">-- : -- : --</div>
         </div>
     </div>
@@ -174,54 +226,54 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
             <div class="card" style="text-align: center; border-top: 4px solid #B58B5C;">
                 <i class="fas fa-sun" style="font-size: 2.8rem; color: #B58B5C; margin-bottom: 16px;"></i>
-                <h3 style="font-size: 1.6rem; margin-bottom: 6px;">Sunday Worship</h3>
-                <p style="font-size: 1.4rem; font-weight: 600; color: #B58B5C;">10:00 AM</p>
-                <p style="margin: 12px 0; color: #5F5545;">In-person & Live Stream</p>
+                <h3 style="font-size: 1.6rem; margin-bottom: 4px;">Sunday Worship</h3>
+                <p style="font-size: 1.3rem; font-weight: 600; color: #B58B5C;">10:00 AM</p>
+                <p style="margin: 10px 0; color: #5F5545;">In-person & Live Stream</p>
                 <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer Main Campus</p>
-                <a href="#" style="display: inline-block; margin-top: 20px; color: #B58B5C; text-decoration: none; font-weight: 500;">Set Reminder <i class="fas fa-bell"></i></a>
+                <a href="#" style="display: inline-block; margin-top: 18px; color: #B58B5C; text-decoration: none; font-weight: 500;">Set Reminder <i class="fas fa-bell"></i></a>
             </div>
             <div class="card" style="text-align: center; border-top: 4px solid #B58B5C;">
                 <i class="fas fa-book-open" style="font-size: 2.8rem; color: #B58B5C; margin-bottom: 16px;"></i>
-                <h3 style="font-size: 1.6rem; margin-bottom: 6px;">Bible Study</h3>
-                <p style="font-size: 1.4rem; font-weight: 600; color: #B58B5C;">6:30 PM</p>
-                <p style="margin: 12px 0; color: #5F5545;">Book of Acts · Prayer</p>
+                <h3 style="font-size: 1.6rem; margin-bottom: 4px;">Bible Study</h3>
+                <p style="font-size: 1.3rem; font-weight: 600; color: #B58B5C;">6:30 PM</p>
+                <p style="margin: 10px 0; color: #5F5545;">Book of Acts · Prayer</p>
                 <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer Main Campus</p>
-                <a href="#" style="display: inline-block; margin-top: 20px; color: #B58B5C; text-decoration: none; font-weight: 500;">Set Reminder <i class="fas fa-bell"></i></a>
+                <a href="#" style="display: inline-block; margin-top: 18px; color: #B58B5C; text-decoration: none; font-weight: 500;">Set Reminder <i class="fas fa-bell"></i></a>
             </div>
             <div class="card" style="text-align: center; border-top: 4px solid #B58B5C;">
                 <i class="fas fa-hands-praying" style="font-size: 2.8rem; color: #B58B5C; margin-bottom: 16px;"></i>
-                <h3 style="font-size: 1.6rem; margin-bottom: 6px;">Healing Service</h3>
-                <p style="font-size: 1.4rem; font-weight: 600; color: #B58B5C;">7:00 PM</p>
-                <p style="margin: 12px 0; color: #5F5545;">Anointing · Testimonies</p>
+                <h3 style="font-size: 1.6rem; margin-bottom: 4px;">Healing Service</h3>
+                <p style="font-size: 1.3rem; font-weight: 600; color: #B58B5C;">7:00 PM</p>
+                <p style="margin: 10px 0; color: #5F5545;">Anointing · Testimonies</p>
                 <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer Main Campus</p>
-                <a href="#" style="display: inline-block; margin-top: 20px; color: #B58B5C; text-decoration: none; font-weight: 500;">Set Reminder <i class="fas fa-bell"></i></a>
+                <a href="#" style="display: inline-block; margin-top: 18px; color: #B58B5C; text-decoration: none; font-weight: 500;">Set Reminder <i class="fas fa-bell"></i></a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== BELIEFS ===== -->
+<!-- ===== WHAT WE BELIEVE ===== -->
 <section style="padding: 80px 0; background: #F8F4EC;">
     <div class="container">
         <h2 class="section-title">What We <span>Believe</span></h2>
         <p class="section-subtitle">The Full Gospel distinctives that shape our faith</p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
-            <div style="text-align: center; background: white; padding: 30px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02);">
+            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
                 <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-cross"></i></div>
                 <h3 style="font-size: 1.3rem;">Salvation</h3>
                 <p style="color: #5F5545; margin-top: 8px;">By grace through faith in Jesus</p>
             </div>
-            <div style="text-align: center; background: white; padding: 30px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02);">
+            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
                 <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-dove"></i></div>
                 <h3 style="font-size: 1.3rem;">Holy Spirit Baptism</h3>
                 <p style="color: #5F5545; margin-top: 8px;">With evidence of tongues</p>
             </div>
-            <div style="text-align: center; background: white; padding: 30px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02);">
+            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
                 <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-hand-holding-heart"></i></div>
                 <h3 style="font-size: 1.3rem;">Divine Healing</h3>
                 <p style="color: #5F5545; margin-top: 8px;">By His stripes we are healed</p>
             </div>
-            <div style="text-align: center; background: white; padding: 30px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02);">
+            <div style="text-align: center; background: white; padding: 32px 20px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.02); transition: transform 0.3s;">
                 <div style="background: #F8F4EC; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 2.2rem; color: #B58B5C;"><i class="fas fa-cloud-sun"></i></div>
                 <h3 style="font-size: 1.3rem;">Second Coming</h3>
                 <p style="color: #5F5545; margin-top: 8px;">Jesus is coming soon</p>
@@ -230,21 +282,23 @@
     </div>
 </section>
 
-<!-- ===== SERMON ===== -->
+<!-- ===== FEATURED SERMON with VIDEO ===== -->
 <section style="padding: 80px 0; background: white;">
     <div class="container">
         <h2 class="section-title">Latest <span>Sermon</span></h2>
         <p class="section-subtitle">Strengthen your faith with the Word of God</p>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-            <div style="border-radius: 28px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08);">
-                <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&h=400&fit=crop&crop=center" alt="Sermon" style="width: 100%; height: 300px; object-fit: cover; display: block;">
+            <!-- Video embed (placeholder) -->
+            <div class="video-wrapper">
+                <!-- Replace src with actual YouTube/Vimeo embed -->
+                <iframe src="https://www.youtube.com/embed/loF3h7flvEU?si=1ZxrZwmxGXp-q6YA" title="Sermon" allowfullscreen></iframe>
             </div>
             <div>
-                <span style="background: #F8F4EC; padding: 6px 18px; border-radius: 60px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #B58B5C; font-weight: 600;">Featured</span>
+                <span style="background: #F8F4EC; padding: 6px 20px; border-radius: 60px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #B58B5C; font-weight: 600;">Featured</span>
                 <h3 style="font-size: 2.2rem; margin: 18px 0 12px; font-weight: 700;">Walking in the Spirit</h3>
                 <p style="color: #5F5545; margin-bottom: 6px;"><i class="fas fa-user" style="color: #B58B5C;"></i> Pastor Yohannes</p>
-                <p style="color: #5F5545; margin-bottom: 20px;"><i class="fas fa-calendar" style="color: #B58B5C;"></i> June 15, 2026</p>
-                <p style="margin-bottom: 28px; color: #2F2921;">Discover how to live a Spirit-filled life, operate in the gifts, and bear fruit that remains.</p>
+                <p style="color: #5F5545; margin-bottom: 18px;"><i class="fas fa-calendar" style="color: #B58B5C;"></i> June 15, 2026</p>
+                <p style="margin-bottom: 28px; color: #2F2921;">Discover how to live a Spirit-filled life, operate in the gifts, and bear fruit that remains. This message will transform your walk with God.</p>
                 <div style="display: flex; gap: 14px; flex-wrap: wrap;">
                     <a href="#" class="btn-primary" style="padding: 12px 28px;"><i class="fas fa-play"></i> Watch Now</a>
                     <a href="#" class="btn-secondary" style="padding: 12px 28px;"><i class="fas fa-download"></i> Notes</a>
@@ -262,7 +316,7 @@
         <p class="section-subtitle">Real testimonies from our church family</p>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
             <div class="card" style="position: relative;">
-                <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.2; position: absolute; top: 16px; right: 24px;"></i>
+                <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.15; position: absolute; top: 20px; right: 24px;"></i>
                 <p style="font-style: italic; font-size: 1.05rem; margin-bottom: 18px;">"After 10 years of high blood pressure, I was completely healed during Friday service. Glory to God!"</p>
                 <p style="font-weight: 600;">— Mekdes A.</p>
                 <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -271,7 +325,7 @@
                 </div>
             </div>
             <div class="card" style="position: relative;">
-                <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.2; position: absolute; top: 16px; right: 24px;"></i>
+                <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.15; position: absolute; top: 20px; right: 24px;"></i>
                 <p style="font-style: italic; font-size: 1.05rem; margin-bottom: 18px;">"My son returned home after 3 years of no contact. Prayer works. God restores families."</p>
                 <p style="font-weight: 600;">— Tekle B.</p>
                 <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -280,7 +334,7 @@
                 </div>
             </div>
             <div class="card" style="position: relative;">
-                <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.2; position: absolute; top: 16px; right: 24px;"></i>
+                <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.15; position: absolute; top: 20px; right: 24px;"></i>
                 <p style="font-style: italic; font-size: 1.05rem; margin-bottom: 18px;">"I received the baptism of the Holy Spirit and spoke in tongues. My prayer life has never been the same."</p>
                 <p style="font-weight: 600;">— Dawit M.</p>
                 <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -292,23 +346,23 @@
     </div>
 </section>
 
-<!-- ===== GIVE ===== -->
+<!-- ===== GIVE SECTION ===== -->
 <section style="padding: 80px 0; background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%); color: white; text-align: center;">
     <div class="container">
-        <h2 style="font-size: 2.8rem; margin-bottom: 16px;">Support the <span style="color: #D4A574;">Ministry</span></h2>
-        <p style="font-size: 1.15rem; margin-bottom: 40px; max-width: 620px; margin-left: auto; margin-right: auto; color: #C0B8A8;">Your giving feeds families, spreads the gospel, and builds the Kingdom in Yerer and beyond.</p>
+        <h2 style="font-size: 2.8rem; margin-bottom: 12px;">Support the <span style="color: #D4A574;">Ministry</span></h2>
+        <p style="font-size: 1.15rem; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; color: #C0B8A8;">Your giving feeds families, spreads the gospel, and builds the Kingdom in Yerer and beyond.</p>
         <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px;">
-            <a href="#" class="btn-primary" style="background: #B58B5C; padding: 16px 38px;"><i class="fas fa-hand-holding-heart"></i> Give Tithe</a>
-            <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 38px;">Building Fund</a>
-            <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 38px;">Missions</a>
+            <a href="#" class="btn-primary" style="background: #B58B5C; padding: 16px 40px;"><i class="fas fa-hand-holding-heart"></i> Give Tithe</a>
+            <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 40px;">Building Fund</a>
+            <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 40px;">Missions</a>
         </div>
         <!-- Thermometer -->
-        <div style="max-width: 520px; margin: 0 auto;">
+        <div style="max-width: 540px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem;">
                 <span>Building Fund Progress</span>
                 <span><strong>$18,500</strong> / $50,000</span>
             </div>
-            <div style="background: rgba(255,255,255,0.12); border-radius: 40px; height: 22px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
+            <div style="background: rgba(255,255,255,0.10); border-radius: 40px; height: 22px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
                 <div style="width: 37%; background: linear-gradient(90deg, #B58B5C, #D4A574); height: 100%; border-radius: 40px; transition: width 0.6s;"></div>
             </div>
             <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">37% of goal reached. Help us reach $50,000!</p>
@@ -321,9 +375,9 @@
     <div class="container">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
             <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 20px; font-family: 'Playfair Display', serif;">Yerer Full Gospel</h3>
-                <p>Worship in Spirit and Truth — John 4:24</p>
-                <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.5rem; color: #B58B5C;">
+                <h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል</h3>
+                <p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p>
+                <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;">
                     <i class="fab fa-facebook"></i>
                     <i class="fab fa-youtube"></i>
                     <i class="fab fa-whatsapp"></i>
@@ -331,7 +385,7 @@
                 </div>
             </div>
             <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 20px;">Quick Links</h3>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p>
@@ -339,20 +393,20 @@
                 <p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p>
             </div>
             <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 20px;">Contact</h3>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3>
                 <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p>
                 <p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p>
                 <p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p>
             </div>
             <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 20px;">Prayer Counter</h3>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3>
                 <div style="font-size: 2.6rem; font-weight: 700; color: #D4A574;">347</div>
                 <p style="margin-bottom: 8px;">prayers prayed this week</p>
                 <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a>
             </div>
         </div>
         <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;">
-            <p>&copy; 2026 Yerer Full Gospel Believers Church. All rights reserved.</p>
+            <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
         </div>
     </div>
 </footer>
@@ -361,7 +415,7 @@
     // Countdown to Sunday 10 AM
     function updateCountdown() {
         const now = new Date();
-        const nextSunday = new Date(now);
+        let nextSunday = new Date(now);
         const daysUntilSunday = (7 - now.getDay()) % 7 || 7;
         nextSunday.setDate(now.getDate() + daysUntilSunday);
         nextSunday.setHours(10, 0, 0, 0);
