@@ -135,6 +135,7 @@
       .hero .amharic-title { font-size: 1.8rem !important; }
       .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
       .gallery-grid img { height: 150px; }
+      .youth-card { grid-template-columns: 1fr !important; }
     }
     /* extra flair */
     .glow-text { text-shadow: 0 0 40px rgba(181,139,92,0.2); }
@@ -144,11 +145,13 @@
     .pill-badge { background: rgba(181,139,92,0.12); padding: 6px 22px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 1px; color: #B58B5C; font-weight: 600; }
     .progress-bar-bg { background: rgba(255,255,255,0.08); border-radius: 40px; height: 18px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
     .progress-fill { background: linear-gradient(90deg, #B58B5C, #D4A574); height: 100%; border-radius: 40px; transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    /* youth ministry card hover */
+    /* youth ministry card */
     .youth-card { background: #1F1A14; color: #F0E8D8; border-radius: 32px; padding: 48px 32px; background-image: radial-gradient(circle at 10% 20%, rgba(181,139,92,0.08) 0%, transparent 60%); transition: all 0.4s; }
     .youth-card:hover { transform: scale(1.01); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
     .youth-card .btn-primary { background: #D4A574; box-shadow: 0 8px 24px rgba(212,165,116,0.3); }
     .youth-card .btn-primary:hover { background: #C49666; }
+    .event-chip { background: rgba(212,165,116,0.15); border-radius: 40px; padding: 12px 20px; display: inline-flex; align-items: center; gap: 12px; border: 1px solid rgba(212,165,116,0.1); }
+    .event-chip i { color: #D4A574; }
   </style>
 </head>
 <body>
@@ -163,7 +166,7 @@
       <a href="index.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Home</a>
       <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
       <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
-      <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
+      <a href="events.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
       <a href="#" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Give</a>
       <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
     </div>
@@ -236,7 +239,7 @@
   </div>
 </section>
 
-<!-- ===== YOUTH MINISTRY (NEW SECTION) ===== -->
+<!-- ===== YOUTH MINISTRY + EVENTS LINK ===== -->
 <section style="padding: 90px 0; background: #F8F4EC;">
   <div class="container">
     <div class="youth-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
@@ -244,13 +247,24 @@
         <span class="pill-badge" style="background: rgba(212,165,116,0.2); color: #D4A574;">🔥 NEXT GENERATION</span>
         <h2 style="font-size: 2.8rem; margin: 18px 0 12px; font-family: 'Playfair Display', serif; color: #F0E8D8;">Youth <span style="color: #D4A574;">Ministry</span></h2>
         <p style="font-size: 1.15rem; color: #C0B8A8; margin-bottom: 24px;">Raising a generation of Spirit-filled leaders. Weekly gatherings, worship, discipleship, and fun — all for Jesus.</p>
-        <ul style="list-style: none; margin-bottom: 28px; color: #D4C8B8;">
-          <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #D4A574; margin-right: 12px;"></i> Fridays · 5:00 PM – Youth Worship & Word</li>
-          <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #D4A574; margin-right: 12px;"></i> Saturdays · 3:00 PM – Sports & Fellowship</li>
-          <li style="margin-bottom: 10px;"><i class="fas fa-check-circle" style="color: #D4A574; margin-right: 12px;"></i> Annual Youth Camp · July 2026</li>
-        </ul>
-        <a href="youth.html" class="btn-primary" style="background: #D4A574; box-shadow: 0 8px 24px rgba(212,165,116,0.3); padding: 14px 40px;"><i class="fas fa-users"></i> Join Youth Ministry</a>
-        <a href="youth.html" style="color: #D4A574; margin-left: 18px; text-decoration: none; font-weight: 500;">Learn More →</a>
+        
+        <!-- Youth Events Chips (linked to events page) -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px;">
+          <a href="events.html" style="text-decoration: none;">
+            <div class="event-chip"><i class="fas fa-calendar-alt"></i> Fri 5PM · Youth Worship</div>
+          </a>
+          <a href="events.html" style="text-decoration: none;">
+            <div class="event-chip"><i class="fas fa-calendar-alt"></i> Sat 3PM · Sports</div>
+          </a>
+          <a href="events.html" style="text-decoration: none;">
+            <div class="event-chip"><i class="fas fa-calendar-alt"></i> July 2026 · Youth Camp</div>
+          </a>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a href="events.html" class="btn-primary" style="background: #D4A574; box-shadow: 0 8px 24px rgba(212,165,116,0.3); padding: 14px 40px;"><i class="fas fa-calendar-check"></i> View All Youth Events</a>
+          <a href="events.html" style="color: #D4A574; text-decoration: none; font-weight: 500; align-self: center;">Full Calendar →</a>
+        </div>
       </div>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
         <img src="youth.jpg" alt="Youth" style="width: 100%; height: 160px; object-fit: cover; border-radius: 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.3);" />
@@ -311,7 +325,7 @@
   <div class="container">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
       <div><h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል</h3><p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p><div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;"><i class="fab fa-facebook"></i><i class="fab fa-youtube"></i><i class="fab fa-whatsapp"></i><i class="fab fa-telegram"></i></div></div>
-      <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3><p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p><p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p><p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p><p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p><p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p><p><a href="youth.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Youth</a></p></div>
+      <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3><p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p><p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p><p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p><p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p><p><a href="#" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p><p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Youth</a></p></div>
       <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3><p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p><p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p><p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p></div>
       <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3><div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div><p style="margin-bottom: 8px;">prayers prayed this week</p><a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a></div>
     </div>
