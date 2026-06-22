@@ -113,7 +113,7 @@
       background: linear-gradient(145deg, rgba(15,13,10,0.85) 0%, rgba(26,26,42,0.75) 100%);
       z-index: 1;
     }
-    /* GALLERY — small, uniform, sliding-style grid */
+    /* GALLERY — small, uniform, sliding-style */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -173,6 +173,90 @@
     /* logo style */
     .logo-text { font-family: 'Playfair Display', serif; font-weight: 800; line-height: 1.1; }
     .logo-sub { font-size: 0.6rem; letter-spacing: 2px; font-weight: 500; color: #6B5E4E; }
+
+    /* ===== BIG WORSHIP BANNER: Keyboard_2, OLD_1, OLD_2 ===== */
+    .worship-banner {
+      background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%);
+      border-radius: 40px;
+      padding: 40px 32px;
+      margin: 20px 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+      border: 1px solid rgba(181,139,92,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .worship-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, rgba(181,139,92,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .worship-banner .banner-text {
+      flex: 1;
+      min-width: 180px;
+      color: #F0E8D8;
+      z-index: 1;
+    }
+    .worship-banner .banner-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #D4A574;
+      margin-bottom: 4px;
+    }
+    .worship-banner .banner-text p {
+      font-size: 0.95rem;
+      color: #B8A898;
+      line-height: 1.5;
+    }
+    .worship-banner .banner-image {
+      flex: 0 0 220px;
+      height: 140px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+      border: 2px solid rgba(212,165,116,0.15);
+      z-index: 1;
+      transition: transform 0.3s;
+    }
+    .worship-banner .banner-image:hover { transform: scale(1.02); }
+    .worship-banner .banner-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .worship-banner .banner-center {
+      flex: 0 0 180px;
+      text-align: center;
+      z-index: 1;
+    }
+    .worship-banner .banner-center .big-icon {
+      font-size: 3.2rem;
+      color: #D4A574;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .worship-banner .banner-center .label {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8A7A6A;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      .worship-banner { flex-direction: column; text-align: center; padding: 32px 20px; }
+      .worship-banner .banner-image { flex: 0 0 160px; width: 100%; max-width: 280px; height: 120px; }
+      .worship-banner .banner-center { flex: 0 0 auto; }
+    }
   </style>
 </head>
 <body>
@@ -219,8 +303,37 @@
   </div>
 </section>
 
+<!-- ===== BIG WORSHIP BANNER: Keyboard_2, OLD_1, OLD_2 ===== -->
+<section style="padding: 20px 0 10px; background: #F8F4EC;">
+  <div class="container">
+    <div class="worship-banner">
+      <!-- LEFT: description -->
+      <div class="banner-text">
+        <h3><i class="fas fa-music" style="color: #D4A574; margin-right: 10px;"></i> Keyboard_2</h3>
+        <p>Ancient keys, modern praise. The sound of heaven touching earth — worship that transcends time.</p>
+      </div>
+      <!-- CENTER: big visual (Keyboard_2, OLD_1, OLD_2) -->
+      <div class="banner-center">
+        <span class="big-icon">🎹</span>
+        <span class="label">Keyboard_2 · OLD_1 · OLD_2</span>
+        <div style="margin-top: 8px; display: flex; gap: 6px; justify-content: center;">
+          <span style="background: rgba(212,165,116,0.2); padding: 2px 14px; border-radius: 40px; font-size: 0.65rem; color: #D4A574; border: 1px solid rgba(212,165,116,0.1);">OLD_1</span>
+          <span style="background: rgba(212,165,116,0.2); padding: 2px 14px; border-radius: 40px; font-size: 0.65rem; color: #D4A574; border: 1px solid rgba(212,165,116,0.1);">OLD_2</span>
+        </div>
+      </div>
+      <!-- RIGHT: description -->
+      <div class="banner-text" style="text-align: right;">
+        <h3><i class="fas fa-hands-praying" style="color: #D4A574; margin-right: 10px;"></i> Worship with Us</h3>
+        <p>From the ancient hymns to the new song — every tribe, tongue, and nation lifting one voice.</p>
+      </div>
+      <!-- hidden image reference for visual consistency (shows as a subtle background element) -->
+      <div style="position: absolute; right: 20px; bottom: 10px; opacity: 0.04; font-size: 4rem; pointer-events: none; z-index: 0;">🎹</div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== SERVICE TIMES ===== -->
-<section style="padding: 90px 0; background: #FFFFFF;">
+<section style="padding: 60px 0 90px; background: #FFFFFF;">
   <div class="container">
     <h2 class="section-title">Join Our <span>Services</span></h2>
     <p class="section-subtitle">Experience the presence of God in a warm, Spirit-filled environment</p>
