@@ -179,7 +179,7 @@
       background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%);
       border-radius: 40px;
       padding: 0;
-      margin: 20px 0 40px;
+      margin: 20px 0 20px;
       display: flex;
       align-items: stretch;
       gap: 0;
@@ -285,6 +285,72 @@
       .worship-banner .banner-content { padding: 24px 18px; }
       .worship-banner .banner-content h2 { font-size: 1.6rem; }
     }
+
+    /* ===== Keyboard_2 Mini Banner ===== */
+    .keyboard-banner {
+      background: linear-gradient(135deg, #2A231C 0%, #1F1A14 100%);
+      border-radius: 32px;
+      padding: 28px 36px;
+      margin: 0 0 30px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      border: 1px solid rgba(212,165,116,0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .keyboard-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(212,165,116,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .keyboard-banner .kb-icon {
+      font-size: 2.8rem;
+      color: #D4A574;
+      flex: 0 0 auto;
+      z-index: 1;
+    }
+    .keyboard-banner .kb-text {
+      flex: 1;
+      z-index: 1;
+      min-width: 200px;
+    }
+    .keyboard-banner .kb-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #F0E8D8;
+      margin-bottom: 2px;
+    }
+    .keyboard-banner .kb-text h4 span { color: #D4A574; }
+    .keyboard-banner .kb-text p {
+      color: #B8A898;
+      font-size: 0.95rem;
+      max-width: 500px;
+    }
+    .keyboard-banner .kb-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      z-index: 1;
+    }
+    .keyboard-banner .kb-tags span {
+      background: rgba(212,165,116,0.08);
+      padding: 4px 16px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      color: #D4A574;
+      border: 1px solid rgba(212,165,116,0.06);
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 600px) {
+      .keyboard-banner { flex-direction: column; text-align: center; padding: 24px 20px; }
+      .keyboard-banner .kb-text p { max-width: 100%; }
+      .keyboard-banner .kb-tags { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -332,7 +398,7 @@
 </section>
 
 <!-- ===== BIG WORSHIP BANNER: OLD_2.jpg as hero image ===== -->
-<section style="padding: 20px 0 10px; background: #F8F4EC;">
+<section style="padding: 20px 0 0; background: #F8F4EC;">
   <div class="container">
     <div class="worship-banner">
       <!-- LEFT: OLD_2.jpg image (big, attractive) -->
@@ -351,6 +417,24 @@
           <a href="#" class="btn-primary"><i class="fas fa-play" style="margin-right: 8px;"></i> Join Worship</a>
           <a href="#" class="btn-outline">Learn More →</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Keyboard_2 Mini Banner (below OLD_2) ===== -->
+<section style="padding: 0 0 10px; background: #F8F4EC;">
+  <div class="container">
+    <div class="keyboard-banner">
+      <div class="kb-icon">🎹</div>
+      <div class="kb-text">
+        <h4>Keyboard_2 · <span>Worship Sound</span></h4>
+        <p>Ancient keys, modern praise. The sound of heaven touching earth — worship that transcends time. From old hymns to new songs, His praise never fades.</p>
+      </div>
+      <div class="kb-tags">
+        <span>🎵 Hymns</span>
+        <span>🔥 New Song</span>
+        <span>🙌 Spirit-led</span>
       </div>
     </div>
   </div>
