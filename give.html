@@ -1,82 +1,312 @@
-<section id="give" style="padding: 80px 0 60px; background: #FFFFFF;">
-  <div class="container">
-    <h2 class="section-title">Support the <span>Ministry</span></h2>
-    <p class="section-subtitle">Your generosity fuels the gospel in Yerer and beyond. Choose a fund below.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 60px;">
-      <div class="give-option"><i class="fas fa-hand-holding-heart"></i><h3>Tithe</h3><p style="color: #5F5545; font-size: 0.95rem;">Faithful giving that supports the church's daily work.</p><a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give Tithe</a></div>
-      <div class="give-option"><i class="fas fa-church"></i><h3>Building Fund</h3><p style="color: #5F5545; font-size: 0.95rem;">Help us expand our worship space and facilities.</p><a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give to Building</a></div>
-      <div class="give-option"><i class="fas fa-globe-africa"></i><h3>Missions</h3><p style="color: #5F5545; font-size: 0.95rem;">Support outreach and church planting in Ethiopia.</p><a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give to Missions</a></div>
-      <div class="give-option"><i class="fas fa-hands-helping"></i><h3>Benevolence</h3><p style="color: #5F5545; font-size: 0.95rem;">Help families in need with food, shelter, and care.</p><a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give Benevolence</a></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Give | የረር ሙሉወንጌል ቤተክርስቲያን</title>
+    <meta name="description" content="Support the ministry of Yerer Full Gospel Believers Church through tithes, offerings, and missions." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FCF8F0;
+            color: #1F1A14;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #B58B5C;
+            color: white;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(181, 139, 92, 0.35);
+            letter-spacing: 0.3px;
+        }
+        .btn-primary:hover {
+            background: #9F7349;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(181, 139, 92, 0.45);
+        }
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #B58B5C;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #B58B5C;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #B58B5C;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .btn-outline-light {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        .btn-outline-light:hover {
+            background: white;
+            color: #1F1A14;
+            border-color: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            color: #1F1A14;
+            letter-spacing: -0.5px;
+        }
+        .section-title span { color: #B58B5C; }
+        .section-subtitle {
+            text-align: center;
+            color: #6B5E4E;
+            margin-bottom: 56px;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            padding: 36px 28px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+            transition: all 0.35s ease;
+            border: 1px solid rgba(181, 139, 92, 0.06);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
+        }
+        .progress-bar-bg {
+            background: rgba(0,0,0,0.08);
+            border-radius: 40px;
+            height: 18px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #B58B5C, #D4A574);
+            height: 100%;
+            border-radius: 40px;
+            transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .give-option {
+            background: #F8F4EC;
+            border-radius: 28px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .give-option:hover {
+            background: #EFE8DC;
+            transform: translateY(-6px);
+        }
+        .give-option i {
+            font-size: 2.8rem;
+            color: #B58B5C;
+            margin-bottom: 12px;
+        }
+        .hero-bg {
+            background: url('XXXL.webp') center/cover no-repeat;
+            position: relative;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(20,18,14,0.9) 0%, rgba(26,26,42,0.85) 100%);
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            nav .container { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+            <img src="logo.jpg" alt="Logo" style="height: 45px; width: auto; border-radius: 8px;" />
+            <div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: #B58B5C; line-height: 1.2;">የረር ሙሉወንጌል</div>
+                <div style="font-size: 0.7rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
+            </div>
+        </a>
+        <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
+            <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
+            <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
+            <a href="events.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
+            <a href="give.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Give</a>
+            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        </div>
     </div>
-    <!-- progress bar -->
-    <div style="max-width: 700px; margin: 0 auto; background: #F8F4EC; padding: 40px 32px; border-radius: 40px;">
-      <h3 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 8px;">Building Fund Progress</h3>
-      <p style="text-align: center; color: #6B5E4E; margin-bottom: 20px;">Together we are building a house of prayer</p>
-      <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem;"><span>Raised</span><span><strong>$18,500</strong> / $50,000</span></div>
-      <div class="progress-bar-bg"><div class="progress-fill" style="width: 37%;"></div></div>
-      <p style="margin-top: 20px; text-align: center; font-size: 0.95rem; opacity: 0.8;">37% of goal reached. Help us reach $50,000!</p>
-      <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap;">
-        <a href="#" class="btn-primary" style="padding: 12px 32px;"><i class="fas fa-hand-holding-usd"></i> Give Now</a>
-        <a href="#" class="btn-secondary" style="padding: 12px 32px;">Learn More</a>
-      </div>
+</nav>
+
+<!-- ===== GIVE HERO ===== -->
+<section class="hero-bg" style="position: relative; color: white; padding: 100px 0 80px; overflow: hidden; text-align: center;">
+    <div style="position: relative; z-index: 2;">
+        <div class="container">
+            <span style="background: rgba(181,139,92,0.2); padding: 8px 28px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(181,139,92,0.15); display: inline-block;">Give</span>
+            <h1 style="font-size: 4rem; margin: 24px 0 16px; line-height: 1.1; font-weight: 800;">Support the <span style="color: #D4A574;">Ministry</span></h1>
+            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 10px; color: #D4C8B8; font-weight: 300;">Your generosity fuels the gospel in Yerer and beyond.</p>
+            <p style="font-size: 1.1rem; color: #B8A898;">"God loves a cheerful giver." — 2 Corinthians 9:7</p>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- ===== EVENTS PAGE (linked from home) ===== -->
-<section id="events" style="padding: 80px 0 90px; background: #F8F4EC;">
-  <div class="container">
-    <h2 class="section-title">Upcoming <span>Events</span></h2>
-    <p class="section-subtitle">Gather with us for worship, fellowship, and growth. All are welcome.</p>
-    <div style="display: grid; gap: 24px; max-width: 900px; margin: 0 auto;">
-      <!-- Event 1 -->
-      <div class="event-card">
-        <div class="event-date"><div class="day">25</div><div class="month">June</div></div>
-        <div style="flex:1;"><h3 style="font-size: 1.4rem;">Youth Worship Night</h3><p style="color: #5F5545;"><i class="fas fa-clock" style="color: #B58B5C;"></i> 5:00 PM · Yerer Main Campus</p><p style="color: #5F5545; margin-top: 4px;">A night of praise, worship, and the Word for the next generation.</p></div>
-        <a href="#" style="background: #B58B5C; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; font-weight: 500; white-space: nowrap;">Join Event</a>
-      </div>
-      <!-- Event 2 -->
-      <div class="event-card">
-        <div class="event-date"><div class="day">28</div><div class="month">June</div></div>
-        <div style="flex:1;"><h3 style="font-size: 1.4rem;">Healing & Prayer Service</h3><p style="color: #5F5545;"><i class="fas fa-clock" style="color: #B58B5C;"></i> 7:00 PM · Yerer Main Campus</p><p style="color: #5F5545; margin-top: 4px;">Come expectant for healing, deliverance, and the anointing of the Holy Spirit.</p></div>
-        <a href="#" style="background: #B58B5C; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; font-weight: 500; white-space: nowrap;">Join Event</a>
-      </div>
-      <!-- Event 3 -->
-      <div class="event-card">
-        <div class="event-date"><div class="day">5</div><div class="month">July</div></div>
-        <div style="flex:1;"><h3 style="font-size: 1.4rem;">Family Picnic & Fellowship</h3><p style="color: #5F5545;"><i class="fas fa-clock" style="color: #B58B5C;"></i> 2:00 PM · Yerer Park</p><p style="color: #5F5545; margin-top: 4px;">Food, games, and community. Bring your family and friends!</p></div>
-        <a href="#" style="background: #B58B5C; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; font-weight: 500; white-space: nowrap;">Join Event</a>
-      </div>
-      <!-- Event 4 -->
-      <div class="event-card">
-        <div class="event-date"><div class="day">12</div><div class="month">July</div></div>
-        <div style="flex:1;"><h3 style="font-size: 1.4rem;">Youth Camp 2026</h3><p style="color: #5F5545;"><i class="fas fa-clock" style="color: #B58B5C;"></i> 8:00 AM · Yerer Camp Grounds</p><p style="color: #5F5545; margin-top: 4px;">A week of discipleship, worship, and adventure. Register now!</p></div>
-        <a href="#" style="background: #B58B5C; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; font-weight: 500; white-space: nowrap;">Register</a>
-      </div>
-      <!-- Event 5 -->
-      <div class="event-card">
-        <div class="event-date"><div class="day">19</div><div class="month">July</div></div>
-        <div style="flex:1;"><h3 style="font-size: 1.4rem;">Women of Destiny Conference</h3><p style="color: #5F5545;"><i class="fas fa-clock" style="color: #B58B5C;"></i> 9:00 AM · Yerer Main Campus</p><p style="color: #5F5545; margin-top: 4px;">Empowering women to walk in purpose and power.</p></div>
-        <a href="#" style="background: #B58B5C; color: white; padding: 10px 28px; border-radius: 60px; text-decoration: none; font-weight: 500; white-space: nowrap;">Join Event</a>
-      </div>
+<!-- ===== GIVE OPTIONS ===== -->
+<section style="padding: 80px 0 60px; background: #FFFFFF;">
+    <div class="container">
+        <h2 class="section-title">Ways to <span>Give</span></h2>
+        <p class="section-subtitle">Choose a fund that aligns with your heart for God's kingdom.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 60px;">
+            <div class="give-option">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Tithe</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Faithful giving that supports the church's daily work.</p>
+                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give Tithe</a>
+            </div>
+            <div class="give-option">
+                <i class="fas fa-church"></i>
+                <h3>Building Fund</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Help us expand our worship space and facilities.</p>
+                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give to Building</a>
+            </div>
+            <div class="give-option">
+                <i class="fas fa-globe-africa"></i>
+                <h3>Missions</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Support outreach and church planting in Ethiopia.</p>
+                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give to Missions</a>
+            </div>
+            <div class="give-option">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Benevolence</h3>
+                <p style="color: #5F5545; font-size: 0.95rem;">Help families in need with food, shelter, and care.</p>
+                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give Benevolence</a>
+            </div>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div style="max-width: 700px; margin: 0 auto; background: #F8F4EC; padding: 40px 32px; border-radius: 40px;">
+            <h3 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 8px;">Building Fund Progress</h3>
+            <p style="text-align: center; color: #6B5E4E; margin-bottom: 20px;">Together we are building a house of prayer</p>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem;">
+                <span>Raised</span>
+                <span><strong>$18,500</strong> / $50,000</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-fill" style="width: 37%;"></div>
+            </div>
+            <p style="margin-top: 20px; text-align: center; font-size: 0.95rem; opacity: 0.8;">37% of goal reached. Help us reach $50,000!</p>
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap;">
+                <a href="#" class="btn-primary" style="padding: 12px 32px;"><i class="fas fa-hand-holding-usd"></i> Give Now</a>
+                <a href="#" class="btn-secondary" style="padding: 12px 32px;">Learn More</a>
+            </div>
+        </div>
     </div>
-    <div style="text-align: center; margin-top: 48px;">
-      <a href="#" class="btn-primary" style="padding: 14px 40px;"><i class="fas fa-calendar-plus"></i> Add to Calendar</a>
+</section>
+
+<!-- ===== WAYS TO GIVE ===== -->
+<section style="padding: 60px 0 80px; background: #F8F4EC;">
+    <div class="container">
+        <h2 class="section-title">Other Ways to <span>Give</span></h2>
+        <p class="section-subtitle">Multiple ways to partner with us in advancing the gospel.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-mobile-alt" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Mobile Money</h3>
+                <p style="color: #5F5545;">Send your offering via Telebirr or other mobile payment platforms.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #B58B5C;">+251-XXX-XXX</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-university" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Bank Transfer</h3>
+                <p style="color: #5F5545;">Direct deposit to our church bank account.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #B58B5C;">Account: 1234567890</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-envelope" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+                <h3>Mail a Check</h3>
+                <p style="color: #5F5545;">Send your offering by mail to our church address.</p>
+                <p style="margin-top: 12px; font-weight: 600; color: #B58B5C;">Yerer, Ethiopia</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer style="background: #14100C; color: #A09888; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.04);">
-  <div class="container">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
-      <div><h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</h3><p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p><div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;"><i class="fab fa-facebook"></i><i class="fab fa-youtube"></i><i class="fab fa-whatsapp"></i><i class="fab fa-telegram"></i></div></div>
-      <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3><p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p><p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p><p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p><p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p><p><a href="give.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p><p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Youth</a></p></div>
-      <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3><p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p><p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p><p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p></div>
-      <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3><div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div><p style="margin-bottom: 8px;">prayers prayed this week</p><a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a></div>
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</h3>
+                <p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p>
+                <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-telegram"></i>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
+                <p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
+                <p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
+                <p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p>
+                <p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p>
+                <p><a href="give.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3>
+                <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p>
+                <p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p>
+                <p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3>
+                <div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div>
+                <p style="margin-bottom: 8px;">prayers prayed this week</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;">
+            <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
+        </div>
     </div>
-    <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;"><p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p></div>
-  </div>
 </footer>
+
 </body>
 </html>
