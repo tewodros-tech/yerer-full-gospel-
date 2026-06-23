@@ -8,93 +8,226 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #FDF8F0; }
+        body { font-family: 'Inter', sans-serif; background: #FDF8F0; color: #1F1A14; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .btn-primary { background: #C49A6C; color: white; padding: 12px 28px; border-radius: 40px; text-decoration: none; display: inline-block; }
-        .event-card { background: white; border-radius: 20px; padding: 25px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid #C49A6C; }
+        .btn-primary { 
+            background: #C49A6C; 
+            color: white; 
+            padding: 12px 28px; 
+            border-radius: 40px; 
+            text-decoration: none; 
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { background: #A87B4E; transform: translateY(-2px); }
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #C49A6C;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #C49A6C;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-secondary:hover { background: #C49A6C; color: white; }
+        .event-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-left: 5px solid #C49A6C;
+            transition: all 0.3s ease;
+        }
+        .event-card:hover { transform: translateX(6px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .section-title { text-align: center; font-size: 2.5rem; margin: 40px 0 20px; }
+        .section-title span { color: #C49A6C; }
+        .section-subtitle {
+            text-align: center;
+            color: #6B5E4E;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #C49A6C 0%, #A87B4E 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .hero-bg h1 { font-size: 2.8rem; margin-bottom: 10px; }
+        .hero-bg p { font-size: 1.2rem; opacity: 0.9; }
+        .weekly-service {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .weekly-service:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .weekly-service i { font-size: 2rem; color: #C49A6C; margin-bottom: 12px; }
+        .weekly-service h3 { font-size: 1.2rem; margin-bottom: 6px; }
+        .weekly-service p { color: #5F5545; }
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            nav .container { flex-direction: column; gap: 12px; }
+            .hero-bg h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav style="background: white; padding: 15px 0; position: sticky; top: 0;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-            <div style="font-size: 1.5rem; font-weight: 700; color: #C49A6C;"><i class="fas fa-church"></i> Yerer Full Gospel</div>
-            <div style="display: flex; gap: 25px;">
-                <a href="index.html" style="text-decoration: none; color: #2C2418;">Home</a>
-                <a href="about.html" style="text-decoration: none; color: #2C2418;">About</a>
-                <a href="sermons.html" style="text-decoration: none; color: #2C2418;">Sermons</a>
-                <a href="events.html" style="text-decoration: none; color: #C49A6C; font-weight: 500;">Events</a>
+<!-- ===== NAVIGATION ===== -->
+<nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12); padding: 14px 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+            <img src="logo.jpg" alt="Logo" style="height: 45px; width: auto; border-radius: 8px;" />
+            <div>
+                <div style="font-size: 1.2rem; font-weight: 700; color: #B58B5C; line-height: 1.2;">የረር ሙሉወንጌል</div>
+                <div style="font-size: 0.7rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
             </div>
-            <a href="prayer.html" class="btn-primary" style="padding: 8px 20px;">Prayer</a>
+        </a>
+        <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+            <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
+            <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
+            <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
+            <a href="events.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Events</a>
+            <a href="give.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Give</a>
+            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Hero -->
-    <section style="background: linear-gradient(135deg, #C49A6C 0%, #A87B4E 100%); color: white; padding: 60px 0; text-align: center;">
-        <div class="container">
-            <h1 style="font-size: 2.5rem;">Upcoming Events</h1>
-            <p>Gather, Grow, and Go — together in community</p>
-        </div>
-    </section>
+<!-- ===== HERO ===== -->
+<section class="hero-bg">
+    <div class="container">
+        <h1>Upcoming Events</h1>
+        <p>Gather, Grow, and Go — together in community</p>
+    </div>
+</section>
 
-    <!-- Events List -->
-    <section style="padding: 60px 0;">
-        <div class="container">
-            <div id="eventsList"></div>
-        </div>
-    </section>
+<!-- ===== EVENTS LIST ===== -->
+<section style="padding: 60px 0;">
+    <div class="container">
+        <h2 class="section-title">Event <span>Calendar</span></h2>
+        <p class="section-subtitle">Join us for these upcoming gatherings and conferences</p>
+        <div id="eventsList"></div>
+    </div>
+</section>
 
-    <script>
-        const events = [
-            { title: "Fasting & Prayer", date: "July 15-17, 2026", time: "6:00 AM Daily", location: "Yerer Main Campus", description: "Three days of consecration and seeking God's face.", type: "Prayer" },
-            { title: "Baptism Service", date: "July 22, 2026", time: "2:00 PM", location: "Yerer Main Campus", description: "Celebrate with those publicly declaring their faith in Christ.", type: "Celebration" },
-            { title: "Women of Virtue Conference", date: "August 5, 2026", time: "9:00 AM - 4:00 PM", location: "Yerer Main Campus", description: "A day of empowerment, worship, and fellowship for women.", type: "Conference" },
-            { title: "Men of Valor Summit", date: "August 12, 2026", time: "8:00 AM - 3:00 PM", location: "Yerer Main Campus", description: "Equipping men to lead in faith, family, and community.", type: "Conference" },
-            { title: "Healing & Miracle Service", date: "August 19, 2026", time: "7:00 PM", location: "Yerer Main Campus", description: "Special service focused on divine healing and testimonies.", type: "Worship" },
-            { title: "Youth on Fire Night", date: "August 26, 2026", time: "7:00 PM", location: "Yerer Main Campus", description: "High-energy worship and relevant teaching for ages 13-25.", type: "Youth" }
-        ];
+<script>
+    const events = [
+        { title: "Fasting & Prayer", date: "July 15-17, 2026", time: "6:00 AM Daily", location: "Yerer Main Campus", description: "Three days of consecration and seeking God's face.", type: "Prayer" },
+        { title: "Baptism Service", date: "July 22, 2026", time: "2:00 PM", location: "Yerer Main Campus", description: "Celebrate with those publicly declaring their faith in Christ.", type: "Celebration" },
+        { title: "Women of Virtue Conference", date: "August 5, 2026", time: "9:00 AM - 4:00 PM", location: "Yerer Main Campus", description: "A day of empowerment, worship, and fellowship for women.", type: "Conference" },
+        { title: "Men of Valor Summit", date: "August 12, 2026", time: "8:00 AM - 3:00 PM", location: "Yerer Main Campus", description: "Equipping men to lead in faith, family, and community.", type: "Conference" },
+        { title: "Healing & Miracle Service", date: "August 19, 2026", time: "7:00 PM", location: "Yerer Main Campus", description: "Special service focused on divine healing and testimonies.", type: "Worship" },
+        { title: "Youth on Fire Night", date: "August 26, 2026", time: "7:00 PM", location: "Yerer Main Campus", description: "High-energy worship and relevant teaching for ages 13-25.", type: "Youth" }
+    ];
 
-        function renderEvents() {
-            const container = document.getElementById("eventsList");
-            container.innerHTML = events.map(event => `
-                <div class="event-card">
-                    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: start;">
-                        <div style="flex: 1;">
-                            <span style="background: #C49A6C20; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem;">${event.type}</span>
-                            <h2 style="margin: 15px 0 10px;">${event.title}</h2>
-                            <p><i class="fas fa-calendar"></i> ${event.date}</p>
-                            <p><i class="fas fa-clock"></i> ${event.time}</p>
-                            <p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
-                            <p style="margin: 15px 0;">${event.description}</p>
-                            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                                <button class="btn-primary" onclick="alert('Reminder set for ${event.title}')" style="padding: 8px 20px;">📅 Add to Calendar</button>
-                                <button onclick="alert('RSVP sent for ${event.title}')" style="background: transparent; border: 2px solid #C49A6C; color: #C49A6C; padding: 8px 20px; border-radius: 40px; cursor: pointer;">✓ RSVP</button>
-                            </div>
+    function renderEvents() {
+        const container = document.getElementById("eventsList");
+        container.innerHTML = events.map(event => `
+            <div class="event-card">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: start;">
+                    <div style="flex: 1;">
+                        <span style="background: #C49A6C20; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: #C49A6C; font-weight: 600;">${event.type}</span>
+                        <h2 style="margin: 15px 0 10px; font-size: 1.5rem;">${event.title}</h2>
+                        <p style="color: #5F5545;"><i class="fas fa-calendar" style="color: #C49A6C;"></i> ${event.date}</p>
+                        <p style="color: #5F5545;"><i class="fas fa-clock" style="color: #C49A6C;"></i> ${event.time}</p>
+                        <p style="color: #5F5545;"><i class="fas fa-map-marker-alt" style="color: #C49A6C;"></i> ${event.location}</p>
+                        <p style="margin: 15px 0;">${event.description}</p>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <button class="btn-primary" onclick="alert('Reminder set for ${event.title}')" style="padding: 8px 20px;">📅 Add to Calendar</button>
+                            <button onclick="alert('RSVP sent for ${event.title}')" class="btn-secondary" style="padding: 8px 20px;">✓ RSVP</button>
                         </div>
                     </div>
                 </div>
-            `).join("");
-        }
-        renderEvents();
-    </script>
+            </div>
+        `).join("");
+    }
+    renderEvents();
+</script>
 
-    <!-- Recurring Events -->
-    <section style="background: #FDF8F0; padding: 60px 0;">
-        <div class="container">
-            <h2 class="section-title">Weekly Services</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div style="background: white; padding: 25px; border-radius: 15px; text-align: center;"><i class="fas fa-sun" style="font-size: 2rem; color: #C49A6C;"></i><h3>Sunday</h3><p>10:00 AM<br>Worship Service</p></div>
-                <div style="background: white; padding: 25px; border-radius: 15px; text-align: center;"><i class="fas fa-book-open" style="font-size: 2rem; color: #C49A6C;"></i><h3>Wednesday</h3><p>6:30 PM<br>Bible Study</p></div>
-                <div style="background: white; padding: 25px; border-radius: 15px; text-align: center;"><i class="fas fa-hands-praying" style="font-size: 2rem; color: #C49A6C;"></i><h3>Friday</h3><p>7:00 PM<br>Healing Service</p></div>
-                <div style="background: white; padding: 25px; border-radius: 15px; text-align: center;"><i class="fas fa-pray" style="font-size: 2rem; color: #C49A6C;"></i><h3>Monday-Friday</h3><p>6:00 AM<br>Morning Prayer</p></div>
+<!-- ===== RECURRING EVENTS ===== -->
+<section style="background: #FDF8F0; padding: 60px 0;">
+    <div class="container">
+        <h2 class="section-title">Weekly <span>Services</span></h2>
+        <p class="section-subtitle">Join us regularly for these weekly gatherings</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="weekly-service">
+                <i class="fas fa-sun"></i>
+                <h3>Sunday</h3>
+                <p>10:00 AM<br>Worship Service</p>
+            </div>
+            <div class="weekly-service">
+                <i class="fas fa-book-open"></i>
+                <h3>Wednesday</h3>
+                <p>6:30 PM<br>Bible Study</p>
+            </div>
+            <div class="weekly-service">
+                <i class="fas fa-hands-praying"></i>
+                <h3>Friday</h3>
+                <p>7:00 PM<br>Healing Service</p>
+            </div>
+            <div class="weekly-service">
+                <i class="fas fa-pray"></i>
+                <h3>Monday-Friday</h3>
+                <p>6:00 AM<br>Morning Prayer</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer style="background: #1a1a1a; color: #999; padding: 40px 0; text-align: center;">
-        <div class="container"><p>&copy; 2026 Yerer Full Gospel Believers Church</p></div>
-    </footer>
+<!-- ===== FOOTER ===== -->
+<footer style="background: #14100C; color: #A09888; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.04);">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</h3>
+                <p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p>
+                <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-telegram"></i>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
+                <p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
+                <p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
+                <p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p>
+                <p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p>
+                <p><a href="give.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3>
+                <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p>
+                <p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p>
+                <p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p>
+            </div>
+            <div>
+                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3>
+                <div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div>
+                <p style="margin-bottom: 8px;">prayers prayed this week</p>
+                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;">
+            <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
