@@ -113,7 +113,6 @@
       background: linear-gradient(145deg, rgba(15,13,10,0.85) 0%, rgba(26,26,42,0.75) 100%);
       z-index: 1;
     }
-    /* GALLERY — images fully visible, no cutting */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -158,8 +157,6 @@
     @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
     .testimonial-card { background: #FFFFFF; border-radius: 28px; padding: 32px 28px; border-left: 6px solid #B58B5C; box-shadow: 0 12px 36px rgba(0,0,0,0.03); }
     .pill-badge { background: rgba(181,139,92,0.12); padding: 6px 22px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 1px; color: #B58B5C; font-weight: 600; }
-    .progress-bar-bg { background: rgba(255,255,255,0.08); border-radius: 40px; height: 18px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
-    .progress-fill { background: linear-gradient(90deg, #B58B5C, #D4A574); height: 100%; border-radius: 40px; transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .youth-card { background: #1F1A14; color: #F0E8D8; border-radius: 32px; padding: 48px 32px; background-image: radial-gradient(circle at 10% 20%, rgba(181,139,92,0.08) 0%, transparent 60%); transition: all 0.4s; }
     .youth-card:hover { transform: scale(1.01); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
     .youth-card .btn-primary { background: #D4A574; box-shadow: 0 8px 24px rgba(212,165,116,0.3); }
@@ -361,20 +358,6 @@
       color: #D4C8B8;
       opacity: 0.9;
     }
-    .worship-gallery .wg-item .wg-tag {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: rgba(212,165,116,0.15);
-      backdrop-filter: blur(8px);
-      padding: 4px 14px;
-      border-radius: 40px;
-      font-size: 0.65rem;
-      color: #D4A574;
-      border: 1px solid rgba(212,165,116,0.1);
-      z-index: 2;
-      letter-spacing: 0.5px;
-    }
     @media (max-width: 600px) {
       .worship-gallery { grid-template-columns: 1fr; }
       .worship-gallery .wg-item { aspect-ratio: 16 / 10; }
@@ -454,7 +437,6 @@
     <div class="worship-gallery">
       <div class="wg-item">
         <img src="OLD_1.jpg" alt="OLD_1 Worship" />
-        <span class="wg-tag">📜 OLD_1</span>
         <div class="wg-overlay">
           <h4>Ancient Paths</h4>
           <p>Walking in the old ways of worship</p>
@@ -462,7 +444,6 @@
       </div>
       <div class="wg-item">
         <img src="yerer15.jpg" alt="yerer15 Worship" />
-        <span class="wg-tag">🙌 yerer15</span>
         <div class="wg-overlay">
           <h4>Spirit of Praise</h4>
           <p>Lifting high the name of Jesus</p>
@@ -579,11 +560,35 @@
 <section style="padding: 90px 0; background: #F8F4EC;">
   <div class="container">
     <h2 class="section-title">God Is <span>Moving</span></h2>
-    <p class="section-subtitle">Real testimonies from our church family</p>
+    <p class="section-subtitle">Powerful scriptures that reveal God's heart</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
-      <div class="testimonial-card" style="position: relative;"><i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i><p style="font-style: italic; font-size: 1.05rem; margin-bottom: 18px;">"After 10 years of high blood pressure, I was completely healed during Friday service. Glory to God!"</p><p style="font-weight: 600;">— Mekdes A.</p><div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"><span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount1">147</span> prayed</span><button onclick="document.getElementById('amenCount1').innerText = parseInt(document.getElementById('amenCount1').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button></div></div>
-      <div class="testimonial-card" style="position: relative;"><i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i><p style="font-style: italic; font-size: 1.05rem; margin-bottom: 18px;">"My son returned home after 3 years of no contact. Prayer works. God restores families."</p><p style="font-weight: 600;">— Tekle B.</p><div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"><span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount2">89</span> prayed</span><button onclick="document.getElementById('amenCount2').innerText = parseInt(document.getElementById('amenCount2').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button></div></div>
-      <div class="testimonial-card" style="position: relative;"><i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i><p style="font-style: italic; font-size: 1.05rem; margin-bottom: 18px;">"I received the baptism of the Holy Spirit and spoke in tongues. My prayer life has never been the same."</p><p style="font-weight: 600;">— Dawit M.</p><div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"><span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount3">56</span> prayed</span><button onclick="document.getElementById('amenCount3').innerText = parseInt(document.getElementById('amenCount3').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button></div></div>
+      <div class="testimonial-card" style="position: relative;">
+        <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i>
+        <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."</p>
+        <p style="font-weight: 600; color: #B58B5C;">— Jeremiah 29:11</p>
+        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount1">147</span> prayed</span>
+          <button onclick="document.getElementById('amenCount1').innerText = parseInt(document.getElementById('amenCount1').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button>
+        </div>
+      </div>
+      <div class="testimonial-card" style="position: relative;">
+        <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i>
+        <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."</p>
+        <p style="font-weight: 600; color: #B58B5C;">— Isaiah 40:31</p>
+        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount2">89</span> prayed</span>
+          <button onclick="document.getElementById('amenCount2').innerText = parseInt(document.getElementById('amenCount2').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button>
+        </div>
+      </div>
+      <div class="testimonial-card" style="position: relative;">
+        <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i>
+        <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"I can do all this through him who gives me strength."</p>
+        <p style="font-weight: 600; color: #B58B5C;">— Philippians 4:13</p>
+        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount3">56</span> prayed</span>
+          <button onclick="document.getElementById('amenCount3').innerText = parseInt(document.getElementById('amenCount3').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -598,11 +603,6 @@
       <a href="give.html" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 40px;">Building Fund</a>
       <a href="give.html" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 40px;">Missions</a>
     </div>
-    <div style="max-width: 540px; margin: 0 auto;">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem;"><span>Building Fund Progress</span><span><strong>$18,500</strong> / $50,000</span></div>
-      <div class="progress-bar-bg"><div class="progress-fill" style="width: 37%;"></div></div>
-      <p style="margin-top: 20px; font-size: 0.95rem; opacity: 0.8;">37% of goal reached. Help us reach $50,000!</p>
-    </div>
   </div>
 </section>
 
@@ -613,7 +613,6 @@
       <div><h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</h3><p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p><div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;"><i class="fab fa-facebook"></i><i class="fab fa-youtube"></i><i class="fab fa-whatsapp"></i><i class="fab fa-telegram"></i></div></div>
       <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3><p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p><p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p><p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p><p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p><p><a href="give.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p><p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Youth</a></p></div>
       <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3><p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p><p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p><p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p></div>
-      <div><h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3><div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div><p style="margin-bottom: 8px;">prayers prayed this week</p><a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a></div>
     </div>
     <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;"><p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p></div>
   </div>
