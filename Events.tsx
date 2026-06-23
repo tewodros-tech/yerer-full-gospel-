@@ -1,399 +1,136 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { INSTALLED_EVENTS } from '../data';
-import { ChurchEvent } from '../types';
-import { IconLookup } from './IconLookup';
-
-export function Events() {
-  const [selectedCat, setSelectedCat] = useState<string>('All');
-  const [registerEvent, setRegisterEvent] = useState<ChurchEvent | null>(null);
-  
-  // Registration form inputs
-  const [regName, setRegName] = useState('');
-  const [regEmail, setRegEmail] = useState('');
-  const [regAdultTickets, setRegAdultTickets] = useState('1');
-  const [regKidsTickets, setRegKidsTickets] = useState('0');
-  const [regNotes, setRegNotes] = useState('');
-  const [registeredReceipt, setRegisteredReceipt] = useState<{
-    serial: string;
-    holder: string;
-    adults: number;
-    kids: number;
-    eventTitle: string;
-  } | null>(null);
-
-  const categories = ['All', 'Worship', 'Community', 'Youth & Kids', 'Outreach', 'Study'];
-
-  const filteredEvents = INSTALLED_EVENTS.filter((ev) => {
-    return selectedCat === 'All' || ev.category === selectedCat;
-  });
-
-  const handleOpenRegistration = (ev: ChurchEvent) => {
-    setRegisterEvent(ev);
-    setRegisteredReceipt(null);
-    setRegName('');
-    setRegEmail('');
-    setRegAdultTickets('1');
-    setRegKidsTickets('0');
-    setRegNotes('');
-  };
-
-  const handleRegisterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!regName || !regEmail || !registerEvent) return;
-
-    const receiptSerial = `GRC-${Math.floor(100000 + Math.random() * 900000)}`;
-    setRegisteredReceipt({
-      serial: receiptSerial,
-      holder: regName,
-      adults: parseInt(regAdultTickets) || 1,
-      kids: parseInt(regKidsTickets) || 0,
-      eventTitle: registerEvent.title
-    });
-  };
-
-  return (
-    <section id="events-calendar" className="py-20 bg-stone-50 text-left">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        
-        {/* Intro */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-          <div className="max-w-xl text-left">
-            <span className="text-xs font-sans uppercase tracking-[0.25em] text-gold-500 font-bold block mb-2">
-              Our Shared Calendar
-            </span>
-            <h2 className="text-3xl md:text-5xl font-serif">
-              Upcoming Gatherings
-            </h2>
-            <p className="font-sans text-sm text-[#6b6b5e] leading-relaxed mt-2">
-              Christian community happens inside and outside sanctuary layouts. Join us for picnics, studies, youth camps, and outreach clinics. Save the dates!
-            </p>
-          </div>
-
-          {/* Categories */}
-          <div className="flex flex-wrap gap-2 select-none overflow-x-auto pb-1 max-w-full">
-            {categories.map((cat) => {
-              const isSel = selectedCat === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCat(cat)}
-                  className={`px-4 py-1.5 rounded-full text-[11px] font-sans font-bold uppercase tracking-wider transition-all duration-200 ${
-                    isSel
-                      ? 'bg-gold-500 text-cream-950 shadow-md'
-                      : 'bg-white border border-[#ecece4] text-[#6b6b5e] hover:bg-gold-100/30'
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Events list */}
-        {filteredEvents.length === 0 ? (
-          <div className="bg-white border text-center p-12 rounded-md shadow-sm select-none">
-            <span className="p-3 bg-stone-100 text-gold-500 inline-block rounded-full mb-3">
-              <IconLookup name="Calendar" className="h-6 w-6" />
-            </span>
-            <h5 className="font-serif text-lg font-bold">No events scheduled</h5>
-            <p className="font-sans text-xs text-[#6b6b5e] mt-1 max-w-sm mx-auto">
-              There are no upcoming activities listed under the "{selectedCat}" category right now. Please check back soon or contact info@yererfullgospel.org!
-            </p>
-          </div>
-        ) : (
-          <div id="events-grid-layout" className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-            {filteredEvents.map((ev) => (
-              <div
-                key={ev.id}
-                id={`event-card-${ev.id}`}
-                className="bg-white border border-[#ecece4] hover:border-gold-500/50 shadow-sm hover:shadow-xl transition-all duration-300 rounded-md p-6 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-4 mb-3 select-none">
-                    <span className="px-3 py-1 bg-gold-100 text-gold-600 rounded-full text-[10px] font-sans font-bold uppercase tracking-wider">
-                      {ev.category}
-                    </span>
-
-                    {ev.registrationRequired && (
-                      <span className="inline-flex items-center gap-1.5 text-xs font-sans text-gold-500 font-bold uppercase tracking-wider">
-                        <IconLookup name="Lock" className="h-[13px] w-[13px]" />
-                        RSVP Required
-                      </span>
-                    )}
-                  </div>
-
-                  <h3 className="font-serif text-2.5xl font-bold text-[#2d2d24] leading-snug">
-                    {ev.title}
-                  </h3>
-                  <p className="font-sans text-sm text-[#6b6b5e] leading-relaxed mt-3.5 font-light">
-                    {ev.description}
-                  </p>
-
-                  <div className="space-y-2 border-t border-[#ecece4]/60 pt-4 mt-6 text-sm text-[#6b6b5e] select-all">
-                    <div className="flex items-center gap-3">
-                      <IconLookup name="Clock" className="h-[15px] w-[15px] text-gold-500" />
-                      <div>
-                        <strong className="text-[#2d2d24] font-sans font-semibold text-xs block leading-none">
-                          {ev.date}
-                        </strong>
-                        <span className="text-xs font-sans tracking-tight block mt-1 text-[#6b6b5e]">
-                          {ev.time}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-3 pt-1">
-                      <IconLookup name="MapPin" className="h-[15px] w-[15px] text-gold-500" />
-                      <span className="text-xs font-sans">
-                        {ev.location}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-[#ecece4]/60 pt-4 mt-6 flex items-center justify-between select-none">
-                  <button
-                    id={`btn-calendar-add-${ev.id}`}
-                    onClick={() => {
-                      alert(`Calendar reminder for "${ev.title}" created. Syncing as .ics file for Google Calendar & Apple Calendar calendars.`);
-                    }}
-                    className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-gold-500 hover:text-gold-600 transition-colors uppercase tracking-wider"
-                  >
-                    <IconLookup name="Calendar" className="h-4 w-4" />
-                    Add Calendar
-                  </button>
-
-                  <button
-                    id={`btn-event-rsvp-${ev.id}`}
-                    onClick={() => handleOpenRegistration(ev)}
-                    className="px-5 py-2.5 bg-cream-950 hover:bg-gold-500 active:bg-gold-500 text-stone-50 hover:text-white font-sans font-semibold text-xs uppercase tracking-widest rounded-md shadow-md hover:shadow-lg transition-all duration-200"
-                  >
-                    {ev.registrationRequired ? 'RSVP Ticket' : 'Tell Us You\'re Coming'}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Shared Registration Modal Backdrop / Overlay */}
-        <AnimatePresence>
-          {registerEvent && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setRegisterEvent(null)}
-                className="absolute inset-0 bg-cream-950/70 backdrop-blur-sm"
-              />
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 30 }}
-                transition={{ duration: 0.25 }}
-                className="relative bg-stone-50 max-w-lg w-full rounded-md border border-[#ecece4] shadow-2xl overflow-hidden text-[#2d2d24]"
-              >
-                {/* Header card banner */}
-                <div className="bg-[#2d2d24] text-stone-100 p-6 flex justify-between items-start border-b border-[#3d3d34] select-none">
-                  <div>
-                    <span className="text-[10px] font-sans tracking-[0.2em] uppercase font-bold text-gold-500 block mb-1">
-                      Event Registration
-                    </span>
-                    <h3 className="font-serif text-2xl font-bold pr-6 text-stone-50">
-                      {registerEvent.title}
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => setRegisterEvent(null)}
-                    className="text-stone-400 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors cursor-pointer"
-                  >
-                    <IconLookup name="X" className="h-5 w-5" />
-                  </button>
-                </div>
-
-                {registeredReceipt ? (
-                  /* Stunning virtual pass receipt block */
-                  <div className="p-6 md:p-8 select-none text-center">
-                    <span className="inline-flex items-center justify-center p-3 rounded-full bg-gold-500 text-white mb-4 shadow-xl">
-                      <IconLookup name="Check" className="h-7 w-7 stroke-[3]" />
-                    </span>
-                    <h4 className="font-serif text-2xl font-black text-cream-950">
-                      You are Confirmed!
-                    </h4>
-                    <p className="font-sans text-sm text-[#6b6b5e] mt-1">
-                      Thank you for joining Yerer Full Gospel Church. A digital ticket pass was dispatched.
-                    </p>
-
-                    {/* Styled tickets border representation */}
-                    <div className="my-8 border border-dashed border-gold-500/50 bg-[#fdfcf8] p-5.5 rounded-md relative text-left select-all">
-                      <div className="absolute top-1/2 -left-3.5 h-7 w-7 bg-stone-50 border border-[#ecece4] rounded-full transform -translate-y-1/2" />
-                      <div className="absolute top-1/2 -right-3.5 h-7 w-7 bg-stone-50 border border-[#ecece4] rounded-full transform -translate-y-1/2" />
-                      
-                      <div className="flex justify-between items-start text-xs font-mono text-gold-600 mb-2 font-bold tracking-wider uppercase">
-                        <span>Yerer Full Gospel Church Entry Pass</span>
-                        <span>{registeredReceipt.serial}</span>
-                      </div>
-
-                      <h5 className="font-serif text-lg font-bold text-cream-950 leading-tight">
-                        {registeredReceipt.eventTitle}
-                      </h5>
-
-                      <div className="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-[#ecece4]/60 text-xs text-[#6b6b5e]">
-                        <div>
-                          <span className="font-mono text-[9px] uppercase tracking-wider block text-gold-600">Attendee Name</span>
-                          <strong className="font-sans text-stone-900 block mt-0.5">{registeredReceipt.holder}</strong>
-                        </div>
-                        <div>
-                          <span className="font-mono text-[9px] uppercase tracking-wider block text-gold-600">Reserved Seats</span>
-                          <strong className="font-sans text-stone-900 block mt-0.5">
-                            {registeredReceipt.adults} Adults
-                            {registeredReceipt.kids > 0 ? `, ${registeredReceipt.kids} Kids` : ''}
-                          </strong>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 gap-1.5 mt-4 text-xs text-[#6b6b5e]">
-                        <div className="flex items-center gap-1.5 text-[11px]">
-                          <IconLookup name="Clock" className="h-3.5 w-3.5 text-gold-500" />
-                          <span>{registerEvent.date} ({registerEvent.time})</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-[11px]">
-                          <IconLookup name="MapPin" className="h-3.5 w-3.5 text-gold-500" />
-                          <span>{registerEvent.location}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-[#6b6b5e]/80 bg-gold-100/50 p-3 rounded-md">
-                      Please have this pass ready on your phone or printout when arriving. If you need modifications, please reach out to <strong className="text-stone-900 select-all font-mono">rsvp@yererfullgospel.org</strong> (order ref: {registeredReceipt.serial}).
-                    </p>
-
-                    <button
-                      onClick={() => setRegisterEvent(null)}
-                      className="w-full mt-6 py-3 bg-cream-950 hover:bg-gold-500 hover:text-white text-stone-50 font-sans font-bold text-xs uppercase tracking-widest rounded-md shadow-md transition-colors"
-                    >
-                      Close Confirmation
-                    </button>
-                  </div>
-                ) : (
-                  /* Form Input block */
-                  <form onSubmit={handleRegisterSubmit} id="event-register-form" className="p-6 md:p-8 space-y-4">
-                    <p className="text-sm font-sans text-[#6b6b5e] leading-relaxed">
-                      We want to ensure we prepare adequate refreshments, programs, and seat setups for our attendees. Please complete details below:
-                    </p>
-
-                    <div className="text-left">
-                      <label htmlFor="reg-name" className="block text-xs font-sans font-bold uppercase tracking-wider text-gold-600 mb-1">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        id="reg-name"
-                        value={regName}
-                        onChange={(e) => setRegName(e.target.value)}
-                        className="w-full bg-white border border-[#ecece4] rounded-md px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-gold-500/30 text-[#2d2d24]"
-                        placeholder="John Doe"
-                      />
-                    </div>
-
-                    <div className="text-left">
-                      <label htmlFor="reg-email" className="block text-xs font-sans font-bold uppercase tracking-wider text-gold-600 mb-1">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        id="reg-email"
-                        value={regEmail}
-                        onChange={(e) => setRegEmail(e.target.value)}
-                        className="w-full bg-white border border-[#ecece4] rounded-md px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-gold-500/30 text-[#2d2d24]"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="text-left">
-                        <label htmlFor="reg-adults" className="block text-xs font-sans font-bold uppercase tracking-wider text-gold-600 mb-1">
-                          Adult Seats *
-                        </label>
-                        <select
-                          id="reg-adults"
-                          value={regAdultTickets}
-                          onChange={(e) => setRegAdultTickets(e.target.value)}
-                          className="w-full bg-white border border-[#ecece4] rounded-md px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-gold-500/30 text-[#2d2d24] cursor-pointer"
-                        >
-                          <option value="1">1 Person</option>
-                          <option value="2">2 People</option>
-                          <option value="3">3 People</option>
-                          <option value="4">4 People</option>
-                          <option value="5">5+ People</option>
-                        </select>
-                      </div>
-
-                      <div className="text-left">
-                        <label htmlFor="reg-kids" className="block text-xs font-sans font-bold uppercase tracking-wider text-gold-600 mb-1">
-                          Kids (under 12)
-                        </label>
-                        <select
-                          id="reg-kids"
-                          value={regKidsTickets}
-                          onChange={(e) => setRegKidsTickets(e.target.value)}
-                          className="w-full bg-white border border-[#ecece4] rounded-md px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-gold-500/30 text-[#2d2d24] cursor-pointer"
-                        >
-                          <option value="0">None</option>
-                          <option value="1">1 Kid</option>
-                          <option value="2">2 Kids</option>
-                          <option value="3">3 Kids</option>
-                          <option value="4">4 Kids</option>
-                          <option value="5">5+ Kids</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="text-left">
-                      <label htmlFor="reg-notes" className="block text-xs font-sans font-bold uppercase tracking-wider text-gold-600 mb-1">
-                        Dietary restrictions / wheelchair seating etc.
-                      </label>
-                      <textarea
-                        id="reg-notes"
-                        value={regNotes}
-                        onChange={(e) => setRegNotes(e.target.value)}
-                        rows={2}
-                        className="w-full bg-white border border-[#ecece4] rounded-md px-4 py-2.5 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-gold-500/30 text-[#2d2d24]"
-                        placeholder="Need vegetarian lunch options, or close-to-stage seating..."
-                      />
-                    </div>
-
-                    <div className="flex gap-3 justify-end pt-3">
-                      <button
-                        type="button"
-                        onClick={() => setRegisterEvent(null)}
-                        className="px-5 py-2.5 border border-[#ecece4] hover:bg-stone-100 text-[#6b6b5e] font-sans font-semibold text-xs tracking-widest uppercase rounded-md"
-                      >
-                        Cancel
-                      </button>
-                      
-                      <button
-                        type="submit"
-                        id="btn-confirm-registration"
-                        className="px-6 py-2.5 bg-gold-500 hover:bg-gold-600 active:bg-gold-600 text-[#2d2d24] font-sans font-bold text-xs uppercase tracking-widest rounded-md shadow-md transition-shadow"
-                      >
-                        Confirm Attendance
-                      </button>
-                    </div>
-                  </form>
-                )}
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Give & Events · Yerer Full Gospel</title>
+  <meta name="description" content="Support the ministry and join our events at Yerer Full Gospel Church." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FCF8F0;
+      color: #1F1A14;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    .btn-primary {
+      display: inline-block;
+      background: #B58B5C;
+      color: white;
+      padding: 14px 38px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(181, 139, 92, 0.35);
+      letter-spacing: 0.3px;
+    }
+    .btn-primary:hover { background: #9F7349; transform: translateY(-3px); box-shadow: 0 14px 34px rgba(181, 139, 92, 0.45); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #B58B5C;
+      padding: 14px 38px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid #B58B5C;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover { background: #B58B5C; color: white; transform: translateY(-2px); }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 12px;
+      color: #1F1A14;
+      letter-spacing: -0.5px;
+    }
+    .section-title span { color: #B58B5C; }
+    .section-subtitle {
+      text-align: center;
+      color: #6B5E4E;
+      margin-bottom: 56px;
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      padding: 36px 28px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.04);
+      transition: all 0.35s ease;
+      border: 1px solid rgba(181, 139, 92, 0.06);
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.08); }
+    .pill-badge { background: rgba(181,139,92,0.12); padding: 6px 22px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 1px; color: #B58B5C; font-weight: 600; }
+    .progress-bar-bg { background: rgba(255,255,255,0.08); border-radius: 40px; height: 18px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+    .progress-fill { background: linear-gradient(90deg, #B58B5C, #D4A574); height: 100%; border-radius: 40px; transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .event-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      border-left: 6px solid #B58B5C;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+      transition: all 0.3s;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+    }
+    .event-card:hover { transform: translateX(6px); box-shadow: 0 16px 40px rgba(0,0,0,0.06); }
+    .event-date {
+      background: #F8F4EC;
+      border-radius: 20px;
+      padding: 16px 20px;
+      text-align: center;
+      min-width: 80px;
+    }
+    .event-date .day { font-size: 2.2rem; font-weight: 800; color: #B58B5C; line-height: 1; }
+    .event-date .month { font-size: 0.8rem; text-transform: uppercase; color: #6B5E4E; letter-spacing: 1px; }
+    .give-option {
+      background: #F8F4EC;
+      border-radius: 28px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .give-option:hover { background: #EFE8DC; transform: translateY(-6px); }
+    .give-option i { font-size: 2.8rem; color: #B58B5C; margin-bottom: 12px; }
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; }
+      .container { padding: 0 16px; }
+      nav .container { flex-direction: column; gap: 12px; }
+      .event-card { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+<!-- ===== NAVIGATION ===== -->
+<nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
+    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+      <img src="logo.jpg" alt="Logo" style="height: 48px; width: auto; border-radius: 8px;" />
+      <div>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #B58B5C; line-height: 1.15; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</div>
+        <div style="font-size: 0.6rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL BELIEVERS CHURCH</div>
       </div>
-    </section>
-  );
-}
+    </a>
+    <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+      <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
+      <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
+      <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
+      <a href="events.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Events</a>
+      <a href="give.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Give</a>
+      <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </div>
+  </div>
+</nav>
