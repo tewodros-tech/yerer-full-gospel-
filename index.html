@@ -1,1347 +1,1504 @@
+Here is the fully redesigned, production-ready, and breathtaking **Index Page** for **የረር ሙሉወንጌል (Yerer Full Gospel Believers Church)**. 
+
+### ✨ Architectural & Design Upgrades Applied:
+* **Editorial Luxury Aesthetic**: Replaced basic colors with an elite color palette consisting of deep obsidian (`#0D0B09`), rich warm cream (`#FAF7F2`), and champagne bronze gold (`#C89B63`).
+* **Fluid & Responsive Typography**: Engineered dynamic `clamp()` headings pairing *Playfair Display* for divine grandeur with *Inter* for crisp modern legibility.
+* **Smart Image Fallbacks**: Embedded automated high-resolution Unsplash spiritual photography fallbacks. If your local images (`yerer1.jpg`, `logo.jpg`, etc.) aren't found, the page will automatically substitute stunning placeholders so it looks world-class instantly.
+* **Cinematic Hero & Glassmorphism**: Built a full-bleed cinematic hero section with floating ambient badges, a live ticking countdown capsule, and smooth scroll indicators.
+* **Micro-Interactions & Animations**: Added a custom vanilla JavaScript scroll-reveal engine, silky button hover states, a cross-fading youth ministry carousel, and interactive **"Amen" prayer counters** that trigger satisfying visual feedback when clicked.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>የረር ሙሉወንጌል · Yerer Full Gospel · Spirit & Truth</title>
-  <meta name="description" content="A Spirit-filled church in Yerer, Ethiopia. Join us for worship, healing, and community." />
+  <title>የረር ሙሉወንጌል · Yerer Full Gospel Believers Church</title>
+  <meta name="description" content="A Spirit-filled church in Yerer, Ethiopia. Join us for worship, healing, dynamic biblical teaching, and community." />
   
-  <!-- Premium Typography Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Serif+Ethiopic:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
+
   <style>
-    /* Premium Theme Variable System */
+    /* ==========================================================================
+       1. CORE DESIGN SYSTEM & VARIABLES
+       ========================================================================== */
     :root {
-      --primary: #C5A880;
-      --primary-hover: #AA8B60;
-      --primary-light: rgba(197, 168, 128, 0.15);
-      --dark-gold: #9E7D50;
-      --accent: #E5C396;
-      --bg-dark: #0D0A08;
-      --bg-medium: #17120E;
-      --bg-light: #FCF8F2;
-      --bg-card: #FFFFFF;
-      --text-main: #1F1A14;
-      --text-muted: #6B5E4E;
-      --text-light: #F4EFEB;
-      --glass-bg: rgba(255, 255, 255, 0.85);
-      --glass-border: rgba(197, 168, 128, 0.2);
-      --shadow-premium: 0 16px 40px rgba(23, 18, 14, 0.05);
-      --shadow-hover: 0 24px 64px rgba(197, 168, 128, 0.15);
-      --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      --bg-main: #FAF7F2;
+      --bg-alt: #F2ECE1;
+      --bg-dark: #0D0B09;
+      --bg-dark-surface: #171411;
+      
+      --text-main: #1A1714;
+      --text-muted: #6B6259;
+      --text-light: #F7F4F0;
+      --text-gold: #D4AF37;
+
+      --accent-gold: #C89B63;
+      --accent-gold-hover: #B0824A;
+      --accent-gold-light: rgba(200, 155, 99, 0.12);
+      
+      --border-light: rgba(26, 23, 20, 0.08);
+      --border-dark: rgba(255, 255, 255, 0.08);
+
+      --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.1);
+      --shadow-glow: 0 12px 40px rgba(200, 155, 99, 0.28);
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    ::selection {
+      background: var(--accent-gold);
+      color: #fff;
     }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-dark);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 5px;
-      border: 2px solid var(--bg-dark);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary-hover);
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-light);
+      font-family: var(--font-sans);
+      background-color: var(--bg-main);
       color: var(--text-main);
-      line-height: 1.8;
-      scroll-behavior: smooth;
+      line-height: 1.7;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4, .logo-font { 
-      font-family: 'Playfair Display', serif; 
-    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: #332C25; border-radius: 5px; border: 2px solid var(--bg-dark); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
 
-    .amharic {
-      font-family: 'Noto Serif Ethiopic', serif;
-    }
+    /* ==========================================================================
+       2. TYPOGRAPHY & UTILITIES
+       ========================================================================== */
+    h1, h2, h3, h4, .serif { font-family: var(--font-serif); font-weight: 700; line-height: 1.2; }
+    
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+    
+    .section-padding { padding: 110px 0; }
+    @media (max-width: 768px) { .section-padding { padding: 70px 0; } }
 
-    .container { 
-      max-width: 1340px; 
-      margin: 0 auto; 
-      padding: 0 30px; 
-    }
+    .text-center { text-align: center; }
 
-    /* Elegant Glowing Badges */
-    .pill-badge {
-      background: var(--primary-light);
-      padding: 8px 24px;
-      border-radius: 60px;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: var(--dark-gold);
-      font-weight: 700;
-      text-transform: uppercase;
+    .section-header {
+      max-width: 720px;
+      margin: 0 auto 64px;
+    }
+    
+    .section-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(197, 168, 128, 0.25);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 12px rgba(197, 168, 128, 0.05);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+    
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+    .section-title span { color: var(--accent-gold); font-style: italic; }
+    
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 16px;
     }
 
-    /* Buttons Reimagined */
-    .btn-primary {
+    /* Buttons */
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--dark-gold) 100%);
-      color: white;
-      padding: 16px 42px;
+      padding: 16px 38px;
       border-radius: 100px;
-      text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      transition: var(--transition-smooth);
-      border: none;
+      text-decoration: none;
+      transition: var(--transition);
       cursor: pointer;
-      box-shadow: 0 8px 30px rgba(158, 125, 80, 0.3);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      border: 2px solid transparent;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
     }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, var(--dark-gold) 0%, var(--primary) 100%);
-      transition: opacity 0.5s ease;
-      z-index: -1;
-      opacity: 0;
+    
+    .btn-primary {
+      background: var(--accent-gold);
+      color: #fff;
+      box-shadow: var(--shadow-glow);
     }
-    .btn-primary:hover::before {
-      opacity: 1;
-    }
-    .btn-primary:hover { 
-      transform: translateY(-3px); 
-      box-shadow: 0 16px 36px rgba(158, 125, 80, 0.45); 
+    .btn-primary:hover {
+      background: var(--accent-gold-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(200, 155, 99, 0.4);
     }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
       background: transparent;
-      color: var(--dark-gold);
-      padding: 16px 42px;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 600;
-      border: 2px solid var(--primary);
-      transition: var(--transition-smooth);
+      color: var(--text-main);
+      border-color: var(--border-light);
     }
-    .btn-secondary:hover { 
-      background: var(--primary-light); 
-      transform: translateY(-2px); 
+    .btn-secondary:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      transform: translateY(-2px);
     }
 
-    .btn-outline-light {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
-      padding: 16px 42px;
-      border-radius: 100px;
-      text-decoration: none;
-      font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      transition: var(--transition-smooth);
-      backdrop-filter: blur(8px);
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
-    .btn-outline-light:hover { 
-      background: white; 
-      color: var(--bg-dark); 
-      border-color: white;
+    .btn-glass:hover {
+      background: #fff;
+      color: var(--bg-dark);
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(255,255,255,0.15);
     }
 
-    /* Premium Sticky Navigation */
-    nav {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+    /* Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.3s; }
+    .delay-3 { transition-delay: 0.45s; }
+
+    /* ==========================================================================
+       3. NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid var(--glass-border);
-      transition: var(--transition-smooth);
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+      transition: var(--transition);
     }
-    nav.scrolled {
-      padding: 8px 0;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    }
+    
     .nav-container {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
-      transition: var(--transition-smooth);
+      justify-content: space-between;
+      height: 84px;
     }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .brand img {
+      height: 52px;
+      width: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-text .amharic {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+    .brand-text .sub {
+      font-size: 0.6rem;
+      letter-spacing: 2.5px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-top: 2px;
+    }
+
     .nav-links {
       display: flex;
-      gap: 36px;
       align-items: center;
+      gap: 36px;
+      list-style: none;
     }
     .nav-links a {
       text-decoration: none;
       color: var(--text-main);
       font-weight: 500;
       font-size: 0.95rem;
+      transition: color 0.2s ease;
       position: relative;
-      transition: var(--transition-smooth);
-      padding: 6px 0;
     }
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; width: 0; height: 2px;
-      background: var(--primary);
-      transition: var(--transition-smooth);
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-gold);
+      transition: width 0.3s ease;
     }
-    .nav-links a:hover {
-      color: var(--dark-gold);
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-    .nav-links a.active {
-      color: var(--dark-gold);
-      font-weight: 700;
-    }
-    .nav-links a.active::after {
-      width: 100%;
-    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
 
-    /* Hamburger Menu Button */
     .hamburger {
       display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
       background: none;
       border: none;
-      padding: 8px;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      position: relative;
       z-index: 1001;
     }
     .hamburger span {
       display: block;
-      width: 28px;
-      height: 2.5px;
+      width: 22px;
+      height: 2px;
       background: var(--text-main);
-      border-radius: 4px;
-      transition: var(--transition-smooth);
+      margin: 5px auto;
+      transition: var(--transition);
     }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Immersive Parallax Hero Section */
-    .hero-bg {
-      background: url('XXXL.webp') center/cover no-repeat;
+    /* Mobile Drawer */
+    @media (max-width: 992px) {
+      .hamburger { display: block; }
+      .nav-links, .nav-actions .btn-live { display: none; }
+      
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-main);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .mobile-menu.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .mobile-menu a {
+        font-size: 1.8rem;
+        font-family: var(--font-serif);
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 600;
+      }
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 92vh;
       display: flex;
       align-items: center;
+      justify-content: center;
+      background-color: var(--bg-dark);
+      color: #fff;
       overflow: hidden;
     }
-    .hero-bg::before {
-      content: '';
+
+    .hero-bg {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(13, 10, 8, 0.75) 0%, rgba(23, 18, 14, 0.9) 100%);
+      inset: 0;
       z-index: 1;
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      color: white;
-      text-align: center;
-      padding: 120px 0 80px;
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.05);
+      animation: slowZoom 20s infinite alternate linear;
     }
-    .hero-title {
-      font-size: 5.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      margin: 24px auto;
-      letter-spacing: -1px;
-      max-width: 1000px;
-    }
-    .hero-title span {
-      background: linear-gradient(135deg, var(--accent) 30%, var(--primary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 300;
-      margin-bottom: 40px;
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.12); }
     }
 
-    /* Live Countdown Clock */
-    .countdown-widget {
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13,11,9,0.65) 0%, rgba(13,11,9,0.85) 70%, var(--bg-dark) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      padding: 120px 20px 80px;
+    }
+
+    .hero-pill {
       display: inline-flex;
       align-items: center;
-      gap: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      gap: 10px;
+      padding: 8px 24px;
       border-radius: 100px;
-      padding: 12px 36px;
-      backdrop-filter: blur(16px);
-      margin-top: 50px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      animation: pulse-border 3s infinite;
-    }
-    @keyframes pulse-border {
-      0%, 100% { border-color: rgba(255, 255, 255, 0.15); }
-      50% { border-color: var(--primary); }
-    }
-    .countdown-label {
+      background: rgba(200, 155, 99, 0.2);
+      border: 1px solid rgba(200, 155, 99, 0.4);
+      color: #F3E5D0;
       font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      opacity: 0.8;
-      font-weight: 600;
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
     }
-    .countdown-timer {
-      font-size: 1.8rem;
-      font-weight: 700;
-      font-family: 'Inter', monospace;
-      color: var(--accent);
+    .hero-pill i { color: var(--text-gold); }
+
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #FFF 30%, var(--accent-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-scripture {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 300;
       letter-spacing: 1px;
+      margin-bottom: 40px;
     }
-    .live-dot {
+
+    .hero-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 70px;
+    }
+
+    /* Countdown Capsule */
+    .countdown-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding: 18px 40px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    @media (max-width: 600px) {
+      .countdown-capsule { flex-direction: column; gap: 12px; padding: 24px; border-radius: 28px; width: 100%; }
+    }
+    .countdown-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ccc;
+    }
+    .countdown-label .pulse {
       width: 10px;
       height: 10px;
       background: #E53E3E;
       border-radius: 50%;
-      display: inline-block;
-      box-shadow: 0 0 12px #E53E3E;
-      animation: blink 1.5s infinite;
+      box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7);
+      animation: pulsing 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
     }
-    @keyframes blink {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
+    @keyframes pulsing {
+      to { box-shadow: 0 0 0 12px rgba(229, 62, 62, 0); }
     }
-
-    /* Section Typography & Accents */
-    .section-header {
-      text-align: center;
-      margin-bottom: 70px;
-    }
-    .section-title {
-      font-size: 3.2rem;
-      color: var(--text-main);
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-    .section-title span {
-      color: var(--dark-gold);
-    }
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 700px;
-      margin: 0 auto;
+    .countdown-timer {
+      font-family: var(--font-sans);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 2px;
     }
 
-    /* Beautiful Interactive Grid Cards */
-    .premium-grid {
+    /* ==========================================================================
+       5. FEATURED GALLERY BRIDGES
+       ========================================================================== */
+    .bridge-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 40px;
-    }
-    .service-card {
-      background: var(--bg-card);
-      border-radius: 32px;
-      padding: 50px 40px;
-      box-shadow: var(--shadow-premium);
-      transition: var(--transition-smooth);
-      border: 1px solid rgba(197, 168, 128, 0.1);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: -60px;
       position: relative;
+      z-index: 10;
+    }
+    @media (max-width: 768px) { .bridge-grid { grid-template-columns: 1fr; margin-top: 20px; } }
+
+    .bridge-card {
+      position: relative;
+      border-radius: 24px;
       overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: var(--shadow-lg);
+      group: block;
+    }
+    .bridge-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      background-color: #2A241E;
+    }
+    .bridge-card:hover img { transform: scale(1.06); }
+    
+    .bridge-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(13,11,9,0.9) 0%, rgba(13,11,9,0.2) 60%, transparent 100%);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      justify-content: flex-end;
+      padding: 36px;
+      color: #fff;
+    }
+    .bridge-overlay h3 { font-size: 1.8rem; margin-bottom: 6px; color: #fff; }
+    .bridge-overlay p { color: rgba(255,255,255,0.75); font-size: 0.95rem; }
+
+    /* ==========================================================================
+       6. SERVICES SCHEDULE
+       ========================================================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 48px 36px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
     }
     .service-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 5px;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--dark-gold) 100%);
-      opacity: 0;
-      transition: var(--transition-smooth);
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+      transition: var(--transition);
     }
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(200, 155, 99, 0.3);
     }
-    .service-card:hover::before {
-      opacity: 1;
-    }
-    .service-icon-wrapper {
-      width: 90px;
-      height: 90px;
-      background: var(--primary-light);
-      border-radius: 50%;
+    .service-card:hover::before { background: var(--accent-gold); }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: var(--accent-gold-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 30px;
-      color: var(--dark-gold);
-      font-size: 2.2rem;
-      transition: var(--transition-smooth);
-    }
-    .service-card:hover .service-icon-wrapper {
-      background: var(--dark-gold);
-      color: white;
-      transform: scale(1.1);
-    }
-    .service-time {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--dark-gold);
-      margin: 15px 0;
-    }
-
-    /* Consecutive Worship Gallery */
-    .worship-highlight {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      margin-bottom: 60px;
-    }
-    .wh-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 32px;
-      aspect-ratio: 16 / 10;
-      box-shadow: var(--shadow-premium);
-      background: var(--bg-dark);
-    }
-    .wh-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-    .wh-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to top, rgba(13, 10, 8, 0.9) 0%, rgba(13, 10, 8, 0.1) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 40px;
-      opacity: 0.95;
-      transition: var(--transition-smooth);
-    }
-    .wh-item:hover img {
-      transform: scale(1.08);
-    }
-    .wh-overlay h4 {
       font-size: 1.8rem;
-      color: white;
-      margin-bottom: 8px;
+      color: var(--accent-gold);
+      margin-bottom: 32px;
+      transition: var(--transition);
     }
-    .wh-overlay p {
-      color: var(--accent);
-      font-size: 0.95rem;
+    .service-card:hover .service-icon {
+      background: var(--accent-gold);
+      color: #fff;
+      transform: scale(1.1) rotate(5deg);
     }
 
-    /* Filterable Interactive Gallery Masonry */
-    .gallery-filters {
+    .service-time {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      margin: 8px 0;
+    }
+
+    .service-desc { color: var(--text-muted); margin-bottom: 32px; font-size: 0.95rem; }
+
+    .service-meta {
+      padding-top: 24px;
+      border-top: 1px dashed var(--border-light);
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: var(--bg-card);
-      border: 1px solid rgba(197, 168, 128, 0.2);
-      color: var(--text-muted);
-      padding: 10px 24px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 0.9rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
       font-weight: 600;
-      transition: var(--transition-smooth);
+      color: var(--text-main);
     }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--dark-gold);
-      color: white;
-      border-color: var(--dark-gold);
-    }
-    .gallery-grid {
+    .service-meta a { color: var(--accent-gold); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .service-meta a:hover { text-decoration: underline; }
+
+    /* ==========================================================================
+       7. CURATED AESTHETIC GALLERY
+       ========================================================================== */
+    .gallery-masonry {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 260px;
       gap: 20px;
     }
+    @media (max-width: 1024px) { .gallery-masonry { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .gallery-masonry { grid-template-columns: 1fr; grid-auto-rows: 280px; } }
+
     .gallery-item {
       position: relative;
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
-      aspect-ratio: 1 / 1;
-      box-shadow: var(--shadow-premium);
-      transition: var(--transition-smooth);
-      background: var(--bg-dark);
+      background: #EADECC;
+      box-shadow: var(--shadow-sm);
     }
+    .gallery-item.span-2 { grid-column: span 2; grid-row: span 2; }
+    @media (max-width: 600px) { .gallery-item.span-2 { grid-column: span 1; grid-row: span 1; } }
+
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.7s ease;
     }
-    .gallery-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-hover);
-    }
-    .gallery-item:hover img {
-      transform: scale(1.08);
-    }
+    .gallery-item:hover img { transform: scale(1.08); }
 
-    /* Interactive Beliefs with Smooth Reveal */
-    .beliefs-container {
+    .gallery-item-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(13,11,9,0.75);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+    }
+    .gallery-item:hover .gallery-item-badge { opacity: 1; transform: translateY(0); }
+
+    /* ==========================================================================
+       8. BELIEFS SECTION
+       ========================================================================== */
+    .beliefs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-    .belief-card {
-      background: var(--bg-card);
-      border-radius: 28px;
-      padding: 40px 30px;
-      text-align: center;
-      box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(197, 168, 128, 0.1);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-    .belief-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--primary);
-    }
-    .belief-icon {
-      width: 70px;
-      height: 70px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      font-size: 1.8rem;
-      color: var(--dark-gold);
-    }
-    .belief-details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-top: 12px;
-    }
-    .belief-card.active .belief-details {
-      max-height: 150px;
+      gap: 24px;
     }
 
-    /* Next Gen Youth Section with Embedded Carousel */
-    .youth-section-box {
-      background: var(--bg-dark);
-      color: #F0E8D8;
-      border-radius: 40px;
-      padding: 80px 60px;
-      background-image: radial-gradient(circle at 10% 20%, rgba(197, 168, 128, 0.1) 0%, transparent 50%);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+    .belief-card {
+      background: var(--bg-alt);
+      padding: 40px 32px;
+      border-radius: 24px;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid transparent;
     }
-    .youth-layout {
+    .belief-card:hover {
+      background: #fff;
+      box-shadow: var(--shadow-md);
+      border-color: rgba(200, 155, 99, 0.3);
+      transform: translateY(-5px);
+    }
+    .belief-num {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(200, 155, 99, 0.25);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .belief-title { font-size: 1.35rem; margin-bottom: 10px; }
+    .belief-desc { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ==========================================================================
+       9. YOUTH REVIVAL CONTRAST SECTION
+       ========================================================================== */
+    .youth-banner {
+      background: var(--bg-dark);
+      color: #fff;
+      border-radius: 36px;
+      padding: 70px 60px;
+      position: relative;
+      overflow: hidden;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 60px;
       align-items: center;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-dark);
     }
-    .youth-slideshow {
-      position: relative;
-      border-radius: 30px;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    @media (max-width: 992px) {
+      .youth-banner { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
     }
-    .youth-slideshow .slide {
+
+    .youth-glow {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(200,155,99,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge-neon {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      border-radius: 100px;
+      background: rgba(212, 175, 55, 0.15);
+      color: var(--text-gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .youth-title { font-size: clamp(2.4rem, 4.5vw, 4rem); color: #fff; margin-bottom: 20px; }
+    .youth-desc { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 36px; }
+
+    .event-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px 24px;
+      border-radius: 16px;
+      margin-bottom: 36px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .event-chip i { font-size: 1.3rem; color: var(--accent-gold); }
+
+    /* Youth Slideshow */
+    .carousel-box {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
       opacity: 0;
-      transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 1.2s ease-in-out;
     }
-    .youth-slideshow .slide.active {
-      opacity: 1;
-    }
-    .youth-slideshow img {
+    .carousel-slide.active { opacity: 1; z-index: 2; }
+    .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .slideshow-dots {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 10;
-    }
-    .slide-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-    }
-    .slide-dot.active {
-      background: var(--primary);
-      width: 24px;
-      border-radius: 10px;
-    }
 
-    /* Advanced Interactive Amen Scriptural System */
-    .testimony-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
-    .testimony-card {
-      background: var(--bg-card);
-      border-radius: 32px;
-      padding: 40px;
-      border-left: 6px solid var(--primary);
-      box-shadow: var(--shadow-premium);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .amen-interactive {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-top: 30px;
-      border-top: 1px solid rgba(197,168,128,0.15);
-      padding-top: 20px;
-    }
-    .amen-btn {
-      background: var(--primary-light);
-      border: none;
-      color: var(--dark-gold);
-      padding: 10px 24px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: var(--transition-smooth);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .amen-btn:hover {
-      background: var(--primary);
-      color: white;
-      transform: scale(1.05);
-    }
-    /* Amen Floating Particles animation */
-    .amen-particle {
-      position: absolute;
-      pointer-events: none;
-      font-size: 1.5rem;
-      animation: floatUp 1.2s cubic-bezier(0.25, 1, 0.50, 1) forwards;
-      z-index: 10000;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(0.5); opacity: 0; }
-      20% { opacity: 1; }
-      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
-    }
-
-    /* Premium Streaming Sermon Player Area */
-    .sermon-hub {
+    /* ==========================================================================
+       10. SERMON & MEDIA
+       ========================================================================== */
+    .sermon-box {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 50px;
       align-items: center;
     }
-    .video-theatre {
+    @media (max-width: 992px) { .sermon-box { grid-template-columns: 1fr; } }
+
+    .video-frame {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
-      border-radius: 32px;
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-      border: 4px solid var(--bg-card);
+      box-shadow: var(--shadow-lg);
+      background: #000;
+      border: 1px solid var(--border-light);
     }
-    .video-theatre iframe {
+    .video-frame iframe {
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      border: 0;
+      top: 0; left: 0; width: 100%; height: 100%; border: 0;
     }
 
-    /* Interactive Giving Hub with quick values selector */
-    .give-hub {
-      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
-      color: white;
-      border-radius: 40px;
-      padding: 80px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .sermon-info h3 { font-size: 2.2rem; margin: 16px 0; }
+    
+    .share-btns { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+
+    /* ==========================================================================
+       11. INTERACTIVE PRAYER TESTIMONIES
+       ========================================================================== */
+    .testimony-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
     }
-    .give-hub::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 80% 80%, rgba(197, 168, 128, 0.08) 0%, transparent 60%);
-    }
-    .fund-selector-container {
-      margin-top: 40px;
-    }
-    .tier-grid {
+
+    .testimony-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
     }
-    .tier-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      padding: 16px 36px;
+    .quote-mark {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 4rem;
+      font-family: var(--font-serif);
+      color: var(--accent-gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .testimony-text { font-size: 1.15rem; font-style: italic; color: var(--text-main); margin-bottom: 28px; position: relative; z-index: 1; }
+    .testimony-ref { font-weight: 700; color: var(--accent-gold); font-family: var(--font-serif); font-size: 1.1rem; }
+
+    .amen-footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .prayed-count { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+    .prayed-count strong { color: var(--text-main); }
+
+    .btn-amen {
+      background: var(--bg-alt);
+      border: none;
+      color: var(--text-main);
+      padding: 8px 20px;
       border-radius: 100px;
       font-weight: 600;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: var(--transition-smooth);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
     }
-    .tier-btn:hover, .tier-btn.active {
-      background: var(--primary);
-      color: var(--bg-dark);
-      border-color: var(--primary);
+    .btn-amen:hover, .btn-amen.prayed {
+      background: var(--accent-gold);
+      color: #fff;
       transform: scale(1.05);
-      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(200, 155, 99, 0.3);
     }
 
-    /* Footer Styles */
-    footer {
-      background: var(--bg-dark);
-      color: #A09888;
-      padding: 100px 0 40px;
-      border-top: 1px solid rgba(197, 168, 128, 0.08);
-    }
-    footer h3 {
-      color: #F0E8D8;
-      font-size: 1.6rem;
-      margin-bottom: 25px;
-    }
-    footer a {
-      color: #A09888;
-      text-decoration: none;
-      transition: var(--transition-smooth);
-    }
-    footer a:hover {
-      color: var(--primary);
-      padding-left: 5px;
-    }
-    .footer-bottom {
+    /* ==========================================================================
+       12. GIVING CTA & FOOTER
+       ========================================================================== */
+    .giving-banner {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #231E19 100%);
+      color: #fff;
       text-align: center;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      margin-top: 60px;
-      font-size: 0.9rem;
+      padding: 100px 24px;
+      border-radius: 40px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 80px;
     }
 
-    /* Responsive Architecture Styles */
-    @media (max-width: 1024px) {
-      .hero-title { font-size: 4rem; }
-      .youth-layout { grid-template-columns: 1fr; }
-      .sermon-hub { grid-template-columns: 1fr; }
+    .footer {
+      background-color: var(--bg-dark);
+      color: #9E9589;
+      padding: 80px 0 40px;
+      border-top: 1px solid var(--border-dark);
     }
 
-    @media (max-width: 920px) {
-      .hamburger { display: flex; }
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 40px 0;
-        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-        gap: 24px;
-        transform: translateY(-150%);
-        opacity: 0;
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
-        border-bottom: 1px solid var(--glass-border);
-      }
-      .nav-links.open {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 60px;
+      margin-bottom: 70px;
+    }
+    @media (max-width: 992px) { .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+    .footer h4 { color: #fff; font-size: 1.2rem; margin-bottom: 24px; }
+    
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #9E9589; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent-gold); }
+
+    .footer-social { display: flex; gap: 14px; margin-top: 24px; }
+    .footer-social a {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; text-decoration: none; transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--accent-gold); transform: translateY(-3px); }
+
+    .footer-bottom {
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    @media (max-width: 768px) {
-      .hero-title { font-size: 3rem; }
-      .section-title { font-size: 2.4rem; }
-      .worship-highlight { grid-template-columns: 1fr; }
-      .youth-section-box { padding: 40px 24px; }
-      .give-hub { padding: 50px 24px; }
-    }
+    /* Fallback Image System via JS */
+    .img-loading { background: linear-gradient(110deg, #ece6dc 8%, #f5efe6 18%, #ece6dc 33%); background-size: 200% 100%; animation: shine 1.5s linear infinite; }
+    @keyframes shine { to { background-position-x: -200%; } }
   </style>
 </head>
 <body>
 
-<!-- NAVIGATION BAR -->
-<nav id="navbar">
-  <div class="container nav-container">
-    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 14px;">
-      <img src="logo.jpg" alt="Logo" style="height: 54px; width: auto; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1);" />
-      <div>
-        <div class="amharic logo-font" style="font-size: 1.25rem; font-weight: 800; color: var(--dark-gold); line-height: 1.1;">የረር ሙሉወንጌል</div>
-        <div style="font-size: 0.65rem; letter-spacing: 3px; color: var(--text-muted); font-weight: 600;">YERER FULL GOSPEL</div>
-      </div>
-    </a>
-    
-    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-      <span></span><span></span><span></span>
-    </button>
-    
-    <div class="nav-links" id="navLinks">
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="sermons.html">Sermons</a>
-      <a href="events.html">Events</a>
-      <a href="give.html">Give</a>
-      <a href="live.html" class="btn-primary" style="padding: 12px 28px; color: white;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+  <!-- ==========================================================================
+       MOBILE MENU DRAWER
+       ========================================================================== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About Church</a>
+    <a href="sermons.html" onclick="toggleMenu()">Sermons & Worship</a>
+    <a href="events.html" onclick="toggleMenu()">Events & Revival</a>
+    <a href="give.html" onclick="toggleMenu()">Give & Support</a>
+    <div style="margin-top: 20px;">
+      <a href="sermons.html" class="btn btn-primary" style="font-size: 1rem; padding: 16px 40px;">
+        <i class="fas fa-tower-broadcast"></i> Watch Live
+      </a>
     </div>
   </div>
-</nav>
 
-<!-- IMMERSIVE PARALLAX HERO -->
-<section class="hero-bg">
-  <div class="container hero-content">
-    <span class="pill-badge" style="background: rgba(197, 168, 128, 0.15); border-color: rgba(197, 168, 128, 0.3); color: var(--accent);"><i class="fas fa-church"></i> የየረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</span>
-    <h1 class="hero-title amharic">Worship in <span>Spirit</span> <br>& <span>Truth</span></h1>
-    <p class="hero-subtitle amharic">ዮሐንስ 4:24 · John 4:24 · Spirit-filled and community focused</p>
-    
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-      <a href="live.html" class="btn-primary" style="padding: 18px 46px; font-size: 1rem;"><i class="fas fa-play" style="margin-right: 10px;"></i>WATCH LIVE</a>
-      <a href="about.html" class="btn-outline-light" style="padding: 18px 46px;">NEW HERE?</a>
-      <a href="give.html" class="btn-outline-light" style="padding: 18px 46px;">SUPPORT GIVING</a>
-    </div>
-
-    <!-- Live Timer Widget -->
-    <div class="countdown-widget">
-      <div class="live-dot"></div>
-      <div class="countdown-label">Next Service Countdown</div>
-      <div class="countdown-timer" id="countdown">00 : 00 : 00</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONSECUTIVE WORSHIP GALLERY -->
-<section style="padding: 80px 0 40px; background: var(--bg-light);">
-  <div class="container">
-    <div class="worship-highlight">
-      <div class="wh-item">
-        <img src="OLD_1.jpg" alt="Ancient worship pathways" />
-        <div class="wh-overlay">
-          <h4>Ancient Paths</h4>
-          <p>Restoring deep, dynamic prayer & spirit-filled worship paths</p>
+  <!-- ==========================================================================
+       STICKY NAVBAR
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <!-- Smart Image Fallback Applied -->
+        <img src="logo.jpg" alt="Yerer Full Gospel Logo" onerror="this.src='https://images.unsplash.com/photo-1548625361-118835845014?auto=format&fit=crop&w=150&q=80'" />
+        <div class="brand-text">
+          <div class="amharic">የረር ሙሉወንጌል</div>
+          <div class="sub">YERER FULL GOSPEL</div>
         </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sermons.html">Sermons</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="give.html">Give</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="sermons.html" class="btn btn-primary btn-live">
+          <span style="display:inline-block; width:8px; height:8px; background:#fff; border-radius:50%; animation: pulsing 1s infinite;"></span>
+          Join Live
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="wh-item">
-        <img src="yerer15.jpg" alt="Dynamic youth praising" />
-        <div class="wh-overlay">
-          <h4>Spirit of Praise</h4>
-          <p>Exalting the beautiful name of Jesus through vibrant community worship</p>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="XXXL.webp" alt="Worship Background" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=2000&q=80'" />
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content reveal">
+      <div class="hero-pill">
+        <i class="fas fa-fire"></i>
+        <span>የረር ሙሉወንጌል አማኞች ቤተክርስቲያን</span>
+      </div>
+
+      <h1 class="hero-title">
+        Worship in <span class="highlight">Spirit</span><br />
+        and in <span class="highlight">Truth</span>
+      </h1>
+
+      <p class="hero-scripture">
+        "እግዚአብሔር መንፈስ ነው፥ የሚሰግዱለትም በመንፈስና በእውነት ሊሰግዱለት ያስፈልጋቸዋል።" — ዮሐንስ 4:24
+      </p>
+
+      <div class="hero-btns">
+        <a href="sermons.html" class="btn btn-primary" style="padding: 18px 44px; font-size: 1.05rem;">
+          <i class="fas fa-play"></i> Watch Stream
+        </a>
+        <a href="about.html" class="btn btn-glass" style="padding: 18px 44px; font-size: 1.05rem;">
+          I'm New Here
+        </a>
+      </div>
+
+      <!-- Live Ticking Countdown -->
+      <div class="countdown-capsule">
+        <div class="countdown-label">
+          <div class="pulse"></div>
+          <span>Next Sunday Service</span>
         </div>
+        <div class="countdown-timer" id="countdown">00 : 00 : 00</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SERVICE SCHEDULES -->
-<section style="padding: 100px 0; background: var(--bg-card);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge">SERVICE TIMES</span>
-      <h2 class="section-title">Gather With <span>Us</span></h2>
-      <p class="section-subtitle">Come as you are to experience life-changing worship and deep connection with God's Spirit.</p>
-    </div>
-    
-    <div class="premium-grid">
-      <div class="service-card">
-        <div class="service-icon-wrapper"><i class="fas fa-sun"></i></div>
-        <h3>Sunday worship</h3>
-        <p class="service-time">10:00 AM</p>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">In-person worship, powerful messages & full online livestreaming.</p>
-        <p style="font-weight: 600;"><i class="fas fa-map-pin" style="color: var(--primary); margin-right: 6px;"></i> Yerer Main Campus</p>
-        <a href="#" class="btn-secondary" style="margin-top: auto; padding: 12px 30px; font-size: 0.85rem; width: 100%;">Set Reminder <i class="fas fa-bell" style="margin-left: 6px;"></i></a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon-wrapper"><i class="fas fa-book-open"></i></div>
-        <h3>Midweek Bible Study</h3>
-        <p class="service-time">6:30 PM</p>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Deep dive scripture teaching & personal growth fellowships every Wednesday.</p>
-        <p style="font-weight: 600;"><i class="fas fa-map-pin" style="color: var(--primary); margin-right: 6px;"></i> Fellowship Hall</p>
-        <a href="#" class="btn-secondary" style="margin-top: auto; padding: 12px 30px; font-size: 0.85rem; width: 100%;">Set Reminder <i class="fas fa-bell" style="margin-left: 6px;"></i></a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon-wrapper"><i class="fas fa-hands-praying"></i></div>
-        <h3>Healing & Deliverance</h3>
-        <p class="service-time">7:00 PM</p>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Miracle healing, dedicated prayer layers & breakthrough fellowship.</p>
-        <p style="font-weight: 600;"><i class="fas fa-map-pin" style="color: var(--primary); margin-right: 6px;"></i> Sanctuary Hall</p>
-        <a href="#" class="btn-secondary" style="margin-top: auto; padding: 12px 30px; font-size: 0.85rem; width: 100%;">Set Reminder <i class="fas fa-bell" style="margin-left: 6px;"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FILTERABLE CHURCH GALLERY -->
-<section style="padding: 100px 0; background: var(--bg-light);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge">CHURCH LIFE</span>
-      <h2 class="section-title">Our <span>Community</span></h2>
-      <p class="section-subtitle">Explore a vibrant gallery of fellowship, active service, and deep spiritual moments.</p>
-    </div>
-
-    <div class="gallery-filters">
-      <button class="filter-btn active" onclick="filterGallery('all')">All Images</button>
-      <button class="filter-btn" onclick="filterGallery('worship')">Worship</button>
-      <button class="filter-btn" onclick="filterGallery('youth')">Youth Ministry</button>
-      <button class="filter-btn" onclick="filterGallery('community')">Community Life</button>
-    </div>
-
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-category="community"><img src="yerer1.jpg" alt="Yerer Church Life" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer2.jpg" alt="Worship Sanctuary" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer3.jpg" alt="Worship Sanctuary" /></div>
-      <div class="gallery-item" data-category="community"><img src="yerer4.jpg" alt="Believers Group" /></div>
-      <div class="gallery-item" data-category="community"><img src="yerer5.jpg" alt="Fellowship Time" /></div>
-      <div class="gallery-item" data-category="youth"><img src="yerer6.jpg" alt="Youth Gathering" /></div>
-      <div class="gallery-item" data-category="youth"><img src="yerer7.jpg" alt="Youth Group" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer8.jpg" alt="Praise Service" /></div>
-      <div class="gallery-item" data-category="community"><img src="yerer9.jpg" alt="Prayer Gathering" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer10.jpg" alt="Altar Prayer" /></div>
-      <div class="gallery-item" data-category="community"><img src="yerer11.jpg" alt="Community Outing" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer12.jpg" alt="Praise & Worship" /></div>
-      <div class="gallery-item" data-category="community"><img src="yerer14.jpg" alt="Holy Assembly" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer15.jpg" alt="Worship Session" /></div>
-      <div class="gallery-item" data-category="youth"><img src="yerer16.jpg" alt="Young Generation" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer17.jpg" alt="Praise Ministry" /></div>
-      <div class="gallery-item" data-category="community"><img src="yerer20.jpg" alt="Elders Gathering" /></div>
-      <div class="gallery-item" data-category="worship"><img src="yerer21.jpg" alt="Praise and Worship" /></div>
-      <div class="gallery-item" data-category="youth"><img src="youth.jpg" alt="Youth Ministry" /></div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE BELIEVE -->
-<section style="padding: 100px 0; background: var(--bg-card);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge">DOCTRINAL FOUNDATIONS</span>
-      <h2 class="section-title">What We <span>Believe</span></h2>
-      <p class="section-subtitle">Click on each core pillar below to reveal scripture and details of our belief system.</p>
-    </div>
-
-    <div class="beliefs-container">
-      <div class="belief-card" onclick="toggleBelief(this)">
-        <div class="belief-icon"><i class="fas fa-cross"></i></div>
-        <h3>Salvation by Grace</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">Through faith alone in Christ Jesus.</p>
-        <div class="belief-details">
-          We believe salvation is a gift from God, entirely apart from human works, received through repentance and direct personal faith. <br><strong>Ephesians 2:8-9</strong>
+  <!-- ==========================================================================
+       FEATURED WORSHIP BRIDGES
+       ========================================================================== -->
+  <section class="container">
+    <div class="bridge-grid reveal delay-1">
+      <div class="bridge-card">
+        <img src="OLD_1.jpg" alt="Ancient Paths Worship" onerror="this.src='https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?auto=format&fit=crop&w=800&q=80'" />
+        <div class="bridge-overlay">
+          <span style="color:var(--text-gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Deep Heritage</span>
+          <h3>Ancient Paths</h3>
+          <p>Walking grounded in biblical foundation and unceasing prayer.</p>
         </div>
       </div>
 
-      <div class="belief-card" onclick="toggleBelief(this)">
-        <div class="belief-icon"><i class="fas fa-dove"></i></div>
-        <h3>Holy Spirit Baptism</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">The empowerment of the believer.</p>
-        <div class="belief-details">
-          Empowering the Church for effective witness, service, and walking in spiritual gifts. <br><strong>Acts 1:8, Acts 2:4</strong>
-        </div>
-      </div>
-
-      <div class="belief-card" onclick="toggleBelief(this)">
-        <div class="belief-icon"><i class="fas fa-hand-holding-heart"></i></div>
-        <h3>Divine Healing</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">By His stripes we are made whole.</p>
-        <div class="belief-details">
-          We believe healing for the physical body, soul, and mind is fully provided for in the atonement of Christ Jesus. <br><strong>Isaiah 53:5</strong>
-        </div>
-      </div>
-
-      <div class="belief-card" onclick="toggleBelief(this)">
-        <div class="belief-icon"><i class="fas fa-cloud-sun"></i></div>
-        <h3>The Blessed Hope</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 10px;">The physical return of our Lord.</p>
-        <div class="belief-details">
-          We anticipate the literal second coming of Jesus Christ to rule and reign with all His saints in glory forever. <br><strong>Titus 2:13</strong>
+      <div class="bridge-card">
+        <img src="yerer15.jpg" alt="Spirit of Praise" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80'" />
+        <div class="bridge-overlay">
+          <span style="color:var(--text-gold); font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;">Prophetic Worship</span>
+          <h3>Spirit of Praise</h3>
+          <p>Lifting high the name of Jesus with one voice and one heart.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- NEXT GENERATION YOUTH REVIVAL -->
-<section style="padding: 100px 0; background: var(--bg-light);">
-  <div class="container">
-    <div class="youth-section-box">
-      <div class="youth-layout">
-        <div>
-          <span class="pill-badge" style="background: rgba(197, 168, 128, 0.15); color: var(--accent);"><i class="fas fa-fire"></i> THE NEXT GENERATION</span>
-          <h2 style="font-size: 3rem; margin: 20px 0; font-family: 'Playfair Display', serif; color: white;">Join Our <span style="color: var(--primary);">Youth Revival</span></h2>
-          <p style="font-size: 1.15rem; color: #D4C8B8; margin-bottom: 30px;">Equipping and raising a passionate generation of leaders, worshipers, and world-changers for the Kingdom of God.</p>
-          
-          <div style="background: rgba(255,255,255,0.05); padding: 20px 30px; border-radius: 20px; border-left: 4px solid var(--primary); margin-bottom: 36px; display: inline-block;">
-            <p style="font-size: 1.1rem; color: white; font-weight: 600;"><i class="far fa-calendar-alt" style="color: var(--primary); margin-right: 10px;"></i> Saturday Revival Gatherings</p>
-            <p style="font-size: 0.9rem; color: #C0B8A8; margin-top: 4px; margin-left: 26px;">11:30 AM – 1:30 PM · Youth Sanctuary</p>
-          </div>
+  <!-- ==========================================================================
+       WEEKLY SERVICES
+       ========================================================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-tag"><i class="fas fa-clock"></i> Gather With Us</div>
+        <h2 class="section-title">Experience His <span>Presence</span></h2>
+        <p class="section-subtitle">Join us in person at our Yerer campus or stream from anywhere across the globe.</p>
+      </div>
 
+      <div class="services-grid">
+        <!-- Sunday -->
+        <div class="service-card reveal delay-1">
           <div>
-            <a href="events.html" class="btn-primary" style="padding: 18px 46px;"><i class="fas fa-calendar-check"></i> Connect With Youth</a>
+            <div class="service-icon"><i class="fas fa-sun"></i></div>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent-gold); letter-spacing:1.5px; text-transform:uppercase;">Main Gathering</span>
+            <h3 class="service-time">10:00 AM</h3>
+            <h4 style="font-size:1.3rem; margin-bottom:12px;">Sunday Worship</h4>
+            <p class="service-desc">Our primary weekly celebration featuring vibrant Amharic worship, testimonies, and foundational biblical preaching.</p>
+          </div>
+          <div class="service-meta">
+            <span><i class="fas fa-map-pin" style="color:var(--accent-gold);"></i> Main Sanctuary</span>
+            <a href="about.html">Details <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
-        <div class="youth-slideshow" id="youthSlideshow">
-          <!-- Slide 1 -->
-          <div class="slide active">
-            <img src="Keyboard_5.jpg" alt="Youth worship keyboard team" />
+        <!-- Tuesday / Midweek -->
+        <div class="service-card reveal delay-2">
+          <div>
+            <div class="service-icon"><i class="fas fa-book-bible"></i></div>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent-gold); letter-spacing:1.5px; text-transform:uppercase;">Discipleship</span>
+            <h3 class="service-time">6:30 PM</h3>
+            <h4 style="font-size:1.3rem; margin-bottom:12px;">Midweek Bible Study</h4>
+            <p class="service-desc">Deep-dive exposition into the Scriptures. Currently journeying through the Book of Acts and apostolic power.</p>
           </div>
-          <!-- Slide 2 -->
-          <div class="slide">
-            <img src="Keyboard_6jpg.jpg" alt="Youth praising" />
+          <div class="service-meta">
+            <span><i class="fas fa-map-pin" style="color:var(--accent-gold);"></i> Chapel Hall</span>
+            <a href="events.html">Syllabus <i class="fas fa-arrow-right"></i></a>
           </div>
-          <!-- Slide 3 -->
-          <div class="slide">
-            <img src="youth.jpg" alt="Youth Ministry group" />
-          </div>
+        </div>
 
-          <!-- Controls dots -->
-          <div class="slideshow-dots" id="slideDots">
-            <div class="slide-dot active" onclick="setSlide(0)"></div>
-            <div class="slide-dot" onclick="setSlide(1)"></div>
-            <div class="slide-dot" onclick="setSlide(2)"></div>
+        <!-- Friday Healing -->
+        <div class="service-card reveal delay-3">
+          <div>
+            <div class="service-icon"><i class="fas fa-hands-praying"></i></div>
+            <span style="font-size:0.8rem; font-weight:700; color:var(--accent-gold); letter-spacing:1.5px; text-transform:uppercase;">Deliverance & Grace</span>
+            <h3 class="service-time">7:00 PM</h3>
+            <h4 style="font-size:1.3rem; margin-bottom:12px;">Friday Healing Service</h4>
+            <p class="service-desc">An evening dedicated to intense intercessory prayer, divine healing, prophetic ministry, and breakthrough.</p>
+          </div>
+          <div class="service-meta">
+            <span><i class="fas fa-map-pin" style="color:var(--accent-gold);"></i> Main Sanctuary</span>
+            <a href="events.html">Testimonies <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PREMIUM SERMONS HUB -->
-<section style="padding: 100px 0; background: var(--bg-card);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge">LATEST WORD</span>
-      <h2 class="section-title">Encounter God's <span>Message</span></h2>
-      <p class="section-subtitle">Engage with deep, scripture-based sermons and beautiful moments of prophetic praise.</p>
-    </div>
-
-    <div class="sermon-hub">
-      <div class="video-theatre">
-        <iframe src="https://www.youtube.com/embed/nKZ1D9ototY?si=1ZxrZwmxGXp-q6YA" title="Yerer Ber Full Gospel Church Worship" allowfullscreen></iframe>
+  <!-- ==========================================================================
+       CURATED CHURCH LIFE GALLERY
+       ========================================================================== -->
+  <section class="section-padding" style="background-color: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-tag"><i class="fas fa-camera"></i> Church Life</div>
+        <h2 class="section-title">A Glimpse Into Our <span>Family</span></h2>
+        <p class="section-subtitle">We are more than a weekend congregation; we are a vibrant kingdom community.</p>
       </div>
-      
+
+      <div class="gallery-masonry reveal delay-1">
+        <div class="gallery-item span-2">
+          <img src="yerer1.jpg" alt="Worship Moment" onerror="this.src='https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80'" />
+          <div class="gallery-item-badge">Sunday Celebration</div>
+        </div>
+        <div class="gallery-item">
+          <img src="yerer2.jpg" alt="Prayer" onerror="this.src='https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80'" />
+          <div class="gallery-item-badge">United Prayer</div>
+        </div>
+        <div class="gallery-item">
+          <img src="yerer3.jpg" alt="Choir" onerror="this.src='https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80'" />
+          <div class="gallery-item-badge">El-Roi Choir</div>
+        </div>
+        <div class="gallery-item">
+          <img src="yerer4.jpg" alt="Community" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80'" />
+          <div class="gallery-item-badge">Fellowship</div>
+        </div>
+        <div class="gallery-item">
+          <img src="yerer5.jpg" alt="Youth" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600&q=80'" />
+          <div class="gallery-item-badge">NextGen Leaders</div>
+        </div>
+        <div class="gallery-item span-2">
+          <img src="yerer6.jpg" alt="Sanctuary" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?auto=format&fit=crop&w=1000&q=80'" />
+          <div class="gallery-item-badge">Overflowing Joy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       WHAT WE BELIEVE
+       ========================================================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-tag"><i class="fas fa-bookmark"></i> Our Foundation</div>
+        <h2 class="section-title">Full Gospel <span>Distinctives</span></h2>
+        <p class="section-subtitle">The unchanging biblical pillars that anchor our faith and ministry in Addis Ababa.</p>
+      </div>
+
+      <div class="beliefs-grid">
+        <div class="belief-card reveal delay-1">
+          <div class="belief-num">01</div>
+          <h3 class="belief-title">Salvation by Grace</h3>
+          <p class="belief-desc">We believe redemption is received solely through repentance and faith in the finished cross of Jesus Christ.</p>
+        </div>
+
+        <div class="belief-card reveal delay-2">
+          <div class="belief-num">02</div>
+          <h3 class="belief-title">Spirit Baptism</h3>
+          <p class="belief-desc">We emphasize the empowering immersion of the Holy Spirit, accompanied by spiritual gifts for victorious living.</p>
+        </div>
+
+        <div class="belief-card reveal delay-3">
+          <div class="belief-num">03</div>
+          <h3 class="belief-title">Divine Healing</h3>
+          <p class="belief-desc">We proclaim that Christ’s atonement provides holistic healing—spirit, mind, and physical body—for believers today.</p>
+        </div>
+
+        <div class="belief-card reveal delay-1">
+          <div class="belief-num">04</div>
+          <h3 class="belief-title">Blessed Hope</h3>
+          <p class="belief-desc">We live with eager expectation for the imminent, physical Return of our Lord and King, Jesus Christ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       YOUTH REVIVAL SECTION (DARK LUXURY CONTRAST)
+       ========================================================================== -->
+  <section class="container" style="margin: 40px auto 100px;">
+    <div class="youth-banner reveal">
+      <div class="youth-glow"></div>
+
       <div>
-        <span class="pill-badge" style="margin-bottom: 20px;">NOW STREAMING</span>
-        <h3 style="font-size: 2.2rem; margin-bottom: 16px; font-weight: 800; color: var(--text-main);">የየረር በር ሙሉ ወንጌል ኤልሮኢ የዝማሬ ህብረት</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;"><i class="far fa-calendar" style="color: var(--primary); margin-right: 8px;"></i> March 23, 2024</p>
-        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 30px;">
-          Immerse yourself in a spirit-filled night of deep adoration and celebration with our worship choir. Watch and experience the dynamic manifestation of His presence right from your home.
+        <div class="badge-neon"><i class="fas fa-bolt"></i> Next Generation Ministry</div>
+        <h2 class="youth-title serif">Raising a Fire for <span style="color:var(--accent-gold); font-style:italic;">Revival</span></h2>
+        <p class="youth-desc">
+          Empowering young Ethiopians to lead uncompromised lives for Christ. Experience passionate worship, raw biblical mentorship, and lifelong friendships.
         </p>
         
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" class="btn-primary" style="padding: 14px 34px;"><i class="fas fa-play"></i> Watch Now</a>
-          <a href="#" class="btn-secondary" style="padding: 14px 34px;"><i class="fas fa-share-alt"></i> Share Sermon</a>
+        <div class="event-chip">
+          <i class="fas fa-calendar-check"></i>
+          <span>Every Saturday · 11:30 AM – 1:30 PM @ Youth Lounge</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- INTERACTIVE SCRIPTURAL COMFORT & REACTION SYSTEM -->
-<section style="padding: 100px 0; background: var(--bg-light);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge">PROPHETIC DECLARATIONS</span>
-      <h2 class="section-title">The Scriptural <span>Wall</span></h2>
-      <p class="section-subtitle">Receive courage from his Holy Word. Click the 'Amen' button to agree in spiritual prayer.</p>
-    </div>
-
-    <div class="testimony-grid">
-      <!-- Verse Card 1 -->
-      <div class="testimony-card">
-        <i class="fas fa-quote-left" style="color: var(--primary); font-size: 2.5rem; opacity: 0.2; margin-bottom: 20px;"></i>
-        <p style="font-style: italic; font-size: 1.25rem; color: var(--text-main); font-weight: 500;">
-          "For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."
-        </p>
-        <p style="font-weight: 700; color: var(--dark-gold); margin-top: 15px;">— Jeremiah 29:11</p>
-        
-        <div class="amen-interactive">
-          <button class="amen-btn" onclick="addAmen(this, 'amenCount1')">
-            <i class="fas fa-hands-praying"></i> Amen
-          </button>
-          <span style="color: var(--text-muted); font-size: 0.9rem;"><strong id="amenCount1" style="color: var(--dark-gold);">147</strong> agreed in prayer</span>
-        </div>
-      </div>
-
-      <!-- Verse Card 2 -->
-      <div class="testimony-card">
-        <i class="fas fa-quote-left" style="color: var(--primary); font-size: 2.5rem; opacity: 0.2; margin-bottom: 20px;"></i>
-        <p style="font-style: italic; font-size: 1.25rem; color: var(--text-main); font-weight: 500;">
-          "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."
-        </p>
-        <p style="font-weight: 700; color: var(--dark-gold); margin-top: 15px;">— Isaiah 40:31</p>
-        
-        <div class="amen-interactive">
-          <button class="amen-btn" onclick="addAmen(this, 'amenCount2')">
-            <i class="fas fa-hands-praying"></i> Amen
-          </button>
-          <span style="color: var(--text-muted); font-size: 0.9rem;"><strong id="amenCount2" style="color: var(--dark-gold);">89</strong> agreed in prayer</span>
-        </div>
-      </div>
-
-      <!-- Verse Card 3 -->
-      <div class="testimony-card">
-        <i class="fas fa-quote-left" style="color: var(--primary); font-size: 2.5rem; opacity: 0.2; margin-bottom: 20px;"></i>
-        <p style="font-style: italic; font-size: 1.25rem; color: var(--text-main); font-weight: 500;">
-          "I can do all things through Christ who strengthens me."
-        </p>
-        <p style="font-weight: 700; color: var(--dark-gold); margin-top: 15px;">— Philippians 4:13</p>
-        
-        <div class="amen-interactive">
-          <button class="amen-btn" onclick="addAmen(this, 'amenCount3')">
-            <i class="fas fa-hands-praying"></i> Amen
-          </button>
-          <span style="color: var(--text-muted); font-size: 0.9rem;"><strong id="amenCount3" style="color: var(--dark-gold);">112</strong> agreed in prayer</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INTERACTIVE GIVING CALC / SELECTOR -->
-<section style="padding: 100px 0; background: var(--bg-card);">
-  <div class="container">
-    <div class="give-hub">
-      <span class="pill-badge" style="background: rgba(255,255,255,0.08); color: var(--accent);"><i class="fas fa-hand-holding-heart"></i> WORSHIP THROUGH GIVING</span>
-      <h2 style="font-size: 3.2rem; color: white; margin: 20px 0 10px; font-family: 'Playfair Display', serif;">Support the <span style="color: var(--primary);">Ministry</span></h2>
-      <p style="max-width: 600px; margin: 0 auto; color: #D4C8B8; font-size: 1.1rem;">Your generosity fuels missions, builds spiritual infrastructure, and touches families within Yerer and beyond.</p>
-      
-      <div class="fund-selector-container">
-        <!-- Giving Fund Quick selectors -->
-        <div class="tier-grid">
-          <button class="tier-btn active" onclick="selectTier(this, 'Tithe')">Tithe</button>
-          <button class="tier-btn" onclick="selectTier(this, 'Building Fund')">Building Fund</button>
-          <button class="tier-btn" onclick="selectTier(this, 'Missions')">Missions Outreaches</button>
-        </div>
-        
         <div>
-          <a href="give.html" class="btn-primary" style="padding: 20px 60px; font-size: 1.1rem;" id="giveBtn">Give Tithe Now</a>
+          <a href="events.html" class="btn btn-primary" style="padding: 18px 42px;">
+            Join Youth Revival <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Automated Cross-fading Carousel -->
+      <div class="carousel-box" id="youthCarousel">
+        <div class="carousel-slide active">
+          <img src="Keyboard_5.jpg" alt="Youth Worship Keys" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80'" />
+        </div>
+        <div class="carousel-slide">
+          <img src="youth.jpg" alt="Youth Gathering" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=800&q=80'" />
+        </div>
+        <div class="carousel-slide">
+          <img src="yerer20.jpg" alt="Passionate Prayer" onerror="this.src='https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80'" />
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
+  <!-- ==========================================================================
+       LATEST SERMON & WORSHIP STREAM
+       ========================================================================== -->
+  <section class="section-padding" style="background-color: #fff; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div class="container">
+      <div class="sermon-box reveal">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/nKZ1D9ototY?si=1ZxrZwmxGXp-q6YA" title="Yerer Full Gospel Worship Video" allowfullscreen></iframe>
+        </div>
+
+        <div class="sermon-info">
+          <div class="section-tag"><i class="fas fa-video"></i> Featured Media</div>
+          <h3 class="serif">የየረር በር ሙሉ ወንጌል ኤልሮኢ የዝማሬ ህብረት</h3>
+          <p style="color:var(--accent-gold); font-weight:600; margin-bottom:16px;">
+            <i class="far fa-calendar-alt"></i> Recorded Live · Friday Worship Night
+          </p>
+          <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:28px;">
+            Immerse yourself in prophetic spontaneous worship led by the El-Roi Worship Choir. Experience the atmosphere of freedom and divine encounter wherever you are.
+          </p>
+
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="https://youtube.com" target="_blank" class="btn btn-primary">
+              <i class="fab fa-youtube"></i> Watch on YouTube
+            </a>
+            <a href="sermons.html" class="btn btn-secondary">
+              Sermon Archive
+            </a>
+          </div>
+
+          <div class="share-btns">
+            <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted); align-self:center; margin-right:8px;">Share Grace:</span>
+            <a href="https://t.me/share/url?url=https://yerergospel.org" target="_blank" class="btn" style="padding:8px 16px; background:#229ED9; color:#fff; font-size:0.8rem;"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://api.whatsapp.com/send?text=Be%20blessed%20by%20this%20worship%3A%20https://yerergospel.org" target="_blank" class="btn" style="padding:8px 16px; background:#25D366; color:#fff; font-size:0.8rem;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SCRIPTURES & INTERACTIVE PRAYER COUNTER
+       ========================================================================== -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header text-center reveal">
+        <div class="section-tag"><i class="fas fa-heart"></i> Living Word</div>
+        <h2 class="section-title">Anchor Your <span>Soul</span></h2>
+        <p class="section-subtitle">Meditate on God's promises. Click "Amen" to join hundreds of believers standing in agreement.</p>
+      </div>
+
+      <div class="testimony-grid">
+        <div class="testimony-card reveal delay-1">
+          <div class="quote-mark">“</div>
+          <p class="testimony-text">
+            "ለእናንተ ያለኝን አሳብ እኔ አውቃለሁ፤ ፍጻሜና ተስፋ እሰጣችሁ ዘንድ የሰላም አሳብ ነው እንጂ የክፉ ነገር አይደለም።"
+          </p>
+          <span class="testimony-ref">— ትንቢተ ኤርምያስ 29:11</span>
+          
+          <div class="amen-footer">
+            <span class="prayed-count"><strong id="count1">248</strong> believers agreed</span>
+            <button class="btn-amen" onclick="triggerAmen(1, this)"><i class="fas fa-hands-praying"></i> Amen</button>
+          </div>
+        </div>
+
+        <div class="testimony-card reveal delay-2">
+          <div class="quote-mark">“</div>
+          <p class="testimony-text">
+            "እግዚአብሔርን የሚጠባበቁ ግን ኃይላቸውን ያድሳሉ፤ እንደ ንስር በክንፍ ይወጣሉ፤ ይሮጣሉ፥ አይታክቱም፤ ይሄዳሉ፥ አይደክሙም።"
+          </p>
+          <span class="testimony-ref">— ትንቢተ ኢሳይያስ 40:31</span>
+          
+          <div class="amen-footer">
+            <span class="prayed-count"><strong id="count2">194</strong> believers agreed</span>
+            <button class="btn-amen" onclick="triggerAmen(2, this)"><i class="fas fa-hands-praying"></i> Amen</button>
+          </div>
+        </div>
+
+        <div class="testimony-card reveal delay-3">
+          <div class="quote-mark">“</div>
+          <p class="testimony-text">
+            "ኃይልን በሚሰጠኝ በክርስቶስ ሁሉን እችላለሁ። አምላኬም እንደ ባለ ጠግነቱ መጠን በክብር በክርስቶስ ኢየሱስ የሚያስፈልጋችሁን ሁሉ ይሞላባችኋል።"
+          </p>
+          <span class="testimony-ref">— ወደ ፊልጵስዩስ ሰዎች 4:13</span>
+          
+          <div class="amen-footer">
+            <span class="prayed-count"><strong id="count3">312</strong> believers agreed</span>
+            <button class="btn-amen" onclick="triggerAmen(3, this)"><i class="fas fa-hands-praying"></i> Amen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GIVING CTA & FOOTER
+       ========================================================================== -->
   <div class="container">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
-      <div>
-        <h3 class="amharic">የየረር ሙሉወንጌል ቤተክርስቲያን</h3>
-        <p style="line-height: 1.8; margin-bottom: 30px;">Worshiping in Spirit and Truth. A place of deep grace, recovery, community, and prophetic destiny in Addis Ababa, Ethiopia.</p>
-        <div style="display: flex; gap: 16px; font-size: 1.5rem;">
-          <a href="#" style="color: var(--primary);"><i class="fab fa-facebook"></i></a>
-          <a href="#" style="color: var(--primary);"><i class="fab fa-youtube"></i></a>
-          <a href="#" style="color: var(--primary);"><i class="fab fa-telegram"></i></a>
-          <a href="#" style="color: var(--primary);"><i class="fab fa-instagram"></i></a>
-        </div>
+    <div class="giving-banner reveal">
+      <h2 class="serif" style="font-size:clamp(2.2rem, 4vw, 3.5rem); margin-bottom:16px;">Partner With The <span style="color:var(--text-gold); font-style:italic;">Kingdom</span></h2>
+      <p style="max-width:650px; margin:0 auto 36px; color:rgba(255,255,255,0.75); font-size:1.1rem;">
+        Your generosity builds the local church, supports gospel missions across Ethiopia, and provides vital humanitarian aid to families in need.
+      </p>
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="give.html" class="btn btn-primary" style="padding:18px 44px;">
+          <i class="fas fa-hand-holding-heart"></i> Give Online
+        </a>
+        <a href="give.html" class="btn btn-glass" style="padding:18px 44px;">
+          Bank Transfer Info
+        </a>
       </div>
-
-      <div>
-        <h3>Quick Links</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <p><a href="index.html">Home</a></p>
-          <p><a href="about.html">About Us</a></p>
-          <p><a href="sermons.html">Sermons</a></p>
-          <p><a href="events.html">Events</a></p>
-          <p><a href="give.html">Give</a></p>
-          <p><a href="live.html">Join Live</a></p>
-        </div>
-      </div>
-
-      <div>
-        <h3>Get in Touch</h3>
-        <p style="margin-bottom: 12px;"><i class="fas fa-map-pin" style="color: var(--primary); margin-right: 10px;"></i> Yerer, Addis Ababa, Ethiopia</p>
-        <p style="margin-bottom: 12px;"><i class="fas fa-phone" style="color: var(--primary); margin-right: 10px;"></i> +251-XXX-XXX</p>
-        <p><i class="fas fa-envelope" style="color: var(--primary); margin-right: 10px;"></i> info@yerergospel.org</p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
     </div>
   </div>
-</footer>
 
-<script>
-  // Advanced Scroll effect for Navigation
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="serif" style="color:#fff; font-size:1.6rem; margin-bottom:12px;">የረር ሙሉወንጌል ቤተክርስቲያን</h3>
+          <p style="font-size:0.95rem; max-width:320px; line-height:1.6;">
+            A kingdom community rooted in the love of Jesus Christ, worshipping in Spirit and Truth.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Our History</a></li>
+            <li><a href="sermons.html">Sermons & Media</a></li>
+            <li><a href="events.html">Upcoming Events</a></li>
+            <li><a href="give.html">Online Giving</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Ministries</h4>
+          <ul class="footer-links">
+            <li><a href="events.html">El-Roi Worship</a></li>
+            <li><a href="events.html">NextGen Youth</a></li>
+            <li><a href="events.html">Children's Church</a></li>
+            <li><a href="events.html">Prayer & Intercession</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Connect</h4>
+          <p style="font-size:0.9rem; margin-bottom:10px;"><i class="fas fa-map-marker-alt" style="color:var(--accent-gold); width:20px;"></i> Yerer Ber, Addis Ababa, Ethiopia</p>
+          <p style="font-size:0.9rem; margin-bottom:10px;"><i class="fas fa-phone" style="color:var(--accent-gold); width:20px;"></i> +251 11 XXX XXXX</p>
+          <p style="font-size:0.9rem;"><i class="fas fa-envelope" style="color:var(--accent-gold); width:20px;"></i> contact@yerergospel.org</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 የረር ሙሉወንጌል አማኞች ቤተክርስቲያን. All rights reserved.</p>
+        <p style="font-size:0.8rem; color:#777;">Designed with grace for the Kingdom of God.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       PRODUCTION JAVASCRIPT ENGINE
+       ========================================================================== -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      hamburgerBtn.classList.toggle('open', isMenuOpen);
+      mobileMenu.classList.toggle('active', isMenuOpen);
+      document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
     }
-  });
 
-  // Hamburger Menu Actions
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-  });
+    // 2. High-Precision Next Sunday Countdown Timer
+    function initCountdown() {
+      const timerEl = document.getElementById('countdown');
+      if (!timerEl) return;
 
-  // Dynamic next-service timer calculation
-  function updateTimer() {
-    const now = new Date();
-    let nextSunday = new Date(now);
-    const daysUntilSunday = (7 - now.getDay()) % 7 || 7;
-    nextSunday.setDate(now.getDate() + daysUntilSunday);
-    nextSunday.setHours(10, 0, 0, 0);
-    if (now > nextSunday) nextSunday.setDate(nextSunday.getDate() + 7);
-    
-    const diff = nextSunday - now;
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    
-    const display = document.getElementById('countdown');
-    if (display) {
-      display.innerHTML = `${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
-    }
-  }
-  setInterval(updateTimer, 1000);
-  updateTimer();
+      function update() {
+        const now = new Date();
+        let nextSunday = new Date();
+        
+        // Calculate days until next Sunday (Day 0)
+        const daysUntilSunday = (7 - now.getDay()) % 7;
+        nextSunday.setDate(now.getDate() + daysUntilSunday);
+        nextSunday.setHours(10, 0, 0, 0); // Service starts at 10:00 AM
 
-  // Premium Gallery Masonry Filters
-  function filterGallery(category) {
-    // Update active class on filter buttons
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+        // If today is Sunday and it's already past 10 AM, target next week
+        if (daysUntilSunday === 0 && now > nextSunday) {
+          nextSunday.setDate(nextSunday.getDate() + 7);
+        }
 
-    // Filter Items with beautiful fade
-    const items = document.querySelectorAll('.gallery-item');
-    items.forEach(item => {
-      if (category === 'all' || item.getAttribute('data-category') === category) {
-        item.style.display = 'block';
-        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 10);
-      } else {
-        item.style.opacity = '0';
-        item.style.transform = 'scale(0.8)';
-        setTimeout(() => { item.style.display = 'none'; }, 400);
+        const diff = nextSunday - now;
+        const h = Math.floor((diff / (1000 * 60 * 60)));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        timerEl.textContent = `${String(h).padStart(2, '0')} : ${String(m).padStart(2, '0')} : ${String(s).padStart(2, '0')}`;
       }
-    });
-  }
 
-  // Belief cards Accordion reveal
-  function toggleBelief(card) {
-    const isActive = card.classList.contains('active');
-    document.querySelectorAll('.belief-card').forEach(item => item.classList.remove('active'));
-    if (!isActive) {
-      card.classList.add('active');
+      update();
+      setInterval(update, 1000);
     }
-  }
 
-  // Embedded Carousel code for Youth Ministry section
-  let youthIndex = 0;
-  const youthSlides = document.querySelectorAll('#youthSlideshow .slide');
-  const youthDots = document.querySelectorAll('#slideDots .slide-dot');
-
-  function setSlide(index) {
-    youthSlides.forEach(slide => slide.classList.remove('active'));
-    youthDots.forEach(dot => dot.classList.remove('active'));
-    
-    youthIndex = index;
-    youthSlides[youthIndex].classList.add('active');
-    youthDots[youthIndex].classList.add('active');
-  }
-
-  function autoNextSlide() {
-    youthIndex = (youthIndex + 1) % youthSlides.length;
-    setSlide(youthIndex);
-  }
-  let youthInterval = setInterval(autoNextSlide, 4500);
-
-  // Amen interactive trigger & floating particle animations
-  function addAmen(button, countId) {
-    const counter = document.getElementById(countId);
-    counter.innerText = parseInt(counter.innerText) + 1;
-    
-    // Create stunning ascending bubble particles
-    const rect = button.getBoundingClientRect();
-    for (let i = 0; i < 5; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'amen-particle';
-      particle.innerHTML = i % 2 === 0 ? '🙏' : '✨';
-      particle.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 50) + 'px';
-      particle.style.top = (rect.top + window.scrollY - 10) + 'px';
-      document.body.appendChild(particle);
+    // 3. Silky Scroll Reveal Engine
+    function initScrollReveal() {
+      const revealElements = document.querySelectorAll('.reveal');
       
-      setTimeout(() => { particle.remove(); }, 1200);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            // Unobserve to trigger only once for optimal performance
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
     }
-  }
 
-  // Giving calculator pill selection updates
-  function selectTier(button, type) {
-    document.querySelectorAll('.tier-btn').forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-    
-    const giveBtn = document.getElementById('giveBtn');
-    giveBtn.innerHTML = `Give ${type} Now`;
-  }
-</script>
+    // 4. Automated Youth Ministry Slideshow
+    function initCarousel() {
+      const carousel = document.getElementById('youthCarousel');
+      if (!carousel) return;
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      let current = 0;
 
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 4200);
+    }
+
+    // 5. Interactive "Amen" Prayer Counter Feedback
+    function triggerAmen(id, btnEl) {
+      if (btnEl.classList.contains('prayed')) return;
+
+      const countEl = document.getElementById(`count${id}`);
+      let currentCount = parseInt(countEl.textContent, 10);
+      
+      countEl.textContent = currentCount + 1;
+      btnEl.classList.add('prayed');
+      btnEl.innerHTML = `<i class="fas fa-check"></i> Agreed`;
+      
+      // Joyful floating micro-animation
+      const floater = document.createElement('span');
+      floater.textContent = '+1 Amen';
+      floater.style.position = 'absolute';
+      floater.style.color = 'var(--accent-gold)';
+      floater.style.fontWeight = '800';
+      floater.style.pointerEvents = 'none';
+      floater.style.transform = 'translateY(-20px)';
+      floater.style.transition = 'all 0.8s ease-out';
+      floater.style.opacity = '1';
+      
+      btnEl.parentNode.appendChild(floater);
+      
+      requestAnimationFrame(() => {
+        floater.style.transform = 'translateY(-50px)';
+        floater.style.opacity = '0';
+      });
+
+      setTimeout(() => floater.remove(), 800);
+    }
+
+    // Initialize all engines on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      initCountdown();
+      initScrollReveal();
+      initCarousel();
+    });
+  </script>
 </body>
 </html>
 ```
