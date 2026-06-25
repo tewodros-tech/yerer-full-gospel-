@@ -11,302 +11,2194 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #B58B5C;
+            --primary-dark: #9F7349;
+            --primary-light: #D4A574;
+            --cream: #FCF8F0;
+            --dark: #1F1A14;
+            --text-muted: #6B5E4E;
+            --gold: #D4A574;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
-            background: #FCF8F0;
-            color: #1F1A14;
+            background: var(--cream);
+            color: var(--dark);
             line-height: 1.7;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
+        
         h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+        
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 28px;
         }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(181, 139, 92, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(181, 139, 92, 0.6); }
+        }
+        
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== BUTTONS ===== */
         .btn-primary {
-            display: inline-block;
-            background: #B58B5C;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
-            padding: 14px 38px;
+            padding: 16px 42px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 24px rgba(181, 139, 92, 0.35);
             letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
         .btn-primary:hover {
-            background: #9F7349;
-            transform: translateY(-3px);
-            box-shadow: 0 14px 34px rgba(181, 139, 92, 0.45);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 16px 40px rgba(181, 139, 92, 0.5);
         }
+        
         .btn-secondary {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: transparent;
-            color: #B58B5C;
-            padding: 14px 38px;
+            color: var(--primary);
+            padding: 16px 42px;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 600;
-            border: 2px solid #B58B5C;
-            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+        
         .btn-secondary:hover {
-            background: #B58B5C;
+            background: var(--primary);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(181, 139, 92, 0.3);
         }
-        .btn-outline-light {
-            display: inline-block;
-            background: transparent;
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #D4A574 0%, #B58B5C 50%, #9F7349 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
             color: white;
-            padding: 14px 38px;
+            padding: 18px 48px;
             border-radius: 60px;
             text-decoration: none;
-            font-weight: 600;
-            border: 2px solid rgba(255,255,255,0.5);
+            font-weight: 700;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(181, 139, 92, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(181, 139, 92, 0.5);
+        }
+        
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(181,139,92,0.1);
             transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
         }
-        .btn-outline-light:hover {
-            background: white;
-            color: #1F1A14;
-            border-color: white;
+        
+        nav.scrolled {
+            padding: 0;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
         }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-logo:hover img {
+            transform: rotate(5deg) scale(1.05);
+        }
+        
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .nav-logo-text .name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        
+        .nav-logo-text .subtitle {
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 4px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-cta {
+            padding: 12px 28px !important;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #14100C 0%, #1a1610 50%, #0f0d0a 100%);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23B58B5C" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(20,16,12,0.4) 100%);
+        }
+        
+        /* Floating Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particleFloat linear infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-duration: 25s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-duration: 20s; animation-delay: 2s; width: 4px; height: 4px; }
+        .particle:nth-child(3) { left: 35%; animation-duration: 28s; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 50%; animation-duration: 22s; animation-delay: 1s; width: 8px; height: 8px; }
+        .particle:nth-child(5) { left: 65%; animation-duration: 26s; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 80%; animation-duration: 24s; animation-delay: 5s; width: 5px; height: 5px; }
+        .particle:nth-child(7) { left: 90%; animation-duration: 30s; animation-delay: 2s; }
+        .particle:nth-child(8) { left: 5%; animation-duration: 35s; animation-delay: 6s; width: 3px; height: 3px; }
+        
+        /* Floating Shapes */
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(181, 139, 92, 0.1);
+            border-radius: 50%;
+            animation: gentleBounce 6s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: -50px;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            max-width: 900px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(181, 139, 92, 0.15);
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border: 1px solid rgba(181, 139, 92, 0.2);
+            margin-bottom: 32px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-badge i {
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            margin-bottom: 16px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .hero-scripture {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--primary-light);
+            font-style: italic;
+            margin-bottom: 48px;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        
+        .hero-scripture::before {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .hero-scripture::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 1s both;
+        }
+        
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: gentleBounce 2s ease-in-out infinite;
+        }
+        
+        .hero-scroll a {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .hero-scroll:hover a {
+            color: var(--primary);
+        }
+        
+        /* ===== SECTION STYLES ===== */
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 12px;
-            color: #1F1A14;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 16px;
+            color: var(--dark);
             letter-spacing: -0.5px;
         }
-        .section-title span { color: #B58B5C; }
+        
+        .section-title span {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: rgba(181, 139, 92, 0.2);
+            z-index: -1;
+        }
+        
         .section-subtitle {
             text-align: center;
-            color: #6B5E4E;
-            margin-bottom: 56px;
+            color: var(--text-muted);
+            margin-bottom: 64px;
             font-size: 1.15rem;
-            max-width: 700px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
         }
-        .card {
-            background: #FFFFFF;
-            border-radius: 28px;
-            padding: 36px 28px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.04);
-            transition: all 0.35s ease;
-            border: 1px solid rgba(181, 139, 92, 0.06);
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
-        }
-        .progress-bar-bg {
-            background: rgba(0,0,0,0.08);
-            border-radius: 40px;
-            height: 18px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .progress-fill {
-            background: linear-gradient(90deg, #B58B5C, #D4A574);
-            height: 100%;
-            border-radius: 40px;
-            transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .give-option {
-            background: #F8F4EC;
-            border-radius: 28px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .give-option:hover {
-            background: #EFE8DC;
-            transform: translateY(-6px);
-        }
-        .give-option i {
-            font-size: 2.8rem;
-            color: #B58B5C;
-            margin-bottom: 12px;
-        }
-        .hero-bg {
-            background: url('XXXL.webp') center/cover no-repeat;
+        
+        /* ===== IMPACT STATS ===== */
+        .impact-stats {
+            padding: 100px 0;
+            background: linear-gradient(180deg, white 0%, var(--cream) 100%);
             position: relative;
         }
-        .hero-bg::before {
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(20,18,14,0.9) 0%, rgba(26,26,42,0.85) 100%);
-            z-index: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
+        
+        .stat-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
+        }
+        
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(181, 139, 92, 0.1), rgba(181, 139, 92, 0.2));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary);
+            transition: all 0.4s ease;
+        }
+        
+        .stat-item:hover .stat-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        /* ===== GIVE OPTIONS ===== */
+        .give-section {
+            padding: 100px 0;
+            background: var(--cream);
+            position: relative;
+        }
+        
+        .give-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        
+        .give-card {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 32px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(181, 139, 92, 0.08);
+            cursor: pointer;
+        }
+        
+        .give-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(181, 139, 92, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .give-card:hover::before {
+            opacity: 1;
+        }
+        
+        .give-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .give-card-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, rgba(181, 139, 92, 0.1), rgba(181, 139, 92, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .give-card:hover .give-card-icon {
+            transform: scale(1.15) rotate(10deg);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 15px 40px rgba(181, 139, 92, 0.4);
+        }
+        
+        .give-card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .give-card:hover .give-card-badge {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .give-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .give-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .give-card .btn-primary {
+            padding: 14px 36px;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== PROGRESS CAMPAIGN ===== */
+        .campaign-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1610 0%, #2a241c 50%, #1a1610 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .campaign-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(181, 139, 92, 0.05) 0%, transparent 50%);
+            animation: rotate 60s linear infinite;
+        }
+        
+        .campaign-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            padding: 60px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+        }
+        
+        .campaign-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .campaign-header h3 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .campaign-header p {
+            color: var(--text-muted);
+        }
+        
+        .campaign-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .campaign-raised {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        
+        .campaign-raised strong {
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+        
+        .campaign-goal {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        
+        .progress-container {
+            position: relative;
+            margin-bottom: 24px;
+        }
+        
+        .progress-bar-bg {
+            background: #F0EBE3;
+            border-radius: 20px;
+            height: 24px;
+            overflow: hidden;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+            height: 100%;
+            border-radius: 20px;
+            position: relative;
+            transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 0;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s linear infinite;
+        }
+        
+        .progress-percentage {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(181, 139, 92, 0.3);
+        }
+        
+        .progress-milestones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            position: relative;
+        }
+        
+        .milestone {
+            text-align: center;
+            position: relative;
+        }
+        
+        .milestone::before {
+            content: '';
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: #E0D6C8;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .milestone.reached::before {
+            background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(181, 139, 92, 0.3);
+        }
+        
+        .milestone span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        
+        .campaign-message {
+            text-align: center;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(181, 139, 92, 0.08), rgba(181, 139, 92, 0.04));
+            border-radius: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .campaign-message p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+        
+        .campaign-message .highlight-text {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .campaign-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* ===== AMOUNT SELECTOR ===== */
+        .amount-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .amount-card {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--cream);
+            border-radius: 40px;
+            padding: 60px 48px;
+        }
+        
+        .amount-card h3 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        
+        .amount-card > p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+        
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .amount-option {
+            padding: 24px;
+            background: white;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .amount-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .amount-option.selected {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(181, 139, 92, 0.1), rgba(181, 139, 92, 0.2));
+        }
+        
+        .amount-option .popular {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .custom-amount {
+            margin-bottom: 32px;
+        }
+        
+        .custom-amount input {
+            width: 100%;
+            padding: 20px 28px;
+            border: 2px solid #E8E0D5;
+            border-radius: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            background: white;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .custom-amount input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(181, 139, 92, 0.2);
+        }
+        
+        .custom-amount input::placeholder {
+            color: #B8A898;
+        }
+        
+        /* ===== PAYMENT METHODS ===== */
+        .payment-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .payment-card {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 36px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(181, 139, 92, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .payment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .payment-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(181, 139, 92, 0.1), rgba(181, 139, 92, 0.2));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2.2rem;
+            color: var(--primary);
+            transition: all 0.4s ease;
+        }
+        
+        .payment-card:hover .payment-card-icon {
+            transform: scale(1.1) rotate(-5deg);
+            background: var(--primary);
+            color: white;
+        }
+        
+        .payment-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        
+        .payment-card p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+        
+        .payment-info {
+            background: #F8F4EC;
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .payment-info span {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+        
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+        
+        .copy-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f0ebe3, #e8e0d5);
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .qr-placeholder i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, white 0%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 32px;
+            padding: 48px 36px;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-quote {
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+        
+        .testimonial-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        
+        .faq-question {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(181, 139, 92, 0.05);
+        }
+        
+        .faq-question h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 28px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 28px 24px;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        
+        /* ===== SCRIPTURE PROMISE ===== */
+        .promise-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1610 0%, #2a241c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .promise-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="%23B58B5C" stroke-width="0.5" fill="none" opacity="0.1"/></svg>') repeat;
+            background-size: 200px;
+            opacity: 0.5;
+        }
+        
+        .promise-content {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .promise-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 32px;
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
+        
+        .promise-scripture {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        
+        .promise-reference {
+            font-size: 1.2rem;
+            color: var(--primary-light);
+            font-weight: 600;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f0d0a;
+            color: #8a8078;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-col h3 {
+            color: #F0E8D8;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-col p,
+        .footer-col a {
+            color: #8a8078;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 12px;
+        }
+        
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(181, 139, 92, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+                border-radius: 0 0 20px 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .campaign-card {
+                padding: 40px 28px;
+            }
+            
+            .amount-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .section-title { font-size: 2rem; }
-            .container { padding: 0 16px; }
-            nav .container { flex-direction: column; gap: 12px; }
+            .container { padding: 0 20px; }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .give-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .campaign-stats {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            
+            .progress-milestones {
+                display: none;
+            }
+            
+            .campaign-buttons {
+                flex-direction: column;
+            }
+            
+            .campaign-buttons .btn-primary,
+            .campaign-buttons .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amount-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amount-card {
+                padding: 40px 24px;
+            }
+        }
+        
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(181, 139, 92, 0.4);
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(181, 139, 92, 0.5);
         }
     </style>
 </head>
 <body>
 
 <!-- ===== NAVIGATION ===== -->
-<nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
-            <img src="logo.jpg" alt="Logo" style="height: 45px; width: auto; border-radius: 8px;" />
-            <div>
-                <div style="font-size: 1.2rem; font-weight: 700; color: #B58B5C; line-height: 1.2;">የረር ሙሉወንጌል</div>
-                <div style="font-size: 0.7rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
+<nav id="navbar">
+    <div class="container">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.jpg" alt="Church Logo" />
+            <div class="nav-logo-text">
+                <span class="name">የረር ሙሉወንጌል</span>
+                <span class="subtitle">YERER FULL GOSPEL</span>
             </div>
         </a>
-        <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
-            <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Home</a>
-            <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
-            <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
-            <a href="events.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Events</a>
-            <a href="give.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Give</a>
-            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.9rem;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+        
+        <button class="mobile-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="sermons.html">Sermons</a>
+            <a href="events.html">Events</a>
+            <a href="give.html" class="active">Give</a>
+            <a href="#" class="btn-primary nav-cta">Join Live <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 </nav>
 
-<!-- ===== GIVE HERO ===== -->
-<section class="hero-bg" style="position: relative; color: white; padding: 100px 0 80px; overflow: hidden; text-align: center;">
-    <div style="position: relative; z-index: 2;">
-        <div class="container">
-            <span style="background: rgba(181,139,92,0.2); padding: 8px 28px; border-radius: 60px; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(181,139,92,0.15); display: inline-block;">Give</span>
-            <h1 style="font-size: 4rem; margin: 24px 0 16px; line-height: 1.1; font-weight: 800;">Support the <span style="color: #D4A574;">Ministry</span></h1>
-            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 10px; color: #D4C8B8; font-weight: 300;">Your generosity fuels the gospel in Yerer and beyond.</p>
-            <p style="font-size: 1.1rem; color: #B8A898;">"God loves a cheerful giver." — 2 Corinthians 9:7</p>
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <!-- Floating Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="hero-content">
+        <div class="hero-badge">
+            <i class="fas fa-heart"></i>
+            <span>Generosity</span>
+        </div>
+        <h1 class="hero-title">
+            Support the <span class="highlight">Ministry</span>
+        </h1>
+        <p class="hero-subtitle">
+            Your generosity fuels the gospel in Yerer and beyond, touching lives and building His kingdom.
+        </p>
+        <p class="hero-scripture">God loves a cheerful giver</p>
+        <div class="hero-buttons">
+            <a href="#give-options" class="btn-gold">
+                <i class="fas fa-hand-holding-heart"></i>
+                Give Now
+            </a>
+            <a href="#ways-to-give" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">
+                Learn More
+            </a>
+        </div>
+    </div>
+    
+    <div class="hero-scroll">
+        <a href="#impact"><i class="fas fa-chevron-down"></i></a>
+    </div>
+</section>
+
+<!-- ===== IMPACT STATS ===== -->
+<section class="impact-stats" id="impact">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">The Impact of <span>Giving</span></h2>
+        <p class="section-subtitle animate-on-scroll">See how your generosity is making a difference in our community and beyond.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-item animate-on-scroll">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number" data-count="1250">0</div>
+                <div class="stat-label">Lives Touched Monthly</div>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <div class="stat-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="stat-number" data-count="47">0</div>
+                <div class="stat-label">Families Supported</div>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <div class="stat-icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <div class="stat-number" data-count="12">0</div>
+                <div class="stat-label">Missions Partners</div>
+            </div>
+            <div class="stat-item animate-on-scroll">
+                <div class="stat-icon">
+                    <i class="fas fa-church"></i>
+                </div>
+                <div class="stat-number" data-count="3">0</div>
+                <div class="stat-label">Church Plants</div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- ===== GIVE OPTIONS ===== -->
-<section style="padding: 80px 0 60px; background: #FFFFFF;">
+<section class="give-section" id="give-options">
     <div class="container">
-        <h2 class="section-title">Ways to <span>Give</span></h2>
-        <p class="section-subtitle">Choose a fund that aligns with your heart for God's kingdom.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 60px;">
-            <div class="give-option">
-                <i class="fas fa-hand-holding-heart"></i>
-                <h3>Tithe</h3>
-                <p style="color: #5F5545; font-size: 0.95rem;">Faithful giving that supports the church's daily work.</p>
-                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give Tithe</a>
-            </div>
-            <div class="give-option">
-                <i class="fas fa-church"></i>
-                <h3>Building Fund</h3>
-                <p style="color: #5F5545; font-size: 0.95rem;">Help us expand our worship space and facilities.</p>
-                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give to Building</a>
-            </div>
-            <div class="give-option">
-                <i class="fas fa-globe-africa"></i>
-                <h3>Missions</h3>
-                <p style="color: #5F5545; font-size: 0.95rem;">Support outreach and church planting in Ethiopia.</p>
-                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give to Missions</a>
-            </div>
-            <div class="give-option">
-                <i class="fas fa-hands-helping"></i>
-                <h3>Benevolence</h3>
-                <p style="color: #5F5545; font-size: 0.95rem;">Help families in need with food, shelter, and care.</p>
-                <a href="#" class="btn-primary" style="padding: 10px 30px; font-size: 0.9rem; margin-top: 16px;">Give Benevolence</a>
-            </div>
-        </div>
+        <h2 class="section-title animate-on-scroll">Ways to <span>Give</span></h2>
+        <p class="section-subtitle animate-on-scroll">Choose a fund that aligns with your heart for God's kingdom and partner with us in ministry.</p>
         
-        <!-- Progress Bar -->
-        <div style="max-width: 700px; margin: 0 auto; background: #F8F4EC; padding: 40px 32px; border-radius: 40px;">
-            <h3 style="font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 8px;">Building Fund Progress</h3>
-            <p style="text-align: center; color: #6B5E4E; margin-bottom: 20px;">Together we are building a house of prayer</p>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem;">
-                <span>Raised</span>
-                <span><strong>$18,500</strong> / $50,000</span>
+        <div class="give-grid">
+            <div class="give-card animate-on-scroll">
+                <span class="give-card-badge">Most Common</span>
+                <div class="give-card-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3>Tithe</h3>
+                <p>Honor God with the first 10% of your income. Your faithful giving supports the church's daily operations and ministry programs.</p>
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-donate"></i>
+                    Give Tithe
+                </a>
             </div>
-            <div class="progress-bar-bg">
-                <div class="progress-fill" style="width: 37%;"></div>
+            
+            <div class="give-card animate-on-scroll">
+                <span class="give-card-badge">Featured</span>
+                <div class="give-card-icon">
+                    <i class="fas fa-church"></i>
+                </div>
+                <h3>Building Fund</h3>
+                <p>Help us expand our worship space and facilities to serve more people in our growing community.</p>
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-hammer"></i>
+                    Give to Building
+                </a>
             </div>
-            <p style="margin-top: 20px; text-align: center; font-size: 0.95rem; opacity: 0.8;">37% of goal reached. Help us reach $50,000!</p>
-            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap;">
-                <a href="#" class="btn-primary" style="padding: 12px 32px;"><i class="fas fa-hand-holding-usd"></i> Give Now</a>
-                <a href="#" class="btn-secondary" style="padding: 12px 32px;">Learn More</a>
+            
+            <div class="give-card animate-on-scroll">
+                <div class="give-card-icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <h3>Missions</h3>
+                <p>Support outreach and church planting efforts throughout Ethiopia and beyond borders.</p>
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Give to Missions
+                </a>
+            </div>
+            
+            <div class="give-card animate-on-scroll">
+                <div class="give-card-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Benevolence</h3>
+                <p>Help families in need with food, shelter, medical care, and other essential support.</p>
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-heart"></i>
+                    Give Benevolence
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== WAYS TO GIVE ===== -->
-<section style="padding: 60px 0 80px; background: #F8F4EC;">
+<!-- ===== CAMPAIGN PROGRESS ===== -->
+<section class="campaign-section" id="ways-to-give">
     <div class="container">
-        <h2 class="section-title">Other Ways to <span>Give</span></h2>
-        <p class="section-subtitle">Multiple ways to partner with us in advancing the gospel.</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
-            <div class="card" style="text-align: center;">
-                <i class="fas fa-mobile-alt" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+        <div class="campaign-card animate-on-scroll">
+            <div class="campaign-header">
+                <h3>Building Fund Campaign</h3>
+                <p>Together we are building a house of prayer for all nations</p>
+            </div>
+            
+            <div class="campaign-stats">
+                <span class="campaign-raised">Raised: <strong>$18,500</strong></span>
+                <span class="campaign-goal">Goal: $50,000</span>
+            </div>
+            
+            <div class="progress-container">
+                <span class="progress-percentage">37%</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" data-width="37"></div>
+                </div>
+                <div class="progress-milestones">
+                    <div class="milestone reached"><span>$0</span></div>
+                    <div class="milestone reached"><span>$12.5K</span></div>
+                    <div class="milestone"><span>$25K</span></div>
+                    <div class="milestone"><span>$37.5K</span></div>
+                    <div class="milestone"><span>$50K</span></div>
+                </div>
+            </div>
+            
+            <div class="campaign-message">
+                <p>Join <span class="highlight-text">142 faithful givers</span> who have already contributed to this campaign. Together, we can reach our goal!</p>
+            </div>
+            
+            <div class="campaign-buttons">
+                <a href="#" class="btn-primary">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    Give Now
+                </a>
+                <a href="#" class="btn-secondary">
+                    <i class="fas fa-info-circle"></i>
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AMOUNT SELECTOR ===== -->
+<section class="amount-section">
+    <div class="container">
+        <div class="amount-card animate-on-scroll">
+            <h3>Select Your Gift Amount</h3>
+            <p>Choose a one-time or monthly giving option that works for you</p>
+            
+            <div class="amount-grid">
+                <div class="amount-option" data-amount="50">
+                    $50
+                </div>
+                <div class="amount-option selected" data-amount="100">
+                    $100
+                    <span class="popular">Popular</span>
+                </div>
+                <div class="amount-option" data-amount="250">
+                    $250
+                </div>
+                <div class="amount-option" data-amount="500">
+                    $500
+                </div>
+                <div class="amount-option" data-amount="1000">
+                    $1,000
+                </div>
+                <div class="amount-option" data-amount="other">
+                    Custom
+                </div>
+            </div>
+            
+            <div class="custom-amount">
+                <input type="number" id="customAmount" placeholder="Enter custom amount ($)" min="1">
+            </div>
+            
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="radio" name="frequency" value="once" checked style="accent-color: var(--primary);">
+                    <span>One-time</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="radio" name="frequency" value="monthly" style="accent-color: var(--primary);">
+                    <span>Monthly</span>
+                </label>
+            </div>
+            
+            <a href="#" class="btn-gold" style="padding: 20px 56px; font-size: 1.1rem;">
+                <i class="fas fa-credit-card"></i>
+                Continue to Payment
+            </a>
+            
+            <p style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">
+                <i class="fas fa-lock" style="color: var(--primary);"></i>
+                Secure & encrypted payment processing
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PAYMENT METHODS ===== -->
+<section class="payment-section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Other Ways to <span>Give</span></h2>
+        <p class="section-subtitle animate-on-scroll">Multiple convenient options to partner with us in advancing the gospel.</p>
+        
+        <div class="payment-grid">
+            <div class="payment-card animate-on-scroll">
+                <div class="payment-card-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
                 <h3>Mobile Money</h3>
-                <p style="color: #5F5545;">Send your offering via Telebirr or other mobile payment platforms.</p>
-                <p style="margin-top: 12px; font-weight: 600; color: #B58B5C;">+251-XXX-XXX</p>
+                <p>Send your offering via Telebirr or other mobile payment platforms instantly.</p>
+                <div class="qr-placeholder">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Scan to Pay</span>
+                </div>
+                <div class="payment-info">
+                    <span>+251 91X XXX XXXX</span>
+                    <button class="copy-btn" onclick="copyToClipboard('+251 91X XXX XXXX')">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                </div>
+                <a href="#" class="btn-primary" style="padding: 12px 28px; font-size: 0.9rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    Open App
+                </a>
             </div>
-            <div class="card" style="text-align: center;">
-                <i class="fas fa-university" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+            
+            <div class="payment-card animate-on-scroll">
+                <div class="payment-card-icon">
+                    <i class="fas fa-university"></i>
+                </div>
                 <h3>Bank Transfer</h3>
-                <p style="color: #5F5545;">Direct deposit to our church bank account.</p>
-                <p style="margin-top: 12px; font-weight: 600; color: #B58B5C;">Account: 1234567890</p>
+                <p>Direct deposit to our church bank account for larger gifts.</p>
+                <div class="payment-info">
+                    <span>1234567890</span>
+                    <button class="copy-btn" onclick="copyToClipboard('1234567890')">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+                    <strong>Bank:</strong> Commercial Bank of Ethiopia<br>
+                    <strong>Branch:</strong> Yerer Branch<br>
+                    <strong>Account Name:</strong> Yerer Full Gospel Church
+                </p>
+                <a href="#" class="btn-secondary" style="padding: 12px 28px; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i>
+                    More Details
+                </a>
             </div>
-            <div class="card" style="text-align: center;">
-                <i class="fas fa-envelope" style="font-size: 2.5rem; color: #B58B5C; margin-bottom: 16px;"></i>
+            
+            <div class="payment-card animate-on-scroll">
+                <div class="payment-card-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
                 <h3>Mail a Check</h3>
-                <p style="color: #5F5545;">Send your offering by mail to our church address.</p>
-                <p style="margin-top: 12px; font-weight: 600; color: #B58B5C;">Yerer, Ethiopia</p>
+                <p>Send your offering by mail to our church address.</p>
+                <div class="payment-info" style="flex-direction: column; gap: 8px; text-align: left;">
+                    <span style="font-size: 0.95rem;">Yerer Full Gospel Church<br>P.O. Box XXXXX<br>Yerer, Ethiopia</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 16px;">
+                    <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                    Please include your name and contact info with your donation.
+                </p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">What Givers <span>Say</span></h2>
+        <p class="section-subtitle animate-on-scroll">Hear from brothers and sisters who have experienced the joy of giving.</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card animate-on-scroll">
+                <span class="testimonial-quote">"</span>
+                <p class="testimonial-text">Giving has transformed my relationship with God. What we sow always comes back multiplied. I'm grateful for the opportunity to be part of something bigger than myself.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">DM</div>
+                    <div class="testimonial-info">
+                        <h4>Daniel M.</h4>
+                        <p>Member since 2018</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card animate-on-scroll">
+                <span class="testimonial-quote">"</span>
+                <p class="testimonial-text">When we committed to tithing, God opened doors we never expected. Our business grew, and more importantly, our family grew closer to Him.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SA</div>
+                    <div class="testimonial-info">
+                        <h4>Sarah A.</h4>
+                        <p>Member since 2015</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card animate-on-scroll">
+                <span class="testimonial-quote">"</span>
+                <p class="testimonial-text">I love seeing where my giving goes. The transparency and updates about the building project encourage me to give even more joyfully.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">KT</div>
+                    <div class="testimonial-info">
+                        <h4>Kiya T.</h4>
+                        <p>Member since 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title animate-on-scroll">Frequently Asked <span>Questions</span></h2>
+        <p class="section-subtitle animate-on-scroll">Find answers to common questions about giving to Yerer Full Gospel Church.</p>
+        
+        <div class="faq-container">
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Is my donation tax-deductible?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Yerer Full Gospel Church is a registered nonprofit organization. Your donations may be tax-deductible to the extent allowed by law. Please consult with your tax advisor for specific guidance.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Can I give anonymously?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. We respect your privacy. If you prefer to give anonymously, simply select the anonymous option during online giving or omit your name when giving by other methods.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>How is my tithe and offering used?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Your tithe supports the church's daily operations including staff salaries, utilities, maintenance, and programs. Offerings are designated to specific causes like missions, benevolence, and building projects.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>Can I set up recurring giving?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! You can set up monthly, weekly, or bi-weekly recurring gifts through our online giving portal. This ensures consistent support for the ministry and simplifies your giving.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item animate-on-scroll">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h4>What if I can't give money? Are there other ways to serve?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We believe everyone has something to offer. Consider volunteering your time, skills, or resources. Contact our church office to learn about volunteer opportunities that match your gifts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SCRIPTURE PROMISE ===== -->
+<section class="promise-section">
+    <div class="container">
+        <div class="promise-content animate-on-scroll">
+            <div class="promise-icon">
+                <i class="fas fa-bible"></i>
+            </div>
+            <p class="promise-scripture">
+                "Bring the whole tithe into the storehouse, that there may be food in my house. Test me in this," says the LORD Almighty, "and see if I will not throw open the floodgates of heaven and pour out so much blessing that there will not be room enough to store it."
+            </p>
+            <p class="promise-reference">— Malachi 3:10</p>
         </div>
     </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer style="background: #14100C; color: #A09888; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.04);">
+<footer>
     <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</h3>
-                <p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p>
-                <div style="margin-top: 20px; display: flex; gap: 16px; font-size: 1.6rem; color: #B58B5C;">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-youtube"></i>
-                    <i class="fab fa-whatsapp"></i>
-                    <i class="fab fa-telegram"></i>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>የረር ሙሉወንጌል ቤተክርስቲያን</h3>
+                <p>Worship in Spirit and Truth — John 4:24</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
-                <p><a href="index.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Home</a></p>
-                <p><a href="about.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">About Us</a></p>
-                <p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Sermons</a></p>
-                <p><a href="events.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Events</a></p>
-                <p><a href="give.html" style="color: #A09888; text-decoration: none; transition: color 0.2s;">Give</a></p>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="sermons.html">Sermons</a>
+                <a href="events.html">Events</a>
+                <a href="give.html">Give</a>
             </div>
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3>
-                <p><i class="fas fa-map-pin" style="color: #B58B5C;"></i> Yerer, Ethiopia</p>
-                <p><i class="fas fa-phone" style="color: #B58B5C;"></i> +251-XXX-XXX</p>
-                <p><i class="fas fa-envelope" style="color: #B58B5C;"></i> info@yerergospel.org</p>
+            
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-pin" style="color: var(--primary); margin-right: 10px;"></i> Yerer, Ethiopia</p>
+                <p><i class="fas fa-phone" style="color: var(--primary); margin-right: 10px;"></i> +251-XXX-XXX</p>
+                <p><i class="fas fa-envelope" style="color: var(--primary); margin-right: 10px;"></i> info@yerergospel.org</p>
             </div>
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3>
-                <div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div>
-                <p style="margin-bottom: 8px;">prayers prayed this week</p>
-                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a>
+            
+            <div class="footer-col">
+                <h3>Prayer Counter</h3>
+                <div style="font-size: 3rem; font-weight: 700; color: var(--primary); font-family: 'Playfair Display', serif;">347</div>
+                <p style="margin-bottom: 12px;">prayers prayed this week</p>
+                <a href="#" style="color: var(--primary); font-weight: 500;">
+                    Submit prayer request <i class="fas fa-arrow-right" style="margin-left: 5px;"></i>
+                </a>
             </div>
         </div>
-        <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;">
-            <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
+        
+        <div class="footer-bottom">
+            <p>© 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
         </div>
     </div>
 </footer>
+
+<!-- ===== SCROLL TO TOP ===== -->
+<button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('active');
+    }
+    
+    // FAQ Toggle
+    function toggleFaq(element) {
+        const faqItem = element.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Open clicked FAQ if it wasn't already open
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    }
+    
+    // Copy to Clipboard
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard: ' + text);
+        });
+    }
+    
+    // Amount Selection
+    document.querySelectorAll('.amount-option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            
+            if (this.dataset.amount !== 'other') {
+                document.getElementById('customAmount').value = '';
+            }
+        });
+    });
+    
+    // Custom Amount Input
+    document.getElementById('customAmount').addEventListener('input', function() {
+        document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
+        const customOption = document.querySelector('.amount-option[data-amount="other"]');
+        customOption.classList.add('selected');
+    });
+    
+    // Scroll to Top
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Scroll Event for Navbar and Scroll Top Button
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        const scrollTop = document.getElementById('scrollTop');
+        
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+            scrollTop.classList.add('visible');
+        } else {
+            navbar.classList.remove('scrolled');
+            scrollTop.classList.remove('visible');
+        }
+    });
+    
+    // Animate on Scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // Animate counters
+                if (entry.target.querySelector('.stat-number')) {
+                    animateCounters(entry.target);
+                }
+                
+                // Animate progress bar
+                if (entry.target.querySelector('.progress-fill')) {
+                    animateProgressBar(entry.target);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Counter Animation
+    function animateCounters(container) {
+        const counters = container.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = parseInt(counter.dataset.count);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current).toLocaleString();
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target.toLocaleString();
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+    
+    // Progress Bar Animation
+    function animateProgressBar(container) {
+        const progressFill = container.querySelector('.progress-fill');
+        if (progressFill) {
+            const width = progressFill.dataset.width;
+            setTimeout(() => {
+                progressFill.style.width = width + '%';
+            }, 300);
+        }
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const navLinks = document.getElementById('navLinks');
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        
+        if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+        }
+    });
+</script>
 
 </body>
 </html>
