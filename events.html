@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events | Yerer Full Gospel Believers Church</title>
+    <title>Youth Revival | Yerer Full Gospel Believers Church</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -36,16 +36,6 @@
             cursor: pointer;
         }
         .btn-secondary:hover { background: #C49A6C; color: white; }
-        .event-card { 
-            background: white; 
-            border-radius: 20px; 
-            padding: 25px; 
-            margin-bottom: 20px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            border-left: 5px solid #C49A6C;
-            transition: all 0.3s ease;
-        }
-        .event-card:hover { transform: translateX(6px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .section-title { text-align: center; font-size: 2.5rem; margin: 40px 0 20px; }
         .section-title span { color: #C49A6C; }
         .section-subtitle {
@@ -65,6 +55,16 @@
         }
         .hero-bg h1 { font-size: 2.8rem; margin-bottom: 10px; }
         .hero-bg p { font-size: 1.2rem; opacity: 0.9; }
+        .event-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-left: 5px solid #C49A6C;
+            transition: all 0.3s ease;
+        }
+        .event-card:hover { transform: translateX(6px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .weekly-service {
             background: white;
             padding: 25px;
@@ -76,11 +76,124 @@
         .weekly-service i { font-size: 2rem; color: #C49A6C; margin-bottom: 12px; }
         .weekly-service h3 { font-size: 1.2rem; margin-bottom: 6px; }
         .weekly-service p { color: #5F5545; }
+
+        /* YOUTH GALLERY SLIDER */
+        .youth-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+        .youth-gallery .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #ddd;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .youth-gallery .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+            background: #F8F4EC;
+        }
+        .youth-gallery .img-wrapper:hover {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            z-index: 2;
+        }
+        .youth-gallery .img-wrapper:hover img { transform: scale(1.06); }
+
+        /* SLIDESHOW */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            background: #1F1A14;
+            margin: 30px 0;
+        }
+        .slideshow-container .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1F1A14;
+        }
+        .slideshow-container .slide.active {
+            opacity: 1;
+        }
+        .slideshow-container .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .slideshow-container .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 30px 24px;
+            background: linear-gradient(transparent, rgba(15,13,10,0.8) 70%);
+            color: white;
+        }
+        .slideshow-container .slide-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #D4A574;
+        }
+        .slideshow-container .slide-overlay p {
+            color: #D4C8B8;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .slideshow-dots {
+            text-align: center;
+            margin-top: 14px;
+        }
+        .slideshow-dots .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #C49A6C40;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .slideshow-dots .dot.active {
+            background: #C49A6C;
+        }
+
         @media (max-width: 768px) {
             .section-title { font-size: 2rem; }
             .container { padding: 0 16px; }
             nav .container { flex-direction: column; gap: 12px; }
             .hero-bg h1 { font-size: 2rem; }
+            .slideshow-container { height: 250px; }
+            .youth-gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+            .slideshow-container .slide-overlay h3 { font-size: 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            .slideshow-container { height: 200px; }
+            .youth-gallery { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
         }
     </style>
 </head>
@@ -110,55 +223,63 @@
 <!-- ===== HERO ===== -->
 <section class="hero-bg">
     <div class="container">
-        <h1>Upcoming Events</h1>
-        <p>Gather, Grow, and Go — together in community</p>
+        <h1>🔥 Youth Revival</h1>
+        <p>Every Saturday · 11:30 AM – 1:30 PM · Yerer Main Campus</p>
     </div>
 </section>
 
-<!-- ===== EVENTS LIST ===== -->
-<section style="padding: 60px 0;">
+<!-- ===== YOUTH REVIVAL DETAILS ===== -->
+<section style="padding: 40px 0 20px;">
     <div class="container">
-        <h2 class="section-title">Event <span>Calendar</span></h2>
-        <p class="section-subtitle">Join us for these upcoming gatherings and conferences</p>
-        <div id="eventsList"></div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <span style="background: #C49A6C20; padding: 6px 24px; border-radius: 60px; font-size: 0.85rem; color: #C49A6C; font-weight: 600;">WEEKLY TEACHING</span>
+            <h2 style="font-size: 2.4rem; margin: 16px 0 12px; font-family: 'Playfair Display', serif;">Youth <span style="color: #C49A6C;">Discipleship</span></h2>
+            <p style="color: #5F5545; font-size: 1.1rem; max-width: 600px; margin: 0 auto 8px;">A vibrant gathering for young people to grow in faith, worship, and community.</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 24px 0;">
+                <div style="background: white; padding: 12px 28px; border-radius: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-calendar-alt" style="color: #C49A6C;"></i> Every Saturday</div>
+                <div style="background: white; padding: 12px 28px; border-radius: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-clock" style="color: #C49A6C;"></i> 11:30 AM – 1:30 PM</div>
+                <div style="background: white; padding: 12px 28px; border-radius: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);"><i class="fas fa-map-pin" style="color: #C49A6C;"></i> Yerer Main Campus</div>
+            </div>
+            <a href="#" class="btn-primary" style="padding: 14px 40px; font-size: 1.05rem;"><i class="fas fa-bell"></i> Set Reminder</a>
+        </div>
     </div>
 </section>
 
-<script>
-    const events = [
-        { title: "Fasting & Prayer", date: "July 15-17, 2026", time: "6:00 AM Daily", location: "Yerer Main Campus", description: "Three days of consecration and seeking God's face.", type: "Prayer" },
-        { title: "Baptism Service", date: "July 22, 2026", time: "2:00 PM", location: "Yerer Main Campus", description: "Celebrate with those publicly declaring their faith in Christ.", type: "Celebration" },
-        { title: "Women of Virtue Conference", date: "August 5, 2026", time: "9:00 AM - 4:00 PM", location: "Yerer Main Campus", description: "A day of empowerment, worship, and fellowship for women.", type: "Conference" },
-        { title: "Men of Valor Summit", date: "August 12, 2026", time: "8:00 AM - 3:00 PM", location: "Yerer Main Campus", description: "Equipping men to lead in faith, family, and community.", type: "Conference" },
-        { title: "Healing & Miracle Service", date: "August 19, 2026", time: "7:00 PM", location: "Yerer Main Campus", description: "Special service focused on divine healing and testimonies.", type: "Worship" },
-        { title: "Youth on Fire Night", date: "August 26, 2026", time: "7:00 PM", location: "Yerer Main Campus", description: "High-energy worship and relevant teaching for ages 13-25.", type: "Youth" }
-    ];
+<!-- ===== SLIDESHOW ===== -->
+<section style="padding: 10px 0 0;">
+    <div class="container">
+        <div class="slideshow-container" id="youthSlideshow">
+            <!-- Slides will be injected by JS -->
+            <div class="slide active"><img src="Class_2.jpg" alt="Youth Teaching" /></div>
+            <div class="slide"><img src="Class_3.jpg" alt="Youth Worship" /></div>
+            <div class="slide"><img src="Classes_1.jpg" alt="Youth Discipleship" /></div>
+            <div class="slide"><img src="Classes_4.jpg" alt="Youth Fellowship" /></div>
+            <div class="slide"><img src="Classes_5.jpg" alt="Youth Prayer" /></div>
+            <div class="slide"><img src="Youth_2.jpg" alt="Youth Ministry" /></div>
+            <div class="slide"><img src="Youth_3.jpg" alt="Youth Revival" /></div>
+            <div class="slide"><img src="Youth_4.jpg" alt="Youth Camp" /></div>
+            <div class="slide"><img src="youth_5.jpg" alt="Youth Group" /></div>
+            <div class="slide"><img src="Youth_6.jpg" alt="Youth Worship" /></div>
+            <div class="slide"><img src="youth_7.jpg" alt="Youth Teaching" /></div>
+            <div class="slide"><img src="youth_8.jpg" alt="Youth Prayer" /></div>
+            <div class="slide"><img src="youth_9.jpg" alt="Youth Fellowship" /></div>
+        </div>
+        <div class="slideshow-dots" id="slideshowDots"></div>
+    </div>
+</section>
 
-    function renderEvents() {
-        const container = document.getElementById("eventsList");
-        container.innerHTML = events.map(event => `
-            <div class="event-card">
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: start;">
-                    <div style="flex: 1;">
-                        <span style="background: #C49A6C20; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: #C49A6C; font-weight: 600;">${event.type}</span>
-                        <h2 style="margin: 15px 0 10px; font-size: 1.5rem;">${event.title}</h2>
-                        <p style="color: #5F5545;"><i class="fas fa-calendar" style="color: #C49A6C;"></i> ${event.date}</p>
-                        <p style="color: #5F5545;"><i class="fas fa-clock" style="color: #C49A6C;"></i> ${event.time}</p>
-                        <p style="color: #5F5545;"><i class="fas fa-map-marker-alt" style="color: #C49A6C;"></i> ${event.location}</p>
-                        <p style="margin: 15px 0;">${event.description}</p>
-                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                            <button class="btn-primary" onclick="alert('Reminder set for ${event.title}')" style="padding: 8px 20px;">📅 Add to Calendar</button>
-                            <button onclick="alert('RSVP sent for ${event.title}')" class="btn-secondary" style="padding: 8px 20px;">✓ RSVP</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `).join("");
-    }
-    renderEvents();
-</script>
+<!-- ===== YOUTH GALLERY ===== -->
+<section style="padding: 30px 0 60px;">
+    <div class="container">
+        <h2 class="section-title">Youth <span>Gallery</span></h2>
+        <p class="section-subtitle">Moments from our weekly teachings and gatherings</p>
+        <div class="youth-gallery" id="youthGallery">
+            <!-- Injected by JS -->
+        </div>
+    </div>
+</section>
 
-<!-- ===== RECURRING EVENTS ===== -->
+<!-- ===== WEEKLY SERVICES ===== -->
 <section style="background: #FDF8F0; padding: 60px 0;">
     <div class="container">
         <h2 class="section-title">Weekly <span>Services</span></h2>
@@ -166,23 +287,23 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
             <div class="weekly-service">
                 <i class="fas fa-sun"></i>
-                <h3>Sunday</h3>
-                <p>10:00 AM<br>Worship Service</p>
+                <h3>Sunday Worship</h3>
+                <p>10:00 AM<br>Main Service</p>
+            </div>
+            <div class="weekly-service" style="border: 2px solid #C49A6C; background: #C49A6C08;">
+                <i class="fas fa-fire" style="color: #C49A6C;"></i>
+                <h3 style="color: #C49A6C;">🔥 Youth Revival</h3>
+                <p>Saturday 11:30 AM – 1:30 PM<br>Teaching & Worship</p>
             </div>
             <div class="weekly-service">
                 <i class="fas fa-book-open"></i>
-                <h3>Wednesday</h3>
-                <p>6:30 PM<br>Bible Study</p>
+                <h3>Wednesday Bible Study</h3>
+                <p>6:30 PM<br>All Ages</p>
             </div>
             <div class="weekly-service">
                 <i class="fas fa-hands-praying"></i>
-                <h3>Friday</h3>
-                <p>7:00 PM<br>Healing Service</p>
-            </div>
-            <div class="weekly-service">
-                <i class="fas fa-pray"></i>
-                <h3>Monday-Friday</h3>
-                <p>6:00 AM<br>Morning Prayer</p>
+                <h3>Friday Healing Service</h3>
+                <p>7:00 PM<br>Prayer & Anointing</p>
             </div>
         </div>
     </div>
@@ -228,6 +349,91 @@
         </div>
     </div>
 </footer>
+
+<script>
+    // ---- Youth Gallery ----
+    const galleryImages = [
+        "Class_2.jpg", "Class_3.jpg", "Classes_1.jpg", "Classes_4.jpg", "Classes_5.jpg",
+        "Youth_2.jpg", "Youth_3.jpg", "Youth_4.jpg", "youth_5.jpg", "Youth_6.jpg",
+        "youth_7.jpg", "youth_8.jpg", "youth_9.jpg"
+    ];
+
+    const galleryContainer = document.getElementById('youthGallery');
+    galleryImages.forEach(img => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'img-wrapper';
+        wrapper.innerHTML = `<img src="${img}" alt="Youth Ministry" loading="lazy" />`;
+        galleryContainer.appendChild(wrapper);
+    });
+
+    // ---- Slideshow ----
+    const slideshowImages = galleryImages; // same set
+    const slideshowContainer = document.getElementById('youthSlideshow');
+    const dotsContainer = document.getElementById('slideshowDots');
+
+    // Clear default slides (keep the first one that was hardcoded)
+    slideshowContainer.innerHTML = '';
+
+    let currentSlide = 0;
+    let slideInterval;
+
+    // Create slides
+    slideshowImages.forEach((img, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide' + (index === 0 ? ' active' : '');
+        slide.innerHTML = `<img src="${img}" alt="Youth Ministry" loading="lazy" />`;
+        slideshowContainer.appendChild(slide);
+    });
+
+    // Create dots
+    slideshowImages.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (index === 0 ? ' active' : '');
+        dot.dataset.index = index;
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+        const slides = slideshowContainer.querySelectorAll('.slide');
+        const dots = dotsContainer.querySelectorAll('.dot');
+        slides.forEach((s, i) => s.classList.toggle('active', i === index));
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const next = (currentSlide + 1) % slideshowImages.length;
+        goToSlide(next);
+    }
+
+    // Start slideshow
+    slideInterval = setInterval(nextSlide, 4000);
+
+    // Pause on hover
+    slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slideshowContainer.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 4000);
+    });
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    slideshowContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    slideshowContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                goToSlide((currentSlide + 1) % slideshowImages.length);
+            } else {
+                goToSlide((currentSlide - 1 + slideshowImages.length) % slideshowImages.length);
+            }
+        }
+    }, { passive: true });
+</script>
 
 </body>
 </html>
