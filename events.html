@@ -339,8 +339,9 @@
 
 <script>
     // ---- Youth Gallery ----
+    // Removed the first image (Class_2.jpg) from the array
     const galleryImages = [
-        "Class_2.jpg", "Class_3.jpg", "Classes_1.jpg", "Classes_4.jpg", "Classes_5.jpg",
+        "Class_3.jpg", "Classes_1.jpg", "Classes_4.jpg", "Classes_5.jpg",
         "Youth_2.jpg", "Youth_3.jpg", "Youth_4.jpg", "youth_5.jpg", "Youth_6.jpg",
         "youth_7.jpg", "youth_8.jpg", "youth_9.jpg"
     ];
@@ -354,11 +355,11 @@
     });
 
     // ---- Slideshow ----
-    const slideshowImages = galleryImages; // same set
+    const slideshowImages = galleryImages; // same set (first image removed)
     const slideshowContainer = document.getElementById('youthSlideshow');
     const dotsContainer = document.getElementById('slideshowDots');
 
-    // Clear default slides (keep the first one that was hardcoded)
+    // Clear default slides
     slideshowContainer.innerHTML = '';
 
     let currentSlide = 0;
