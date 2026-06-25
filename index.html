@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel · Spirit & Truth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>የረር ሙሉወንጌል · Yerer Full Gospel · Spirit & Truth</title>
   <meta name="description" content="A Spirit-filled church in Yerer, Ethiopia. Join us for worship, healing, and community." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -17,7 +17,7 @@
       scroll-behavior: smooth;
     }
     h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 28px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .btn-primary {
       display: inline-block;
       background: #B58B5C;
@@ -133,7 +133,7 @@
     .gallery-grid .img-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
       transition: transform 0.4s ease;
       background: #F8F4EC;
@@ -147,7 +147,6 @@
     @media (max-width: 768px) {
       .section-title { font-size: 2rem; }
       .container { padding: 0 16px; }
-      nav .container { flex-direction: column; gap: 12px; }
       .hero h1 { font-size: 2.4rem !important; }
       .hero .amharic-title { font-size: 1.8rem !important; }
       .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
@@ -177,7 +176,7 @@
     .youth-grid .img-wrap img { 
       width: 100%; 
       height: 100%; 
-      object-fit: contain; 
+      object-fit: cover; 
       display: block; 
       transition: transform 0.3s;
       background: #2A231C;
@@ -187,7 +186,7 @@
     .logo-text { font-family: 'Playfair Display', serif; font-weight: 800; line-height: 1.1; }
     .logo-sub { font-size: 0.6rem; letter-spacing: 2px; font-weight: 500; color: #6B5E4E; }
 
-    /* ===== CONSECUTIVE IMAGE GALLERY: OLD_1 and yerer15 ===== */
+    /* worship gallery */
     .worship-gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -214,7 +213,7 @@
     .worship-gallery .wg-item img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
       transition: transform 0.5s ease;
       background: #1F1A14;
@@ -246,7 +245,7 @@
       .worship-gallery .wg-item { aspect-ratio: 16 / 10; }
     }
 
-    /* Slideshow styles */
+    /* slideshow */
     .slideshow-container {
       position: relative;
       width: 100%;
@@ -273,24 +272,87 @@
     .slideshow-container .slide img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       display: block;
       background: #1F1A14;
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 3px;
+      background: #1F1A14;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    @media (max-width: 920px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: white;
+        padding: 20px 0 30px;
+        border-radius: 0 0 28px 28px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        gap: 12px;
+        align-items: center;
+        border-top: 1px solid rgba(181,139,92,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.1rem; }
+      .nav-links .btn-primary { padding: 12px 32px; }
+      nav .container { flex-wrap: wrap; }
+      nav .container > div:first-child { flex: 1; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-bg { min-height: 80vh; }
+      .hero-bg .container { padding-top: 20px; }
+      .youth-card { padding: 32px 18px; }
+      .youth-card h2 { font-size: 2rem; }
+    }
+
+    .img-attractive {
+      border-radius: 24px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .img-attractive:hover {
+      transform: scale(1.02) translateY(-6px);
+      box-shadow: 0 28px 64px rgba(0,0,0,0.12);
     }
   </style>
 </head>
 <body>
-<!-- ===== NAVIGATION ===== -->
+<!-- NAV -->
 <nav style="background: rgba(255,255,255,0.94); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.12);">
   <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; flex-wrap: wrap;">
     <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
       <img src="logo.jpg" alt="Logo" style="height: 48px; width: auto; border-radius: 8px;" />
       <div>
-        <div style="font-size: 1.1rem; font-weight: 800; color: #B58B5C; line-height: 1.15; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል ቤተክርስቲያን</div>
-        <div style="font-size: 0.6rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL BELIEVERS CHURCH</div>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #B58B5C; line-height: 1.15; font-family: 'Playfair Display', serif;">የረር ሙሉወንጌል</div>
+        <div style="font-size: 0.6rem; letter-spacing: 2px; color: #6B5E4E; font-weight: 500;">YERER FULL GOSPEL</div>
       </div>
     </a>
-    <div style="display: flex; gap: 28px; flex-wrap: wrap; align-items: center;">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks" style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap;">
       <a href="index.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2px solid #B58B5C; padding-bottom: 4px;">Home</a>
       <a href="about.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">About</a>
       <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s;">Sermons</a>
@@ -301,7 +363,7 @@
   </div>
 </nav>
 
-<!-- ===== HERO with XXXL.webp ===== -->
+<!-- HERO -->
 <section class="hero-bg" style="position: relative; color: white; padding: 0; overflow: hidden; min-height: 95vh; display: flex; align-items: center;">
   <div style="position: relative; z-index: 2; width: 100%; padding: 80px 0; text-align: center;">
     <div class="container">
@@ -323,29 +385,17 @@
   </div>
 </section>
 
-<!-- ===== CONSECUTIVE IMAGE GALLERY: OLD_1 and yerer15 ===== -->
+<!-- CONSECUTIVE GALLERY -->
 <section style="padding: 20px 0 10px; background: #F8F4EC;">
   <div class="container">
     <div class="worship-gallery">
-      <div class="wg-item">
-        <img src="OLD_1.jpg" alt="OLD_1 Worship" />
-        <div class="wg-overlay">
-          <h4>Ancient Paths</h4>
-          <p>Walking in the old ways of worship</p>
-        </div>
-      </div>
-      <div class="wg-item">
-        <img src="yerer15.jpg" alt="yerer15 Worship" />
-        <div class="wg-overlay">
-          <h4>Spirit of Praise</h4>
-          <p>Lifting high the name of Jesus</p>
-        </div>
-      </div>
+      <div class="wg-item"><img src="OLD_1.jpg" alt="OLD_1 Worship" /><div class="wg-overlay"><h4>Ancient Paths</h4><p>Walking in the old ways of worship</p></div></div>
+      <div class="wg-item"><img src="yerer15.jpg" alt="yerer15 Worship" /><div class="wg-overlay"><h4>Spirit of Praise</h4><p>Lifting high the name of Jesus</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== SERVICE TIMES ===== -->
+<!-- SERVICES -->
 <section style="padding: 60px 0 90px; background: #FFFFFF;">
   <div class="container">
     <h2 class="section-title">Join Our <span>Services</span></h2>
@@ -358,36 +408,36 @@
   </div>
 </section>
 
-<!-- ===== CHURCH GALLERY ===== -->
+<!-- GALLERY -->
 <section style="padding: 90px 0; background: #F8F4EC;">
   <div class="container">
     <h2 class="section-title">Our <span>Church</span></h2>
     <p class="section-subtitle">A glimpse into our community and worship</p>
     <div class="gallery-grid">
-      <div class="img-wrapper"><img src="yerer1.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer2.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer3.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer4.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer5.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer6.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer7.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer8.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer9.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer10.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer11.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer12.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer14.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer15.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer16.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer17.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer20.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="yerer21.jpg" alt="Church" /></div>
-      <div class="img-wrapper"><img src="youth.jpg" alt="Youth Ministry" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer1.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer2.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer3.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer4.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer5.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer6.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer7.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer8.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer9.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer10.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer11.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer12.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer14.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer15.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer16.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer17.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer20.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="yerer21.jpg" alt="Church" /></div>
+      <div class="img-wrapper img-attractive"><img src="youth.jpg" alt="Youth Ministry" /></div>
     </div>
   </div>
 </section>
 
-<!-- ===== WHAT WE BELIEVE ===== -->
+<!-- BELIEFS -->
 <section style="padding: 90px 0; background: #FFFFFF;">
   <div class="container">
     <h2 class="section-title">What We <span>Believe</span></h2>
@@ -401,7 +451,7 @@
   </div>
 </section>
 
-<!-- ===== YOUTH MINISTRY + SLIDESHOW ===== -->
+<!-- YOUTH + SLIDESHOW -->
 <section style="padding: 90px 0; background: #F8F4EC;">
   <div class="container">
     <div class="youth-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
@@ -410,28 +460,14 @@
         <h2 style="font-size: 2.8rem; margin: 18px 0 12px; font-family: 'Playfair Display', serif; color: #F0E8D8;">Join Our <span style="color: #D4A574;">Youth Revival</span></h2>
         <p style="font-size: 1.15rem; color: #C0B8A8; margin-bottom: 24px;">Raising a generation of Spirit-filled leaders. Weekly gatherings, worship, discipleship, and fun — all for Jesus.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px;">
-          <a href="events.html" style="text-decoration: none;">
-            <div class="event-chip"><i class="fas fa-calendar-alt"></i> Sat 11:30 AM – 1:30 PM · Youth Revival</div>
-          </a>
+          <a href="events.html" style="text-decoration: none;"><div class="event-chip"><i class="fas fa-calendar-alt"></i> Sat 11:30 AM – 1:30 PM · Youth Revival</div></a>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 14px;">
           <a href="events.html" class="btn-primary" style="background: #D4A574; box-shadow: 0 8px 24px rgba(212,165,116,0.3); padding: 14px 40px;"><i class="fas fa-calendar-check"></i> Join Youth Revival</a>
         </div>
       </div>
       <div class="youth-grid">
-        <div class="img-wrap">
-          <div class="slideshow-container" id="youthSlideshow">
-            <div class="slide active">
-              <img src="Keyboard_5.jpg" alt="Youth Worship" />
-            </div>
-            <div class="slide">
-              <img src="Keyboard_6jpg.jpg" alt="Youth Ministry" />
-            </div>
-            <div class="slide">
-              <img src="Keyboard_5.jpg" alt="Youth Praise" />
-            </div>
-          </div>
-        </div>
+        <div class="img-wrap"><div class="slideshow-container" id="youthSlideshow"><div class="slide active"><img src="Keyboard_5.jpg" alt="Youth Worship" /></div><div class="slide"><img src="Keyboard_6jpg.jpg" alt="Youth Ministry" /></div><div class="slide"><img src="Keyboard_5.jpg" alt="Youth Praise" /></div></div></div>
         <div class="img-wrap"><img src="youth.jpg" alt="Youth" /></div>
         <div class="img-wrap"><img src="yerer3.jpg" alt="Youth" /></div>
         <div class="img-wrap"><img src="yerer7.jpg" alt="Youth" /></div>
@@ -440,71 +476,33 @@
   </div>
 </section>
 
-<!-- ===== FEATURED SERMON ===== -->
+<!-- SERMON -->
 <section style="padding: 90px 0; background: #FFFFFF;">
   <div class="container">
     <h2 class="section-title">Latest <span>Sermon</span></h2>
     <p class="section-subtitle">Strengthen your faith with the Word of God</p>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/nKZ1D9ototY?si=1ZxrZwmxGXp-q6YA" title="Yerer Ber Full Gospel Church Worship" allowfullscreen></iframe>
-      </div>
-      <div>
-        <span class="pill-badge">Featured</span>
-        <h3 style="font-size: 2.4rem; margin: 18px 0 12px; font-weight: 700;">የየረር በር ሙሉ ወንጌል ኤልሮኢ የዝማሬ ህብረት</h3>
-        <p style="color: #5F5545; margin-bottom: 18px;"><i class="fas fa-calendar" style="color: #B58B5C;"></i> March 23, 2024</p>
-        <p style="margin-bottom: 28px; color: #2F2921; font-size: 1.05rem;">የዓርብ ምሽት ፕሮግራም · Yerer Ber Full Gospel Church</p>
-        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <a href="#" class="btn-primary" style="padding: 12px 28px;"><i class="fas fa-play"></i> Watch Now</a>
-          <a href="#" class="btn-secondary" style="padding: 12px 28px;"><i class="fas fa-share-alt"></i> Share</a>
-          <a href="#" style="color: #B58B5C; text-decoration: none; align-self: center;"><i class="fab fa-whatsapp" style="margin-right: 6px;"></i> Share</a>
-        </div>
-      </div>
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/nKZ1D9ototY?si=1ZxrZwmxGXp-q6YA" title="Yerer Ber Full Gospel Church Worship" allowfullscreen></iframe></div>
+      <div><span class="pill-badge">Featured</span><h3 style="font-size: 2.4rem; margin: 18px 0 12px; font-weight: 700;">የየረር በር ሙሉ ወንጌል ኤልሮኢ የዝማሬ ህብረት</h3><p style="color: #5F5545; margin-bottom: 18px;"><i class="fas fa-calendar" style="color: #B58B5C;"></i> March 23, 2024</p><p style="margin-bottom: 28px; color: #2F2921; font-size: 1.05rem;">የዓርብ ምሽት ፕሮግራም · Yerer Ber Full Gospel Church</p><div style="display: flex; gap: 14px; flex-wrap: wrap;"><a href="#" class="btn-primary" style="padding: 12px 28px;"><i class="fas fa-play"></i> Watch Now</a><a href="#" class="btn-secondary" style="padding: 12px 28px;"><i class="fas fa-share-alt"></i> Share</a><a href="#" style="color: #B58B5C; text-decoration: none; align-self: center;"><i class="fab fa-whatsapp" style="margin-right: 6px;"></i> Share</a></div></div>
     </div>
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="sermons.html" class="btn-secondary">View All Sermons <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-    </div>
+    <div style="text-align: center; margin-top: 40px;"><a href="sermons.html" class="btn-secondary">View All Sermons <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a></div>
   </div>
 </section>
 
-<!-- ===== TESTIMONIES ===== -->
+<!-- TESTIMONIES -->
 <section style="padding: 90px 0; background: #F8F4EC;">
   <div class="container">
     <h2 class="section-title">God Is <span>Moving</span></h2>
     <p class="section-subtitle">Powerful scriptures that reveal God's heart</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
-      <div class="testimonial-card" style="position: relative;">
-        <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i>
-        <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."</p>
-        <p style="font-weight: 600; color: #B58B5C;">— Jeremiah 29:11</p>
-        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-          <span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount1">147</span> prayed</span>
-          <button onclick="document.getElementById('amenCount1').innerText = parseInt(document.getElementById('amenCount1').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button>
-        </div>
-      </div>
-      <div class="testimonial-card" style="position: relative;">
-        <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i>
-        <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."</p>
-        <p style="font-weight: 600; color: #B58B5C;">— Isaiah 40:31</p>
-        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-          <span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount2">89</span> prayed</span>
-          <button onclick="document.getElementById('amenCount2').innerText = parseInt(document.getElementById('amenCount2').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button>
-        </div>
-      </div>
-      <div class="testimonial-card" style="position: relative;">
-        <i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i>
-        <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"I can do all this through him who gives me strength."</p>
-        <p style="font-weight: 600; color: #B58B5C;">— Philippians 4:13</p>
-        <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-          <span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount3">56</span> prayed</span>
-          <button onclick="document.getElementById('amenCount3').innerText = parseInt(document.getElementById('amenCount3').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button>
-        </div>
-      </div>
+      <div class="testimonial-card" style="position: relative;"><i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i><p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future."</p><p style="font-weight: 600; color: #B58B5C;">— Jeremiah 29:11</p><div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"><span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount1">147</span> prayed</span><button onclick="document.getElementById('amenCount1').innerText = parseInt(document.getElementById('amenCount1').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button></div></div>
+      <div class="testimonial-card" style="position: relative;"><i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i><p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."</p><p style="font-weight: 600; color: #B58B5C;">— Isaiah 40:31</p><div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"><span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount2">89</span> prayed</span><button onclick="document.getElementById('amenCount2').innerText = parseInt(document.getElementById('amenCount2').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button></div></div>
+      <div class="testimonial-card" style="position: relative;"><i class="fas fa-quote-left" style="color: #B58B5C; font-size: 2.4rem; opacity: 0.12; position: absolute; top: 20px; right: 24px;"></i><p style="font-style: italic; font-size: 1.1rem; margin-bottom: 18px; color: #2F2921;">"I can do all this through him who gives me strength."</p><p style="font-weight: 600; color: #B58B5C;">— Philippians 4:13</p><div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;"><span><i class="fas fa-hands-praying" style="color: #B58B5C;"></i> <span id="amenCount3">56</span> prayed</span><button onclick="document.getElementById('amenCount3').innerText = parseInt(document.getElementById('amenCount3').innerText) + 1" style="background: #B58B5C; border: none; color: white; padding: 6px 18px; border-radius: 60px; cursor: pointer; font-weight: 500;">Amen</button></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== GIVE SECTION ===== -->
+<!-- GIVE -->
 <section style="padding: 90px 0; background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%); color: white; text-align: center;">
   <div class="container">
     <h2 style="font-size: 3rem; margin-bottom: 12px;">Support the <span style="color: #D4A574;">Ministry</span></h2>
@@ -517,7 +515,7 @@
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer style="background: #14100C; color: #A09888; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.04);">
   <div class="container">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px;">
@@ -530,7 +528,15 @@
 </footer>
 
 <script>
-  // Countdown timer
+  // hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  // countdown
   function updateCountdown() {
     const now = new Date();
     let nextSunday = new Date(now);
@@ -548,25 +554,15 @@
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // Youth slideshow
+  // youth slideshow
   (function() {
     const container = document.getElementById('youthSlideshow');
     if (!container) return;
     const slides = container.querySelectorAll('.slide');
     let currentIndex = 0;
     const totalSlides = slides.length;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      showSlide(currentIndex);
-    }
-
+    function showSlide(index) { slides.forEach((slide, i) => { slide.classList.toggle('active', i === index); }); }
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; showSlide(currentIndex); }
     showSlide(0);
     setInterval(nextSlide, 4000);
   })();
