@@ -55,129 +55,16 @@
         }
         .hero-bg h1 { font-size: 2.8rem; margin-bottom: 10px; }
         .hero-bg p { font-size: 1.2rem; opacity: 0.9; }
-
-        /* GALLERY SPLIT - 4 LEFT / 4 RIGHT with slide effect */
-        .church-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 40px 0;
-            background: #1F1A14;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -8px rgba(0,0,0,0.25);
-        }
-        .split-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            padding: 6px;
-            background: #1F1A14;
-        }
-        .split-col .img-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 14px;
-            aspect-ratio: 1 / 1;
-            background: #2A241E;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .split-col .img-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s ease, filter 0.4s ease;
-        }
-        .split-col .img-card:hover {
-            transform: scale(1.02) translateY(-3px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-            z-index: 3;
-        }
-        .split-col .img-card:hover img {
-            transform: scale(1.08);
-            filter: brightness(1.1) contrast(1.05);
-        }
-        .split-col .img-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .split-col .img-card:hover::after {
-            opacity: 1;
-        }
-        /* caption overlay on hover */
-        .split-col .img-card .caption {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            right: 12px;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.4s ease;
-            z-index: 2;
-            font-family: 'Inter', sans-serif;
-        }
-        .split-col .img-card:hover .caption {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* slide-in animation classes */
-        .slide-left {
-            animation: slideLeft 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
-        .slide-right {
-            animation: slideRight 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-        }
-        @keyframes slideLeft {
-            0% { opacity: 0; transform: translateX(-40px) scale(0.96); }
-            100% { opacity: 1; transform: translateX(0) scale(1); }
-        }
-        @keyframes slideRight {
-            0% { opacity: 0; transform: translateX(40px) scale(0.96); }
-            100% { opacity: 1; transform: translateX(0) scale(1); }
-        }
-
-        /* dot navigation for split */
-        .split-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0 10px;
-        }
-        .split-dots .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #C49A6C40;
-            cursor: pointer;
+        .event-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-left: 5px solid #C49A6C;
             transition: all 0.3s ease;
-            border: none;
         }
-        .split-dots .dot.active {
-            background: #C49A6C;
-            transform: scale(1.2);
-        }
-        .split-dots .dot:hover {
-            background: #C49A6C;
-        }
-
-        /* weekly service cards */
+        .event-card:hover { transform: translateX(6px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .weekly-service {
             background: white;
             padding: 25px;
@@ -190,21 +77,7 @@
         .weekly-service h3 { font-size: 1.2rem; margin-bottom: 6px; }
         .weekly-service p { color: #5F5545; }
 
-        @media (max-width: 768px) {
-            .section-title { font-size: 2rem; }
-            .container { padding: 0 16px; }
-            .hero-bg h1 { font-size: 2rem; }
-            .church-split { grid-template-columns: 1fr; gap: 8px; }
-            .split-col { gap: 4px; padding: 4px; }
-            .split-col .img-card { aspect-ratio: 1/1; }
-            nav .container { flex-direction: column; gap: 12px; }
-            .split-dots { gap: 6px; }
-        }
-        @media (max-width: 480px) {
-            .split-col .img-card .caption { font-size: 0.6rem; bottom: 6px; left: 6px; }
-        }
-
-        /* YOUTH GALLERY (original) */
+        /* YOUTH GALLERY SLIDER */
         .youth-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -239,7 +112,7 @@
         }
         .youth-gallery .img-wrapper:hover img { transform: scale(1.06); }
 
-        /* slideshow (original) */
+        /* SLIDESHOW */
         .slideshow-container {
             position: relative;
             width: 100%;
@@ -272,6 +145,25 @@
             object-fit: cover;
             display: block;
         }
+        .slideshow-container .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 30px 24px;
+            background: linear-gradient(transparent, rgba(15,13,10,0.8) 70%);
+            color: white;
+        }
+        .slideshow-container .slide-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #D4A574;
+        }
+        .slideshow-container .slide-overlay p {
+            color: #D4C8B8;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
         .slideshow-dots {
             text-align: center;
             margin-top: 14px;
@@ -289,9 +181,15 @@
         .slideshow-dots .dot.active {
             background: #C49A6C;
         }
+
         @media (max-width: 768px) {
+            .section-title { font-size: 2rem; }
+            .container { padding: 0 16px; }
+            nav .container { flex-direction: column; gap: 12px; }
+            .hero-bg h1 { font-size: 2rem; }
             .slideshow-container { height: 250px; }
             .youth-gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+            .slideshow-container .slide-overlay h3 { font-size: 1.2rem; }
         }
         @media (max-width: 480px) {
             .slideshow-container { height: 200px; }
@@ -330,22 +228,6 @@
     </div>
 </section>
 
-<!-- ===== OUR CHURCH - SPLIT GALLERY with SLIDE ===== -->
-<section style="padding: 50px 0 20px; background: #FDF8F0;">
-    <div class="container">
-        <h2 class="section-title">Our <span>Church</span></h2>
-        <p class="section-subtitle">A glimpse into our community and worship</p>
-        
-        <!-- Split Gallery: 4 left, 4 right with slide effect -->
-        <div class="church-split" id="churchSplit">
-            <div class="split-col" id="leftCol"></div>
-            <div class="split-col" id="rightCol"></div>
-        </div>
-        <div class="split-dots" id="splitDots"></div>
-        <p style="text-align: center; color: #6B5E4E; font-size: 0.9rem; margin-top: 8px;">hover to magnify · slide show every 5s</p>
-    </div>
-</section>
-
 <!-- ===== YOUTH REVIVAL DETAILS ===== -->
 <section style="padding: 40px 0 20px;">
     <div class="container">
@@ -363,20 +245,24 @@
     </div>
 </section>
 
-<!-- ===== SLIDESHOW (original) ===== -->
+<!-- ===== SLIDESHOW ===== -->
 <section style="padding: 10px 0 0;">
     <div class="container">
-        <div class="slideshow-container" id="youthSlideshow"></div>
+        <div class="slideshow-container" id="youthSlideshow">
+            <!-- Slides will be injected by JS -->
+        </div>
         <div class="slideshow-dots" id="slideshowDots"></div>
     </div>
 </section>
 
-<!-- ===== YOUTH GALLERY (original) ===== -->
+<!-- ===== YOUTH GALLERY ===== -->
 <section style="padding: 30px 0 60px;">
     <div class="container">
         <h2 class="section-title">Youth <span>Gallery</span></h2>
         <p class="section-subtitle">Moments from our weekly teachings and gatherings</p>
-        <div class="youth-gallery" id="youthGallery"></div>
+        <div class="youth-gallery" id="youthGallery">
+            <!-- Injected by JS -->
+        </div>
     </div>
 </section>
 
@@ -452,105 +338,7 @@
 </footer>
 
 <script>
-    // ============================================================
-    // 1) OUR CHURCH SPLIT GALLERY  (4 left / 4 right) with slide
-    // ============================================================
-    const churchImages = [
-        "yerer11.jpg", "yerer12.jpg", "2.jpg", "5.jpg",
-        "6.jpg", "7.jpg", "56.jpg", "57.jpg",
-        "59.jpg", "60.jpg", "photo_2026-06-08_06-32-49.jpg",
-        "save_4.jpg", "save_5.jpg", "save_6.jpg"
-    ];
-
-    // We'll pick 8 images: first 4 for left, next 4 for right
-    // but we want to cycle through all images in sets of 8
-    let currentSet = 0;
-    const totalSets = Math.ceil(churchImages.length / 8);
-
-    function getSetImages(setIndex) {
-        const start = setIndex * 8;
-        const end = Math.min(start + 8, churchImages.length);
-        const slice = churchImages.slice(start, end);
-        // pad with duplicates if less than 8 (should not happen with 14 images, but safe)
-        while (slice.length < 8) {
-            slice.push(churchImages[0]);
-        }
-        return slice;
-    }
-
-    function renderSplit(setIndex) {
-        const images = getSetImages(setIndex);
-        const leftCol = document.getElementById('leftCol');
-        const rightCol = document.getElementById('rightCol');
-        const leftImages = images.slice(0, 4);
-        const rightImages = images.slice(4, 8);
-
-        // clear with animation reset
-        leftCol.innerHTML = '';
-        rightCol.innerHTML = '';
-
-        leftImages.forEach((src, i) => {
-            const card = document.createElement('div');
-            card.className = 'img-card slide-left';
-            card.style.animationDelay = `${i * 0.08}s`;
-            card.innerHTML = `
-                <img src="${src}" alt="Church ${i+1}" loading="lazy" />
-                <div class="caption">✝️ ${src.split('.')[0]}</div>
-            `;
-            leftCol.appendChild(card);
-        });
-
-        rightImages.forEach((src, i) => {
-            const card = document.createElement('div');
-            card.className = 'img-card slide-right';
-            card.style.animationDelay = `${i * 0.08}s`;
-            card.innerHTML = `
-                <img src="${src}" alt="Church ${i+5}" loading="lazy" />
-                <div class="caption">✝️ ${src.split('.')[0]}</div>
-            `;
-            rightCol.appendChild(card);
-        });
-
-        // update dots
-        document.querySelectorAll('#splitDots .dot').forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === setIndex);
-        });
-        currentSet = setIndex;
-    }
-
-    // create dots
-    const dotsContainer = document.getElementById('splitDots');
-    for (let i = 0; i < totalSets; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.dataset.index = i;
-        dot.addEventListener('click', () => {
-            renderSplit(i);
-            resetSplitInterval();
-        });
-        dotsContainer.appendChild(dot);
-    }
-
-    // initial render
-    renderSplit(0);
-
-    // auto slide every 5s
-    let splitInterval = setInterval(() => {
-        const next = (currentSet + 1) % totalSets;
-        renderSplit(next);
-    }, 5000);
-
-    function resetSplitInterval() {
-        clearInterval(splitInterval);
-        splitInterval = setInterval(() => {
-            const next = (currentSet + 1) % totalSets;
-            renderSplit(next);
-        }, 5000);
-    }
-
-    // ============================================================
-    // 2) YOUTH GALLERY (original, but with updated image list)
-    // ============================================================
+    // ---- Youth Gallery ----
     const galleryImages = [
         "Class_3.jpg", "Classes_1.jpg", "Classes_4.jpg", "Classes_5.jpg",
         "Youth_2.jpg", "Youth_3.jpg", "Youth_4.jpg", "youth_5.jpg", "Youth_6.jpg",
@@ -565,12 +353,11 @@
         galleryContainer.appendChild(wrapper);
     });
 
-    // ============================================================
-    // 3) SLIDESHOW (original)
-    // ============================================================
+    // ---- Slideshow ----
     const slideshowImages = galleryImages;
     const slideshowContainer = document.getElementById('youthSlideshow');
-    const slideshowDots = document.getElementById('slideshowDots');
+    const dotsContainer = document.getElementById('slideshowDots');
+
     slideshowContainer.innerHTML = '';
 
     let currentSlide = 0;
@@ -588,12 +375,12 @@
         dot.className = 'dot' + (index === 0 ? ' active' : '');
         dot.dataset.index = index;
         dot.addEventListener('click', () => goToSlide(index));
-        slideshowDots.appendChild(dot);
+        dotsContainer.appendChild(dot);
     });
 
     function goToSlide(index) {
         const slides = slideshowContainer.querySelectorAll('.slide');
-        const dots = slideshowDots.querySelectorAll('.dot');
+        const dots = dotsContainer.querySelectorAll('.dot');
         slides.forEach((s, i) => s.classList.toggle('active', i === index));
         dots.forEach((d, i) => d.classList.toggle('active', i === index));
         currentSlide = index;
@@ -605,13 +392,14 @@
     }
 
     slideInterval = setInterval(nextSlide, 4000);
+
     slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slideshowContainer.addEventListener('mouseleave', () => {
         slideInterval = setInterval(nextSlide, 4000);
     });
 
-    // touch support
-    let touchStartX = 0, touchEndX = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
     slideshowContainer.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
