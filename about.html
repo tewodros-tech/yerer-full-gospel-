@@ -1,545 +1,1395 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>About Us | የረር ሙሉወንጌል ቤተክርስቲያን</title>
-    <meta name="description" content="Learn about Yerer Full Gospel Believers Church. Our history, mission, vision, pastors, and core values." />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #FCF8F0;
-            color: #1F1A14;
-            line-height: 1.7;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 28px;
-        }
-        /* ----- BUTTONS ----- */
-        .btn-primary {
-            display: inline-block;
-            background: #B58B5C;
-            color: white;
-            padding: 14px 38px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(181, 139, 92, 0.35);
-            letter-spacing: 0.3px;
-        }
-        .btn-primary:hover {
-            background: #9F7349;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(181, 139, 92, 0.5);
-        }
-        .btn-secondary {
-            display: inline-block;
-            background: transparent;
-            color: #B58B5C;
-            padding: 14px 38px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid #B58B5C;
-            transition: all 0.4s ease;
-        }
-        .btn-secondary:hover {
-            background: #B58B5C;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(181, 139, 92, 0.3);
-        }
-        .btn-outline-light {
-            display: inline-block;
-            background: rgba(255,255,255,0.08);
-            color: white;
-            padding: 14px 38px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1.5px solid rgba(255,255,255,0.5);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(6px);
-        }
-        .btn-outline-light:hover {
-            background: white;
-            color: #1F1A14;
-            border-color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            margin-bottom: 12px;
-            color: #1F1A14;
-            letter-spacing: -0.5px;
-            position: relative;
-        }
-        .section-title span { color: #B58B5C; }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #B58B5C, #D4A574);
-            margin: 12px auto 0;
-            border-radius: 4px;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: #6B5E4E;
-            margin-bottom: 56px;
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-        }
-        /* ----- CARDS & GLASS ----- */
-        .glass-card {
-            background: rgba(255,255,255,0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 32px;
-            padding: 40px 32px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
-        }
-        .glass-card:hover {
-            transform: translateY(-10px) scale(1.01);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.08);
-            background: rgba(255,255,255,0.9);
-        }
-        .value-card {
-            text-align: center;
-            padding: 32px 20px;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(4px);
-            border-radius: 28px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: 1px solid rgba(181,139,92,0.08);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
-        }
-        .value-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: #FFFFFF;
-            box-shadow: 0 20px 48px rgba(181,139,92,0.12);
-            border-color: rgba(181,139,92,0.15);
-        }
-        .value-card i { font-size: 2.8rem; color: #B58B5C; margin-bottom: 16px; display: block; }
-        .value-card h3 { font-size: 1.2rem; margin-bottom: 6px; color: #1F1A14; }
-        .value-card p { color: #5F5545; font-size: 0.95rem; }
-        /* ----- HERO ----- */
-        .hero-bg {
-            background: url('XXXL.webp') center/cover no-repeat;
-            position: relative;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(145deg, rgba(15,13,10,0.88) 0%, rgba(26,26,42,0.8) 100%);
-            z-index: 0;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 80px 0 60px;
-        }
-        .hero-badge {
-            background: rgba(181,139,92,0.2);
-            padding: 8px 28px;
-            border-radius: 60px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border: 1px solid rgba(181,139,92,0.2);
-            display: inline-block;
-            backdrop-filter: blur(4px);
-        }
-        /* ----- TIMELINE ----- */
-        .timeline-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            padding-left: 20px;
-            border-left: 4px solid #B58B5C;
-            transition: all 0.3s;
-        }
-        .timeline-item:hover { border-left-color: #D4A574; padding-left: 28px; }
-        .timeline-year {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #B58B5C;
-            min-width: 100px;
-            font-family: 'Playfair Display', serif;
-        }
-        /* ----- PASTOR CARDS ----- */
-        .pastor-card {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 32px;
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .pastor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 56px rgba(0,0,0,0.08);
-            background: rgba(255,255,255,0.98);
-        }
-        .pastor-card img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #B58B5C;
-            box-shadow: 0 12px 28px rgba(181,139,92,0.2);
-            transition: transform 0.4s;
-        }
-        .pastor-card:hover img { transform: scale(1.04); }
-        /* ----- GALLERY ----- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 24px;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
-        }
-        .gallery-grid img:hover {
-            transform: scale(1.04) rotate(0.5deg);
-            box-shadow: 0 20px 48px rgba(0,0,0,0.12);
-        }
-        /* ----- STATS ----- */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 32px;
-            text-align: center;
-        }
-        .stat-number {
-            font-size: 3.6rem;
-            font-weight: 800;
-            color: #B58B5C;
-            font-family: 'Playfair Display', serif;
-            line-height: 1.1;
-        }
-        .stat-label { color: #5F5545; font-weight: 500; margin-top: 4px; letter-spacing: 0.5px; }
-        /* ----- DOCTRINE BOX ----- */
-        .doctrine-box {
-            background: rgba(248,244,236,0.7);
-            backdrop-filter: blur(4px);
-            border-radius: 28px;
-            padding: 40px 32px;
-            border-left: 6px solid #B58B5C;
-            transition: all 0.3s;
-        }
-        .doctrine-box:hover { background: rgba(248,244,236,0.95); transform: translateY(-4px); }
-        /* ----- RESPONSIVE ----- */
-        @media (max-width: 992px) {
-            .section-title { font-size: 2.6rem; }
-            .pastor-card { flex-direction: column; text-align: center; padding: 32px; }
-            .pastor-card img { width: 150px; height: 150px; }
-        }
-        @media (max-width: 768px) {
-            .section-title { font-size: 2.2rem; }
-            .container { padding: 0 20px; }
-            nav .container { flex-direction: column; gap: 12px; padding: 12px 16px; }
-            .hero-content { padding: 60px 0 40px; }
-            .hero-bg { min-height: 60vh; }
-            .timeline-item { flex-direction: column; gap: 8px; padding-left: 16px; }
-            .timeline-year { font-size: 1.6rem; min-width: auto; }
-            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-            .gallery-grid img { height: 160px; }
-            .stat-number { font-size: 2.8rem; }
-            .btn-primary, .btn-secondary, .btn-outline-light { padding: 12px 28px; font-size: 0.9rem; }
-            .glass-card { padding: 28px 20px; }
-            .doctrine-box { padding: 28px 20px; }
-        }
-        @media (max-width: 480px) {
-            .section-title { font-size: 1.8rem; }
-            .hero-bg { min-height: 50vh; }
-            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-            .gallery-grid img { height: 130px; }
-            .pastor-card img { width: 120px; height: 120px; }
-            .stat-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-        }
-        /* ----- UTILITY ----- */
-        .bg-soft { background: #F8F4EC; }
-        .bg-white { background: #FFFFFF; }
-        .text-gold { color: #B58B5C; }
-        .fade-in { animation: fadeUp 0.8s ease forwards; opacity: 0; }
-        @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>About Us | የረር ሙሉወንጌል ቤተክርስቲያን</title>
+  <meta name="description" content="Learn about Yerer Full Gospel Believers Church. Our history, mission, vision, pastors, and core values." />
+  
+  <!-- Premium Typography Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Serif+Ethiopic:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <style>
+    /* Premium Theme Variable System */
+    :root {
+      --primary: #C5A880;
+      --primary-hover: #AA8B60;
+      --primary-light: rgba(197, 168, 128, 0.12);
+      --dark-gold: #9E7D50;
+      --accent: #E5C396;
+      --bg-dark: #0D0A08;
+      --bg-medium: #17120E;
+      --bg-light: #FCF8F2;
+      --bg-card: #FFFFFF;
+      --text-main: #1F1A14;
+      --text-muted: #6B5E4E;
+      --text-light: #F4EFEB;
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(197, 168, 128, 0.18);
+      --shadow-premium: 0 16px 48px rgba(23, 18, 14, 0.04);
+      --shadow-hover: 0 24px 64px rgba(197, 168, 128, 0.16);
+      --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+      border: 2px solid var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-hover);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.8;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .logo-font { 
+      font-family: 'Playfair Display', serif; 
+    }
+
+    .amharic {
+      font-family: 'Noto Serif Ethiopic', serif;
+    }
+
+    .container { 
+      max-width: 1340px; 
+      margin: 0 auto; 
+      padding: 0 30px; 
+    }
+
+    /* Elegant Glowing Badges */
+    .pill-badge {
+      background: var(--primary-light);
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--dark-gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 12px rgba(197, 168, 128, 0.05);
+    }
+
+    /* Buttons Reimagined */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark-gold) 100%);
+      color: white;
+      padding: 16px 42px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition-smooth);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(158, 125, 80, 0.3);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--dark-gold) 0%, var(--primary) 100%);
+      transition: opacity 0.5s ease;
+      z-index: -1;
+      opacity: 0;
+    }
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+    .btn-primary:hover { 
+      transform: translateY(-4px); 
+      box-shadow: 0 16px 36px rgba(158, 125, 80, 0.45); 
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--dark-gold);
+      padding: 16px 42px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid var(--primary);
+      transition: var(--transition-smooth);
+    }
+    .btn-secondary:hover { 
+      background: var(--primary-light); 
+      color: var(--dark-gold);
+      transform: translateY(-2px); 
+    }
+
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      padding: 16px 42px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: var(--transition-smooth);
+      backdrop-filter: blur(8px);
+    }
+    .btn-outline-light:hover { 
+      background: white; 
+      color: var(--bg-dark); 
+      border-color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255,255,255,0.15);
+    }
+
+    /* Premium Sticky Navigation */
+    nav {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--glass-border);
+      transition: var(--transition-smooth);
+    }
+    nav.scrolled {
+      padding: 8px 0;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      transition: var(--transition-smooth);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: var(--transition-smooth);
+      padding: 6px 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--primary);
+      transition: var(--transition-smooth);
+    }
+    .nav-links a:hover {
+      color: var(--dark-gold);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-links a.active {
+      color: var(--dark-gold);
+      font-weight: 700;
+    }
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hamburger Menu Button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      z-index: 1001;
+    }
+    .hamburger span {
+      display: block;
+      width: 28px;
+      height: 2.5px;
+      background: var(--text-main);
+      border-radius: 4px;
+      transition: var(--transition-smooth);
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    /* Immersive Hero Section */
+    .hero-bg {
+      background: url('XXXL.webp') center/cover no-repeat;
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(13, 10, 8, 0.8) 0%, rgba(23, 18, 14, 0.93) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      padding: 120px 0 80px;
+    }
+    .hero-title {
+      font-size: 5.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 24px auto;
+      letter-spacing: -1px;
+      max-width: 1000px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent) 30%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.85);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    /* Section Typography & Accents */
+    .section-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .section-title {
+      font-size: 3.2rem;
+      color: var(--text-main);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .section-title span {
+      color: var(--dark-gold);
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Modern Immersive Timeline */
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 4px;
+      background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 50%, var(--dark-gold) 100%);
+      transform: translateX(-50%);
+      border-radius: 4px;
+    }
+    .timeline-node {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+      width: 100%;
+    }
+    .timeline-node:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .timeline-bubble {
+      width: 45%;
+      background: var(--bg-card);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(197, 168, 128, 0.12);
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+    .timeline-node:hover .timeline-bubble {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary);
+    }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 5px solid var(--primary);
+      z-index: 5;
+      box-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+      transition: var(--transition-smooth);
+    }
+    .timeline-node:hover .timeline-dot {
+      background: var(--dark-gold);
+      transform: translateX(-50%) scale(1.3);
+      box-shadow: 0 0 25px rgba(158, 125, 80, 0.8);
+    }
+    .timeline-year-badge {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--dark-gold);
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Core Values Immersive Filter Grid */
+    .values-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+    .values-search {
+      width: 100%;
+      max-width: 400px;
+      padding: 16px 28px;
+      border-radius: 50px;
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 1rem;
+      outline: none;
+      box-shadow: var(--shadow-premium);
+      transition: var(--transition-smooth);
+    }
+    .values-search:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(197, 168, 128, 0.15);
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .value-card {
+      background: var(--bg-card);
+      border-radius: 32px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(197, 168, 128, 0.08);
+      transition: var(--transition-smooth);
+    }
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary);
+    }
+    .value-card i {
+      font-size: 2.8rem;
+      color: var(--dark-gold);
+      margin-bottom: 24px;
+      display: inline-block;
+      transition: var(--transition-smooth);
+    }
+    .value-card:hover i {
+      transform: scale(1.15) rotate(5deg);
+    }
+    .value-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+    .value-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Immersive Interactive Accordion Doctrine */
+    .doctrine-flex {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .doctrine-accord-box {
+      background: var(--bg-card);
+      border-radius: 32px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(197, 168, 128, 0.08);
+      overflow: hidden;
+    }
+    .doctrine-header {
+      padding: 30px 40px;
+      background: var(--bg-card);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition-smooth);
+      border-bottom: 1px solid rgba(197, 168, 128, 0.08);
+    }
+    .doctrine-header:hover {
+      background: var(--primary-light);
+    }
+    .doctrine-header h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .doctrine-header h3 i {
+      color: var(--dark-gold);
+    }
+    .doctrine-icon-arrow {
+      font-size: 1.2rem;
+      color: var(--dark-gold);
+      transition: var(--transition-smooth);
+    }
+    .doctrine-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 0 40px;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .doctrine-accord-box.active .doctrine-content {
+      padding: 30px 40px;
+      max-height: 350px;
+    }
+    .doctrine-accord-box.active .doctrine-icon-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Pastors Reimagined Section */
+    .pastor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 40px;
+    }
+    .pastor-card {
+      background: var(--bg-card);
+      border-radius: 36px;
+      padding: 40px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(197, 168, 128, 0.08);
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+    .pastor-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; width: 120px; height: 120px;
+      background: radial-gradient(circle at 100% 0, var(--primary-light) 0%, transparent 70%);
+      border-radius: 0 0 0 100%;
+    }
+    .pastor-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--primary);
+    }
+    .pastor-img-wrapper {
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid var(--primary-light);
+      box-shadow: var(--shadow-premium);
+      transition: var(--transition-smooth);
+    }
+    .pastor-card:hover .pastor-img-wrapper {
+      transform: scale(1.05);
+      border-color: var(--primary);
+    }
+    .pastor-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .pastor-info h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+    .pastor-info .pastor-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .pastor-info p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .pastor-socials {
+      display: flex;
+      gap: 16px;
+    }
+    .pastor-socials a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-gold);
+      transition: var(--transition-smooth);
+      text-decoration: none;
+    }
+    .pastor-socials a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* Immersive Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      box-shadow: var(--shadow-premium);
+      transition: var(--transition-smooth);
+      background: var(--bg-dark);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Modern Stats Section */
+    .stats-hub {
+      background: var(--bg-medium);
+      color: white;
+      border-radius: 40px;
+      padding: 80px 60px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+    .stat-card {
+      text-align: center;
+      position: relative;
+    }
+    .stat-card:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 50%; right: -20px;
+      width: 1px; height: 60px;
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-50%);
+    }
+    .stat-number {
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-label {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Immersive Interactive Prayer Request Box */
+    .prayer-wall-section {
+      background: var(--bg-card);
+      border-radius: 40px;
+      padding: 60px;
+      box-shadow: var(--shadow-premium);
+      border: 1px solid rgba(197, 168, 128, 0.08);
+      display: grid;
+      grid-template-columns: 1.10fr 0.90fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .prayer-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .form-control {
+      padding: 16px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      background: var(--bg-light);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      background: white;
+    }
+    textarea.form-control {
+      border-radius: 24px;
+      resize: none;
+      height: 120px;
+    }
+    .prayer-stats-display {
+      text-align: center;
+      padding: 40px;
+      background: var(--primary-light);
+      border-radius: 32px;
+      border: 1px solid rgba(197,168,128,0.15);
+    }
+    .prayer-big-number {
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--dark-gold);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    /* Floating Praying Particles */
+    .pray-particle {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.5rem;
+      animation: floatUp 1.2s cubic-bezier(0.25, 1, 0.50, 1) forwards;
+      z-index: 10000;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+    }
+
+    /* CTA Section */
+    .cta-hub {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+      color: white;
+      border-radius: 40px;
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-hub::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(197, 168, 128, 0.08) 0%, transparent 60%);
+    }
+
+    /* Footer Styles */
+    footer {
+      background: var(--bg-dark);
+      color: #A09888;
+      padding: 100px 0 40px;
+      border-top: 1px solid rgba(197, 168, 128, 0.08);
+    }
+    footer h3 {
+      color: #F0E8D8;
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+    }
+    footer a {
+      color: #A09888;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    footer a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Architecture Styles */
+    @media (max-width: 1024px) {
+      .hero-title { font-size: 4rem; }
+      .timeline-container::before { left: 40px; }
+      .timeline-node { flex-direction: row !important; }
+      .timeline-bubble { width: calc(100% - 80px); margin-left: 80px; }
+      .timeline-dot { left: 40px; }
+      .doctrine-flex { grid-template-columns: 1fr; }
+      .pastor-grid { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-card:not(:last-child)::after { display: none; }
+      .prayer-wall-section { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 920px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 40px 0;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        gap: 24px;
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 3rem; }
+      .section-title { font-size: 2.4rem; }
+      .pastor-card { flex-direction: column; text-align: center; }
+      .stats-hub { padding: 40px 20px; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .prayer-wall-section { padding: 40px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-hub { padding: 50px 24px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ===== NAVIGATION ===== -->
-<nav style="background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 4px 24px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(181,139,92,0.1);">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; flex-wrap: wrap;">
-        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-            <img src="logo.jpg" alt="Logo" style="height: 48px; width: auto; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);" />
-            <div>
-                <div style="font-size: 1.3rem; font-weight: 800; color: #B58B5C; line-height: 1.1; letter-spacing: -0.3px;">የረር ሙሉወንጌል</div>
-                <div style="font-size: 0.65rem; letter-spacing: 2.5px; color: #6B5E4E; font-weight: 600;">YERER FULL GOSPEL</div>
-            </div>
-        </a>
-        <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: center;">
-            <a href="index.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s; font-size: 0.95rem;">Home</a>
-            <a href="about.html" style="text-decoration: none; color: #B58B5C; font-weight: 600; border-bottom: 2.5px solid #B58B5C; padding-bottom: 4px; font-size: 0.95rem;">About</a>
-            <a href="sermons.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s; font-size: 0.95rem;">Sermons</a>
-            <a href="events.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s; font-size: 0.95rem;">Events</a>
-            <a href="give.html" style="text-decoration: none; color: #1F1A14; font-weight: 500; transition: color 0.2s; font-size: 0.95rem;">Give</a>
-            <a href="#" class="btn-primary" style="padding: 10px 28px; font-size: 0.85rem; box-shadow: 0 4px 16px rgba(181,139,92,0.3);">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-        </div>
+<!-- NAVIGATION BAR -->
+<nav id="navbar">
+  <div class="container nav-container">
+    <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 14px;">
+      <img src="logo.jpg" alt="Logo" style="height: 54px; width: auto; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1);" />
+      <div>
+        <div class="amharic logo-font" style="font-size: 1.25rem; font-weight: 800; color: var(--dark-gold); line-height: 1.1;">የረር ሙሉወንጌል</div>
+        <div style="font-size: 0.65rem; letter-spacing: 3px; color: var(--text-muted); font-weight: 600;">YERER FULL GOSPEL</div>
+      </div>
+    </a>
+    
+    <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+      <span></span><span></span><span></span>
+    </button>
+    
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="sermons.html">Sermons</a>
+      <a href="events.html">Events</a>
+      <a href="give.html">Give</a>
+      <a href="live.html" class="btn-primary" style="padding: 12px 28px; color: white;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
     </div>
+  </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- IMMERSIVE HERO SECTION -->
 <section class="hero-bg">
-    <div class="container hero-content" style="text-align: center;">
-        <span class="hero-badge" style="color: #E8DDD0;">About Us</span>
-        <h1 style="font-size: clamp(2.8rem, 8vw, 5rem); margin: 24px 0 16px; line-height: 1.1; font-weight: 800; color: white;">Our <span style="color: #D4A574;">Story</span></h1>
-        <p style="font-size: clamp(1.1rem, 2.5vw, 1.5rem); max-width: 720px; margin: 0 auto 10px; color: #D4C8B8; font-weight: 300;">A church rooted in faith, united in love, and reaching the world with the Full Gospel.</p>
-        <p style="font-size: 1.1rem; color: #B8A898; font-weight: 400; letter-spacing: 1px;">የረር ሙሉወንጌል ቤተክርስቲያን · Since 1988</p>
-        <div style="margin-top: 40px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
-            <a href="#history" class="btn-primary" style="padding: 16px 40px;"><i class="fas fa-book-open" style="margin-right: 10px;"></i>Our History</a>
-            <a href="#mission" class="btn-outline-light" style="padding: 16px 40px;">Mission & Vision</a>
-            <a href="#pastors" class="btn-outline-light" style="padding: 16px 40px;">Meet Pastors</a>
-        </div>
+  <div class="container hero-content">
+    <span class="pill-badge" style="background: rgba(197, 168, 128, 0.15); border-color: rgba(197, 168, 128, 0.3); color: var(--accent);"><i class="fas fa-church"></i> Our History & Calling</span>
+    <h1 class="hero-title amharic">Our <span>Story</span></h1>
+    <p class="hero-subtitle amharic">A church rooted in faith, united in love, and reaching the world with the Full Gospel.</p>
+    <p style="font-size: 1.1rem; color: var(--accent); font-weight: 600; letter-spacing: 1px;" class="amharic">የረር ሙሉወንጌል ቤተክርስቲያን · Since 1988</p>
+    
+    <div style="margin-top: 40px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
+      <a href="#history" class="btn-primary" style="padding: 16px 40px;"><i class="fas fa-book-open" style="margin-right: 10px;"></i>Our History</a>
+      <a href="#mission" class="btn-outline-light" style="padding: 16px 40px;">Mission & Values</a>
+      <a href="#pastors" class="btn-outline-light" style="padding: 16px 40px;">Meet Pastors</a>
     </div>
+  </div>
 </section>
 
-<!-- ===== HISTORY ===== -->
-<section id="history" style="padding: 80px 0; background: #FFFFFF;">
-    <div class="container">
-        <h2 class="section-title">Our <span>History</span></h2>
-        <p class="section-subtitle">From a spontaneous revival among students to a nationwide movement — God's faithfulness through the years</p>
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div class="timeline-item"><div class="timeline-year">1965</div><div><h3 style="font-size: 1.3rem; margin-bottom: 6px;">The Revival Begins</h3><p style="color: #5F5545;">A spontaneous gospel revival broke out among students of higher institutions across Ethiopia. The Holy Spirit moved powerfully, and the fire spread to provincial towns, small villages, and the countryside.</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">1974</div><div><h3 style="font-size: 1.3rem; margin-bottom: 6px;">National Organization</h3><p style="color: #5F5545;">Leaders from across the country gathered to form a unified denomination. This brought protection from false teaching, government recognition, and a shared doctrinal foundation. The church was born.</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">1991</div><div><h3 style="font-size: 1.3rem; margin-bottom: 6px;">Full Recognition</h3><p style="color: #5F5545;">With the new Ethiopian constitution, the Ethiopian Full Gospel Believers' Church received full legal recognition on November 10, 1991. The national office was established in Addis Ababa.</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">Today</div><div><h3 style="font-size: 1.3rem; margin-bottom: 6px;">A Global Family</h3><p style="color: #5F5545;">Now encompassing over 4,067 local churches, 8,947 daughter churches, and more than 10 million members across 42 regions. Yerer Full Gospel is part of this mighty move of God.</p></div></div>
-        </div>
+<!-- THE HISTORY TIMELINE -->
+<section id="history" style="padding: 100px 0; background: var(--bg-light);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">GOD'S FAITHFULNESS</span>
+      <h2 class="section-title">A Beautiful <span>Legacy</span></h2>
+      <p class="section-subtitle">A divine, chronological view of how God moved from spontaneous youth prayer groups to a nationwide movement.</p>
     </div>
+
+    <div class="timeline-container">
+      <!-- 1965 -->
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-bubble">
+          <div class="timeline-year-badge">1965</div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main);">The Fire Ignites</h3>
+          <p style="color: var(--text-muted);">A spontaneous Holy Spirit revival broke out among college and university students across Ethiopia. The divine flame spread rapidly, jumping from towns to provincial countryside regions.</p>
+        </div>
+      </div>
+
+      <!-- 1974 -->
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-bubble">
+          <div class="timeline-year-badge">1974</div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main);">Unifying Denomination</h3>
+          <p style="color: var(--text-muted);">Church pastors and regional evangelism leaders assembled from all directions to structure a protected, unified denomination, safeguarding foundational Biblical truths.</p>
+        </div>
+      </div>
+
+      <!-- 1991 -->
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-bubble">
+          <div class="timeline-year-badge">1991</div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main);">Legal Standing</h3>
+          <p style="color: var(--text-muted);">With the implementation of the new national constitution, the Ethiopian Full Gospel Believers' Church received absolute, clean corporate and religious legal standing on November 10, 1991.</p>
+        </div>
+      </div>
+
+      <!-- Today -->
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-bubble">
+          <div class="timeline-year-badge">Present</div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main);">A Radiant Family</h3>
+          <p style="color: var(--text-muted);">Now boasting thousands of local sanctuaries, expansive mission fields, and multiple millions of active believers globally, Yerer Full Gospel remains at the forefront of this move of God.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== GALLERY ===== -->
-<section style="padding: 80px 0; background: #F8F4EC;">
-    <div class="container">
-        <h2 class="section-title">Our <span>Church</span> Family</h2>
-        <p class="section-subtitle">Moments that capture our community and worship</p>
-        <div class="gallery-grid">
-            <img src="yerer1.jpg" alt="Church" /><img src="yerer2.jpg" alt="Church" /><img src="yerer3.jpg" alt="Church" />
-            <img src="yerer4.jpg" alt="Church" /><img src="yerer5.jpg" alt="Church" /><img src="yerer6.jpg" alt="Church" />
-            <img src="yerer7.jpg" alt="Church" /><img src="yerer8.jpg" alt="Church" /><img src="yerer9.jpg" alt="Church" />
-            <img src="yerer10.jpg" alt="Church" /><img src="yerer11.jpg" alt="Church" /><img src="yerer12.jpg" alt="Church" />
-            <img src="yerer14.jpg" alt="Church" /><img src="yerer15.jpg" alt="Church" /><img src="yerer16.jpg" alt="Church" />
-            <img src="yerer17.jpg" alt="Church" /><img src="yerer20.jpg" alt="Church" /><img src="yerer21.jpg" alt="Church" />
-            <img src="youth.jpg" alt="Youth Ministry" />
+<!-- MISSION & VISION DETAILED VIEW -->
+<section id="mission" style="padding: 100px 0; background: var(--bg-card);">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+      
+      <div class="value-card" style="text-align: left; background: var(--bg-light);">
+        <div style="width: 80px; height: 80px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark-gold); font-size: 2.2rem; margin-bottom: 24px;">
+          <i class="fas fa-bullseye"></i>
         </div>
+        <h2 style="font-size: 2rem; margin-bottom: 16px;">Our <span>Mission</span></h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">To cultivate highly mature disciples of Jesus Christ who are empowered by the Holy Spirit. We seek to foster deep transformational changes within society through authentic worship, radical evangelism, and continuous loving outreach.</p>
+      </div>
+
+      <div class="value-card" style="text-align: left; background: var(--bg-light);">
+        <div style="width: 80px; height: 80px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark-gold); font-size: 2.2rem; margin-bottom: 24px;">
+          <i class="fas fa-eye"></i>
+        </div>
+        <h2 style="font-size: 2rem; margin-bottom: 16px;">Our <span>Vision</span></h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8;">To see local communities and global nations thoroughly illuminated with the knowledge of God. We envision Yerer Full Gospel as a vibrant spiritual lighthouse, actively training leaders and planting healthy churches around the globe.</p>
+      </div>
+
     </div>
+  </div>
 </section>
 
-<!-- ===== MISSION & VISION ===== -->
-<section id="mission" style="padding: 80px 0; background: #FFFFFF;">
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px;">
-            <div class="glass-card" style="background: rgba(248,244,236,0.7);">
-                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-                    <i class="fas fa-bullseye" style="font-size: 2.8rem; color: #B58B5C;"></i>
-                    <h2 style="font-size: 2rem;">Our <span style="color: #B58B5C;">Mission</span></h2>
-                </div>
-                <p style="font-size: 1.1rem; color: #2F2921; line-height: 1.8;">To develop a transformed life of believers and Spirit-filled disciples of Jesus Christ in Ethiopia and beyond. We are committed to worship in Spirit and truth, empowered by the Holy Spirit, and driven by love for God and people.</p>
-                <div style="margin-top: 24px; display: flex; gap: 14px; flex-wrap: wrap;">
-                    <span style="background: #FFFFFF; padding: 6px 18px; border-radius: 60px; font-size: 0.85rem; color: #5F5545; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><i class="fas fa-check-circle" style="color: #B58B5C;"></i> Evangelism</span>
-                    <span style="background: #FFFFFF; padding: 6px 18px; border-radius: 60px; font-size: 0.85rem; color: #5F5545; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><i class="fas fa-check-circle" style="color: #B58B5C;"></i> Discipleship</span>
-                    <span style="background: #FFFFFF; padding: 6px 18px; border-radius: 60px; font-size: 0.85rem; color: #5F5545; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><i class="fas fa-check-circle" style="color: #B58B5C;"></i> Community</span>
-                </div>
-            </div>
-            <div class="glass-card" style="background: rgba(248,244,236,0.7);">
-                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-                    <i class="fas fa-eye" style="font-size: 2.8rem; color: #B58B5C;"></i>
-                    <h2 style="font-size: 2rem;">Our <span style="color: #B58B5C;">Vision</span></h2>
-                </div>
-                <p style="font-size: 1.1rem; color: #2F2921; line-height: 1.8;">To see transformed, Spirit-filled disciples of Jesus Christ in Ethiopia and beyond. We envision Yerer Full Gospel as a lighthouse of hope, raising leaders and planting churches across Ethiopia and the world.</p>
-                <div style="margin-top: 24px; display: flex; gap: 14px; flex-wrap: wrap;">
-                    <span style="background: #FFFFFF; padding: 6px 18px; border-radius: 60px; font-size: 0.85rem; color: #5F5545; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><i class="fas fa-check-circle" style="color: #B58B5C;"></i> Church Planting</span>
-                    <span style="background: #FFFFFF; padding: 6px 18px; border-radius: 60px; font-size: 0.85rem; color: #5F5545; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><i class="fas fa-check-circle" style="color: #B58B5C;"></i> Leadership Development</span>
-                </div>
-            </div>
-        </div>
+<!-- FILTERABLE SEARCH & INTERACTIVE CORE VALUES -->
+<section style="padding: 100px 0; background: var(--bg-light);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">OUR ESSENCE</span>
+      <h2 class="section-title">Interactive Core <span>Values</span></h2>
+      <p class="section-subtitle">Real-time discoverable cultural foundations. Type any keyword inside the box below to filter our pillars immediately.</p>
     </div>
+
+    <!-- Live values search -->
+    <div class="values-controls">
+      <input type="text" class="values-search" id="valueInput" onkeyup="filterValues()" placeholder="🔍 Type to search values (e.g. faith, love, excellence)" />
+    </div>
+
+    <div class="values-grid" id="valuesGrid">
+      <div class="value-card"><i class="fas fa-cross"></i><h3>Faith in Christ</h3><p>Total reliance on the finished work of Jesus.</p></div>
+      <div class="value-card"><i class="fas fa-heart"></i><h3>Divine Love</h3><p>Fostering unconditional, selfless love in relationships.</p></div>
+      <div class="value-card"><i class="fas fa-hands-helping"></i><h3>Holistic Care</h3><p>Restoring Spirit, mind, and physical body elements.</p></div>
+      <div class="value-card"><i class="fas fa-shield-alt"></i><h3>Pure Integrity</h3><p>Upholding deep honesty and complete transparency.</p></div>
+      <div class="value-card"><i class="fas fa-handshake"></i><h3>Synergistic Unity</h3><p>Leveraging continuous corporate partnerships.</p></div>
+      <div class="value-card"><i class="fas fa-fire"></i><h3>Classical Pentecost</h3><p>Living consistently inside the baptism of the Holy Ghost.</p></div>
+      <div class="value-card"><i class="fas fa-user-tie"></i><h3>Servanthood</h3><p>Leading humbly after Christ's dynamic footsteps.</p></div>
+      <div class="value-card"><i class="fas fa-scale-balanced"></i><h3>Social Justice</h3><p>Defending civil truths, integrity, and righteousness.</p></div>
+      <div class="value-card"><i class="fas fa-check-double"></i><h3>Accountability</h3><p>Holding our actions and resources fully responsible.</p></div>
+      <div class="value-card"><i class="fas fa-dove"></i><h3>Active Holiness</h3><p>Living a life separate and sanctified for God's glory.</p></div>
+      <div class="value-card"><i class="fas fa-bullseye"></i><h3>Transparency</h3><p>Ensuring complete openness in our governance.</p></div>
+      <div class="value-card"><i class="fas fa-people-arrows"></i><h3>Unified Purpose</h3><p>Aligning church assets under single Kingdom goals.</p></div>
+      <div class="value-card"><i class="fas fa-star"></i><h3>Faithfulness</h3><p>Maintaining absolute dedication regardless of seasons.</p></div>
+      <div class="value-card"><i class="fas fa-award"></i><h3>Excellence</h3><p>Bringing our absolute best offerings to the King.</p></div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== CORE VALUES ===== -->
-<section style="padding: 80px 0; background: #F8F4EC;">
-    <div class="container">
-        <h2 class="section-title">Our <span>Core Values</span></h2>
-        <p class="section-subtitle">The principles that guide everything we do</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px;">
-            <div class="value-card"><i class="fas fa-cross"></i><h3>Faith in Christ</h3><p>Salvation through Jesus alone.</p></div>
-            <div class="value-card"><i class="fas fa-heart"></i><h3>Love</h3><p>God's unconditional love.</p></div>
-            <div class="value-card"><i class="fas fa-hands-helping"></i><h3>Holistic Ministry</h3><p>Spirit, soul, and body.</p></div>
-            <div class="value-card"><i class="fas fa-shield-alt"></i><h3>Integrity</h3><p>Honesty and transparency.</p></div>
-            <div class="value-card"><i class="fas fa-handshake"></i><h3>Partnership</h3><p>Working in unity.</p></div>
-            <div class="value-card"><i class="fas fa-fire"></i><h3>Classical Pentecostalism</h3><p>Empowered by the Spirit.</p></div>
-            <div class="value-card"><i class="fas fa-user-tie"></i><h3>Servant hood</h3><p>Leading as servants.</p></div>
-            <div class="value-card"><i class="fas fa-scale-balanced"></i><h3>Righteousness & Justice</h3><p>Living justly.</p></div>
-            <div class="value-card"><i class="fas fa-check-double"></i><h3>Accountability</h3><p>Responsible to God.</p></div>
-            <div class="value-card"><i class="fas fa-dove"></i><h3>Holiness</h3><p>Set apart for God.</p></div>
-            <div class="value-card"><i class="fas fa-bullseye"></i><h3>Transparency</h3><p>Open and honest.</p></div>
-            <div class="value-card"><i class="fas fa-people-arrows"></i><h3>Unity of Purpose</h3><p>One heart, one mission.</p></div>
-            <div class="value-card"><i class="fas fa-star"></i><h3>Faithfulness</h3><p>Steadfast in season.</p></div>
-            <div class="value-card"><i class="fas fa-award"></i><h3>Excellence</h3><p>For the glory of God.</p></div>
-        </div>
+<!-- INTERACTIVE ACCORDION DOCTRINAL STATEMENTS -->
+<section style="padding: 100px 0; background: var(--bg-card);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">WHAT WE TEACH</span>
+      <h2 class="section-title">The Doctrinal <span>Sanctuary</span></h2>
+      <p class="section-subtitle">Examine our theological guidelines. Click on each block below to expand and view scripture references.</p>
     </div>
+
+    <div class="doctrine-flex">
+      <!-- Accordion Box 1 -->
+      <div class="doctrine-accord-box active">
+        <div class="doctrine-header" onclick="toggleDoctrine(this)">
+          <h3><i class="fas fa-bible"></i> Absolute Authority of Scripture</h3>
+          <i class="fas fa-chevron-down doctrine-icon-arrow"></i>
+        </div>
+        <div class="doctrine-content">
+          We believe that the entire Bible is the fully inspired, infallible Word of God, and serves as our absolute manual for truth, faith, and daily conduct. <br><strong>2 Timothy 3:16</strong>
+        </div>
+      </div>
+
+      <!-- Accordion Box 2 -->
+      <div class="doctrine-accord-box">
+        <div class="doctrine-header" onclick="toggleDoctrine(this)">
+          <h3><i class="fas fa-cross"></i> Salvation Through Salvation alone</h3>
+          <i class="fas fa-chevron-down doctrine-icon-arrow"></i>
+        </div>
+        <div class="doctrine-content">
+          We teach that human salvation is obtained exclusively through deep spiritual repentance and complete reliance on the shed blood of Jesus Christ. <br><strong>Ephesians 2:8-9</strong>
+        </div>
+      </div>
+
+      <!-- Accordion Box 3 -->
+      <div class="doctrine-accord-box">
+        <div class="doctrine-header" onclick="toggleDoctrine(this)">
+          <h3><i class="fas fa-dove"></i> Divine Baptism of the Holy Spirit</h3>
+          <i class="fas fa-chevron-down doctrine-icon-arrow"></i>
+        </div>
+        <div class="doctrine-content">
+          We stand on the physical baptism of the Holy Spirit, enabling believers with diverse charismatic manifestations and power for holy living. <br><strong>Acts 2:4</strong>
+        </div>
+      </div>
+
+      <!-- Accordion Box 4 -->
+      <div class="doctrine-accord-box">
+        <div class="doctrine-header" onclick="toggleDoctrine(this)">
+          <h3><i class="fas fa-globe-africa"></i> Physical Return of Christ</h3>
+          <i class="fas fa-chevron-down doctrine-icon-arrow"></i>
+        </div>
+        <div class="doctrine-content">
+          We believe in the imminent, physical, second coming of Jesus Christ to rescue His bride, gather His elect, and establish eternal justice. <br><strong>1 Thessalonians 4:16-17</strong>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== DOCTRINE & STATUS ===== -->
-<section style="padding: 70px 0; background: #FFFFFF;">
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-            <div class="doctrine-box">
-                <h3 style="font-size: 1.8rem; margin-bottom: 16px; color: #1F1A14;"><i class="fas fa-bible" style="color: #B58B5C; margin-right: 12px;"></i> Our Doctrine</h3>
-                <p style="color: #3D352A; margin-bottom: 20px;">We stand on the full inspiration of the Holy Scriptures, the deity of Christ, the baptism of the Holy Spirit, divine healing, and the soon return of our Lord Jesus Christ.</p>
-                <a href="#" class="btn-primary" style="padding: 12px 32px; font-size: 0.9rem;"><i class="fas fa-book-open"></i> Read Full Doctrine</a>
-            </div>
-            <div class="doctrine-box" style="border-left-color: #9F7349;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 16px; color: #1F1A14;"><i class="fas fa-church" style="color: #B58B5C; margin-right: 12px;"></i> Current Status</h3>
-                <p style="color: #3D352A; margin-bottom: 20px;">Over 4,067 local churches, 8,947 daughter churches, serving in 42 regions. More than 10 million members. A growing, vibrant, Spirit-filled movement across Ethiopia and beyond.</p>
-                <a href="#" class="btn-primary" style="padding: 12px 32px; font-size: 0.9rem; background: #9F7349;"><i class="fas fa-globe-africa"></i> Explore Regions</a>
-            </div>
-        </div>
+<!-- MEET OUR PASTORS -->
+<section id="pastors" style="padding: 100px 0; background: var(--bg-light);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">SPIRITUAL SHEPHERDS</span>
+      <h2 class="section-title">Meet Our <span>Pastors</span></h2>
+      <p class="section-subtitle">Servants after God's own heart, leading the congregation with wisdom, spiritual grace, and deep devotion.</p>
     </div>
+
+    <div class="pastor-grid">
+      <!-- Pastor 1 -->
+      <div class="pastor-card">
+        <div class="pastor-img-wrapper">
+          <img src="yerer1.jpg" alt="Pastor Yohannes" />
+        </div>
+        <div class="pastor-info">
+          <h3>Pastor Yohannes</h3>
+          <div class="pastor-title">Senior Pastor & Founder</div>
+          <p>Devoting more than 35 years to the spiritual growth of Yerer Full Gospel, Pastor Yohannes preaches the uncompromised Word of God with prophetic power and grandfatherly care.</p>
+          <div class="pastor-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="far fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pastor 2 -->
+      <div class="pastor-card">
+        <div class="pastor-img-wrapper">
+          <img src="yerer2.jpg" alt="Pastor Sara" />
+        </div>
+        <div class="pastor-info">
+          <h3>Pastor Sara</h3>
+          <div class="pastor-title">Associate Worship Pastor</div>
+          <p>A passionate worship leader and teacher of the scriptures, Pastor Sara actively guides our music ministries and local women's fellowships with continuous grace and excellence.</p>
+          <div class="pastor-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="far fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== PASTORS ===== -->
-<section id="pastors" style="padding: 80px 0; background: #F8F4EC;">
-    <div class="container">
-        <h2 class="section-title">Meet Our <span>Pastors</span></h2>
-        <p class="section-subtitle">Shepherds after God's own heart, leading with love and truth</p>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
-            <div class="pastor-card">
-                <img src="yerer1.jpg" alt="Pastor Yohannes" />
-                <div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 4px;">Pastor Yohannes</h3>
-                    <p style="color: #B58B5C; font-weight: 600; margin-bottom: 12px;">Senior Pastor · Founder</p>
-                    <p style="color: #5F5545;">A servant of God with a heart for the nations. Pastor Yohannes has been leading Yerer Full Gospel for over 35 years, preaching the uncompromised Word with power and grace.</p>
-                    <div style="margin-top: 16px; display: flex; gap: 16px;">
-                        <a href="#" style="color: #B58B5C; text-decoration: none; font-size: 1.6rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="color: #B58B5C; text-decoration: none; font-size: 1.6rem;"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="pastor-card">
-                <img src="yerer2.jpg" alt="Pastor Sara" />
-                <div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 4px;">Pastor Sara</h3>
-                    <p style="color: #B58B5C; font-weight: 600; margin-bottom: 12px;">Associate Pastor · Worship Leader</p>
-                    <p style="color: #5F5545;">Passionate about worship and discipleship, Pastor Sara oversees the music ministry and women's fellowship. She brings a spirit of excellence and prophetic insight.</p>
-                    <div style="margin-top: 16px; display: flex; gap: 16px;">
-                        <a href="#" style="color: #B58B5C; text-decoration: none; font-size: 1.6rem;"><i class="fab fa-facebook"></i></a>
-                        <a href="#" style="color: #B58B5C; text-decoration: none; font-size: 1.6rem;"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
+<!-- LIVE STATS / METRICS WIDGET -->
+<section style="padding: 100px 0; background: var(--bg-card);">
+  <div class="container">
+    <div class="stats-hub" id="statsSection">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number" data-target="10000000">0</div>
+          <div class="stat-label">Total Believers</div>
         </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="4067">0</div>
+          <div class="stat-label">Local Churches</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="8947">0</div>
+          <div class="stat-label">Daughter Works</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="42">0</div>
+          <div class="stat-label">Regional Hubs</div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ===== STATS ===== -->
-<section style="padding: 70px 0; background: #FFFFFF;">
-    <div class="container">
-        <div class="stat-grid">
-            <div><div class="stat-number">10M+</div><div class="stat-label">Members</div></div>
-            <div><div class="stat-number">4,067</div><div class="stat-label">Local Churches</div></div>
-            <div><div class="stat-number">8,947</div><div class="stat-label">Daughter Churches</div></div>
-            <div><div class="stat-number">42</div><div class="stat-label">Regions</div></div>
-        </div>
+<!-- RICH GALLERY VIEW -->
+<section style="padding: 100px 0; background: var(--bg-light);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">CHURCH PICTURES</span>
+      <h2 class="section-title">Our Church <span>Family</span></h2>
+      <p class="section-subtitle">Moments capturing the warmth, excitement, and divine encounters within our local Yerer community.</p>
     </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="yerer1.jpg" alt="Worship Sanctuary" /></div>
+      <div class="gallery-item"><img src="yerer2.jpg" alt="Sanctuary Praise" /></div>
+      <div class="gallery-item"><img src="yerer3.jpg" alt="Youth Praying" /></div>
+      <div class="gallery-item"><img src="yerer4.jpg" alt="Altar Prayer" /></div>
+      <div class="gallery-item"><img src="yerer5.jpg" alt="Elders Fellowship" /></div>
+      <div class="gallery-item"><img src="yerer6.jpg" alt="Vibrant Youth Group" /></div>
+      <div class="gallery-item"><img src="yerer7.jpg" alt="Worship Team" /></div>
+      <div class="gallery-item"><img src="yerer8.jpg" alt="Altar Call" /></div>
+      <div class="gallery-item"><img src="yerer9.jpg" alt="Prayer Gathering" /></div>
+      <div class="gallery-item"><img src="yerer10.jpg" alt="Choir Praise" /></div>
+      <div class="gallery-item"><img src="yerer11.jpg" alt="Congregation Service" /></div>
+      <div class="gallery-item"><img src="yerer12.jpg" alt="Holy Assembly" /></div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section style="padding: 80px 0; background: linear-gradient(145deg, #1F1A14 0%, #2A231C 100%); color: white; text-align: center;">
-    <div class="container">
-        <h2 style="font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 16px;">Become Part of Our <span style="color: #D4A574;">Family</span></h2>
-        <p style="font-size: 1.15rem; margin-bottom: 36px; max-width: 640px; margin-left: auto; margin-right: auto; color: #C0B8A8;">Whether you're new in town or looking for a church home, we'd love to welcome you.</p>
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <a href="index.html" class="btn-primary" style="background: #B58B5C; padding: 16px 44px;"><i class="fas fa-home" style="margin-right: 10px;"></i>Return Home</a>
-            <a href="#" class="btn-secondary" style="border-color: #B58B5C; color: #B58B5C; padding: 16px 44px;">Contact Us</a>
-        </div>
+<!-- INTERACTIVE PRAYER WALL -->
+<section style="padding: 100px 0; background: var(--bg-card);">
+  <div class="container">
+    <div class="prayer-wall-section">
+      <div>
+        <span class="pill-badge" style="margin-bottom: 20px;"><i class="fas fa-hands-praying"></i> PRAYER INTERACTIVE COMFORT</span>
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">We Stand in <span>Agreement</span></h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px; line-height: 1.8;">Our intercessory teams are on standby to cover you in prayer. Submit your request anonymously, or join the global community in praying for others by clicking the interactive prayer button on the right.</p>
+        
+        <form class="prayer-form" onsubmit="submitPrayerRequest(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name (Optional)</label>
+              <input type="text" class="form-control" id="prayerName" placeholder="e.g. Abel" />
+            </div>
+            <div class="form-group">
+              <label>Topic</label>
+              <input type="text" class="form-control" id="prayerTopic" placeholder="e.g. Healing, Family" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Request</label>
+            <textarea class="form-control" id="prayerText" placeholder="Briefly share your prayer needs..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self: flex-start; padding: 14px 44px;"><i class="fas fa-paper-plane"></i> Submit Request</button>
+        </form>
+      </div>
+
+      <div class="prayer-stats-display" style="position: relative;">
+        <i class="fas fa-quote-left" style="color: var(--primary); font-size: 4rem; opacity: 0.15; position: absolute; top: 30px; left: 30px;"></i>
+        <div class="prayer-big-number" id="prayerCounter">347</div>
+        <h3 style="font-size: 1.5rem; margin-bottom: 8px; color: var(--text-main);">Prayers Offered This Week</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px;">Every click represents a believer offering up intercession. Join us now and bless someone's request instantly.</p>
+        <button class="btn-primary" style="width: 100%;" onclick="incrementPrayerCounter(this)">
+          <i class="fas fa-hands-praying"></i> Tap to Pray for Others
+        </button>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer style="background: #14100C; color: #A09888; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.04);">
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px; font-family: 'Playfair Display', serif; font-size: 1.4rem;">የረር ሙሉወንጌል</h3>
-                <p style="font-size: 0.95rem;">Worship in Spirit and Truth — John 4:24</p>
-                <div style="margin-top: 20px; display: flex; gap: 18px; font-size: 1.8rem; color: #B58B5C;">
-                    <i class="fab fa-facebook" style="cursor: pointer; transition: 0.3s;"></i>
-                    <i class="fab fa-youtube" style="cursor: pointer; transition: 0.3s;"></i>
-                    <i class="fab fa-whatsapp" style="cursor: pointer; transition: 0.3s;"></i>
-                    <i class="fab fa-telegram" style="cursor: pointer; transition: 0.3s;"></i>
-                </div>
-            </div>
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Quick Links</h3>
-                <p><a href="index.html" style="color: #A09888; text-decoration: none; transition: 0.2s;">Home</a></p>
-                <p><a href="about.html" style="color: #A09888; text-decoration: none; transition: 0.2s;">About Us</a></p>
-                <p><a href="sermons.html" style="color: #A09888; text-decoration: none; transition: 0.2s;">Sermons</a></p>
-                <p><a href="events.html" style="color: #A09888; text-decoration: none; transition: 0.2s;">Events</a></p>
-                <p><a href="give.html" style="color: #A09888; text-decoration: none; transition: 0.2s;">Give</a></p>
-            </div>
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Contact</h3>
-                <p><i class="fas fa-map-pin" style="color: #B58B5C; width: 20px;"></i> Yerer, Ethiopia</p>
-                <p><i class="fas fa-phone" style="color: #B58B5C; width: 20px;"></i> +251-XXX-XXX</p>
-                <p><i class="fas fa-envelope" style="color: #B58B5C; width: 20px;"></i> info@yerergospel.org</p>
-            </div>
-            <div>
-                <h3 style="color: #F0E8D8; margin-bottom: 16px;">Prayer Counter</h3>
-                <div style="font-size: 2.8rem; font-weight: 700; color: #D4A574;">347</div>
-                <p style="margin-bottom: 8px; font-size: 0.9rem;">prayers prayed this week</p>
-                <a href="#" style="color: #B58B5C; text-decoration: none; font-weight: 500;">Submit prayer request →</a>
-            </div>
-        </div>
-        <div style="text-align: center; padding-top: 28px; border-top: 1px solid #2A241E; font-size: 0.9rem;">
-            <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
-        </div>
+<!-- CALL TO ACTION (CTA) -->
+<section class="cta-hub" style="margin: 60px 0;">
+  <div class="container">
+    <h2 style="font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 20px;">Become Part of Our <span style="color: var(--accent);">Family</span></h2>
+    <p style="font-size: 1.15rem; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; color: #D4C8B8;">Whether you are new in town or seeking a warm, Spirit-filled church sanctuary, Yerer Full Gospel welcomes you with open arms.</p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="index.html" class="btn-primary" style="padding: 16px 44px;"><i class="fas fa-home" style="margin-right: 10px;"></i>Return Home</a>
+      <a href="give.html" class="btn-secondary" style="border-color: var(--primary); color: var(--primary); padding: 16px 44px;">Support Giving</a>
     </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
+      <div>
+        <h3 class="amharic">የየረር ሙሉወንጌል ቤተክርስቲያን</h3>
+        <p style="line-height: 1.8; margin-bottom: 30px;">Worshiping in Spirit and Truth. A place of deep grace, recovery, community, and prophetic destiny in Addis Ababa, Ethiopia.</p>
+        <div style="display: flex; gap: 16px; font-size: 1.5rem;">
+          <a href="#" style="color: var(--primary);"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" style="color: var(--primary);"><i class="fab fa-youtube"></i></a>
+          <a href="#" style="color: var(--primary);"><i class="fab fa-telegram-plane"></i></a>
+          <a href="#" style="color: var(--primary);"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <p><a href="index.html">Home</a></p>
+          <p><a href="about.html">About Us</a></p>
+          <p><a href="sermons.html">Sermons</a></p>
+          <p><a href="events.html">Events</a></p>
+          <p><a href="give.html">Give</a></p>
+          <p><a href="live.html">Join Live</a></p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Get in Touch</h3>
+        <p style="margin-bottom: 12px;"><i class="fas fa-map-pin" style="color: var(--primary); margin-right: 10px;"></i> Yerer, Addis Ababa, Ethiopia</p>
+        <p style="margin-bottom: 12px;"><i class="fas fa-phone" style="color: var(--primary); margin-right: 10px;"></i> +251-XXX-XXX</p>
+        <p><i class="fas fa-envelope" style="color: var(--primary); margin-right: 10px;"></i> info@yerergospel.org</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
+
+<script>
+  // Advanced Scroll effect for Navigation
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Hamburger Menu Actions
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+
+  // Live Values Searching Filter function
+  function filterValues() {
+    const input = document.getElementById('valueInput').value.toLowerCase();
+    const grid = document.getElementById('valuesGrid');
+    const cards = grid.getElementsByClassName('value-card');
+
+    for (let i = 0; i < cards.length; i++) {
+      const title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+      const desc = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+      if (title.includes(input) || desc.includes(input)) {
+        cards[i].style.display = 'block';
+        cards[i].style.opacity = '1';
+        cards[i].style.transform = 'translateY(0) scale(1)';
+      } else {
+        cards[i].style.opacity = '0';
+        cards[i].style.transform = 'scale(0.9)';
+        setTimeout((element) => { 
+          if(element.style.opacity === '0') element.style.display = 'none'; 
+        }, 200, cards[i]);
+      }
+    }
+  }
+
+  // Interactive Accordion Doctrinal function
+  function toggleDoctrine(header) {
+    const box = header.parentElement;
+    const isActive = box.classList.contains('active');
+    
+    // Deactivate all first
+    document.querySelectorAll('.doctrine-accord-box').forEach(item => {
+      item.classList.remove('active');
+    });
+
+    if (!isActive) {
+      box.classList.add('active');
+    }
+  }
+
+  // Dynamic Numeric Incremental Count Animation (IntersectionObserver)
+  const statsSection = document.getElementById('statsSection');
+  const statsNumbers = document.querySelectorAll('.stat-number');
+  let animationTriggered = false;
+
+  const countUp = (element) => {
+    const target = parseInt(element.getAttribute('data-target'), 10);
+    const speed = 200; // Animation acceleration
+    const increment = Math.ceil(target / speed);
+    let count = 0;
+
+    const updateCount = () => {
+      count += increment;
+      if (count < target) {
+        if (target >= 10000000) {
+          element.innerText = (count / 1000000).toFixed(1) + 'M+';
+        } else {
+          element.innerText = count.toLocaleString();
+        }
+        setTimeout(updateCount, 15);
+      } else {
+        if (target >= 10000000) {
+          element.innerText = '10M+';
+        } else {
+          element.innerText = target.toLocaleString();
+        }
+      }
+    };
+    updateCount();
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animationTriggered) {
+        statsNumbers.forEach(num => countUp(num));
+        animationTriggered = true;
+      }
+    });
+  }, { threshold: 0.5 });
+
+  if(statsSection) observer.observe(statsSection);
+
+  // Prayer Wall Counter & Form Handler Functions
+  function incrementPrayerCounter(button) {
+    const counter = document.getElementById('prayerCounter');
+    counter.innerText = parseInt(counter.innerText, 10) + 1;
+
+    // Create dynamic, rising pray hand floating particles
+    const rect = button.getBoundingClientRect();
+    for (let i = 0; i < 5; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'pray-particle';
+      particle.innerHTML = i % 2 === 0 ? '🙏' : '✨';
+      particle.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 60) + 'px';
+      particle.style.top = (rect.top + window.scrollY - 15) + 'px';
+      document.body.appendChild(particle);
+      
+      setTimeout(() => { particle.remove(); }, 1200);
+    }
+  }
+
+  function submitPrayerRequest(event) {
+    event.preventDefault();
+    const name = document.getElementById('prayerName').value || 'Anonymous';
+    const topic = document.getElementById('prayerTopic').value;
+    const requestText = document.getElementById('prayerText').value;
+
+    alert(`Thank you, ${name}. Your prayer request about "${topic}" has been added to our intercession database.`);
+    
+    // Clear Form fields
+    document.getElementById('prayerName').value = '';
+    document.getElementById('prayerTopic').value = '';
+    document.getElementById('prayerText').value = '';
+
+    // Increment global prayer wall counter
+    const counter = document.getElementById('prayerCounter');
+    counter.innerText = parseInt(counter.innerText, 10) + 1;
+  }
+</script>
 
 </body>
 </html>
