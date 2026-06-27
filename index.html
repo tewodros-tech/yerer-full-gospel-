@@ -510,7 +510,7 @@
     .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
     /* ================================================================
-       WORSHIP GALLERY — HIGHLIGHT STRIP
+       WORSHIP GALLERY — HIGHLIGHT STRIP — FIXED IMAGE SIZING
        ================================================================ */
     .worship-strip { padding: 100px 0 60px; background: var(--bg-light); }
     .worship-grid { 
@@ -532,6 +532,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      aspect-ratio: 4/3;
+      width: 100%;
     }
     .worship-card img { 
       width: 100%; 
@@ -540,6 +542,7 @@
       transition: transform 1s var(--ease-out-expo);
       position: absolute;
       inset: 0;
+      display: block;
     }
     .worship-card:hover img { transform: scale(1.06); }
     .worship-card-overlay {
@@ -579,7 +582,10 @@
 
     @media (max-width: 920px) {
       .worship-grid { grid-template-columns: 1fr; }
-      .worship-card { min-height: 280px; }
+      .worship-card { min-height: 280px; aspect-ratio: 4/3; }
+    }
+    @media (max-width: 480px) {
+      .worship-card { min-height: 200px; aspect-ratio: 4/3; }
     }
 
     /* ================================================================
@@ -969,6 +975,7 @@
       .giving-section { padding: 80px 0; }
       .give-amount-input input { font-size: 1.4rem; width: 160px; padding: 14px 20px; }
       .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .worship-card { min-height: 250px; aspect-ratio: 4/3; }
     }
 
     @media (max-width: 480px) {
@@ -980,7 +987,7 @@
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .stat-number { font-size: 1.6rem; }
       .stat-item { padding: 20px 12px; }
-      .worship-card { min-height: 240px; }
+      .worship-card { min-height: 200px; aspect-ratio: 4/3; }
     }
   </style>
 </head>
@@ -1090,7 +1097,7 @@
     </div>
   </section>
 
-  <!-- Worship Highlights -->
+  <!-- Worship Highlights — FIXED: Images now properly fitted -->
   <section class="worship-strip">
     <div class="container">
       <div class="section-header reveal">
