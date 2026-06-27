@@ -510,13 +510,13 @@
     .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
     /* ================================================================
-       WORSHIP GALLERY — FULLY VISIBLE IMAGES (NO CROP)
+       WORSHIP GALLERY — UPDATED WITH NEW IMAGES
        ================================================================ */
     .worship-strip { padding: 100px 0 60px; background: var(--bg-light); }
     .worship-grid { 
       display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 24px; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; 
       margin-top: 60px; 
       align-items: stretch;
     }
@@ -536,12 +536,12 @@
     .worship-card img { 
       width: 100%; 
       height: 100%; 
-      object-fit: contain;
+      object-fit: cover;
       background: var(--bg-dark);
       transition: transform 1s var(--ease-out-expo);
       display: block;
     }
-    .worship-card:hover img { transform: scale(1.05); }
+    .worship-card:hover img { transform: scale(1.06); }
     .worship-card-overlay {
       position: absolute;
       inset: 0;
@@ -549,7 +549,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 36px;
+      padding: 24px;
       transition: var(--transition-smooth);
       z-index: 2;
       width: 100%;
@@ -557,20 +557,20 @@
       pointer-events: none;
     }
     .worship-card:hover .worship-card-overlay { background: linear-gradient(to top, rgba(10,30,50,0.92) 0%, rgba(10,30,50,0.15) 60%); }
-    .worship-card h3 { font-size: 1.6rem; color: white; margin-bottom: 6px; }
-    .worship-card p { color: var(--accent-light); font-size: 0.9rem; font-weight: 500; }
+    .worship-card h3 { font-size: 1.2rem; color: white; margin-bottom: 4px; }
+    .worship-card p { color: var(--accent-light); font-size: 0.8rem; font-weight: 500; }
     .worship-card .play-icon {
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%) scale(0.8);
-      width: 72px; height: 72px;
+      width: 60px; height: 60px;
       background: rgba(30,76,143,0.9);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       opacity: 0;
       transition: var(--transition-smooth);
       box-shadow: 0 12px 40px rgba(30,76,143,0.4);
@@ -580,11 +580,10 @@
     .worship-card:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
     @media (max-width: 920px) {
-      .worship-grid { grid-template-columns: 1fr; }
-      .worship-card { aspect-ratio: 4/3; }
+      .worship-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 480px) {
-      .worship-card { aspect-ratio: 4/3; }
+    @media (max-width: 550px) {
+      .worship-grid { grid-template-columns: 1fr; }
     }
 
     /* ================================================================
@@ -957,7 +956,6 @@
       .hero-title { letter-spacing: -1px; }
       .countdown-widget { gap: 16px; padding: 12px 24px; }
       .countdown-timer { font-size: 1.2rem; }
-      .worship-grid { grid-template-columns: 1fr; }
       .testimony-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -1092,7 +1090,7 @@
     </div>
   </section>
 
-  <!-- Worship Highlights — FULLY VISIBLE IMAGES -->
+  <!-- Worship Highlights — UPDATED WITH NEW IMAGES -->
   <section class="worship-strip">
     <div class="container">
       <div class="section-header reveal">
@@ -1103,19 +1101,99 @@
 
       <div class="worship-grid">
         <div class="worship-card reveal-left cursor-hover-img">
-          <img src="OLD_1.jpg" alt="Ancient worship pathways" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
-          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay">
-            <h3>Ancient Paths</h3>
-            <p>Restoring deep, dynamic prayer & spirit-filled worship</p>
-          </div>
-        </div>
-        <div class="worship-card reveal-right cursor-hover-img">
-          <img src="yerer15.jpg" alt="Dynamic youth praising" onerror="this.src='https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <img src="2.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
           <div class="worship-card-overlay">
             <h3>Spirit of Praise</h3>
-            <p>Exalting the name of Jesus through vibrant community</p>
+            <p>Exalting the name of Jesus</p>
+          </div>
+        </div>
+        <div class="worship-card reveal cursor-hover-img">
+          <img src="3.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Ancient Paths</h3>
+            <p>Restoring deep, dynamic prayer</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-right cursor-hover-img">
+          <img src="4.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Kingdom Worship</h3>
+            <p>Hearts united in adoration</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-left cursor-hover-img">
+          <img src="5.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Prophetic Worship</h3>
+            <p>Encountering His glory</p>
+          </div>
+        </div>
+        <div class="worship-card reveal cursor-hover-img">
+          <img src="7.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Spirit & Truth</h3>
+            <p>Worship in spirit and truth</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-right cursor-hover-img">
+          <img src="8.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Divine Presence</h3>
+            <p>Experiencing God's glory</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-left cursor-hover-img">
+          <img src="56.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Heavenly Praise</h3>
+            <p>Lifting voices in unity</p>
+          </div>
+        </div>
+        <div class="worship-card reveal cursor-hover-img">
+          <img src="57.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Spirit-Filled</h3>
+            <p>Overflowing with His love</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-right cursor-hover-img">
+          <img src="59.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Revival Fire</h3>
+            <p>Igniting hearts for Jesus</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-left cursor-hover-img">
+          <img src="60.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Glory & Honor</h3>
+            <p>Worthy is the Lamb</p>
+          </div>
+        </div>
+        <div class="worship-card reveal cursor-hover-img">
+          <img src="save_8.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Saved to Worship</h3>
+            <p>Redeemed for His praise</p>
+          </div>
+        </div>
+        <div class="worship-card reveal-right cursor-hover-img">
+          <img src="yerer17.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
+          <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
+          <div class="worship-card-overlay">
+            <h3>Yerer Worship</h3>
+            <p>Spirit-filled community</p>
           </div>
         </div>
       </div>
@@ -1183,7 +1261,7 @@
     </div>
   </section>
 
-  <!-- Gallery Section — Updated with specified images -->
+  <!-- Gallery Section — Updated with specified images (yerer6.jpg removed) -->
   <section class="gallery-section">
     <div class="container">
       <div class="section-header reveal">
