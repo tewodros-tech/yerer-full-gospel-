@@ -274,7 +274,6 @@
                   radial-gradient(circle at 70% 60%, rgba(30, 76, 143, 0.10) 0%, transparent 50%);
       z-index: 1;
     }
-    /* Worship Hands Animation - Floating hands */
     .worship-hands-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -374,6 +373,14 @@
       top: 0; left: 0; width: 100%; height: 100%;
       border: 0;
     }
+    .worship-hands-float {
+      display: inline-block;
+      animation: floatHandsSmall 3s ease-in-out infinite;
+    }
+    @keyframes floatHandsSmall {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+    }
 
     /* Sermon Interactive Grid & Searching Filters */
     .sermon-controls {
@@ -465,15 +472,14 @@
       aspect-ratio: 16 / 10;
       overflow: hidden;
       background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .sermon-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .sermon-card:hover .sermon-img-container img {
-      transform: scale(1.06);
+    .sermon-img-container .hands-bg-icon {
+      font-size: 6rem;
+      color: rgba(30, 76, 143, 0.08);
+      animation: floatHandsSmall 4s ease-in-out infinite;
     }
     .sermon-img-container .sermon-badge {
       position: absolute;
@@ -697,16 +703,6 @@
       box-shadow: 0 12px 28px rgba(30, 76, 143, 0.3);
     }
 
-    /* Worship Hands Animation - Floating hands in cards */
-    .worship-hands-float {
-      display: inline-block;
-      animation: floatHandsSmall 3s ease-in-out infinite;
-    }
-    @keyframes floatHandsSmall {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(3deg); }
-    }
-
     /* Footer Styles */
     footer {
       background: var(--bg-dark);
@@ -901,7 +897,6 @@
       <div class="filter-btn-group">
         <button class="filter-btn active" onclick="filterSermons('all')">All Preachers</button>
         <button class="filter-btn" onclick="filterSermons('worship')">Worship Team</button>
-        <button class="filter-btn" onclick="filterSermons('sara')">Pastor Sara</button>
         <button class="filter-btn" onclick="filterSermons('guest')">Guest Speakers</button>
       </div>
 
@@ -917,7 +912,7 @@
       <!-- Card 1 -->
       <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop" alt="Walking in the Spirit" />
+          <i class="fas fa-hands-praying hands-bg-icon"></i>
           <span class="sermon-badge">Worship</span>
         </div>
         <div class="sermon-card-content">
@@ -935,20 +930,20 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="sermon-card" data-preacher="sara">
+      <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=1" alt="Prayer That Moves Mountains" />
+          <i class="fas fa-hands-praying hands-bg-icon"></i>
           <span class="sermon-badge">Prayer</span>
         </div>
         <div class="sermon-card-content">
           <h3 class="sermon-card-title">Prayer That Moves Mountains</h3>
           <p class="sermon-card-desc">Fostering relentless prayer disciplines that shatter challenges and yield true breakthrough.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-hands-praying"></i> Pastor Sara</span>
+            <span><i class="fas fa-hands-praying"></i> Worship Team</span>
             <span><i class="far fa-calendar-alt"></i> June 8, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Prayer That Moves Mountains', 'Pastor Sara', '1. Definition of Spiritual Intercession.<br>2. Power of the Word of God in declarations.<br>3. The role of persistence in dynamic breakthroughs.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Prayer That Moves Mountains', 'Worship Team', '1. Definition of Spiritual Intercession.<br>2. Power of the Word of God in declarations.<br>3. The role of persistence in dynamic breakthroughs.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Prayer That Moves Mountains')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -957,7 +952,7 @@
       <!-- Card 3 -->
       <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=2" alt="Baptism of the Holy Spirit" />
+          <i class="fas fa-hands-praying hands-bg-icon"></i>
           <span class="sermon-badge">Holy Spirit</span>
         </div>
         <div class="sermon-card-content">
@@ -975,20 +970,20 @@
       </div>
 
       <!-- Card 4 -->
-      <div class="sermon-card" data-preacher="sara">
+      <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=3" alt="Healing the Brokenhearted" />
+          <i class="fas fa-hands-praying hands-bg-icon"></i>
           <span class="sermon-badge">Healing</span>
         </div>
         <div class="sermon-card-content">
           <h3 class="sermon-card-title">Healing the Brokenhearted</h3>
           <p class="sermon-card-desc">Restoring damaged emotions, healing pain, and building strong pathways of recovery.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-hands-praying"></i> Pastor Sara</span>
+            <span><i class="fas fa-hands-praying"></i> Worship Team</span>
             <span><i class="far fa-calendar-alt"></i> May 25, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Healing the Brokenhearted', 'Pastor Sara', '1. The broken human condition.<br>2. Emotional repair through direct forgiveness.<br>3. Accepting Christ\'s supernatural peace.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Healing the Brokenhearted', 'Worship Team', '1. The broken human condition.<br>2. Emotional repair through direct forgiveness.<br>3. Accepting Christ\'s supernatural peace.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Healing the Brokenhearted')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -997,7 +992,7 @@
       <!-- Card 5 -->
       <div class="sermon-card" data-preacher="guest">
         <div class="sermon-img-container">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=4" alt="Faith That Overcomes" />
+          <i class="fas fa-hands-praying hands-bg-icon"></i>
           <span class="sermon-badge">Faith</span>
         </div>
         <div class="sermon-card-content">
@@ -1017,7 +1012,7 @@
       <!-- Card 6 -->
       <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
-          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=5" alt="The Power of Worship" />
+          <i class="fas fa-hands-praying hands-bg-icon"></i>
           <span class="sermon-badge">Worship</span>
         </div>
         <div class="sermon-card-content">
