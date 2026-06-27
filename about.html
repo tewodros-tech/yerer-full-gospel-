@@ -690,7 +690,7 @@
     .doctrine-accord-box.active { border-color: var(--primary); box-shadow: var(--shadow-glow); }
 
     /* ================================================================
-       PASTORS, TEACHERS & EVANGELISTS — FIXED: SQUARE IMAGES, FULLY VISIBLE
+       PASTORS, TEACHERS & EVANGELISTS — FIXED: RECTANGULAR IMAGES, FULLY VISIBLE
        ================================================================ */
     .leaders-grid {
       display: grid;
@@ -724,7 +724,6 @@
       border-color: var(--primary);
     }
 
-    /* FIXED: RECTANGULAR image container - shows FULL image without cropping */
     .leader-img-wrapper {
       width: 100%;
       max-width: 280px;
@@ -746,7 +745,7 @@
     .leader-img-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* Shows the ENTIRE image without cropping */
+      object-fit: contain;
       display: block;
       object-position: center center;
       background: var(--bg-light);
@@ -830,7 +829,7 @@
     }
 
     /* ================================================================
-       STATS — descriptive words
+       STATS — NO NUMBERS, ONLY DESCRIPTIVE WORDS
        ================================================================ */
     .stats-hub {
       background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
@@ -854,12 +853,13 @@
       transform: translateY(-50%);
     }
     .stat-number {
-      font-size: 3.8rem;
-      font-weight: 800;
+      font-size: 2.2rem;
+      font-weight: 700;
       color: var(--accent-light);
       margin-bottom: 8px;
       font-family: 'Playfair Display', serif;
       line-height: 1.2;
+      letter-spacing: 1px;
     }
     .stat-label {
       color: rgba(255,255,255,0.7);
@@ -1062,7 +1062,7 @@
       .hero-title { font-size: 3rem; }
       .leader-category-title { font-size: 1.4rem; }
       .leaders-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
-      .stat-number { font-size: 2.8rem; }
+      .stat-number { font-size: 1.8rem; }
       .leader-img-wrapper { height: 180px; }
     }
 
@@ -1075,7 +1075,7 @@
       .leaders-grid { grid-template-columns: 1fr; }
       .leader-img-wrapper { height: 200px; max-width: 100%; }
       .stat-grid { grid-template-columns: 1fr; }
-      .stat-number { font-size: 2.4rem; }
+      .stat-number { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -1440,26 +1440,26 @@
     </div>
   </section>
 
-  <!-- Stats Section -->
+  <!-- Stats Section — NO NUMBERS, ONLY DESCRIPTIVE WORDS -->
   <section style="padding: 100px 0; background: var(--bg-card);">
     <div class="container">
       <div class="stats-hub reveal-scale" id="statsSection">
         <div class="stat-grid">
           <div class="stat-card">
-            <div class="stat-number">125+</div>
-            <div class="stat-label">Nations Reached</div>
+            <div class="stat-number">Many Nations</div>
+            <div class="stat-label">Reached Worldwide</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">3,200+</div>
-            <div class="stat-label">Churches Planted</div>
+            <div class="stat-number">Planted Everywhere</div>
+            <div class="stat-label">Churches Established</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Missionaries Sent</div>
+            <div class="stat-number">Sent Far & Wide</div>
+            <div class="stat-label">Missionaries Commissioned</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number">150+</div>
-            <div class="stat-label">Years of Legacy</div>
+            <div class="stat-number">A Rich Heritage</div>
+            <div class="stat-label">Years of Faithful Legacy</div>
           </div>
         </div>
       </div>
