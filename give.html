@@ -347,63 +347,6 @@
       margin: 0 auto;
     }
 
-    /* ===== IMPACT STATS ===== */
-    .impact-stats {
-      padding: 100px 0;
-      background: var(--bg-light);
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-      margin-top: 60px;
-    }
-    .stat-item {
-      text-align: center;
-      padding: 40px 20px;
-      background: var(--bg-card);
-      border-radius: 24px;
-      box-shadow: var(--shadow-premium);
-      transition: var(--transition-smooth);
-      border: 1px solid rgba(30, 76, 143, 0.08);
-    }
-    .stat-item:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--primary);
-    }
-    .stat-icon {
-      width: 70px;
-      height: 70px;
-      background: var(--primary-light);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 1.8rem;
-      color: var(--primary);
-      transition: var(--transition-smooth);
-    }
-    .stat-item:hover .stat-icon {
-      background: var(--primary);
-      color: white;
-      transform: scale(1.1);
-    }
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--text-main);
-      font-family: 'Playfair Display', serif;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
     /* ===== GIVE OPTIONS ===== */
     .give-section {
       padding: 100px 0;
@@ -981,9 +924,6 @@
       .section-title { font-size: 2.4rem; }
       .container { padding: 0 20px; }
       
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
       .give-grid {
         grid-template-columns: 1fr;
       }
@@ -1009,9 +949,6 @@
     }
 
     @media (max-width: 480px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
-      }
       .amount-grid {
         grid-template-columns: 1fr;
       }
@@ -1110,40 +1047,6 @@
       <a href="#ways-to-give" class="btn-outline-light" style="padding: 18px 46px;">
         Learn More
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== IMPACT STATS ===== -->
-<section class="impact-stats" id="impact">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge">IMPACT</span>
-      <h2 class="section-title">The Impact of <span>Giving</span></h2>
-      <p class="section-subtitle">See how your generosity is making a difference in our community and beyond.</p>
-    </div>
-    
-    <div class="stats-grid">
-      <div class="stat-item animate-on-scroll">
-        <div class="stat-icon"><i class="fas fa-users"></i></div>
-        <div class="stat-number" data-count="1250">0</div>
-        <div class="stat-label">Lives Touched Monthly</div>
-      </div>
-      <div class="stat-item animate-on-scroll">
-        <div class="stat-icon"><i class="fas fa-home"></i></div>
-        <div class="stat-number" data-count="47">0</div>
-        <div class="stat-label">Families Supported</div>
-      </div>
-      <div class="stat-item animate-on-scroll">
-        <div class="stat-icon"><i class="fas fa-globe-africa"></i></div>
-        <div class="stat-number" data-count="12">0</div>
-        <div class="stat-label">Missions Partners</div>
-      </div>
-      <div class="stat-item animate-on-scroll">
-        <div class="stat-icon"><i class="fas fa-church"></i></div>
-        <div class="stat-number" data-count="3">0</div>
-        <div class="stat-label">Church Plants</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1586,11 +1489,6 @@
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         
-        // Animate counters
-        if (entry.target.querySelector('.stat-number')) {
-          animateCounters(entry.target);
-        }
-        
         // Animate progress bar
         if (entry.target.querySelector('.progress-fill')) {
           animateProgressBar(entry.target);
@@ -1602,29 +1500,6 @@
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
   });
-  
-  // Counter Animation
-  function animateCounters(container) {
-    const counters = container.querySelectorAll('.stat-number');
-    counters.forEach(counter => {
-      const target = parseInt(counter.dataset.count);
-      const duration = 2000;
-      const increment = target / (duration / 16);
-      let current = 0;
-      
-      const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-          counter.textContent = Math.floor(current).toLocaleString();
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.textContent = target.toLocaleString();
-        }
-      };
-      
-      updateCounter();
-    });
-  }
   
   // Progress Bar Animation
   function animateProgressBar(container) {
