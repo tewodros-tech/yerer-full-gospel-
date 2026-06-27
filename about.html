@@ -822,36 +822,7 @@
     }
 
     /* ================================================================
-       GALLERY
-       ================================================================ */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .gallery-item {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition-smooth);
-      background: var(--bg-dark);
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s var(--ease-out-expo);
-    }
-    .gallery-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--shadow-card-hover);
-    }
-    .gallery-item:hover img { transform: scale(1.1); }
-
-    /* ================================================================
-       STATS
+       STATS — UPDATED WITH NEW CATEGORIES
        ================================================================ */
     .stats-hub {
       background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
@@ -887,90 +858,6 @@
       font-weight: 500;
       letter-spacing: 1px;
       text-transform: uppercase;
-    }
-
-    /* ================================================================
-       PRAYER WALL
-       ================================================================ */
-    .prayer-wall-section {
-      background: var(--bg-card);
-      border-radius: 40px;
-      padding: 60px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--glass-border);
-      display: grid;
-      grid-template-columns: 1.10fr 0.90fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .prayer-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .form-group label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-main);
-    }
-    .form-control {
-      padding: 16px 24px;
-      border-radius: 50px;
-      border: 1px solid var(--glass-border-strong);
-      background: var(--bg-light);
-      color: var(--text-main);
-      font-size: 0.95rem;
-      outline: none;
-      transition: var(--transition-smooth);
-    }
-    .form-control:focus {
-      border-color: var(--primary);
-      background: white;
-      box-shadow: 0 0 0 4px rgba(30, 76, 143, 0.05);
-    }
-    textarea.form-control {
-      border-radius: 24px;
-      resize: none;
-      height: 120px;
-    }
-    .prayer-stats-display {
-      text-align: center;
-      padding: 40px;
-      background: var(--primary-light);
-      border-radius: 32px;
-      border: 1px solid var(--glass-border-strong);
-      position: relative;
-    }
-    .prayer-big-number {
-      font-size: 6rem;
-      font-weight: 800;
-      color: var(--primary);
-      font-family: 'Playfair Display', serif;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .pray-particle {
-      position: fixed;
-      pointer-events: none;
-      font-size: 1.5rem;
-      animation: floatUp 1.2s cubic-bezier(0.25, 1, 0.50, 1) forwards;
-      z-index: 99999;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(0.5); opacity: 0; }
-      20% { opacity: 1; }
-      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
     }
 
     /* ================================================================
@@ -1126,7 +1013,6 @@
       .doctrine-flex { grid-template-columns: 1fr; }
       .stat-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-card:not(:last-child)::after { display: none; }
-      .prayer-wall-section { grid-template-columns: 1fr; }
       .timeline-container::before { left: 40px; }
       .timeline-node { flex-direction: row !important; }
       .timeline-bubble { width: calc(100% - 80px); margin-left: 80px; }
@@ -1160,9 +1046,7 @@
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       .stats-hub { padding: 40px 20px; }
-      .stat-grid { grid-template-columns: 1fr; }
-      .prayer-wall-section { padding: 40px 20px; }
-      .form-row { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
       .cta-hub { padding: 50px 24px; }
       .footer-grid { grid-template-columns: 1fr; gap: 36px; }
       .section-title { font-size: 2.4rem; }
@@ -1176,11 +1060,10 @@
       .hero-buttons { flex-direction: column; align-items: center; }
       .hero-buttons .btn { width: 100%; max-width: 280px; }
       .values-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
       .timeline-bubble { padding: 24px; }
-      .prayer-big-number { font-size: 4rem; }
       .leaders-grid { grid-template-columns: 1fr; }
       .leader-img-wrapper { width: 120px; height: 120px; }
+      .stat-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1545,94 +1428,27 @@
     </div>
   </section>
 
-  <!-- Stats Section -->
+  <!-- Stats Section — UPDATED WITH NEW CATEGORIES -->
   <section style="padding: 100px 0; background: var(--bg-card);">
     <div class="container">
       <div class="stats-hub reveal-scale" id="statsSection">
         <div class="stat-grid">
           <div class="stat-card">
-            <div class="stat-number" data-target="10000000">0</div>
-            <div class="stat-label">Total Believers</div>
+            <div class="stat-number" data-target="125">0</div>
+            <div class="stat-label">Nations Reached</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number" data-target="4067">0</div>
-            <div class="stat-label">Local Churches</div>
+            <div class="stat-number" data-target="3200">0</div>
+            <div class="stat-label">Churches Planted</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number" data-target="8947">0</div>
-            <div class="stat-label">Daughter Works</div>
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-label">Missionaries Sent</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number" data-target="42">0</div>
-            <div class="stat-label">Regional Hubs</div>
+            <div class="stat-number" data-target="150">0</div>
+            <div class="stat-label">Years of Legacy</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section style="padding: 100px 0; background: var(--bg-light);">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-images"></i> CHURCH PICTURES</span>
-        <h2 class="section-title">Our Church <span class="gold">Family</span></h2>
-        <p class="section-subtitle">Moments capturing the warmth, excitement, and divine encounters within our local Yerer community.</p>
-      </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-item reveal-scale"><img src="yerer1.jpg" alt="Worship Sanctuary" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer2.jpg" alt="Sanctuary Praise" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer3.jpg" alt="Youth Praying" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer4.jpg" alt="Altar Prayer" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer5.jpg" alt="Elders Fellowship" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer7.jpg" alt="Worship Team" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer8.jpg" alt="Altar Call" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer9.jpg" alt="Prayer Gathering" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer10.jpg" alt="Choir Praise" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer11.jpg" alt="Congregation Service" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="yerer12.jpg" alt="Holy Assembly" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Church+Life'" /></div>
-        <div class="gallery-item reveal-scale"><img src="Keyboard_6jpg.jpg" alt="Worship" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Worship'" /></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Prayer Wall -->
-  <section style="padding: 100px 0; background: var(--bg-card);">
-    <div class="container">
-      <div class="prayer-wall-section reveal">
-        <div>
-          <span class="pill-badge" style="margin-bottom:20px;"><i class="fas fa-hands-praying"></i> PRAYER INTERACTIVE COMFORT</span>
-          <h2 style="font-size:2.8rem;font-weight:800;color:var(--text-main);margin-bottom:16px;">We Stand in <span style="color:var(--primary);">Agreement</span></h2>
-          <p style="color:var(--text-muted);margin-bottom:30px;line-height:1.8;">Our intercessory teams are on standby to cover you in prayer. Submit your request anonymously, or join the global community in praying for others by clicking the interactive prayer button on the right.</p>
-          
-          <form class="prayer-form" onsubmit="submitPrayerRequest(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Your Name (Optional)</label>
-                <input type="text" class="form-control" id="prayerName" placeholder="e.g. Abel" />
-              </div>
-              <div class="form-group">
-                <label>Topic</label>
-                <input type="text" class="form-control" id="prayerTopic" placeholder="e.g. Healing, Family" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Request</label>
-              <textarea class="form-control" id="prayerText" placeholder="Briefly share your prayer needs..." required></textarea>
-            </div>
-            <button type="submit" class="btn-primary" style="align-self:flex-start;padding:14px 44px;"><i class="fas fa-paper-plane"></i> Submit Request</button>
-          </form>
-        </div>
-
-        <div class="prayer-stats-display" style="position:relative;">
-          <i class="fas fa-quote-left" style="color:var(--primary);font-size:4rem;opacity:0.15;position:absolute;top:30px;left:30px;"></i>
-          <div class="prayer-big-number" id="prayerCounter">347</div>
-          <h3 style="font-size:1.5rem;margin-bottom:8px;color:var(--text-main);">Prayers Offered This Week</h3>
-          <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:30px;">Every click represents a believer offering up intercession. Join us now and bless someone's request instantly.</p>
-          <button class="btn-primary" style="width:100%;" onclick="incrementPrayerCounter(this)">
-            <i class="fas fa-hands-praying"></i> Tap to Pray for Others
-          </button>
         </div>
       </div>
     </div>
@@ -1852,7 +1668,7 @@
     }
 
     // ================================================================
-    // STATS COUNTER
+    // STATS COUNTER — UPDATED WITH NEW TARGETS
     // ================================================================
     let animationTriggered = false;
     const statsNumbers = document.querySelectorAll('.stat-number');
@@ -1866,18 +1682,10 @@
       const updateCount = () => {
         count += increment;
         if (count < target) {
-          if (target >= 10000000) {
-            element.innerText = (count / 1000000).toFixed(1) + 'M+';
-          } else {
-            element.innerText = count.toLocaleString();
-          }
+          element.innerText = count.toLocaleString();
           setTimeout(updateCount, 15);
         } else {
-          if (target >= 10000000) {
-            element.innerText = '10M+';
-          } else {
-            element.innerText = target.toLocaleString();
-          }
+          element.innerText = target.toLocaleString();
         }
       };
       updateCount();
@@ -1894,41 +1702,6 @@
 
     const statsSection = document.getElementById('statsSection');
     if (statsSection) statsObserver.observe(statsSection);
-
-    // ================================================================
-    // PRAYER COUNTER
-    // ================================================================
-    function incrementPrayerCounter(button) {
-      const counter = document.getElementById('prayerCounter');
-      counter.innerText = parseInt(counter.innerText, 10) + 1;
-
-      const rect = button.getBoundingClientRect();
-      const emojis = ['🙏', '✨', '🕊️', '🔥', '💛'];
-      for (let i = 0; i < 5; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'pray-particle';
-        particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        particle.style.left = (rect.left + rect.width / 2 + (Math.random() - 0.5) * 60) + 'px';
-        particle.style.top = (rect.top + window.scrollY - 15) + 'px';
-        document.body.appendChild(particle);
-        setTimeout(() => particle.remove(), 1200);
-      }
-    }
-
-    // ================================================================
-    // PRAYER FORM SUBMIT
-    // ================================================================
-    function submitPrayerRequest(event) {
-      event.preventDefault();
-      const name = document.getElementById('prayerName').value || 'Anonymous';
-      const topic = document.getElementById('prayerTopic').value;
-      alert(`Thank you, ${name}. Your prayer request about "${topic}" has been added to our intercession database.`);
-      document.getElementById('prayerName').value = '';
-      document.getElementById('prayerTopic').value = '';
-      document.getElementById('prayerText').value = '';
-      const counter = document.getElementById('prayerCounter');
-      counter.innerText = parseInt(counter.innerText, 10) + 1;
-    }
   </script>
 </body>
 </html>
