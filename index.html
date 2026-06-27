@@ -510,7 +510,7 @@
     .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
     /* ================================================================
-       WORSHIP GALLERY — HIGHLIGHT STRIP — FIXED IMAGE SIZING
+       WORSHIP GALLERY — FULLY VISIBLE IMAGES (NO CROP)
        ================================================================ */
     .worship-strip { padding: 100px 0 60px; background: var(--bg-light); }
     .worship-grid { 
@@ -527,24 +527,21 @@
       box-shadow: var(--shadow-lg);
       cursor: pointer;
       background: var(--bg-dark);
-      height: 100%;
-      min-height: 320px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       aspect-ratio: 4/3;
-      width: 100%;
     }
     .worship-card img { 
       width: 100%; 
       height: 100%; 
-      object-fit: cover; 
+      object-fit: contain;
+      background: var(--bg-dark);
       transition: transform 1s var(--ease-out-expo);
-      position: absolute;
-      inset: 0;
       display: block;
     }
-    .worship-card:hover img { transform: scale(1.06); }
+    .worship-card:hover img { transform: scale(1.05); }
     .worship-card-overlay {
       position: absolute;
       inset: 0;
@@ -557,6 +554,7 @@
       z-index: 2;
       width: 100%;
       height: 100%;
+      pointer-events: none;
     }
     .worship-card:hover .worship-card-overlay { background: linear-gradient(to top, rgba(10,30,50,0.92) 0%, rgba(10,30,50,0.15) 60%); }
     .worship-card h3 { font-size: 1.6rem; color: white; margin-bottom: 6px; }
@@ -577,15 +575,16 @@
       transition: var(--transition-smooth);
       box-shadow: 0 12px 40px rgba(30,76,143,0.4);
       z-index: 3;
+      pointer-events: none;
     }
     .worship-card:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
     @media (max-width: 920px) {
       .worship-grid { grid-template-columns: 1fr; }
-      .worship-card { min-height: 280px; aspect-ratio: 4/3; }
+      .worship-card { aspect-ratio: 4/3; }
     }
     @media (max-width: 480px) {
-      .worship-card { min-height: 200px; aspect-ratio: 4/3; }
+      .worship-card { aspect-ratio: 4/3; }
     }
 
     /* ================================================================
@@ -975,7 +974,6 @@
       .giving-section { padding: 80px 0; }
       .give-amount-input input { font-size: 1.4rem; width: 160px; padding: 14px 20px; }
       .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-      .worship-card { min-height: 250px; aspect-ratio: 4/3; }
     }
 
     @media (max-width: 480px) {
@@ -987,7 +985,6 @@
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .stat-number { font-size: 1.6rem; }
       .stat-item { padding: 20px 12px; }
-      .worship-card { min-height: 200px; aspect-ratio: 4/3; }
     }
   </style>
 </head>
@@ -1097,7 +1094,7 @@
     </div>
   </section>
 
-  <!-- Worship Highlights — FIXED: Images now properly fitted -->
+  <!-- Worship Highlights — FULLY VISIBLE IMAGES (object-fit: contain) -->
   <section class="worship-strip">
     <div class="container">
       <div class="section-header reveal">
