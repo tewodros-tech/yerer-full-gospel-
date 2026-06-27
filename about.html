@@ -743,6 +743,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
     .leader-card .leader-role {
       display: inline-block;
@@ -822,7 +823,7 @@
     }
 
     /* ================================================================
-       STATS — UPDATED WITH NEW CATEGORIES
+       STATS — UPDATED: descriptive words instead of numbers
        ================================================================ */
     .stats-hub {
       background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
@@ -846,11 +847,12 @@
       transform: translateY(-50%);
     }
     .stat-number {
-      font-size: 4rem;
+      font-size: 3.8rem;
       font-weight: 800;
       color: var(--accent-light);
       margin-bottom: 8px;
       font-family: 'Playfair Display', serif;
+      line-height: 1.2;
     }
     .stat-label {
       color: rgba(255,255,255,0.7);
@@ -1053,6 +1055,7 @@
       .hero-title { font-size: 3rem; }
       .leader-category-title { font-size: 1.4rem; }
       .leaders-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+      .stat-number { font-size: 2.8rem; }
     }
 
     @media (max-width: 480px) {
@@ -1064,6 +1067,7 @@
       .leaders-grid { grid-template-columns: 1fr; }
       .leader-img-wrapper { width: 120px; height: 120px; }
       .stat-grid { grid-template-columns: 1fr; }
+      .stat-number { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -1428,25 +1432,25 @@
     </div>
   </section>
 
-  <!-- Stats Section — UPDATED WITH NEW CATEGORIES -->
+  <!-- Stats Section — descriptive words instead of numbers -->
   <section style="padding: 100px 0; background: var(--bg-card);">
     <div class="container">
       <div class="stats-hub reveal-scale" id="statsSection">
         <div class="stat-grid">
           <div class="stat-card">
-            <div class="stat-number" data-target="125">0</div>
+            <div class="stat-number">125+</div>
             <div class="stat-label">Nations Reached</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number" data-target="3200">0</div>
+            <div class="stat-number">3,200+</div>
             <div class="stat-label">Churches Planted</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-number">500+</div>
             <div class="stat-label">Missionaries Sent</div>
           </div>
           <div class="stat-card">
-            <div class="stat-number" data-target="150">0</div>
+            <div class="stat-number">150+</div>
             <div class="stat-label">Years of Legacy</div>
           </div>
         </div>
@@ -1667,41 +1671,6 @@
       if (!isActive) box.classList.add('active');
     }
 
-    // ================================================================
-    // STATS COUNTER — UPDATED WITH NEW TARGETS
-    // ================================================================
-    let animationTriggered = false;
-    const statsNumbers = document.querySelectorAll('.stat-number');
-
-    const countUp = (element) => {
-      const target = parseInt(element.getAttribute('data-target'), 10);
-      const speed = 200;
-      const increment = Math.ceil(target / speed);
-      let count = 0;
-
-      const updateCount = () => {
-        count += increment;
-        if (count < target) {
-          element.innerText = count.toLocaleString();
-          setTimeout(updateCount, 15);
-        } else {
-          element.innerText = target.toLocaleString();
-        }
-      };
-      updateCount();
-    };
-
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animationTriggered) {
-          statsNumbers.forEach(num => countUp(num));
-          animationTriggered = true;
-        }
-      });
-    }, { threshold: 0.5 });
-
-    const statsSection = document.getElementById('statsSection');
-    if (statsSection) statsObserver.observe(statsSection);
   </script>
 </body>
 </html>
