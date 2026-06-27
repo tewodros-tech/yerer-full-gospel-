@@ -412,184 +412,6 @@
       line-height: 1.7;
     }
 
-    /* ===== CAMPAIGN PROGRESS ===== */
-    .campaign-section {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #0B1B33 0%, #1E4C8F 50%, #0E2A4F 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .campaign-card {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border-radius: 40px;
-      padding: 60px;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.3);
-    }
-    .campaign-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .campaign-header h3 {
-      font-size: 2.2rem;
-      margin-bottom: 8px;
-    }
-    .campaign-header p {
-      color: var(--text-muted);
-    }
-    .campaign-stats {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    .campaign-raised {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-    }
-    .campaign-raised strong {
-      font-size: 1.4rem;
-      color: var(--text-main);
-    }
-    .campaign-goal {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-    }
-    .progress-container {
-      position: relative;
-      margin-bottom: 24px;
-    }
-    .progress-bar-bg {
-      background: #E8E8F0;
-      border-radius: 20px;
-      height: 24px;
-      overflow: hidden;
-      position: relative;
-    }
-    .progress-fill {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      height: 100%;
-      border-radius: 20px;
-      transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      width: 0;
-    }
-    .progress-percentage {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      background: var(--primary);
-      color: white;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-    .campaign-message {
-      text-align: center;
-      padding: 24px;
-      background: var(--primary-light);
-      border-radius: 20px;
-      margin-bottom: 32px;
-    }
-    .campaign-message p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-    }
-    .campaign-message .highlight-text {
-      color: var(--primary);
-      font-weight: 700;
-    }
-    .campaign-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ===== AMOUNT SELECTOR ===== */
-    .amount-section {
-      padding: 100px 0;
-      background: var(--bg-light);
-    }
-    .amount-card {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-      background: var(--bg-card);
-      border-radius: 40px;
-      padding: 60px 48px;
-      box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(30, 76, 143, 0.08);
-    }
-    .amount-card h3 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-    .amount-card > p {
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
-    .amount-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-    .amount-option {
-      padding: 24px;
-      background: var(--bg-light);
-      border-radius: 20px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-main);
-      position: relative;
-    }
-    .amount-option:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-    .amount-option.selected {
-      border-color: var(--primary);
-      background: var(--primary-light);
-    }
-    .amount-option .popular {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: var(--primary);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 10px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    .custom-amount {
-      margin-bottom: 32px;
-    }
-    .custom-amount input {
-      width: 100%;
-      padding: 20px 28px;
-      border: 2px solid #E8E0D5;
-      border-radius: 20px;
-      font-size: 1.3rem;
-      font-weight: 600;
-      text-align: center;
-      background: white;
-      transition: var(--transition-smooth);
-      font-family: 'Inter', sans-serif;
-    }
-    .custom-amount input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(30, 76, 143, 0.2);
-    }
-
     /* ===== PAYMENT METHODS ===== */
     .payment-section {
       padding: 100px 0;
@@ -911,12 +733,6 @@
       .nav-links.active {
         display: flex;
       }
-      .campaign-card {
-        padding: 40px 28px;
-      }
-      .amount-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @media (max-width: 768px) {
@@ -933,28 +749,9 @@
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
-      .campaign-stats {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-      }
-      .campaign-buttons {
-        flex-direction: column;
-      }
-      .campaign-buttons .btn-primary,
-      .campaign-buttons .btn-secondary {
-        width: 100%;
-        justify-content: center;
-      }
     }
 
     @media (max-width: 480px) {
-      .amount-grid {
-        grid-template-columns: 1fr;
-      }
-      .amount-card {
-        padding: 40px 24px;
-      }
       .hero-title { font-size: 2.5rem; }
     }
 
@@ -1094,88 +891,8 @@
   </div>
 </section>
 
-<!-- ===== CAMPAIGN PROGRESS ===== -->
-<section class="campaign-section" id="ways-to-give">
-  <div class="container">
-    <div class="campaign-card animate-on-scroll">
-      <div class="campaign-header">
-        <span class="pill-badge" style="margin-bottom: 16px;">CAMPAIGN</span>
-        <h3>Building Fund Campaign</h3>
-        <p>Together we are building a house of prayer for all nations</p>
-      </div>
-      
-      <div class="campaign-stats">
-        <span class="campaign-raised">Raised: <strong>$18,500</strong></span>
-        <span class="campaign-goal">Goal: $50,000</span>
-      </div>
-      
-      <div class="progress-container">
-        <span class="progress-percentage">37%</span>
-        <div class="progress-bar-bg">
-          <div class="progress-fill" data-width="37"></div>
-        </div>
-      </div>
-      
-      <div class="campaign-message">
-        <p>Join <span class="highlight-text">142 faithful givers</span> who have already contributed to this campaign. Together, we can reach our goal!</p>
-      </div>
-      
-      <div class="campaign-buttons">
-        <a href="#" class="btn-primary"><i class="fas fa-hand-holding-usd"></i> Give Now</a>
-        <a href="#" class="btn-secondary"><i class="fas fa-info-circle"></i> Learn More</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== AMOUNT SELECTOR ===== -->
-<section class="amount-section">
-  <div class="container">
-    <div class="amount-card animate-on-scroll">
-      <h3>Select Your Gift Amount</h3>
-      <p>Choose a one-time or monthly giving option that works for you</p>
-      
-      <div class="amount-grid">
-        <div class="amount-option" data-amount="50">$50</div>
-        <div class="amount-option selected" data-amount="100">
-          $100
-          <span class="popular">Popular</span>
-        </div>
-        <div class="amount-option" data-amount="250">$250</div>
-        <div class="amount-option" data-amount="500">$500</div>
-        <div class="amount-option" data-amount="1000">$1,000</div>
-        <div class="amount-option" data-amount="other">Custom</div>
-      </div>
-      
-      <div class="custom-amount">
-        <input type="number" id="customAmount" placeholder="Enter custom amount ($)" min="1">
-      </div>
-      
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;">
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-          <input type="radio" name="frequency" value="once" checked style="accent-color: var(--primary);">
-          <span>One-time</span>
-        </label>
-        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-          <input type="radio" name="frequency" value="monthly" style="accent-color: var(--primary);">
-          <span>Monthly</span>
-        </label>
-      </div>
-      
-      <a href="#" class="btn-primary" style="padding: 20px 56px; font-size: 1.1rem;">
-        <i class="fas fa-credit-card"></i> Continue to Payment
-      </a>
-      
-      <p style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">
-        <i class="fas fa-lock" style="color: var(--primary);"></i>
-        Secure & encrypted payment processing
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== PAYMENT METHODS ===== -->
-<section class="payment-section">
+<section class="payment-section" id="ways-to-give">
   <div class="container">
     <div class="section-header">
       <span class="pill-badge">OTHER WAYS</span>
@@ -1440,25 +1157,6 @@
     });
   }
   
-  // Amount Selection
-  document.querySelectorAll('.amount-option').forEach(option => {
-    option.addEventListener('click', function() {
-      document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
-      this.classList.add('selected');
-      
-      if (this.dataset.amount !== 'other') {
-        document.getElementById('customAmount').value = '';
-      }
-    });
-  });
-  
-  // Custom Amount Input
-  document.getElementById('customAmount').addEventListener('input', function() {
-    document.querySelectorAll('.amount-option').forEach(opt => opt.classList.remove('selected'));
-    const customOption = document.querySelector('.amount-option[data-amount="other"]');
-    customOption.classList.add('selected');
-  });
-  
   // Scroll to Top
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1488,11 +1186,6 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        
-        // Animate progress bar
-        if (entry.target.querySelector('.progress-fill')) {
-          animateProgressBar(entry.target);
-        }
       }
     });
   }, observerOptions);
@@ -1500,17 +1193,6 @@
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
     observer.observe(el);
   });
-  
-  // Progress Bar Animation
-  function animateProgressBar(container) {
-    const progressFill = container.querySelector('.progress-fill');
-    if (progressFill) {
-      const width = progressFill.dataset.width;
-      setTimeout(() => {
-        progressFill.style.width = width + '%';
-      }, 300);
-    }
-  }
   
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
