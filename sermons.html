@@ -257,9 +257,9 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-    /* Immersive Hero Section with 2.jpg */
+    /* Immersive Hero Section with Worship Hands */
     .hero-bg {
-      background: url('2.jpg') center/cover no-repeat;
+      background: linear-gradient(135deg, #0B1B33 0%, #1E4C8F 60%, #0E2A4F 100%);
       position: relative;
       min-height: 70vh;
       display: flex;
@@ -270,8 +270,35 @@
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, rgba(11, 27, 51, 0.85) 0%, rgba(30, 76, 143, 0.80) 50%, rgba(14, 42, 79, 0.90) 100%);
+      background: radial-gradient(circle at 30% 40%, rgba(74, 127, 193, 0.15) 0%, transparent 60%),
+                  radial-gradient(circle at 70% 60%, rgba(30, 76, 143, 0.10) 0%, transparent 50%);
       z-index: 1;
+    }
+    /* Worship Hands Animation - Floating hands */
+    .worship-hands-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .worship-hands-bg .hand-icon {
+      position: absolute;
+      font-size: 8rem;
+      color: rgba(255,255,255,0.08);
+      animation: floatHands 20s ease-in-out infinite;
+    }
+    .worship-hands-bg .hand-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; font-size: 10rem; }
+    .worship-hands-bg .hand-icon:nth-child(2) { top: 50%; right: 8%; animation-delay: -5s; font-size: 12rem; }
+    .worship-hands-bg .hand-icon:nth-child(3) { bottom: 15%; left: 20%; animation-delay: -10s; font-size: 7rem; }
+    .worship-hands-bg .hand-icon:nth-child(4) { top: 20%; right: 25%; animation-delay: -15s; font-size: 6rem; }
+    .worship-hands-bg .hand-icon:nth-child(5) { bottom: 30%; right: 35%; animation-delay: -7s; font-size: 9rem; }
+    @keyframes floatHands {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.08; }
+      25% { transform: translateY(-30px) rotate(5deg) scale(1.05); opacity: 0.15; }
+      50% { transform: translateY(20px) rotate(-3deg) scale(0.95); opacity: 0.10; }
+      75% { transform: translateY(-15px) rotate(4deg) scale(1.02); opacity: 0.12; }
     }
     .hero-content {
       position: relative;
@@ -606,9 +633,6 @@
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
-    .notes-modal.active .notes-modal-content {
-      transform: scale(1) translateY(0);
-    }
     .notes-close-btn {
       position: absolute;
       top: 30px; right: 30px;
@@ -671,6 +695,16 @@
       color: white;
       transform: translateY(-3px);
       box-shadow: 0 12px 28px rgba(30, 76, 143, 0.3);
+    }
+
+    /* Worship Hands Animation - Floating hands in cards */
+    .worship-hands-float {
+      display: inline-block;
+      animation: floatHandsSmall 3s ease-in-out infinite;
+    }
+    @keyframes floatHandsSmall {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
     }
 
     /* Footer Styles */
@@ -793,10 +827,17 @@
   </div>
 </nav>
 
-<!-- IMMERSIVE HERO SECTION with 2.jpg -->
+<!-- IMMERSIVE HERO SECTION with Worship Hands Animation -->
 <section class="hero-bg">
+  <div class="worship-hands-bg">
+    <i class="fas fa-hands-praying hand-icon"></i>
+    <i class="fas fa-hands-praying hand-icon"></i>
+    <i class="fas fa-hands-praying hand-icon"></i>
+    <i class="fas fa-hands-praying hand-icon"></i>
+    <i class="fas fa-hands-praying hand-icon"></i>
+  </div>
   <div class="container hero-content">
-    <span class="pill-badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #B3D0F0;"><i class="fas fa-bible"></i> The Written Word</span>
+    <span class="pill-badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #B3D0F0;"><i class="fas fa-hands-praying"></i> The Written Word</span>
     <h1 class="hero-title amharic">The <span>Sermons</span></h1>
     <p class="hero-subtitle amharic">Faith comes by hearing, and hearing by the Word of God — Romans 10:17</p>
     
@@ -812,7 +853,7 @@
 <section id="featured" style="padding: 100px 0; background: var(--bg-card);">
   <div class="container">
     <div class="section-header">
-      <span class="pill-badge">THIS WEEK'S EXHORTATION</span>
+      <span class="pill-badge"><i class="fas fa-hands-praying worship-hands-float"></i> THIS WEEK'S EXHORTATION</span>
       <h2 class="section-title">Featured <span>Sermon</span></h2>
       <p class="section-subtitle">Engage with our latest divine study, focusing on modern spiritual maturity and divine power.</p>
     </div>
@@ -823,11 +864,11 @@
       </div>
       
       <div>
-        <span class="pill-badge" style="margin-bottom: 20px;">LATEST MESSAGE</span>
+        <span class="pill-badge" style="margin-bottom: 20px;"><i class="fas fa-hands-praying"></i> LATEST MESSAGE</span>
         <h3 style="font-size: 2.2rem; margin-bottom: 16px; font-weight: 800; color: var(--text-main);">Walking in the Spirit</h3>
         
         <p style="color: var(--text-muted); margin-bottom: 12px; font-weight: 500;">
-          <i class="fas fa-user-tie" style="color: var(--primary); margin-right: 8px;"></i> Pastor Yohannes
+          <i class="fas fa-hands-praying" style="color: var(--primary); margin-right: 8px;"></i> Worship Team
         </p>
         <p style="color: var(--text-muted); margin-bottom: 24px; font-weight: 500;">
           <i class="far fa-calendar-alt" style="color: var(--primary); margin-right: 8px;"></i> June 15, 2026
@@ -838,8 +879,8 @@
         </p>
         
         <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <button class="btn-primary" onclick="openNotesModal('Walking in the Spirit', 'Pastor Yohannes', '1. Introduction: Living life as a spiritual being, aligned with biblical commands.<br>2. Crucial disciplines: Constant active prayers, deep scripture meditation, fasts, and maintaining true purity.<br>3. Overcoming structural resistance: Conquering human patterns and continuous worldly noise.<br>4. Conclusion: Practical guidelines to establish a daily routine of spiritual sensitivity.')"><i class="fas fa-file-alt"></i> View Outline</button>
-          <button class="btn-secondary" onclick="shareSermon('Walking in the Spirit - Pastor Yohannes')"><i class="fas fa-share-alt"></i> Share Sermon</button>
+          <button class="btn-primary" onclick="openNotesModal('Walking in the Spirit', 'Worship Team', '1. Introduction: Living life as a spiritual being, aligned with biblical commands.<br>2. Crucial disciplines: Constant active prayers, deep scripture meditation, fasts, and maintaining true purity.<br>3. Overcoming structural resistance: Conquering human patterns and continuous worldly noise.<br>4. Conclusion: Practical guidelines to establish a daily routine of spiritual sensitivity.')"><i class="fas fa-file-alt"></i> View Outline</button>
+          <button class="btn-secondary" onclick="shareSermon('Walking in the Spirit - Worship Team')"><i class="fas fa-share-alt"></i> Share Sermon</button>
         </div>
       </div>
     </div>
@@ -850,7 +891,7 @@
 <section id="grid" style="padding: 100px 0; background: var(--bg-light);">
   <div class="container">
     <div class="section-header">
-      <span class="pill-badge">MESSAGE ARCHIVE</span>
+      <span class="pill-badge"><i class="fas fa-hands-praying worship-hands-float"></i> MESSAGE ARCHIVE</span>
       <h2 class="section-title">Explore <span>Scriptures</span></h2>
       <p class="section-subtitle">Real-time discoverable, interactive archive. Filter by speakers, or perform keyword queries immediately.</p>
     </div>
@@ -859,7 +900,7 @@
     <div class="sermon-controls">
       <div class="filter-btn-group">
         <button class="filter-btn active" onclick="filterSermons('all')">All Preachers</button>
-        <button class="filter-btn" onclick="filterSermons('yohannes')">Pastor Yohannes</button>
+        <button class="filter-btn" onclick="filterSermons('worship')">Worship Team</button>
         <button class="filter-btn" onclick="filterSermons('sara')">Pastor Sara</button>
         <button class="filter-btn" onclick="filterSermons('guest')">Guest Speakers</button>
       </div>
@@ -874,7 +915,7 @@
     <div class="sermon-grid" id="sermonGrid">
       
       <!-- Card 1 -->
-      <div class="sermon-card" data-preacher="yohannes">
+      <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
           <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop" alt="Walking in the Spirit" />
           <span class="sermon-badge">Worship</span>
@@ -883,11 +924,11 @@
           <h3 class="sermon-card-title">Walking in the Spirit</h3>
           <p class="sermon-card-desc">Understanding the daily walk of a believer under the absolute guidance of the Holy Spirit.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-user-tie"></i> Pastor Yohannes</span>
+            <span><i class="fas fa-hands-praying"></i> Worship Team</span>
             <span><i class="far fa-calendar-alt"></i> June 15, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Walking in the Spirit', 'Pastor Yohannes', '1. Foundations of Spiritual Living: Understanding your identity in Christ.<br>2. Daily communion: Sustaining communication with the Holy Spirit.<br>3. Practical guidelines: Discernment, obedience, and alignment.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Walking in the Spirit', 'Worship Team', '1. Foundations of Spiritual Living: Understanding your identity in Christ.<br>2. Daily communion: Sustaining communication with the Holy Spirit.<br>3. Practical guidelines: Discernment, obedience, and alignment.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Walking in the Spirit')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -903,7 +944,7 @@
           <h3 class="sermon-card-title">Prayer That Moves Mountains</h3>
           <p class="sermon-card-desc">Fostering relentless prayer disciplines that shatter challenges and yield true breakthrough.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-user-tie"></i> Pastor Sara</span>
+            <span><i class="fas fa-hands-praying"></i> Pastor Sara</span>
             <span><i class="far fa-calendar-alt"></i> June 8, 2026</span>
           </div>
           <div class="sermon-card-actions">
@@ -914,7 +955,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="sermon-card" data-preacher="yohannes">
+      <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
           <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=2" alt="Baptism of the Holy Spirit" />
           <span class="sermon-badge">Holy Spirit</span>
@@ -923,11 +964,11 @@
           <h3 class="sermon-card-title">Baptism of the Holy Spirit</h3>
           <p class="sermon-card-desc">Discover the physical promise of the Father and how to receive spiritual empowerment.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-user-tie"></i> Pastor Yohannes</span>
+            <span><i class="fas fa-hands-praying"></i> Worship Team</span>
             <span><i class="far fa-calendar-alt"></i> June 1, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Baptism of the Holy Spirit', 'Pastor Yohannes', '1. The Promise of Joel and Acts 2.<br>2. Speaking in tongues as primary spiritual evidence.<br>3. Walking daily inside the gifts.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Baptism of the Holy Spirit', 'Worship Team', '1. The Promise of Joel and Acts 2.<br>2. Speaking in tongues as primary spiritual evidence.<br>3. Walking daily inside the gifts.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Baptism of the Holy Spirit')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -943,7 +984,7 @@
           <h3 class="sermon-card-title">Healing the Brokenhearted</h3>
           <p class="sermon-card-desc">Restoring damaged emotions, healing pain, and building strong pathways of recovery.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-user-tie"></i> Pastor Sara</span>
+            <span><i class="fas fa-hands-praying"></i> Pastor Sara</span>
             <span><i class="far fa-calendar-alt"></i> May 25, 2026</span>
           </div>
           <div class="sermon-card-actions">
@@ -963,7 +1004,7 @@
           <h3 class="sermon-card-title">Faith That Overcomes</h3>
           <p class="sermon-card-desc">Formulating absolute trust and reliance during dark storms and heavy test periods.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-user-tie"></i> Guest Speaker</span>
+            <span><i class="fas fa-hands-praying"></i> Guest Speaker</span>
             <span><i class="far fa-calendar-alt"></i> May 18, 2026</span>
           </div>
           <div class="sermon-card-actions">
@@ -974,7 +1015,7 @@
       </div>
 
       <!-- Card 6 -->
-      <div class="sermon-card" data-preacher="yohannes">
+      <div class="sermon-card" data-preacher="worship">
         <div class="sermon-img-container">
           <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=500&fit=crop&random=5" alt="The Power of Worship" />
           <span class="sermon-badge">Worship</span>
@@ -983,11 +1024,11 @@
           <h3 class="sermon-card-title">The Power of Worship</h3>
           <p class="sermon-card-desc">Entering into deep sanctuary spaces through dynamic sacrifices of praise and honor.</p>
           <div class="sermon-card-meta">
-            <span><i class="fas fa-user-tie"></i> Pastor Yohannes</span>
+            <span><i class="fas fa-hands-praying"></i> Worship Team</span>
             <span><i class="far fa-calendar-alt"></i> May 11, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('The Power of Worship', 'Pastor Yohannes', '1. Elevating praise from basic music to daily habits.<br>2. Defeating enemy constructs using dedicated praises.<br>3. Experiencing supernatural encounters at the altar.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('The Power of Worship', 'Worship Team', '1. Elevating praise from basic music to daily habits.<br>2. Defeating enemy constructs using dedicated praises.<br>3. Experiencing supernatural encounters at the altar.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('The Power of Worship')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -1005,7 +1046,7 @@
 <section style="padding: 100px 0; background: var(--bg-card);">
   <div class="container">
     <div class="section-header">
-      <span class="pill-badge">THEMATIC STUDY</span>
+      <span class="pill-badge"><i class="fas fa-hands-praying worship-hands-float"></i> THEMATIC STUDY</span>
       <h2 class="section-title">Sermon <span>Series</span></h2>
       <p class="section-subtitle">Examine curated structures of theology designed to anchor your scriptural maturity deeper.</p>
     </div>
@@ -1013,7 +1054,7 @@
     <div class="series-grid">
       <!-- Card 1 -->
       <div class="series-card">
-        <div class="series-icon"><i class="fas fa-book-open"></i></div>
+        <div class="series-icon"><i class="fas fa-hands-praying"></i></div>
         <h3 class="series-title">The Book of Acts</h3>
         <p class="series-desc">Tracing the miraculous birth, trials, and power coordinates of the early Pentecostal church assembly.</p>
         <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
@@ -1021,7 +1062,7 @@
 
       <!-- Card 2 -->
       <div class="series-card">
-        <div class="series-icon"><i class="fas fa-heart"></i></div>
+        <div class="series-icon"><i class="fas fa-hands-praying"></i></div>
         <h3 class="series-title">The Love of God</h3>
         <p class="series-desc">Understanding the multi-dimensional scope, height, and security of God's unconditional love.</p>
         <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
@@ -1029,7 +1070,7 @@
 
       <!-- Card 3 -->
       <div class="series-card">
-        <div class="series-icon"><i class="fas fa-dove"></i></div>
+        <div class="series-icon"><i class="fas fa-hands-praying"></i></div>
         <h3 class="series-title">The Holy Spirit</h3>
         <p class="series-desc">Demystifying the spiritual person, daily counseling, and miraculous operations of God's Spirit.</p>
         <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
@@ -1049,7 +1090,7 @@
 <!-- PODCAST SUBSCRIPTION AREA -->
 <section id="podcasts" class="container" style="padding: 40px 0;">
   <div class="podcast-hub">
-    <span class="pill-badge" style="background: rgba(255,255,255,0.08); color: #B3D0F0;"><i class="fas fa-broadcast-tower"></i> LISTEN ANYWHERE</span>
+    <span class="pill-badge" style="background: rgba(255,255,255,0.08); color: #B3D0F0;"><i class="fas fa-hands-praying"></i> LISTEN ANYWHERE</span>
     <h2 style="font-size: 3rem; color: white; margin: 20px 0 10px; font-family: 'Playfair Display', serif;">Subscribe to Our <span style="color: #B3D0F0;">Podcast</span></h2>
     <p style="max-width: 600px; margin: 0 auto; color: #D4C8B8; font-size: 1.1rem;">Take the uncompromised Word of God wherever you travel. Listen daily using your favorite audio platforms.</p>
     
@@ -1066,9 +1107,9 @@
   <div class="notes-modal-content">
     <button class="notes-close-btn" onclick="closeNotesModal()"><i class="fas fa-times"></i></button>
     
-    <span class="pill-badge" style="margin-bottom: 15px;">SERMON OUTLINE</span>
+    <span class="pill-badge" style="margin-bottom: 15px;"><i class="fas fa-hands-praying"></i> SERMON OUTLINE</span>
     <h2 id="modalSermonTitle" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 6px;">Walking in the Spirit</h2>
-    <p style="color: var(--text-muted); font-weight: 500; font-size: 0.95rem; margin-bottom: 30px;" id="modalSermonPreacher"><i class="fas fa-user-tie"></i> Pastor Yohannes</p>
+    <p style="color: var(--text-muted); font-weight: 500; font-size: 0.95rem; margin-bottom: 30px;" id="modalSermonPreacher"><i class="fas fa-hands-praying"></i> Worship Team</p>
     
     <div style="background: var(--bg-light); border-radius: 24px; padding: 30px; border-left: 5px solid var(--primary); font-size: 1.05rem; line-height: 1.8; color: var(--text-main); margin-bottom: 30px;" id="modalSermonBody">
       <!-- Loaded outline text goes here dynamically -->
@@ -1194,7 +1235,7 @@
 
   function openNotesModal(title, preacher, outlineHtml) {
     modalTitle.innerText = title;
-    modalPreacher.innerHTML = `<i class="fas fa-user-tie"></i> ${preacher}`;
+    modalPreacher.innerHTML = `<i class="fas fa-hands-praying"></i> ${preacher}`;
     modalBody.innerHTML = outlineHtml;
     notesModal.classList.add('active');
   }
