@@ -483,7 +483,7 @@
     }
 
     /* ================================================================
-       STATS COUNTER STRIP
+       STATS COUNTER STRIP — EXPRESSIVE PHRASES
        ================================================================ */
     .stats-strip {
       background: var(--bg-dark);
@@ -503,7 +503,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1;
+      line-height: 1.2;
       margin-bottom: 8px;
       display: inline-block;
     }
@@ -1066,24 +1066,24 @@
     </div>
   </section>
 
-  <!-- Animated Stats -->
+  <!-- Animated Stats — Expressive Phrases -->
   <section class="stats-strip">
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item reveal">
-          <div class="stat-number" data-target="2500" data-suffix="+"><span class="counter-text">0</span></div>
+          <div class="stat-number" data-target="Thousands" data-suffix=""><span class="counter-text">0</span></div>
           <div class="stat-label">Faithful Members</div>
         </div>
         <div class="stat-item reveal">
-          <div class="stat-number" data-target="12" data-suffix=""><span class="counter-text">0</span></div>
+          <div class="stat-number" data-target="Over a Decade" data-suffix=""><span class="counter-text">0</span></div>
           <div class="stat-label">Years of Ministry</div>
         </div>
         <div class="stat-item reveal">
-          <div class="stat-number" data-target="50" data-suffix="+"><span class="counter-text">0</span></div>
+          <div class="stat-number" data-target="Many" data-suffix=""><span class="counter-text">0</span></div>
           <div class="stat-label">Small Groups</div>
         </div>
         <div class="stat-item reveal">
-          <div class="stat-number" data-target="100" data-suffix="K+"><span class="counter-text">0</span></div>
+          <div class="stat-number" data-target="Countless" data-suffix=""><span class="counter-text">0</span></div>
           <div class="stat-label">Lives Touched</div>
         </div>
       </div>
@@ -1695,25 +1695,37 @@
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
 
     // ================================================================
-    // ANIMATED STAT COUNTERS
+    // ANIMATED STAT COUNTERS — EXPRESSIVE PHRASES
     // ================================================================
-    const randomChars = "0123456789";
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target.querySelector('.counter-text');
+          const target = entry.target.dataset.target;
+          const fx = new TextScramble(el);
+          fx.setText(target);
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    // Simple TextScramble for phrases
     class TextScramble {
       constructor(el) {
         this.el = el;
-        this.chars = randomChars;
+        this.chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         this.update = this.update.bind(this);
       }
       setText(newText) {
         const oldText = this.el.innerText;
-        const length = newText.length;
+        const length = Math.max(oldText.length, newText.length);
         const promise = new Promise((resolve) => this.resolve = resolve);
         this.queue = [];
         for (let i = 0; i < length; i++) {
           const from = oldText[i] || '';
-          const to = newText[i];
-          const start = Math.floor(Math.random() * 40);
-          const end = start + Math.floor(Math.random() * 40);
+          const to = newText[i] || '';
+          const start = Math.floor(Math.random() * 30);
+          const end = start + Math.floor(Math.random() * 30);
           this.queue.push({ from, to, start, end, char: '' });
         }
         cancelAnimationFrame(this.frameRequest);
@@ -1734,7 +1746,7 @@
               char = this.randomChar();
               this.queue[i].char = char;
             }
-            output += `<span style="color:rgba(30,76,143,0.4)">${char}</span>`;
+            output += `<span style="color:rgba(30,76,143,0.3)">${char}</span>`;
           } else {
             output += from;
           }
@@ -1751,19 +1763,6 @@
         return this.chars[Math.floor(Math.random() * this.chars.length)];
       }
     }
-
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target.querySelector('.counter-text');
-          const target = parseInt(entry.target.dataset.target);
-          const suffix = entry.target.dataset.suffix || '';
-          const fx = new TextScramble(el);
-          fx.setText(target + suffix);
-          statObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
 
     document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
 
