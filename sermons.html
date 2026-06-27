@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Sermons | የረር ሙሉወንጌል ቤተክርስቲያን</title>
+  <title>Sermons | የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</title>
   <meta name="description" content="Browse our sermon archive. Watch or listen to messages from Yerer Full Gospel Believers Church." />
   
   <!-- Premium Typography Fonts -->
@@ -13,22 +13,22 @@
   <style>
     /* Premium Theme Variable System */
     :root {
-      --primary: #C5A880;
-      --primary-hover: #AA8B60;
-      --primary-light: rgba(197, 168, 128, 0.12);
-      --dark-gold: #9E7D50;
-      --accent: #E5C396;
+      --primary: #1E4C8F;
+      --primary-hover: #163A6E;
+      --primary-light: rgba(30, 76, 143, 0.12);
+      --dark-gold: #1E4C8F;
+      --accent: #4A7FC1;
       --bg-dark: #0D0A08;
       --bg-medium: #17120E;
-      --bg-light: #FCF8F2;
+      --bg-light: #F8FAFC;
       --bg-card: #FFFFFF;
-      --text-main: #1F1A14;
-      --text-muted: #6B5E4E;
-      --text-light: #F4EFEB;
+      --text-main: #0B1B33;
+      --text-muted: #4A6580;
+      --text-light: #F4F8FF;
       --glass-bg: rgba(255, 255, 255, 0.85);
-      --glass-border: rgba(197, 168, 128, 0.18);
-      --shadow-premium: 0 16px 48px rgba(23, 18, 14, 0.04);
-      --shadow-hover: 0 24px 64px rgba(197, 168, 128, 0.16);
+      --glass-border: rgba(30, 76, 143, 0.18);
+      --shadow-premium: 0 16px 48px rgba(10, 30, 50, 0.04);
+      --shadow-hover: 0 24px 64px rgba(30, 76, 143, 0.16);
       --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -84,15 +84,15 @@
       border-radius: 60px;
       font-size: 0.75rem;
       letter-spacing: 2px;
-      color: var(--dark-gold);
+      color: var(--primary);
       font-weight: 700;
       text-transform: uppercase;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      border: 1px solid rgba(197, 168, 128, 0.25);
+      border: 1px solid rgba(30, 76, 143, 0.25);
       backdrop-filter: blur(4px);
-      box-shadow: 0 4px 12px rgba(197, 168, 128, 0.05);
+      box-shadow: 0 4px 12px rgba(30, 76, 143, 0.05);
     }
 
     /* Buttons Reimagined */
@@ -111,7 +111,7 @@
       transition: var(--transition-smooth);
       border: none;
       cursor: pointer;
-      box-shadow: 0 8px 30px rgba(158, 125, 80, 0.3);
+      box-shadow: 0 8px 30px rgba(30, 76, 143, 0.3);
       position: relative;
       overflow: hidden;
       z-index: 1;
@@ -130,7 +130,7 @@
     }
     .btn-primary:hover { 
       transform: translateY(-4px); 
-      box-shadow: 0 16px 36px rgba(158, 125, 80, 0.45); 
+      box-shadow: 0 16px 36px rgba(30, 76, 143, 0.45); 
     }
 
     .btn-secondary {
@@ -139,7 +139,7 @@
       justify-content: center;
       gap: 10px;
       background: transparent;
-      color: var(--dark-gold);
+      color: var(--primary);
       padding: 16px 42px;
       border-radius: 100px;
       text-decoration: none;
@@ -259,7 +259,7 @@
 
     /* Immersive Hero Section */
     .hero-bg {
-      background: url('XXXL.webp') center/cover no-repeat;
+      background: linear-gradient(135deg, #0B1B33 0%, #1E4C8F 50%, #0E2A4F 100%);
       position: relative;
       min-height: 70vh;
       display: flex;
@@ -270,7 +270,8 @@
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(13, 10, 8, 0.8) 0%, rgba(23, 18, 14, 0.93) 100%);
+      background: radial-gradient(ellipse at 30% 20%, rgba(74, 127, 193, 0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(74, 127, 193, 0.10) 0%, transparent 50%);
       z-index: 1;
     }
     .hero-content {
@@ -289,7 +290,7 @@
       max-width: 1000px;
     }
     .hero-title span {
-      background: linear-gradient(135deg, var(--accent) 30%, var(--primary) 100%);
+      background: linear-gradient(135deg, #B3D0F0 30%, #4A7FC1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -312,7 +313,7 @@
       margin-bottom: 16px;
     }
     .section-title span {
-      color: var(--dark-gold);
+      color: var(--primary);
     }
     .section-subtitle {
       color: var(--text-muted);
@@ -327,7 +328,7 @@
       border-radius: 40px;
       padding: 60px;
       box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(197, 168, 128, 0.08);
+      border: 1px solid rgba(30, 76, 143, 0.08);
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 50px;
@@ -354,7 +355,7 @@
       border-radius: 32px;
       padding: 30px 40px;
       box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(197, 168, 128, 0.08);
+      border: 1px solid rgba(30, 76, 143, 0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -369,7 +370,7 @@
     }
     .filter-btn {
       background: var(--bg-light);
-      border: 1px solid rgba(197, 168, 128, 0.2);
+      border: 1px solid rgba(30, 76, 143, 0.2);
       color: var(--text-muted);
       padding: 12px 28px;
       border-radius: 100px;
@@ -379,9 +380,9 @@
       transition: var(--transition-smooth);
     }
     .filter-btn:hover, .filter-btn.active {
-      background: var(--dark-gold);
+      background: var(--primary);
       color: white;
-      border-color: var(--dark-gold);
+      border-color: var(--primary);
       transform: translateY(-2px);
     }
     .sermon-search-box {
@@ -393,7 +394,7 @@
       width: 100%;
       padding: 14px 24px 14px 50px;
       border-radius: 100px;
-      border: 1px solid rgba(197, 168, 128, 0.3);
+      border: 1px solid rgba(30, 76, 143, 0.3);
       outline: none;
       font-size: 0.95rem;
       transition: var(--transition-smooth);
@@ -402,7 +403,7 @@
     .sermon-search-input:focus {
       border-color: var(--primary);
       background: white;
-      box-shadow: 0 0 15px rgba(197, 168, 128, 0.15);
+      box-shadow: 0 0 15px rgba(30, 76, 143, 0.15);
     }
     .search-icon {
       position: absolute;
@@ -423,7 +424,7 @@
       border-radius: 36px;
       overflow: hidden;
       box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(197, 168, 128, 0.08);
+      border: 1px solid rgba(30, 76, 143, 0.08);
       transition: var(--transition-smooth);
       display: flex;
       flex-direction: column;
@@ -438,17 +439,16 @@
       aspect-ratio: 16 / 10;
       overflow: hidden;
       background: var(--bg-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .sermon-img-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    .sermon-img-container .placeholder-icon {
+      font-size: 4rem;
+      color: var(--primary-light);
+      opacity: 0.5;
     }
-    .sermon-card:hover .sermon-img-container img {
-      transform: scale(1.08);
-    }
-    .sermon-badge {
+    .sermon-img-container .sermon-badge {
       position: absolute;
       top: 20px; right: 20px;
       background: rgba(13, 10, 8, 0.75);
@@ -487,7 +487,7 @@
       color: var(--text-muted);
       font-size: 0.85rem;
       font-weight: 500;
-      border-top: 1px solid rgba(197, 168, 128, 0.1);
+      border-top: 1px solid rgba(30, 76, 143, 0.1);
       padding-top: 20px;
       margin-top: auto;
     }
@@ -516,7 +516,7 @@
       border-radius: 32px;
       padding: 40px;
       box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(197, 168, 128, 0.08);
+      border: 1px solid rgba(30, 76, 143, 0.08);
       transition: var(--transition-smooth);
       text-align: center;
       display: flex;
@@ -537,12 +537,12 @@
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
-      color: var(--dark-gold);
+      color: var(--primary);
       margin-bottom: 24px;
       transition: var(--transition-smooth);
     }
     .series-card:hover .series-icon {
-      background: var(--dark-gold);
+      background: var(--primary);
       color: white;
       transform: scale(1.1);
     }
@@ -559,7 +559,7 @@
       margin-bottom: 20px;
     }
     .series-link {
-      color: var(--dark-gold);
+      color: var(--primary);
       text-decoration: none;
       font-weight: 700;
       font-size: 0.9rem;
@@ -604,6 +604,7 @@
       border: 1px solid var(--glass-border);
       transform: scale(0.9) translateY(20px);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
     }
     .notes-modal.active .notes-modal-content {
       transform: scale(1) translateY(0);
@@ -631,7 +632,7 @@
 
     /* Modern Podcast Area */
     .podcast-hub {
-      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+      background: linear-gradient(135deg, #0B1B33 0%, #1E4C8F 50%, #0E2A4F 100%);
       color: white;
       border-radius: 40px;
       padding: 80px 60px;
@@ -643,7 +644,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 90% 10%, rgba(197, 168, 128, 0.08) 0%, transparent 55%);
+      background: radial-gradient(circle at 90% 10%, rgba(74, 127, 193, 0.08) 0%, transparent 55%);
     }
     .podcast-platforms-flex {
       display: flex;
@@ -667,9 +668,9 @@
     }
     .podcast-platform-btn:hover {
       background: var(--primary);
-      color: var(--bg-dark);
+      color: white;
       transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(197, 168, 128, 0.3);
+      box-shadow: 0 12px 28px rgba(30, 76, 143, 0.3);
     }
 
     /* Footer Styles */
@@ -677,7 +678,7 @@
       background: var(--bg-dark);
       color: #A09888;
       padding: 100px 0 40px;
-      border-top: 1px solid rgba(197, 168, 128, 0.08);
+      border-top: 1px solid rgba(30, 76, 143, 0.08);
     }
     footer h3 {
       color: #F0E8D8;
@@ -772,8 +773,8 @@
     <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 14px;">
       <img src="logo.jpg" alt="Logo" style="height: 54px; width: auto; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1);" />
       <div>
-        <div class="amharic logo-font" style="font-size: 1.25rem; font-weight: 800; color: var(--dark-gold); line-height: 1.1;">የረር ሙሉወንጌል</div>
-        <div style="font-size: 0.65rem; letter-spacing: 3px; color: var(--text-muted); font-weight: 600;">YERER FULL GOSPEL</div>
+        <div class="amharic logo-font" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); line-height: 1.1;">የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</div>
+        <div style="font-size: 0.65rem; letter-spacing: 3px; color: var(--text-muted); font-weight: 600;">YERER BER FULL GOSPEL BELIEVERS CHURCH</div>
       </div>
     </a>
     
@@ -795,7 +796,7 @@
 <!-- IMMERSIVE HERO SECTION -->
 <section class="hero-bg">
   <div class="container hero-content">
-    <span class="pill-badge" style="background: rgba(197, 168, 128, 0.15); border-color: rgba(197, 168, 128, 0.3); color: var(--accent);"><i class="fas fa-bible"></i> The Written Word</span>
+    <span class="pill-badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #B3D0F0;"><i class="fas fa-bible"></i> The Written Word</span>
     <h1 class="hero-title amharic">The <span>Sermons</span></h1>
     <p class="hero-subtitle amharic">Faith comes by hearing, and hearing by the Word of God — Romans 10:17</p>
     
@@ -875,7 +876,7 @@
       <!-- Card 1 -->
       <div class="sermon-card" data-preacher="yohannes">
         <div class="sermon-img-container">
-          <img src="yerer3.jpg" alt="Sermon thumbnail" />
+          <i class="fas fa-cross placeholder-icon"></i>
           <span class="sermon-badge">Worship</span>
         </div>
         <div class="sermon-card-content">
@@ -895,7 +896,7 @@
       <!-- Card 2 -->
       <div class="sermon-card" data-preacher="sara">
         <div class="sermon-img-container">
-          <img src="yerer4.jpg" alt="Sermon thumbnail" />
+          <i class="fas fa-hands-praying placeholder-icon"></i>
           <span class="sermon-badge">Prayer</span>
         </div>
         <div class="sermon-card-content">
@@ -915,7 +916,7 @@
       <!-- Card 3 -->
       <div class="sermon-card" data-preacher="yohannes">
         <div class="sermon-img-container">
-          <img src="yerer5.jpg" alt="Sermon thumbnail" />
+          <i class="fas fa-dove placeholder-icon"></i>
           <span class="sermon-badge">Holy Spirit</span>
         </div>
         <div class="sermon-card-content">
@@ -935,7 +936,7 @@
       <!-- Card 4 -->
       <div class="sermon-card" data-preacher="sara">
         <div class="sermon-img-container">
-          <img src="yerer6.jpg" alt="Sermon thumbnail" />
+          <i class="fas fa-heartbeat placeholder-icon"></i>
           <span class="sermon-badge">Healing</span>
         </div>
         <div class="sermon-card-content">
@@ -946,7 +947,7 @@
             <span><i class="far fa-calendar-alt"></i> May 25, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Healing the Brokenhearted', 'Pastor Sara', '1. The broken human condition.<br>2. Emotional repair through direct forgiveness.<br>3. Accepting Christ’s supernatural peace.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Healing the Brokenhearted', 'Pastor Sara', '1. The broken human condition.<br>2. Emotional repair through direct forgiveness.<br>3. Accepting Christ\'s supernatural peace.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Healing the Brokenhearted')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -955,7 +956,7 @@
       <!-- Card 5 -->
       <div class="sermon-card" data-preacher="guest">
         <div class="sermon-img-container">
-          <img src="yerer7.jpg" alt="Sermon thumbnail" />
+          <i class="fas fa-star placeholder-icon"></i>
           <span class="sermon-badge">Faith</span>
         </div>
         <div class="sermon-card-content">
@@ -966,7 +967,7 @@
             <span><i class="far fa-calendar-alt"></i> May 18, 2026</span>
           </div>
           <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Faith That Overcomes', 'Guest Speaker', '1. Elements of biblical faith vs. blind hope.<br>2. Anchoring your ship inside God’s covenant promises.<br>3. Real-life examples of victorious trials.')"><i class="fas fa-play"></i> Outline</button>
+            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Faith That Overcomes', 'Guest Speaker', '1. Elements of biblical faith vs. blind hope.<br>2. Anchoring your ship inside God\'s covenant promises.<br>3. Real-life examples of victorious trials.')"><i class="fas fa-play"></i> Outline</button>
             <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Faith That Overcomes')"><i class="fas fa-share-alt"></i> Share</button>
           </div>
         </div>
@@ -975,7 +976,7 @@
       <!-- Card 6 -->
       <div class="sermon-card" data-preacher="yohannes">
         <div class="sermon-img-container">
-          <img src="yerer8.jpg" alt="Sermon thumbnail" />
+          <i class="fas fa-music placeholder-icon"></i>
           <span class="sermon-badge">Worship</span>
         </div>
         <div class="sermon-card-content">
@@ -1048,8 +1049,8 @@
 <!-- PODCAST SUBSCRIPTION AREA -->
 <section id="podcasts" class="container" style="padding: 40px 0;">
   <div class="podcast-hub">
-    <span class="pill-badge" style="background: rgba(255,255,255,0.08); color: var(--accent);"><i class="fas fa-broadcast-tower"></i> LISTEN ANYWHERE</span>
-    <h2 style="font-size: 3rem; color: white; margin: 20px 0 10px; font-family: 'Playfair Display', serif;">Subscribe to Our <span style="color: var(--primary);">Podcast</span></h2>
+    <span class="pill-badge" style="background: rgba(255,255,255,0.08); color: #B3D0F0;"><i class="fas fa-broadcast-tower"></i> LISTEN ANYWHERE</span>
+    <h2 style="font-size: 3rem; color: white; margin: 20px 0 10px; font-family: 'Playfair Display', serif;">Subscribe to Our <span style="color: #B3D0F0;">Podcast</span></h2>
     <p style="max-width: 600px; margin: 0 auto; color: #D4C8B8; font-size: 1.1rem;">Take the uncompromised Word of God wherever you travel. Listen daily using your favorite audio platforms.</p>
     
     <div class="podcast-platforms-flex">
@@ -1062,7 +1063,7 @@
 
 <!-- NOTES DISPLAY DRAWER MODAL -->
 <div class="notes-modal" id="notesModal">
-  <div class="notes-modal-content" style="position: relative;">
+  <div class="notes-modal-content">
     <button class="notes-close-btn" onclick="closeNotesModal()"><i class="fas fa-times"></i></button>
     
     <span class="pill-badge" style="margin-bottom: 15px;">SERMON OUTLINE</span>
@@ -1088,7 +1089,7 @@
   <div class="container">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px;">
       <div>
-        <h3 class="amharic">የየረር ሙሉወንጌል ቤተክርስቲያን</h3>
+        <h3 class="amharic">የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</h3>
         <p style="line-height: 1.8; margin-bottom: 30px;">Worshiping in Spirit and Truth. A place of deep grace, recovery, community, and prophetic destiny in Addis Ababa, Ethiopia.</p>
         <div style="display: flex; gap: 16px; font-size: 1.5rem;">
           <a href="#" style="color: var(--primary);"><i class="fab fa-facebook-f"></i></a>
@@ -1119,7 +1120,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 የረር ሙሉወንጌል ቤተክርስቲያን · Yerer Full Gospel Believers Church. All rights reserved.</p>
+      <p>&copy; 2026 የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን · Yerer Ber Full Gospel Believers Church. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -1244,4 +1245,3 @@
 
 </body>
 </html>
-
