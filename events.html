@@ -1117,26 +1117,33 @@
   setInterval(updateSaturdayTimer, 1000);
   updateSaturdayTimer();
 
-  // Dynamic image list - using Unsplash images for better visuals
+  // Updated image list with all requested images
   const galleryImages = [
-    "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=600&fit=crop&random=1",
-    "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=600&h=600&fit=crop&random=1"
+    "youth_10.jpg",
+    "class_2.jpg",
+    "Class_3.jpg",
+    "Classes_1.jpg",
+    "Classes_4.jpg",
+    "Classes_5.jpg",
+    "Youth_2.jpg",
+    "Youth_3.jpg",
+    "Youth_4.jpg",
+    "youth_5.jpg",
+    "Youth_6.jpg",
+    "youth_7.jpg",
+    "youth_8.jpg",
+    "youth_9.jpg"
   ];
 
   // Dynamically Injecting Lightbox Gallery Elements
   const galleryGrid = document.getElementById('youthGallery');
   if (galleryGrid) {
+    galleryGrid.innerHTML = '';
     galleryImages.forEach(img => {
       const item = document.createElement('div');
       item.className = 'img-wrapper';
       item.onclick = () => openLightboxModal(img);
-      item.innerHTML = `<img src="${img}" alt="Youth Discipleship Assembly" loading="lazy" />`;
+      item.innerHTML = `<img src="${img}" alt="Youth Discipleship Assembly" loading="lazy" onerror="this.src='https://placehold.co/600x600/1E4C8F/FFFFFF?text=Image+Not+Found'" />`;
       galleryGrid.appendChild(item);
     });
   }
@@ -1167,7 +1174,6 @@
   let slideInterval;
 
   if (slideshowContainer) {
-    // Clear static HTML fallback
     slideshowContainer.innerHTML = '';
     dotsContainer.innerHTML = '';
 
@@ -1176,7 +1182,7 @@
       const slide = document.createElement('div');
       slide.className = `slide ${index === 0 ? 'active' : ''}`;
       slide.innerHTML = `
-        <img src="${img}" alt="Youth Gathering Highlight" loading="lazy" />
+        <img src="${img}" alt="Youth Gathering Highlight" loading="lazy" onerror="this.src='https://placehold.co/800x500/1E4C8F/FFFFFF?text=Image+Not+Found'" />
         <div class="slide-overlay">
           <h3>Youth Assembly Praise</h3>
           <p>Walking in deep spiritual communion with God's Word every Saturday.</p>
