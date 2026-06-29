@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Sermons | የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</title>
-  <meta name="description" content="Browse our sermon archive. Watch or listen to messages from Yerer Full Gospel Believers Church." />
+  <title>Events | የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</title>
+  <meta name="description" content="Join the fire! Discover Yerer Full Gospel Believers Church Youth Revival. Every Saturday at 11:30 AM." />
   
   <!-- Premium Typography Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Noto+Serif+Ethiopic:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <style>
-    /* Premium Theme Variable System */
+    /* Premium Theme Variable System - Consistent with other pages */
     :root {
       --primary: #1E4C8F;
       --primary-hover: #163A6E;
       --primary-light: rgba(30, 76, 143, 0.12);
       --dark-gold: #1E4C8F;
       --accent: #4A7FC1;
-      --cross-red: #C0392B;
-      --cross-red-light: rgba(192, 57, 43, 0.15);
-      --bg-dark: #0D0A08;
+      --bg-dark: #0B1B33;
       --bg-medium: #17120E;
       --bg-light: #F8FAFC;
       --bg-card: #FFFFFF;
@@ -96,9 +94,6 @@
       backdrop-filter: blur(4px);
       box-shadow: 0 4px 12px rgba(30, 76, 143, 0.05);
     }
-    .pill-badge .cross-white {
-      color: #ffffff;
-    }
 
     /* Buttons Reimagined */
     .btn-primary {
@@ -151,6 +146,7 @@
       font-weight: 600;
       border: 2px solid var(--primary);
       transition: var(--transition-smooth);
+      cursor: pointer;
     }
     .btn-secondary:hover { 
       background: var(--primary-light); 
@@ -262,11 +258,11 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-    /* Immersive Hero Section with Worship Hands */
+    /* Immersive Parallax Hero Section */
     .hero-bg {
-      background: linear-gradient(135deg, #0B1B33 0%, #1E4C8F 60%, #0E2A4F 100%);
+      background: url('2.jpg') center/cover no-repeat;
       position: relative;
-      min-height: 70vh;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -275,34 +271,8 @@
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 30% 40%, rgba(74, 127, 193, 0.15) 0%, transparent 60%),
-                  radial-gradient(circle at 70% 60%, rgba(30, 76, 143, 0.10) 0%, transparent 50%);
+      background: linear-gradient(135deg, rgba(11, 27, 51, 0.85) 0%, rgba(30, 76, 143, 0.80) 50%, rgba(14, 42, 79, 0.90) 100%);
       z-index: 1;
-    }
-    .worship-hands-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      opacity: 0.15;
-      pointer-events: none;
-    }
-    .worship-hands-bg .hand-icon {
-      position: absolute;
-      font-size: 8rem;
-      color: rgba(255,255,255,0.08);
-      animation: floatHands 20s ease-in-out infinite;
-    }
-    .worship-hands-bg .hand-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; font-size: 10rem; }
-    .worship-hands-bg .hand-icon:nth-child(2) { top: 50%; right: 8%; animation-delay: -5s; font-size: 12rem; }
-    .worship-hands-bg .hand-icon:nth-child(3) { bottom: 15%; left: 20%; animation-delay: -10s; font-size: 7rem; }
-    .worship-hands-bg .hand-icon:nth-child(4) { top: 20%; right: 25%; animation-delay: -15s; font-size: 6rem; }
-    .worship-hands-bg .hand-icon:nth-child(5) { bottom: 30%; right: 35%; animation-delay: -7s; font-size: 9rem; }
-    @keyframes floatHands {
-      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.08; }
-      25% { transform: translateY(-30px) rotate(5deg) scale(1.05); opacity: 0.15; }
-      50% { transform: translateY(20px) rotate(-3deg) scale(0.95); opacity: 0.10; }
-      75% { transform: translateY(-15px) rotate(4deg) scale(1.02); opacity: 0.12; }
     }
     .hero-content {
       position: relative;
@@ -331,6 +301,52 @@
       margin-bottom: 40px;
     }
 
+    /* Live Countdown Clock for Saturday Service */
+    .countdown-widget {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 100px;
+      padding: 12px 36px;
+      backdrop-filter: blur(16px);
+      margin-top: 50px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: pulse-border 3s infinite;
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: rgba(255, 255, 255, 0.15); }
+      50% { border-color: var(--accent); }
+    }
+    .countdown-label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.8;
+      font-weight: 600;
+    }
+    .countdown-timer {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Inter', monospace;
+      color: #B3D0F0;
+      letter-spacing: 1px;
+    }
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      background: #E53E3E;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 12px #E53E3E;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
     /* Section Typography & Accents */
     .section-header {
       text-align: center;
@@ -352,211 +368,178 @@
       margin: 0 auto;
     }
 
-    /* Featured Sermon Section */
-    .featured-sermon-box {
-      background: var(--bg-card);
-      border-radius: 40px;
-      padding: 60px;
-      box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(30, 76, 143, 0.08);
+    /* Core Pillars of Youth Discipleship Section */
+    .pillars-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .video-theatre {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-      border: 4px solid var(--bg-card);
-    }
-    .video-theatre iframe {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      border: 0;
-    }
-    .worship-hands-float {
-      display: inline-block;
-      animation: floatHandsSmall 3s ease-in-out infinite;
-    }
-    @keyframes floatHandsSmall {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(3deg); }
-    }
-
-    /* Sermon Interactive Grid & Searching Filters */
-    .sermon-controls {
-      background: var(--bg-card);
-      border-radius: 32px;
-      padding: 30px 40px;
-      box-shadow: var(--shadow-premium);
-      border: 1px solid rgba(30, 76, 143, 0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
-      margin-bottom: 50px;
-      flex-wrap: wrap;
+      margin-top: 50px;
     }
-    .filter-btn-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .filter-btn {
-      background: var(--bg-light);
-      border: 1px solid rgba(30, 76, 143, 0.2);
-      color: var(--text-muted);
-      padding: 12px 28px;
-      border-radius: 100px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: var(--transition-smooth);
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-    .sermon-search-box {
-      position: relative;
-      width: 100%;
-      max-width: 350px;
-    }
-    .sermon-search-input {
-      width: 100%;
-      padding: 14px 24px 14px 50px;
-      border-radius: 100px;
-      border: 1px solid rgba(30, 76, 143, 0.3);
-      outline: none;
-      font-size: 0.95rem;
-      transition: var(--transition-smooth);
-      background: var(--bg-light);
-    }
-    .sermon-search-input:focus {
-      border-color: var(--primary);
-      background: white;
-      box-shadow: 0 0 15px rgba(30, 76, 143, 0.15);
-    }
-    .search-icon {
-      position: absolute;
-      top: 50%; left: 20px;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    /* Premium Sermon Cards Grid */
-    .sermon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 40px;
-    }
-    .sermon-card {
+    .pillar-card {
       background: var(--bg-card);
-      border-radius: 36px;
-      overflow: hidden;
+      border-radius: 32px;
+      padding: 45px 35px;
       box-shadow: var(--shadow-premium);
       border: 1px solid rgba(30, 76, 143, 0.08);
       transition: var(--transition-smooth);
-      display: flex;
-      flex-direction: column;
+      text-align: center;
     }
-    .sermon-card:hover {
-      transform: translateY(-10px);
+    .pillar-card:hover {
+      transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
       border-color: var(--primary);
     }
-    .sermon-img-container {
+    .pillar-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      color: var(--primary);
+      font-size: 2rem;
+      transition: var(--transition-smooth);
+    }
+    .pillar-card:hover .pillar-icon-wrapper {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+    }
+    .pillar-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Premium Gallery Grid Styles */
+    .youth-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .img-wrapper {
       position: relative;
-      aspect-ratio: 16 / 10;
       overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--shadow-premium);
+      transition: var(--transition-smooth);
       background: var(--bg-dark);
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .img-wrapper:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+    .img-wrapper:hover img { 
+      transform: scale(1.08); 
+    }
+
+    /* Premium Embedded Carousel Slider */
+    .slideshow-area {
+      position: relative;
+      margin: 50px auto 0;
+      max-width: 1000px;
+    }
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 36px;
+      box-shadow: var(--shadow-hover);
+      background: var(--bg-dark);
+      border: 4px solid var(--bg-card);
+    }
+    .slideshow-container .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .sermon-img-container .cross-bg-icon {
-      font-size: 6rem;
-      color: rgba(255, 255, 255, 0.12);
-      animation: floatCross 4s ease-in-out infinite;
+    .slideshow-container .slide.active {
+      opacity: 1;
     }
-    @keyframes floatCross {
-      0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
-      50% { transform: translateY(-8px) scale(1.05) rotate(3deg); }
+    .slideshow-container .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .sermon-img-container .sermon-badge {
+    .slideshow-container .slide-overlay {
       position: absolute;
-      top: 20px; right: 20px;
-      background: rgba(13, 10, 8, 0.75);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px;
+      background: linear-gradient(transparent, rgba(11, 27, 51, 0.9) 70%);
+      color: white;
+    }
+    .slideshow-container .slide-overlay h3 {
+      font-size: 1.8rem;
       color: #B3D0F0;
-      padding: 6px 18px;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      backdrop-filter: blur(8px);
-      text-transform: uppercase;
-      border: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 8px;
     }
-    .sermon-card-content {
-      padding: 35px 30px;
+    .slideshow-container .slide-overlay p {
+      color: var(--text-light);
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    .slideshow-dots {
       display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .sermon-card-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .sermon-card-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .sermon-card-meta {
-      display: flex;
-      gap: 20px;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      font-weight: 500;
-      border-top: 1px solid rgba(30, 76, 143, 0.1);
-      padding-top: 20px;
-      margin-top: auto;
-    }
-    .sermon-card-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sermon-card-meta i {
-      color: #ffffff;
-    }
-    .sermon-card-actions {
-      display: flex;
+      justify-content: center;
       gap: 12px;
       margin-top: 24px;
     }
+    .slideshow-dots .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(30, 76, 143, 0.3);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .slideshow-dots .dot.active {
+      background: var(--primary);
+      width: 28px;
+      border-radius: 10px;
+    }
 
-    /* Sermon Series Grid */
-    .series-grid {
+    /* Stylized Service Grid Layout */
+    .weekly-services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
-    .series-card {
+    .weekly-service-card {
       background: var(--bg-card);
       border-radius: 32px;
-      padding: 40px;
+      padding: 45px 35px;
       box-shadow: var(--shadow-premium);
       border: 1px solid rgba(30, 76, 143, 0.08);
       transition: var(--transition-smooth);
@@ -565,62 +548,97 @@
       flex-direction: column;
       align-items: center;
     }
-    .series-card:hover {
+    .weekly-service-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--primary);
     }
-    .series-icon {
-      width: 74px;
-      height: 74px;
-      background: var(--cross-red-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: #ffffff;
-      margin-bottom: 24px;
+    .weekly-service-card.highlighted {
+      border: 2px solid var(--primary);
+      background-image: radial-gradient(circle at top right, var(--primary-light) 0%, transparent 60%);
+    }
+    .weekly-service-card i {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
       transition: var(--transition-smooth);
     }
-    .series-card:hover .series-icon {
-      background: var(--cross-red);
-      color: white;
-      transform: scale(1.1);
+    .weekly-service-card:hover i {
+      transform: scale(1.1) rotate(5deg);
     }
-    .series-title {
+    .weekly-service-card h3 {
       font-size: 1.4rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 12px;
     }
-    .series-desc {
+    .weekly-service-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .series-link {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: var(--transition-smooth);
-      margin-top: auto;
-    }
-    .series-link:hover {
-      color: var(--primary-hover);
-      gap: 10px;
     }
 
-    /* Premium Notes Outline Modal Drawer */
-    .notes-modal {
+    /* Fullscreen Image Lightbox Preview Modal */
+    .lightbox-modal {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(13, 10, 8, 0.5);
+      background: rgba(11, 27, 51, 0.95);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .lightbox-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-img-wrapper {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      border: 3px solid rgba(255,255,255,0.1);
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox-modal.active .lightbox-img-wrapper {
+      transform: scale(1);
+    }
+    .lightbox-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+    .lightbox-close-btn {
+      position: absolute;
+      top: 40px; right: 40px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition-smooth);
+    }
+    .lightbox-close-btn:hover {
+      background: var(--primary);
+      color: var(--bg-dark);
+    }
+
+    /* Modal Form for Registrations / Reminders */
+    .reminder-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(11, 27, 51, 0.5);
       backdrop-filter: blur(12px);
       z-index: 2000;
       display: flex;
@@ -630,17 +648,15 @@
       pointer-events: none;
       transition: opacity 0.4s ease;
     }
-    .notes-modal.active {
+    .reminder-modal.active {
       opacity: 1;
       pointer-events: all;
     }
-    .notes-modal-content {
+    .reminder-modal-content {
       background: var(--bg-card);
       border-radius: 40px;
-      max-width: 700px;
+      max-width: 500px;
       width: 90%;
-      max-height: 85vh;
-      overflow-y: auto;
       padding: 50px;
       box-shadow: 0 30px 80px rgba(0,0,0,0.3);
       border: 1px solid var(--glass-border);
@@ -648,7 +664,10 @@
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
-    .notes-close-btn {
+    .reminder-modal.active .reminder-modal-content {
+      transform: scale(1) translateY(0);
+    }
+    .reminder-close-btn {
       position: absolute;
       top: 30px; right: 30px;
       background: var(--bg-light);
@@ -664,52 +683,75 @@
       font-size: 1.1rem;
       transition: var(--transition-smooth);
     }
-    .notes-close-btn:hover {
+    .reminder-close-btn:hover {
       background: var(--primary);
       color: white;
     }
-
-    /* Modern Podcast Area */
-    .podcast-hub {
-      background: linear-gradient(135deg, #0B1B33 0%, #1E4C8F 50%, #0E2A4F 100%);
-      color: white;
-      border-radius: 40px;
-      padding: 80px 60px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .podcast-hub::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 90% 10%, rgba(74, 127, 193, 0.08) 0%, transparent 55%);
-    }
-    .podcast-platforms-flex {
+    .reminder-form {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 40px;
+      margin-top: 30px;
     }
-    .podcast-platform-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: white;
-      padding: 16px 36px;
-      border-radius: 100px;
-      text-decoration: none;
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
       font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .form-control {
+      padding: 16px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(30, 76, 143, 0.3);
+      background: var(--bg-light);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
       transition: var(--transition-smooth);
     }
-    .podcast-platform-btn:hover {
-      background: var(--primary);
+    .form-control:focus {
+      border-color: var(--primary);
+      background: white;
+    }
+
+    /* Toast Notification system */
+    .toast-box {
+      position: fixed;
+      bottom: 30px; right: 30px;
+      background: var(--bg-dark);
       color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(30, 76, 143, 0.3);
+      padding: 16px 30px;
+      border-radius: 50px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transform: translateY(150%);
+      opacity: 0;
+      transition: var(--transition-smooth);
+      z-index: 3000;
+    }
+    .toast-box.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Particle float styling */
+    .sparkle-particle {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.5rem;
+      animation: floatUp 1.2s cubic-bezier(0.25, 1, 0.50, 1) forwards;
+      z-index: 10000;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
     }
 
     /* Footer Styles */
@@ -741,34 +783,10 @@
       font-size: 0.9rem;
     }
 
-    /* Toast Notification system */
-    .toast-box {
-      position: fixed;
-      bottom: 30px; right: 30px;
-      background: var(--bg-medium);
-      color: white;
-      padding: 16px 30px;
-      border-radius: 50px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transform: translateY(150%);
-      opacity: 0;
-      transition: var(--transition-smooth);
-      z-index: 3000;
-    }
-    .toast-box.active {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
     /* Responsive Architecture Styles */
     @media (max-width: 1024px) {
       .hero-title { font-size: 4rem; }
-      .featured-sermon-box { grid-template-columns: 1fr; }
-      .sermon-controls { flex-direction: column; align-items: stretch; }
-      .sermon-search-box { max-width: 100%; }
+      .slideshow-container { height: 400px; }
     }
 
     @media (max-width: 920px) {
@@ -797,10 +815,15 @@
     @media (max-width: 768px) {
       .hero-title { font-size: 3rem; }
       .section-title { font-size: 2.4rem; }
-      .featured-sermon-box { padding: 30px 20px; }
-      .sermon-controls { padding: 20px; }
-      .sermon-card-content { padding: 25px 20px; }
-      .podcast-hub { padding: 50px 24px; }
+      .slideshow-container { height: 300px; }
+      .weekly-services-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .youth-gallery { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    }
+
+    @media (max-width: 480px) {
+      .slideshow-container { height: 240px; }
+      .youth-gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
     }
   </style>
 </head>
@@ -824,300 +847,185 @@
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="sermons.html" class="active">Sermons</a>
-      <a href="events.html">Events</a>
+      <a href="sermons.html">Sermons</a>
+      <a href="events.html" class="active">Events</a>
       <a href="give.html">Give</a>
       <a href="live.html" class="btn-primary" style="padding: 12px 28px; color: white;">Join Live <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
     </div>
   </div>
 </nav>
 
-<!-- IMMERSIVE HERO SECTION with Worship Hands Animation -->
+<!-- IMMERSIVE PARALLAX HERO -->
 <section class="hero-bg">
-  <div class="worship-hands-bg">
-    <i class="fas fa-hands-praying hand-icon"></i>
-    <i class="fas fa-hands-praying hand-icon"></i>
-    <i class="fas fa-hands-praying hand-icon"></i>
-    <i class="fas fa-hands-praying hand-icon"></i>
-    <i class="fas fa-hands-praying hand-icon"></i>
-  </div>
   <div class="container hero-content">
-    <span class="pill-badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #B3D0F0;"><i class="fas fa-cross cross-white"></i> The Written Word</span>
-    <h1 class="hero-title amharic">The <span>Sermons</span></h1>
-    <p class="hero-subtitle amharic">Faith comes by hearing, and hearing by the Word of God — Romans 10:17</p>
+    <span class="pill-badge" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #B3D0F0;"><i class="fas fa-fire"></i> Next Gen Revival</span>
+    <h1 class="hero-title amharic">Youth <span>Revival</span></h1>
+    <p class="hero-subtitle amharic">Every Saturday · 11:30 AM – 1:30 PM · Yerer Main Campus</p>
     
-    <div style="margin-top: 40px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
-      <a href="#featured" class="btn-primary" style="padding: 16px 40px;"><i class="fas fa-play" style="margin-right: 10px;"></i>Featured Message</a>
-      <a href="#grid" class="btn-outline-light" style="padding: 16px 40px;">Sermon Archive</a>
-      <a href="#podcasts" class="btn-outline-light" style="padding: 16px 40px;">Listen on Podcast</a>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <button class="btn-primary" onclick="openReminderModal()" style="padding: 18px 46px; font-size: 1rem;"><i class="fas fa-bell"></i> Set Reminder</button>
+      <a href="#schedule" class="btn-outline-light" style="padding: 18px 46px;">Gathering details</a>
+      <a href="#gallery" class="btn-outline-light" style="padding: 18px 46px;">Explore Photos</a>
+    </div>
+
+    <!-- Saturday countdown widget -->
+    <div class="countdown-widget">
+      <div class="live-dot"></div>
+      <div class="countdown-label">Saturday Revival Timer</div>
+      <div class="countdown-timer" id="saturdayCountdown">-- : -- : -- : --</div>
     </div>
   </div>
 </section>
 
-<!-- FEATURED SERMON -->
-<section id="featured" style="padding: 100px 0; background: var(--bg-card);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge"><i class="fas fa-cross cross-white worship-hands-float"></i> THIS WEEK'S EXHORTATION</span>
-      <h2 class="section-title">Featured <span>Sermon</span></h2>
-      <p class="section-subtitle">Engage with our latest divine study, focusing on modern spiritual maturity and divine power.</p>
-    </div>
-
-    <div class="featured-sermon-box">
-      <div class="video-theatre">
-        <iframe src="https://www.youtube.com/embed/loF3h7flvEU?si=1ZxrZwmxGXp-q6YA" title="Walking in the Spirit" allowfullscreen></iframe>
-      </div>
-      
-      <div>
-        <span class="pill-badge" style="margin-bottom: 20px;"><i class="fas fa-cross cross-white"></i> LATEST MESSAGE</span>
-        <h3 style="font-size: 2.2rem; margin-bottom: 16px; font-weight: 800; color: var(--text-main);">Walking in the Spirit</h3>
-        
-        <p style="color: var(--text-muted); margin-bottom: 12px; font-weight: 500;">
-          <i class="fas fa-cross cross-white" style="margin-right: 8px;"></i> Worship Team
-        </p>
-        
-        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 30px;">
-          Discover the active pathway to operating within the modern gifts of the Holy Spirit. Learn how to listen to the promptings of God, walk in pure authority, and bear sustainable spiritual fruit.
-        </p>
-        
-        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-          <button class="btn-primary" onclick="openNotesModal('Walking in the Spirit', 'Worship Team', '1. Introduction: Living life as a spiritual being, aligned with biblical commands.<br>2. Crucial disciplines: Constant active prayers, deep scripture meditation, fasts, and maintaining true purity.<br>3. Overcoming structural resistance: Conquering human patterns and continuous worldly noise.<br>4. Conclusion: Practical guidelines to establish a daily routine of spiritual sensitivity.')"><i class="fas fa-file-alt"></i> View Outline</button>
-          <button class="btn-secondary" onclick="shareSermon('Walking in the Spirit - Worship Team')"><i class="fas fa-share-alt"></i> Share Sermon</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERMON ARCHIVE CONTROLS & FILTER GRID -->
-<section id="grid" style="padding: 100px 0; background: var(--bg-light);">
-  <div class="container">
-    <div class="section-header">
-      <span class="pill-badge"><i class="fas fa-cross cross-white worship-hands-float"></i> MESSAGE ARCHIVE</span>
-      <h2 class="section-title">Explore <span>Scriptures</span></h2>
-      <p class="section-subtitle">Real-time discoverable, interactive archive. Filter by speakers, or perform keyword queries immediately.</p>
-    </div>
-
-    <!-- Interactive Filter controls -->
-    <div class="sermon-controls">
-      <div class="filter-btn-group">
-        <button class="filter-btn active" onclick="filterSermons('all')">All Preachers</button>
-        <button class="filter-btn" onclick="filterSermons('worship')">Worship Team</button>
-        <button class="filter-btn" onclick="filterSermons('guest')">Guest Speakers</button>
-      </div>
-
-      <div class="sermon-search-box">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" class="sermon-search-input" id="sermonSearch" onkeyup="searchSermons()" placeholder="Search titles, Preachers..." />
-      </div>
-    </div>
-
-    <!-- Archive Grid -->
-    <div class="sermon-grid" id="sermonGrid">
-      
-      <!-- Card 1 -->
-      <div class="sermon-card" data-preacher="worship">
-        <div class="sermon-img-container">
-          <i class="fas fa-cross cross-bg-icon"></i>
-          <span class="sermon-badge">Worship</span>
-        </div>
-        <div class="sermon-card-content">
-          <h3 class="sermon-card-title">Walking in the Spirit</h3>
-          <p class="sermon-card-desc">Understanding the daily walk of a believer under the absolute guidance of the Holy Spirit.</p>
-          <div class="sermon-card-meta">
-            <span><i class="fas fa-cross cross-white"></i> Worship Team</span>
-          </div>
-          <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Walking in the Spirit', 'Worship Team', '1. Foundations of Spiritual Living: Understanding your identity in Christ.<br>2. Daily communion: Sustaining communication with the Holy Spirit.<br>3. Practical guidelines: Discernment, obedience, and alignment.')"><i class="fas fa-play"></i> Outline</button>
-            <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Walking in the Spirit')"><i class="fas fa-share-alt"></i> Share</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="sermon-card" data-preacher="worship">
-        <div class="sermon-img-container">
-          <i class="fas fa-cross cross-bg-icon"></i>
-          <span class="sermon-badge">Prayer</span>
-        </div>
-        <div class="sermon-card-content">
-          <h3 class="sermon-card-title">Prayer That Moves Mountains</h3>
-          <p class="sermon-card-desc">Fostering relentless prayer disciplines that shatter challenges and yield true breakthrough.</p>
-          <div class="sermon-card-meta">
-            <span><i class="fas fa-cross cross-white"></i> Worship Team</span>
-          </div>
-          <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Prayer That Moves Mountains', 'Worship Team', '1. Definition of Spiritual Intercession.<br>2. Power of the Word of God in declarations.<br>3. The role of persistence in dynamic breakthroughs.')"><i class="fas fa-play"></i> Outline</button>
-            <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Prayer That Moves Mountains')"><i class="fas fa-share-alt"></i> Share</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="sermon-card" data-preacher="worship">
-        <div class="sermon-img-container">
-          <i class="fas fa-cross cross-bg-icon"></i>
-          <span class="sermon-badge">Holy Spirit</span>
-        </div>
-        <div class="sermon-card-content">
-          <h3 class="sermon-card-title">Baptism of the Holy Spirit</h3>
-          <p class="sermon-card-desc">Discover the physical promise of the Father and how to receive spiritual empowerment.</p>
-          <div class="sermon-card-meta">
-            <span><i class="fas fa-cross cross-white"></i> Worship Team</span>
-          </div>
-          <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Baptism of the Holy Spirit', 'Worship Team', '1. The Promise of Joel and Acts 2.<br>2. Speaking in tongues as primary spiritual evidence.<br>3. Walking daily inside the gifts.')"><i class="fas fa-play"></i> Outline</button>
-            <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Baptism of the Holy Spirit')"><i class="fas fa-share-alt"></i> Share</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="sermon-card" data-preacher="worship">
-        <div class="sermon-img-container">
-          <i class="fas fa-cross cross-bg-icon"></i>
-          <span class="sermon-badge">Healing</span>
-        </div>
-        <div class="sermon-card-content">
-          <h3 class="sermon-card-title">Healing the Brokenhearted</h3>
-          <p class="sermon-card-desc">Restoring damaged emotions, healing pain, and building strong pathways of recovery.</p>
-          <div class="sermon-card-meta">
-            <span><i class="fas fa-cross cross-white"></i> Worship Team</span>
-          </div>
-          <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Healing the Brokenhearted', 'Worship Team', '1. The broken human condition.<br>2. Emotional repair through direct forgiveness.<br>3. Accepting Christ\'s supernatural peace.')"><i class="fas fa-play"></i> Outline</button>
-            <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Healing the Brokenhearted')"><i class="fas fa-share-alt"></i> Share</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="sermon-card" data-preacher="guest">
-        <div class="sermon-img-container">
-          <i class="fas fa-cross cross-bg-icon"></i>
-          <span class="sermon-badge">Faith</span>
-        </div>
-        <div class="sermon-card-content">
-          <h3 class="sermon-card-title">Faith That Overcomes</h3>
-          <p class="sermon-card-desc">Formulating absolute trust and reliance during dark storms and heavy test periods.</p>
-          <div class="sermon-card-meta">
-            <span><i class="fas fa-cross cross-white"></i> Guest Speaker</span>
-          </div>
-          <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('Faith That Overcomes', 'Guest Speaker', '1. Elements of biblical faith vs. blind hope.<br>2. Anchoring your ship inside God\'s covenant promises.<br>3. Real-life examples of victorious trials.')"><i class="fas fa-play"></i> Outline</button>
-            <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('Faith That Overcomes')"><i class="fas fa-share-alt"></i> Share</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="sermon-card" data-preacher="worship">
-        <div class="sermon-img-container">
-          <i class="fas fa-cross cross-bg-icon"></i>
-          <span class="sermon-badge">Worship</span>
-        </div>
-        <div class="sermon-card-content">
-          <h3 class="sermon-card-title">The Power of Worship</h3>
-          <p class="sermon-card-desc">Entering into deep sanctuary spaces through dynamic sacrifices of praise and honor.</p>
-          <div class="sermon-card-meta">
-            <span><i class="fas fa-cross cross-white"></i> Worship Team</span>
-          </div>
-          <div class="sermon-card-actions">
-            <button class="btn-primary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="openNotesModal('The Power of Worship', 'Worship Team', '1. Elevating praise from basic music to daily habits.<br>2. Defeating enemy constructs using dedicated praises.<br>3. Experiencing supernatural encounters at the altar.')"><i class="fas fa-play"></i> Outline</button>
-            <button class="btn-secondary" style="padding: 10px 24px; font-size: 0.85rem;" onclick="shareSermon('The Power of Worship')"><i class="fas fa-share-alt"></i> Share</button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="text-align: center; margin-top: 60px;">
-      <button class="btn-secondary" onclick="loadMoreSermons()">Load More Sermons <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></button>
-    </div>
-  </div>
-</section>
-
-<!-- SERMON SERIES -->
+<!-- WEEKLY YOUTH PRINCIPLES / METRICS -->
 <section style="padding: 100px 0; background: var(--bg-card);">
   <div class="container">
     <div class="section-header">
-      <span class="pill-badge"><i class="fas fa-cross cross-white worship-hands-float"></i> THEMATIC STUDY</span>
-      <h2 class="section-title">Sermon <span>Series</span></h2>
-      <p class="section-subtitle">Examine curated structures of theology designed to anchor your scriptural maturity deeper.</p>
+      <span class="pill-badge">SPIRITUAL PATHWAY</span>
+      <h2 class="section-title">Youth <span>Discipleship</span></h2>
+      <p class="section-subtitle">We are highly committed to constructing a vibrant environment for the young generation to study scriptures, grow in faith, and experience true supernatural encounters.</p>
     </div>
 
-    <div class="series-grid">
+    <div class="pillars-grid">
       <!-- Card 1 -->
-      <div class="series-card">
-        <div class="series-icon"><i class="fas fa-cross"></i></div>
-        <h3 class="series-title">The Book of Acts</h3>
-        <p class="series-desc">Tracing the miraculous birth, trials, and power coordinates of the early Pentecostal church assembly.</p>
-        <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
+      <div class="pillar-card">
+        <div class="pillar-icon-wrapper"><i class="fas fa-dove"></i></div>
+        <h3>Spirit-Led Worship</h3>
+        <p>Unlocking deep worship chambers where youth praise with freedom, truth, and prophetic authenticity.</p>
       </div>
 
       <!-- Card 2 -->
-      <div class="series-card">
-        <div class="series-icon"><i class="fas fa-cross"></i></div>
-        <h3 class="series-title">The Love of God</h3>
-        <p class="series-desc">Understanding the multi-dimensional scope, height, and security of God's unconditional love.</p>
-        <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
+      <div class="pillar-card">
+        <div class="pillar-icon-wrapper"><i class="fas fa-book-open"></i></div>
+        <h3>Active Discipleship</h3>
+        <p>Anchoring spiritual development through robust Bible teachings, practical mentorship, and daily clean living.</p>
       </div>
 
       <!-- Card 3 -->
-      <div class="series-card">
-        <div class="series-icon"><i class="fas fa-cross"></i></div>
-        <h3 class="series-title">The Holy Spirit</h3>
-        <p class="series-desc">Demystifying the spiritual person, daily counseling, and miraculous operations of God's Spirit.</p>
-        <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="series-card">
-        <div class="series-icon"><i class="fas fa-cross"></i></div>
-        <h3 class="series-title">Spiritual Warfare</h3>
-        <p class="series-desc">Equipping modern saints with strategic keys for constant, robust, victorious living in Christ.</p>
-        <a href="#" class="series-link">Explore Series <i class="fas fa-arrow-right"></i></a>
+      <div class="pillar-card">
+        <div class="pillar-icon-wrapper"><i class="fas fa-globe"></i></div>
+        <h3>Kingdom Mandate</h3>
+        <p>Sending equipped, fully resolved young leaders into colleges, workspaces, and societies to preach the Gospel.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PODCAST SUBSCRIPTION AREA -->
-<section id="podcasts" class="container" style="padding: 40px 0;">
-  <div class="podcast-hub">
-    <span class="pill-badge" style="background: rgba(255,255,255,0.08); color: #B3D0F0;"><i class="fas fa-cross cross-white"></i> LISTEN ANYWHERE</span>
-    <h2 style="font-size: 3rem; color: white; margin: 20px 0 10px; font-family: 'Playfair Display', serif;">Subscribe to Our <span style="color: #B3D0F0;">Podcast</span></h2>
-    <p style="max-width: 600px; margin: 0 auto; color: #D4C8B8; font-size: 1.1rem;">Take the uncompromised Word of God wherever you travel. Listen daily using your favorite audio platforms.</p>
-    
-    <div class="podcast-platforms-flex">
-      <a href="#" class="podcast-platform-btn"><i class="fab fa-spotify" style="color: #1DB954; font-size: 1.3rem;"></i> Spotify</a>
-      <a href="#" class="podcast-platform-btn"><i class="fab fa-apple" style="color: #fc3c44; font-size: 1.3rem;"></i> Apple Podcasts</a>
-      <a href="#" class="podcast-platform-btn"><i class="fab fa-google-play" style="color: #FD1A55; font-size: 1.3rem;"></i> Google Podcasts</a>
+<!-- EMBEDDED DYNAMIC CAROUSEL SLIDER -->
+<section style="padding: 100px 0; background: var(--bg-light); border-top: 1px solid rgba(30, 76, 143, 0.08); border-bottom: 1px solid rgba(30, 76, 143, 0.08);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">LATEST HIGHLIGHTS</span>
+      <h2 class="section-title">The Fellowship <span>Carousel</span></h2>
+      <p class="section-subtitle">Take an immersive glance inside our recent revival meetings, classes, and corporate worship moments.</p>
+    </div>
+
+    <div class="slideshow-area">
+      <div class="slideshow-container" id="youthSlideshow">
+        <!-- Generated Dynamically by JS -->
+      </div>
+      <div class="slideshow-dots" id="slideshowDots">
+        <!-- Generated Dynamically by JS -->
+      </div>
     </div>
   </div>
 </section>
 
-<!-- NOTES DISPLAY DRAWER MODAL -->
-<div class="notes-modal" id="notesModal">
-  <div class="notes-modal-content">
-    <button class="notes-close-btn" onclick="closeNotesModal()"><i class="fas fa-times"></i></button>
-    
-    <span class="pill-badge" style="margin-bottom: 15px;"><i class="fas fa-cross cross-white"></i> SERMON OUTLINE</span>
-    <h2 id="modalSermonTitle" style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 6px;">Walking in the Spirit</h2>
-    <p style="color: var(--text-muted); font-weight: 500; font-size: 0.95rem; margin-bottom: 30px;" id="modalSermonPreacher"><i class="fas fa-cross cross-white"></i> Worship Team</p>
-    
-    <div style="background: var(--bg-light); border-radius: 24px; padding: 30px; border-left: 5px solid var(--cross-red); font-size: 1.05rem; line-height: 1.8; color: var(--text-main); margin-bottom: 30px;" id="modalSermonBody">
-      <!-- Loaded outline text goes here dynamically -->
+<!-- IMAGE GRID GALLERY -->
+<section id="gallery" style="padding: 100px 0; background: var(--bg-card);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">VISUAL DIARY</span>
+      <h2 class="section-title">Youth <span>Gallery</span></h2>
+      <p class="section-subtitle">Moments captured from weekly classroom studies, altar calls, and fellowship gatherings. Click on any block to inspect.</p>
     </div>
-    
-    <button class="btn-primary" style="width: 100%;" onclick="copyNotesOutline()"><i class="fas fa-copy"></i> Copy Outline to Clipboard</button>
+
+    <div class="youth-gallery" id="youthGallery">
+      <!-- Generated Dynamically by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY SERVICES GRID -->
+<section id="schedule" style="padding: 100px 0; background: var(--bg-light); border-top: 1px solid rgba(30, 76, 143, 0.08);">
+  <div class="container">
+    <div class="section-header">
+      <span class="pill-badge">TIME schedules</span>
+      <h2 class="section-title">Our Weekly <span>Encounters</span></h2>
+      <p class="section-subtitle">Make our regular calendar assemblies a standard part of your spiritual roadmap.</p>
+    </div>
+
+    <div class="weekly-services-grid">
+      <!-- Sunday Worship -->
+      <div class="weekly-service-card">
+        <i class="fas fa-sun"></i>
+        <h3>Sunday Worship</h3>
+        <p>10:00 AM · Main Sanctuary<br>An impactful, generation-spanning worship gathering filled with divine power.</p>
+      </div>
+
+      <!-- Youth Revival -->
+      <div class="weekly-service-card highlighted">
+        <i class="fas fa-fire" style="color: var(--primary);"></i>
+        <h3 style="color: var(--primary);">🔥 Youth Revival</h3>
+        <p>Saturday 11:30 AM · Youth Hall<br>Our dedicated, fire-filled weekly preaching, prophetic praise, and discipleship gathering.</p>
+        <button class="btn-primary" style="margin-top: 24px; padding: 12px 30px; font-size: 0.85rem;" onclick="openReminderModal()">Register Now <i class="fas fa-arrow-right"></i></button>
+      </div>
+
+      <!-- Midweek study -->
+      <div class="weekly-service-card">
+        <i class="fas fa-book-open"></i>
+        <h3>Bible Study</h3>
+        <p>Wednesday 6:30 PM · Fellowship Hall<br>Sustained study, structured scripture analyses, and open classroom discussions.</p>
+      </div>
+
+      <!-- Healing -->
+      <div class="weekly-service-card">
+        <i class="fas fa-hands-praying"></i>
+        <h3>Healing & Prayer</h3>
+        <p>Friday 7:00 PM · Sanctuary Hall<br>Intercessory prayers, physical healing, and deep prophetic deliverance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE REGISTER / REMINDER MODAL FORM -->
+<div class="reminder-modal" id="reminderModal">
+  <div class="reminder-modal-content">
+    <button class="reminder-close-btn" onclick="closeReminderModal()"><i class="fas fa-times"></i></button>
+    <span class="pill-badge" style="margin-bottom: 15px;"><i class="fas fa-fire"></i> JOIN YOUTH REVIVAL</span>
+    <h2 style="font-size: 2.2rem; color: var(--text-main); margin-bottom: 6px;">Register / Set Reminder</h2>
+    <p style="color: var(--text-muted); font-size: 0.95rem;">Submit your details to receive weekly SMS & email updates about revival schedules.</p>
+
+    <form class="reminder-form" onsubmit="handleRegistrationSubmit(event)">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" class="form-control" id="regName" placeholder="e.g. Abel Yohannes" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" class="form-control" id="regPhone" placeholder="e.g. +251-9XX-XX-XX-XX" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" class="form-control" id="regEmail" placeholder="e.g. abel@domain.com" required />
+      </div>
+      <button type="submit" class="btn-primary" style="padding: 16px; width: 100%;"><i class="fas fa-bell"></i> Secure My Seat</button>
+    </form>
   </div>
 </div>
 
-<!-- TOAST ALERT -->
+<!-- FULLSCREEN LIGHTBOX INTERACTIVE MODAL -->
+<div class="lightbox-modal" id="lightboxModal">
+  <button class="lightbox-close-btn" onclick="closeLightboxModal()"><i class="fas fa-times"></i></button>
+  <div class="lightbox-img-wrapper">
+    <img id="lightboxImg" src="" alt="Screengrab details" />
+  </div>
+</div>
+
+<!-- TOAST INTERACTIVE FEEDBACK -->
 <div class="toast-box" id="toastBox">
   <i class="fas fa-check-circle" style="color: var(--accent); font-size: 1.2rem;"></i>
-  <span id="toastText">Link copied to clipboard!</span>
+  <span id="toastText">Seat successfully locked in!</span>
 </div>
 
 <!-- FOOTER -->
@@ -1180,73 +1088,135 @@
     navLinks.classList.toggle('open');
   });
 
-  // Real-time Sermon filtration categories
-  let activePreacherFilter = 'all';
-
-  function filterSermons(preacher) {
-    activePreacherFilter = preacher;
+  // Dynamic Weekly saturday 11:30 AM revival countdown timer
+  function updateSaturdayTimer() {
+    const now = new Date();
+    let nextSaturday = new Date(now);
     
-    // Update active state on buttons
-    const buttons = document.querySelectorAll('.filter-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    // Day 6 is Saturday
+    const daysUntilSaturday = (6 - now.getDay() + 7) % 7;
+    nextSaturday.setDate(now.getDate() + daysUntilSaturday);
+    nextSaturday.setHours(11, 30, 0, 0);
 
-    runSearchAndFiltration();
+    // If we've already passed 11:30 AM Saturday, jump to next Saturday
+    if (now > nextSaturday) {
+      nextSaturday.setDate(nextSaturday.getDate() + 7);
+    }
+
+    const diff = nextSaturday - now;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+
+    const clock = document.getElementById('saturdayCountdown');
+    if (clock) {
+      clock.innerHTML = `${d > 0 ? d + 'd : ' : ''}${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
+    }
   }
+  setInterval(updateSaturdayTimer, 1000);
+  updateSaturdayTimer();
 
-  // Live structural searching query
-  function searchSermons() {
-    runSearchAndFiltration();
-  }
+  // NEW IMAGE LIST - replaced all images with fresh set
+  const galleryImages = [
+    "https://images.unsplash.com/photo-1545179375-ae9806d5f84f?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=600&fit=crop"
+  ];
 
-  function runSearchAndFiltration() {
-    const query = document.getElementById('sermonSearch').value.toLowerCase();
-    const cards = document.querySelectorAll('.sermon-card');
-
-    cards.forEach(card => {
-      const preacher = card.getAttribute('data-preacher');
-      const title = card.querySelector('.sermon-card-title').innerText.toLowerCase();
-      const desc = card.querySelector('.sermon-card-desc').innerText.toLowerCase();
-      
-      const matchesPreacher = (activePreacherFilter === 'all' || preacher === activePreacherFilter);
-      const matchesQuery = (title.includes(query) || desc.includes(query));
-
-      if (matchesPreacher && matchesQuery) {
-        card.style.display = 'flex';
-        setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
-      } else {
-        card.style.opacity = '0';
-        card.style.transform = 'scale(0.95)';
-        setTimeout(() => { card.style.display = 'none'; }, 300);
-      }
+  // Dynamically Injecting Lightbox Gallery Elements
+  const galleryGrid = document.getElementById('youthGallery');
+  if (galleryGrid) {
+    galleryGrid.innerHTML = '';
+    galleryImages.forEach(img => {
+      const item = document.createElement('div');
+      item.className = 'img-wrapper';
+      item.onclick = () => openLightboxModal(img);
+      item.innerHTML = `<img src="${img}" alt="Youth Discipleship Assembly" loading="lazy" />`;
+      galleryGrid.appendChild(item);
     });
   }
 
-  // Dynamic Notes Drawer Outlines
-  const notesModal = document.getElementById('notesModal');
-  const modalTitle = document.getElementById('modalSermonTitle');
-  const modalPreacher = document.getElementById('modalSermonPreacher');
-  const modalBody = document.getElementById('modalSermonBody');
+  // Lightbox Modal functions
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg');
 
-  function openNotesModal(title, preacher, outlineHtml) {
-    modalTitle.innerText = title;
-    modalPreacher.innerHTML = `<i class="fas fa-cross cross-white"></i> ${preacher}`;
-    modalBody.innerHTML = outlineHtml;
-    notesModal.classList.add('active');
+  function openLightboxModal(imgSrc) {
+    lightboxImg.src = imgSrc;
+    lightboxModal.classList.add('active');
   }
 
-  function closeNotesModal() {
-    notesModal.classList.remove('active');
+  function closeLightboxModal() {
+    lightboxModal.classList.remove('active');
   }
 
-  // Close notes modal on clicking outside content area
-  notesModal.addEventListener('click', (event) => {
-    if (event.target === notesModal) {
-      closeNotesModal();
+  lightboxModal.addEventListener('click', (event) => {
+    if (event.target === lightboxModal) {
+      closeLightboxModal();
     }
   });
 
-  // Dynamic Toast trigger helper
+  // Dynamically Injecting Slideshow Slides
+  const slideshowContainer = document.getElementById('youthSlideshow');
+  const dotsContainer = document.getElementById('slideshowDots');
+  let currentSlide = 0;
+  let slideInterval;
+
+  if (slideshowContainer) {
+    slideshowContainer.innerHTML = '';
+    dotsContainer.innerHTML = '';
+
+    galleryImages.forEach((img, index) => {
+      // Build Slides
+      const slide = document.createElement('div');
+      slide.className = `slide ${index === 0 ? 'active' : ''}`;
+      slide.innerHTML = `
+        <img src="${img}" alt="Youth Gathering Highlight" loading="lazy" />
+        <div class="slide-overlay">
+          <h3>Youth Assembly Praise</h3>
+          <p>Walking in deep spiritual communion with God's Word every Saturday.</p>
+        </div>
+      `;
+      slideshowContainer.appendChild(slide);
+
+      // Build Navigation Dots
+      const dot = document.createElement('span');
+      dot.className = `dot ${index === 0 ? 'active' : ''}`;
+      dot.onclick = () => goToSlide(index);
+      dotsContainer.appendChild(dot);
+    });
+
+    startSlideshow();
+  }
+
+  function goToSlide(index) {
+    const slides = slideshowContainer.querySelectorAll('.slide');
+    const dots = dotsContainer.querySelectorAll('.dot');
+    
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % galleryImages.length;
+    goToSlide(next);
+  }
+
+  function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 4500);
+  }
+
+  // Pause on Hover
+  slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+  slideshowContainer.addEventListener('mouseleave', () => startSlideshow());
+
+  // Interactive Toast notifications
   function triggerToast(message) {
     const toast = document.getElementById('toastBox');
     const toastText = document.getElementById('toastText');
@@ -1254,29 +1224,77 @@
     toast.classList.add('active');
     setTimeout(() => {
       toast.classList.remove('active');
-    }, 2500);
+    }, 3000);
   }
 
-  // Copy notes logic
-  function copyNotesOutline() {
-    const textToCopy = `${modalTitle.innerText} - ${modalPreacher.innerText}\n\nOutline:\n${modalBody.innerText}`;
-    navigator.clipboard.writeText(textToCopy).then(() => {
-      triggerToast("Outline copied to clipboard!");
-    });
+  // Interactive Reminder Form Logic
+  const reminderModal = document.getElementById('reminderModal');
+
+  function openReminderModal() {
+    reminderModal.classList.add('active');
   }
 
-  // Dynamic Sharing simulator
-  function shareSermon(sermonName) {
-    const simulateUrl = window.location.href + "?share=" + encodeURIComponent(sermonName);
-    navigator.clipboard.writeText(simulateUrl).then(() => {
-      triggerToast(`Shared! Link for "${sermonName}" copied.`);
-    });
+  function closeReminderModal() {
+    reminderModal.classList.remove('active');
   }
 
-  // Simulate dynamically loading additional historical notes
-  function loadMoreSermons() {
-    triggerToast("Loading legacy sermons from databases...");
+  reminderModal.addEventListener('click', (event) => {
+    if (event.target === reminderModal) {
+      closeReminderModal();
+    }
+  });
+
+  function handleRegistrationSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('regName').value;
+    
+    // Clear Input parameters
+    document.getElementById('regName').value = '';
+    document.getElementById('regPhone').value = '';
+    document.getElementById('regEmail').value = '';
+    
+    closeReminderModal();
+    triggerToast(`Blessed to have you! Seat secured for ${name}.`);
+
+    // Create dynamic celebratory particle explosions
+    createSparkleParticles();
   }
+
+  // Celebratory floating particles after seat booking
+  function createSparkleParticles() {
+    const container = document.body;
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'sparkle-particle';
+      particle.innerHTML = i % 2 === 0 ? '✨' : '🔥';
+      particle.style.left = (Math.random() * 80 + 10) + 'vw';
+      particle.style.top = (window.scrollY + window.innerHeight / 2 + (Math.random() - 0.5) * 200) + 'px';
+      container.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 1200);
+    }
+  }
+
+  // Touch Support for mobile swiping on slide deck
+  let touchStartX = 0;
+  let touchEndX = 0;
+  slideshowContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slideshowContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const swipeDistance = touchStartX - touchEndX;
+    if (Math.abs(swipeDistance) > 50) {
+      if (swipeDistance > 0) {
+        goToSlide((currentSlide + 1) % galleryImages.length);
+      } else {
+        goToSlide((currentSlide - 1 + galleryImages.length) % galleryImages.length);
+      }
+    }
+  }, { passive: true });
 </script>
 
 </body>
