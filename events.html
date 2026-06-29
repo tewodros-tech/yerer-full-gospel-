@@ -476,7 +476,7 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -922,10 +922,10 @@
 
     <div class="slideshow-area">
       <div class="slideshow-container" id="youthSlideshow">
-        <!-- Generated Dynamically by JS -->
+        <!-- Slides injected by JS -->
       </div>
       <div class="slideshow-dots" id="slideshowDots">
-        <!-- Generated Dynamically by JS -->
+        <!-- Dots injected by JS -->
       </div>
     </div>
   </div>
@@ -941,7 +941,7 @@
     </div>
 
     <div class="youth-gallery" id="youthGallery">
-      <!-- Generated Dynamically by JS -->
+      <!-- Gallery injected by JS -->
     </div>
   </div>
 </section>
@@ -1070,7 +1070,9 @@
 </footer>
 
 <script>
-  // Advanced Scroll effect for Navigation
+  // ================================================================
+  // NAVIGATION
+  // ================================================================
   window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (window.scrollY > 50) {
@@ -1080,7 +1082,6 @@
     }
   });
 
-  // Hamburger Menu Actions
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   hamburger.addEventListener('click', () => {
@@ -1088,27 +1089,23 @@
     navLinks.classList.toggle('open');
   });
 
-  // Dynamic Weekly saturday 11:30 AM revival countdown timer
+  // ================================================================
+  // SATURDAY COUNTDOWN TIMER
+  // ================================================================
   function updateSaturdayTimer() {
     const now = new Date();
     let nextSaturday = new Date(now);
-    
-    // Day 6 is Saturday
     const daysUntilSaturday = (6 - now.getDay() + 7) % 7;
     nextSaturday.setDate(now.getDate() + daysUntilSaturday);
     nextSaturday.setHours(11, 30, 0, 0);
-
-    // If we've already passed 11:30 AM Saturday, jump to next Saturday
     if (now > nextSaturday) {
       nextSaturday.setDate(nextSaturday.getDate() + 7);
     }
-
     const diff = nextSaturday - now;
     const d = Math.floor(diff / 86400000);
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
-
     const clock = document.getElementById('saturdayCountdown');
     if (clock) {
       clock.innerHTML = `${d > 0 ? d + 'd : ' : ''}${String(h).padStart(2,'0')}h : ${String(m).padStart(2,'0')}m : ${String(s).padStart(2,'0')}s`;
@@ -1117,7 +1114,9 @@
   setInterval(updateSaturdayTimer, 1000);
   updateSaturdayTimer();
 
-  // Updated image list with all requested images
+  // ================================================================
+  // IMAGE LIST - all requested images (no duplicates)
+  // ================================================================
   const galleryImages = [
     "youth_10.jpg",
     "class_2.jpg",
@@ -1135,7 +1134,9 @@
     "youth_9.jpg"
   ];
 
-  // Dynamically Injecting Lightbox Gallery Elements
+  // ================================================================
+  // GALLERY GRID
+  // ================================================================
   const galleryGrid = document.getElementById('youthGallery');
   if (galleryGrid) {
     galleryGrid.innerHTML = '';
@@ -1148,7 +1149,9 @@
     });
   }
 
-  // Lightbox Modal functions
+  // ================================================================
+  // LIGHTBOX MODAL
+  // ================================================================
   const lightboxModal = document.getElementById('lightboxModal');
   const lightboxImg = document.getElementById('lightboxImg');
 
@@ -1167,18 +1170,21 @@
     }
   });
 
-  // Dynamically Injecting Slideshow Slides
+  // ================================================================
+  // CAROUSEL SLIDESHOW - AUTO SLIDING, NO DUPLICATES
+  // ================================================================
   const slideshowContainer = document.getElementById('youthSlideshow');
   const dotsContainer = document.getElementById('slideshowDots');
   let currentSlide = 0;
   let slideInterval;
 
   if (slideshowContainer) {
+    // Clear any existing content
     slideshowContainer.innerHTML = '';
     dotsContainer.innerHTML = '';
 
+    // Build slides from the image array (each image appears once)
     galleryImages.forEach((img, index) => {
-      // Build Slides
       const slide = document.createElement('div');
       slide.className = `slide ${index === 0 ? 'active' : ''}`;
       slide.innerHTML = `
@@ -1190,13 +1196,14 @@
       `;
       slideshowContainer.appendChild(slide);
 
-      // Build Navigation Dots
+      // Build navigation dots
       const dot = document.createElement('span');
       dot.className = `dot ${index === 0 ? 'active' : ''}`;
       dot.onclick = () => goToSlide(index);
       dotsContainer.appendChild(dot);
     });
 
+    // Start auto-sliding
     startSlideshow();
   }
 
@@ -1215,14 +1222,41 @@
   }
 
   function startSlideshow() {
+    if (slideInterval) clearInterval(slideInterval);
     slideInterval = setInterval(nextSlide, 4500);
   }
 
-  // Pause on Hover
-  slideshowContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
-  slideshowContainer.addEventListener('mouseleave', () => startSlideshow());
+  // Pause on hover
+  slideshowContainer.addEventListener('mouseenter', () => {
+    if (slideInterval) clearInterval(slideInterval);
+  });
+  
+  slideshowContainer.addEventListener('mouseleave', () => {
+    startSlideshow();
+  });
 
-  // Interactive Toast notifications
+  // Touch swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  slideshowContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  slideshowContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const swipeDistance = touchStartX - touchEndX;
+    if (Math.abs(swipeDistance) > 50) {
+      if (swipeDistance > 0) {
+        goToSlide((currentSlide + 1) % galleryImages.length);
+      } else {
+        goToSlide((currentSlide - 1 + galleryImages.length) % galleryImages.length);
+      }
+    }
+  }, { passive: true });
+
+  // ================================================================
+  // TOAST NOTIFICATIONS
+  // ================================================================
   function triggerToast(message) {
     const toast = document.getElementById('toastBox');
     const toastText = document.getElementById('toastText');
@@ -1233,7 +1267,9 @@
     }, 3000);
   }
 
-  // Interactive Reminder Form Logic
+  // ================================================================
+  // REMINDER MODAL
+  // ================================================================
   const reminderModal = document.getElementById('reminderModal');
 
   function openReminderModal() {
@@ -1253,20 +1289,17 @@
   function handleRegistrationSubmit(event) {
     event.preventDefault();
     const name = document.getElementById('regName').value;
-    
-    // Clear Input parameters
     document.getElementById('regName').value = '';
     document.getElementById('regPhone').value = '';
     document.getElementById('regEmail').value = '';
-    
     closeReminderModal();
     triggerToast(`Blessed to have you! Seat secured for ${name}.`);
-
-    // Create dynamic celebratory particle explosions
     createSparkleParticles();
   }
 
-  // Celebratory floating particles after seat booking
+  // ================================================================
+  // SPARKLE PARTICLES
+  // ================================================================
   function createSparkleParticles() {
     const container = document.body;
     for (let i = 0; i < 15; i++) {
@@ -1276,31 +1309,11 @@
       particle.style.left = (Math.random() * 80 + 10) + 'vw';
       particle.style.top = (window.scrollY + window.innerHeight / 2 + (Math.random() - 0.5) * 200) + 'px';
       container.appendChild(particle);
-
       setTimeout(() => {
         particle.remove();
       }, 1200);
     }
   }
-
-  // Touch Support for mobile swiping on slide deck
-  let touchStartX = 0;
-  let touchEndX = 0;
-  slideshowContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  slideshowContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    const swipeDistance = touchStartX - touchEndX;
-    if (Math.abs(swipeDistance) > 50) {
-      if (swipeDistance > 0) {
-        goToSlide((currentSlide + 1) % galleryImages.length);
-      } else {
-        goToSlide((currentSlide - 1 + galleryImages.length) % galleryImages.length);
-      }
-    }
-  }, { passive: true });
 </script>
 
 </body>
