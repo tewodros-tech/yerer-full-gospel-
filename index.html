@@ -905,7 +905,7 @@
       border: 1px solid rgba(255,255,255,0.10);
       border-radius: var(--radius-xl);
       padding: 60px 50px;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       text-align: center;
       box-shadow: 0 40px 80px rgba(0,0,0,0.3);
@@ -929,56 +929,67 @@
       margin-bottom: 30px;
       line-height: 1.7;
     }
-    .giving-card .account-box {
-      background: rgba(255,255,255,0.08);
-      border: 2px dashed rgba(255,255,255,0.20);
-      border-radius: var(--radius-md);
-      padding: 24px 30px;
+    
+    .account-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       margin-bottom: 30px;
+      text-align: left;
+    }
+    .account-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
       transition: var(--transition-smooth);
     }
-    .giving-card .account-box:hover {
+    .account-box:hover {
       border-color: var(--accent-light);
-      background: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.10);
     }
-    .giving-card .account-label {
-      font-size: 0.75rem;
-      letter-spacing: 3px;
+    .account-box .account-label {
+      font-size: 0.7rem;
+      letter-spacing: 1px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.5);
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
+      font-family: 'Inter', sans-serif;
     }
-    .giving-card .account-number {
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
+    .account-box .account-label i { margin-right: 6px; }
+    .account-box .account-number {
+      font-size: clamp(1rem, 1.8vw, 1.4rem);
       font-weight: 800;
       color: white;
       font-family: 'Inter', monospace;
-      letter-spacing: 3px;
+      letter-spacing: 1px;
     }
-    .giving-card .account-number .highlight {
-      color: var(--accent-light);
+    .account-box .account-bank {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
     }
-    .giving-card .copy-btn {
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: white;
-      padding: 8px 20px;
+    .account-box .copy-btn-sm {
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: rgba(255,255,255,0.6);
+      padding: 4px 12px;
       border-radius: var(--radius-full);
-      font-size: 0.8rem;
+      font-size: 0.65rem;
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition-fast);
-      margin-top: 12px;
+      margin-top: 6px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
     }
-    .giving-card .copy-btn:hover {
+    .account-box .copy-btn-sm:hover {
       background: var(--accent-light);
       color: var(--dark-blue);
-      border-color: var(--accent-light);
     }
+    
     .giving-card .btn-donate {
       background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
       color: var(--dark-blue);
@@ -1064,6 +1075,7 @@
       .sermon-info { position: static; }
       .youth-box { grid-template-columns: 1fr; gap: 48px; padding: 56px 40px; }
       .beliefs-grid { grid-template-columns: 1fr; }
+      .account-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 920px) {
@@ -1106,6 +1118,7 @@
       .giving-section { padding: 60px 0; }
       .giving-card { padding: 30px 20px; }
       .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .account-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
@@ -1117,7 +1130,7 @@
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
       .stat-number { font-size: 1.6rem; }
       .stat-item { padding: 20px 12px; }
-      .giving-card .account-number { font-size: 1.3rem; letter-spacing: 1px; }
+      .giving-card .account-number { font-size: 1.1rem; letter-spacing: 1px; }
       .giving-card .btn-donate { padding: 14px 30px; font-size: 0.95rem; }
     }
   </style>
@@ -1635,7 +1648,7 @@
     </div>
   </section>
 
-  <!-- Giving Section — REDESIGNED with CBE Account -->
+  <!-- Giving Section — REDESIGNED with multiple accounts -->
   <section class="giving-section">
     <div class="container">
       <div class="giving-card reveal-scale">
@@ -1643,12 +1656,37 @@
         <h2>Support the <span class="gold">Ministry</span></h2>
         <p class="sub-text">Partner with us in spreading the Gospel through your generous giving.</p>
 
-        <div class="account-box">
-          <div class="account-label"><i class="fas fa-university"></i> CBE Account Number</div>
-          <div class="account-number">1000029580905</div>
-          <button class="copy-btn" onclick="copyAccount()">
-            <i class="fas fa-copy"></i> Copy Account
-          </button>
+        <div class="account-grid">
+          <div class="account-box">
+            <div class="account-label"><i class="fas fa-pray"></i> መባ እና አስራት</div>
+            <div class="account-number">1000029580905</div>
+            <div class="account-bank">ንግድ ባንክ / CBE</div>
+            <button class="copy-btn-sm" onclick="copyAccount('1000029580905')"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div class="account-box">
+            <div class="account-label"><i class="fas fa-globe-africa"></i> ሚሽን አገልግሎት</div>
+            <div class="account-number">1000067757762</div>
+            <div class="account-bank">ንግድ ባንክ / CBE</div>
+            <button class="copy-btn-sm" onclick="copyAccount('1000067757762')"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div class="account-box">
+            <div class="account-label"><i class="fas fa-hands-helping"></i> መልካም ስራ</div>
+            <div class="account-number">2600770029597</div>
+            <div class="account-bank">ብርሃን ባንክ</div>
+            <button class="copy-btn-sm" onclick="copyAccount('2600770029597')"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div class="account-box">
+            <div class="account-label"><i class="fas fa-building"></i> ህንጻ ግንባታ</div>
+            <div class="account-number">1000660592699</div>
+            <div class="account-bank">ንግድ ባንክ / CBE</div>
+            <button class="copy-btn-sm" onclick="copyAccount('1000660592699')"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+          <div class="account-box" style="grid-column: span 2;">
+            <div class="account-label"><i class="fas fa-building"></i> ህንጻ ግንባታ</div>
+            <div class="account-number">1000350653900</div>
+            <div class="account-bank">ብርሃን ባንክ</div>
+            <button class="copy-btn-sm" onclick="copyAccount('1000350653900')"><i class="fas fa-copy"></i> Copy</button>
+          </div>
         </div>
 
         <a href="https://play.google.com/store/apps/details?id=com.cbe.mobile" target="_blank" class="btn-donate">
@@ -1699,7 +1737,6 @@
         <div class="footer-col footer-contact">
           <h4>Get in Touch</h4>
           <p><i class="fas fa-map-pin"></i> Yerer, Addis Ababa, Ethiopia</p>
-          <p><i class="fas fa-phone"></i> +251-XXX-XXX-XXXX</p>
           <p><i class="fas fa-envelope"></i> info@yerergospel.org</p>
         </div>
       </div>
@@ -1773,19 +1810,22 @@
     // ================================================================
     // COPY ACCOUNT FUNCTION
     // ================================================================
-    function copyAccount() {
-      const account = "1000029580905";
-      navigator.clipboard.writeText(account).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        btn.style.background = '#4A7FC1';
-        btn.style.color = 'white';
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.background = '';
-          btn.style.color = '';
-        }, 2000);
+    function copyAccount(accountNumber) {
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        const btns = document.querySelectorAll('.copy-btn-sm');
+        btns.forEach(btn => {
+          if (btn.textContent.trim() === 'Copy') {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            btn.style.background = '#4A7FC1';
+            btn.style.color = 'white';
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.style.background = '';
+              btn.style.color = '';
+            }, 2000);
+          }
+        });
       });
     }
 
