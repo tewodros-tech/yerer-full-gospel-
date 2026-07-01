@@ -513,7 +513,7 @@
     .stat-label { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
 
     /* ================================================================
-       WORSHIP GALLERY — MAGICAL GRID
+       WORSHIP GALLERY — MAGICAL GRID — FIXED IMAGE SIZING
        ================================================================ */
     .worship-strip { padding: 100px 0 60px; background: var(--bg-light); }
     .worship-grid { 
@@ -530,11 +530,14 @@
       cursor: none;
       background: var(--bg-dark);
       aspect-ratio: 4/3;
+      width: 100%;
     }
     .worship-card img { 
       width: 100%; 
       height: 100%; 
       object-fit: cover;
+      object-position: center;
+      display: block;
       transition: transform 1.2s var(--ease-out-expo);
     }
     .worship-card:hover img { transform: scale(1.08); }
@@ -614,7 +617,7 @@
     @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
 
     /* ================================================================
-       GALLERY — MASONRY WITH HOVER MAGIC
+       GALLERY — MASONRY WITH HOVER MAGIC — FIXED IMAGE SIZING
        ================================================================ */
     .gallery-section { padding: 100px 0; background: var(--bg-light); }
     .gallery-filters { display: flex; justify-content: center; gap: 10px; margin-bottom: 48px; flex-wrap: wrap; }
@@ -641,6 +644,14 @@
       position: relative;
       cursor: none;
       transition: transform 0.6s var(--ease-out-expo), filter 0.6s, opacity 0.6s, box-shadow 0.6s;
+      width: 100%;
+    }
+    .gallery-item img { 
+      width: 100%; 
+      height: auto;
+      display: block; 
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out-expo);
     }
     .gallery-masonry:hover .gallery-item:hover {
       filter: grayscale(0%) brightness(1);
@@ -649,7 +660,6 @@
       z-index: 10;
       box-shadow: 0 20px 50px rgba(0,0,0,0.12);
     }
-    .gallery-item img { width: 100%; display: block; transition: transform 0.8s var(--ease-out-expo); }
     .gallery-item:hover img { transform: scale(1.05); }
     .gallery-item-overlay {
       position: absolute;
@@ -709,7 +719,7 @@
     @media (max-width: 1024px) { .beliefs-grid { grid-template-columns: 1fr; } }
 
     /* ================================================================
-       YOUTH SECTION — DUAL PANEL
+       YOUTH SECTION — DUAL PANEL — FIXED IMAGE SIZING
        ================================================================ */
     .youth-section { padding: 100px 0; background: var(--bg-light); }
     .youth-box {
@@ -733,10 +743,30 @@
     .youth-info-card .youth-info-title { font-size: 1rem; color: white; font-weight: 700; }
     .youth-info-card .youth-info-detail { font-size: 0.85rem; color: #9AB0D0; }
 
-    .youth-carousel { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 32px 64px rgba(0,0,0,0.5); }
-    .youth-carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s var(--ease-out-expo); }
+    .youth-carousel { 
+      position: relative; 
+      border-radius: var(--radius-lg); 
+      overflow: hidden; 
+      aspect-ratio: 4/3; 
+      box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+      width: 100%;
+    }
+    .youth-carousel .slide { 
+      position: absolute; 
+      inset: 0; 
+      opacity: 0; 
+      transition: opacity 1.2s var(--ease-out-expo);
+      width: 100%;
+      height: 100%;
+    }
     .youth-carousel .slide.active { opacity: 1; }
-    .youth-carousel img { width: 100%; height: 100%; object-fit: cover; }
+    .youth-carousel img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
     .carousel-dots { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
     .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: none; transition: var(--transition-smooth); }
     .carousel-dot.active { background: var(--primary); width: 28px; border-radius: 10px; }
@@ -1068,7 +1098,7 @@
     </div>
   </section>
 
-  <!-- Worship Highlights -->
+  <!-- Worship Highlights — FIXED IMAGE SIZING -->
   <section class="worship-strip">
     <div class="container">
       <div class="section-header reveal">
@@ -1198,7 +1228,7 @@
     </div>
   </section>
 
-  <!-- Gallery -->
+  <!-- Gallery — FIXED IMAGE SIZING -->
   <section class="gallery-section">
     <div class="container">
       <div class="section-header reveal">
@@ -1278,7 +1308,7 @@
     </div>
   </section>
 
-  <!-- Youth -->
+  <!-- Youth — FIXED IMAGE SIZING -->
   <section class="youth-section">
     <div class="container">
       <div class="youth-box reveal-scale">
