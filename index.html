@@ -326,24 +326,6 @@
     .mobile-overlay { position: fixed; inset: 0; background: rgba(10, 30, 50, 0.3); backdrop-filter: blur(6px); z-index: 9999; opacity: 0; visibility: hidden; transition: var(--transition-smooth); }
     .mobile-overlay.active { opacity: 1; visibility: visible; }
 
-    /* Language toggle */
-    .lang-toggle {
-      background: var(--primary-light);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-full);
-      padding: 6px 14px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--primary);
-      cursor: none;
-      transition: var(--transition-smooth);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 8px;
-    }
-    .lang-toggle:hover { background: var(--primary); color: white; border-color: var(--primary); }
-
     /* ================================================================
        HERO — CINEMATIC
        ================================================================ */
@@ -1061,20 +1043,17 @@
       </a>
 
       <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html" class="active" data-en="Home" data-am="መግቢያ">Home</a></li>
-        <li><a href="about.html" data-en="About" data-am="ስለ እኛ">About</a></li>
-        <li><a href="sermons.html" data-en="Sermons" data-am="ስብከቶች">Sermons</a></li>
-        <li><a href="events.html" data-en="Events" data-am="ዝግጅቶች">Events</a></li>
-        <li><a href="give.html" data-en="Give" data-am="መዋጮ">Give</a></li>
-        <li><a href="live.html" class="nav-cta" data-en="Join Live" data-am="በቀጥታ ይካፈሉ">Join Live <i class="fas fa-arrow-right" style="margin-left:4px;font-size:0.8rem;"></i></a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sermons.html">Sermons</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="give.html">Give</a></li>
+        <li><a href="live.html" class="nav-cta">Join Live <i class="fas fa-arrow-right" style="margin-left:4px;font-size:0.8rem;"></i></a></li>
       </ul>
 
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()"><i class="fas fa-language"></i> <span id="langLabel">አማርኛ</span></button>
-        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -1086,22 +1065,22 @@
     <canvas id="heroParticles"></canvas>
 
     <div class="container hero-content">
-      <div class="hero-badge" data-en="የየረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን" data-am="የየረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን"><i class="fas fa-church"></i> የየረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</div>
+      <div class="hero-badge"><i class="fas fa-church"></i> የየረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</div>
 
       <h1 class="hero-title amharic">
-        <span data-en="Worship in" data-am="በመንፈስ በእውነት እናመልክ">Worship in</span> <span class="gradient-text" data-en="Spirit" data-am="መንፈስ">Spirit</span><br>& <span class="gradient-text" data-en="Truth" data-am="እውነት">Truth</span>
+        Worship in <span class="gradient-text">Spirit</span><br>& <span class="gradient-text">Truth</span>
       </h1>
 
-      <p class="hero-subtitle amharic" data-en="ዮሐንስ 4:24 · John 4:24 — Spirit-filled and community focused" data-am="ዮሐንስ 4:24 · በመንፈስ የተሞላ እና በማህበረሰብ ላይ ያተኮረ">ዮሐንስ 4:24 · John 4:24 — Spirit-filled and community focused</p>
+      <p class="hero-subtitle amharic">ዮሐንስ 4:24 · John 4:24 — Spirit-filled and community focused</p>
 
       <div class="hero-buttons">
-        <a href="live.html" class="btn btn-primary" style="padding:18px 48px;font-size:1rem;" data-en="WATCH LIVE" data-am="በቀጥታ ይመልከቱ"><i class="fas fa-play"></i> WATCH LIVE</a>
-        <a href="about.html" class="btn btn-glass" style="padding:18px 48px;" data-en="NEW HERE?" data-am="አዲስ ነህ?">NEW HERE?</a>
-        <a href="give.html" class="btn btn-glass" style="padding:18px 48px;" data-en="GIVE NOW" data-am="አሁን ይስጡ"><i class="fas fa-heart"></i> GIVE NOW</a>
+        <a href="live.html" class="btn btn-primary" style="padding:18px 48px;font-size:1rem;"><i class="fas fa-play"></i> WATCH LIVE</a>
+        <a href="about.html" class="btn btn-glass" style="padding:18px 48px;">NEW HERE?</a>
+        <a href="give.html" class="btn btn-glass" style="padding:18px 48px;"><i class="fas fa-heart"></i> GIVE NOW</a>
       </div>
 
       <div class="countdown-widget">
-        <div class="live-indicator"><div class="live-dot"></div> <span data-en="NEXT SERVICE" data-am="ቀጣይ አገልግሎት">NEXT SERVICE</span></div>
+        <div class="live-indicator"><div class="live-dot"></div> NEXT SERVICE</div>
         <div class="countdown-timer" id="countdown">00h : 00m : 00s</div>
       </div>
     </div>
@@ -1111,10 +1090,10 @@
   <section class="stats-strip">
     <div class="container">
       <div class="stats-grid">
-        <div class="stat-item reveal"><div class="stat-number" data-target="Thousands" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label" data-en="Faithful Members" data-am="ታማኝ አባላት">Faithful Members</div></div>
-        <div class="stat-item reveal"><div class="stat-number" data-target="Uncountable Years" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label" data-en="Years of Ministry" data-am="የአገልግሎት ዓመታት">Years of Ministry</div></div>
-        <div class="stat-item reveal"><div class="stat-number" data-target="Many" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label" data-en="Small Groups" data-am="ትናንሽ ቡድኖች">Small Groups</div></div>
-        <div class="stat-item reveal"><div class="stat-number" data-target="Countless" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label" data-en="Lives Touched" data-am="የተነኩ ህይወት">Lives Touched</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="Thousands" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label">Faithful Members</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="Uncountable Years" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label">Years of Ministry</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="Many" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label">Small Groups</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-target="Countless" data-suffix=""><span class="counter-text">0</span></div><div class="stat-label">Lives Touched</div></div>
       </div>
     </div>
   </section>
@@ -1123,66 +1102,66 @@
   <section class="worship-strip">
     <div class="container">
       <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-music"></i> <span data-en="SPIRIT-FILLED WORSHIP" data-am="በመንፈስ የተሞላ አምልኮ">SPIRIT-FILLED WORSHIP</span></span>
-        <h2 class="section-title"><span data-en="Experience His" data-am="እግዚአብሔርን ተሞክር">Experience His</span> <span class="gold" data-en="Presence" data-am="መገኛ">Presence</span></h2>
-        <p class="section-subtitle" data-en="Immerse yourself in powerful worship moments that transform hearts and refresh spirits." data-am="ልብን የሚለውጡ እና መንፈስን የሚያድሱ ኃያል የአምልኮ ጊዜያት ውስጥ ይግቡ።">Immerse yourself in powerful worship moments that transform hearts and refresh spirits.</p>
+        <span class="pill-badge"><i class="fas fa-music"></i> SPIRIT-FILLED WORSHIP</span>
+        <h2 class="section-title">Experience His <span class="gold">Presence</span></h2>
+        <p class="section-subtitle">Immerse yourself in powerful worship moments that transform hearts and refresh spirits.</p>
       </div>
 
       <div class="worship-grid">
         <div class="worship-card reveal-left cursor-hover-img">
           <img src="2.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Spirit of Praise" data-am="የምስጋና መንፈስ">Spirit of Praise</h3><p data-en="Exalting the name of Jesus" data-am="የኢየሱስን ስም ከፍ ማድረግ">Exalting the name of Jesus</p></div>
+          <div class="worship-card-overlay"><h3>Spirit of Praise</h3><p>Exalting the name of Jesus</p></div>
         </div>
         <div class="worship-card reveal cursor-hover-img">
           <img src="3.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Ancient Paths" data-am="ጥንታዊ መንገዶች">Ancient Paths</h3><p data-en="Restoring deep prayer" data-am="ጥልቅ ጸሎትን መመለስ">Restoring deep prayer</p></div>
+          <div class="worship-card-overlay"><h3>Ancient Paths</h3><p>Restoring deep prayer</p></div>
         </div>
         <div class="worship-card reveal-right cursor-hover-img">
           <img src="4.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Kingdom Worship" data-am="የመንግስት አምልኮ">Kingdom Worship</h3><p data-en="Hearts united in adoration" data-am="በአምልኮ የተዋሃዱ ልቦች">Hearts united in adoration</p></div>
+          <div class="worship-card-overlay"><h3>Kingdom Worship</h3><p>Hearts united in adoration</p></div>
         </div>
         <div class="worship-card reveal-left cursor-hover-img">
           <img src="5.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Prophetic Worship" data-am="ትንቢታዊ አምልኮ">Prophetic Worship</h3><p data-en="Encountering His glory" data-am="ክብሩን መገናኘት">Encountering His glory</p></div>
+          <div class="worship-card-overlay"><h3>Prophetic Worship</h3><p>Encountering His glory</p></div>
         </div>
         <div class="worship-card reveal cursor-hover-img">
           <img src="6.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Spirit & Truth" data-am="መንፈስ እና እውነት">Spirit & Truth</h3><p data-en="Worship in spirit and truth" data-am="በመንፈስ እና በእውነት አምልኮ">Worship in spirit and truth</p></div>
+          <div class="worship-card-overlay"><h3>Spirit & Truth</h3><p>Worship in spirit and truth</p></div>
         </div>
         <div class="worship-card reveal-right cursor-hover-img">
           <img src="7.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Divine Presence" data-am="መለኮታዊ መገኛ">Divine Presence</h3><p data-en="Experiencing God's glory" data-am="የእግዚአብሔርን ክብር መሞከር">Experiencing God's glory</p></div>
+          <div class="worship-card-overlay"><h3>Divine Presence</h3><p>Experiencing God's glory</p></div>
         </div>
         <div class="worship-card reveal-left cursor-hover-img">
           <img src="50.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Heavenly Praise" data-am="ሰማያዊ ምስጋና">Heavenly Praise</h3><p data-en="Lifting voices in unity" data-am="በአንድነት ድምጾችን ማንሳት">Lifting voices in unity</p></div>
+          <div class="worship-card-overlay"><h3>Heavenly Praise</h3><p>Lifting voices in unity</p></div>
         </div>
         <div class="worship-card reveal cursor-hover-img">
           <img src="55.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Spirit-Filled" data-am="በመንፈስ የተሞላ">Spirit-Filled</h3><p data-en="Overflowing with His love" data-am="በፍቅሩ የተሞላ">Overflowing with His love</p></div>
+          <div class="worship-card-overlay"><h3>Spirit-Filled</h3><p>Overflowing with His love</p></div>
         </div>
         <div class="worship-card reveal-right cursor-hover-img">
           <img src="57.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Revival Fire" data-am="የመነቃቃት እሳት">Revival Fire</h3><p data-en="Igniting hearts for Jesus" data-am="ልቦችን ለኢየሱስ ማቀጣጠል">Igniting hearts for Jesus</p></div>
+          <div class="worship-card-overlay"><h3>Revival Fire</h3><p>Igniting hearts for Jesus</p></div>
         </div>
         <div class="worship-card reveal-left cursor-hover-img">
           <img src="59.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1438232992991-995b7058bbb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Glory & Honor" data-am="ክብር እና ክብር">Glory & Honor</h3><p data-en="Worthy is the Lamb" data-am="በጉ ይገባዋል">Worthy is the Lamb</p></div>
+          <div class="worship-card-overlay"><h3>Glory & Honor</h3><p>Worthy is the Lamb</p></div>
         </div>
         <div class="worship-card reveal cursor-hover-img">
           <img src="60.jpg" alt="Worship" onerror="this.src='https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'" />
           <div class="glow-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-          <div class="worship-card-overlay"><h3 data-en="Saved to Worship" data-am="ለአምልኮ የተዳነ">Saved to Worship</h3><p data-en="Redeemed for His praise" data-am="ለምስጋናው ተቤዠ">Redeemed for His praise</p></div>
+          <div class="worship-card-overlay"><h3>Saved to Worship</h3><p>Redeemed for His praise</p></div>
         </div>
       </div>
     </div>
@@ -1192,58 +1171,58 @@
   <section class="services-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-clock"></i> <span data-en="SERVICE TIMES (ኢትዮጵያ ሰዓት)" data-am="የአገልግሎት ሰዓቶች (ኢትዮጵያ ሰዓት)">SERVICE TIMES (ኢትዮጵያ ሰዓት)</span></span>
-        <h2 class="section-title"><span data-en="Gather With" data-am="ከእኛ ጋር ተሰብስቡ">Gather With</span> <span class="gold" data-en="Us" data-am="እኛ">Us</span></h2>
-        <p class="section-subtitle" data-en="Come as you are to experience life-changing worship and deep connection with God's Spirit." data-am="ህይወትን የሚለውጥ አምልኮ እና ከእግዚአብሔር መንፈስ ጋር ጥልቅ ግንኙነት ለመሞከር እንደነህ ና።">Come as you are to experience life-changing worship and deep connection with God's Spirit.</p>
+        <span class="pill-badge"><i class="fas fa-clock"></i> SERVICE TIMES (ኢትዮጵያ ሰዓት)</span>
+        <h2 class="section-title">Gather With <span class="gold">Us</span></h2>
+        <p class="section-subtitle">Come as you are to experience life-changing worship and deep connection with God's Spirit.</p>
       </div>
 
       <div class="services-grid">
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-pray"></i></div>
-          <h3 data-en="Morning Prayer" data-am="የጠዋት ጸሎት">Morning Prayer</h3>
+          <h3>Morning Prayer</h3>
           <div class="service-time">12:00 – 2:00</div>
-          <p class="service-desc" data-en="Start your week with powerful morning prayer every Sunday." data-am="በእያንዳንዱ እሑድ በኃያል የጠዋት ጸሎት ሳምንትዎን ይጀምሩ።">Start your week with powerful morning prayer every Sunday.</p>
-          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);" data-en="Set Reminder" data-am="አስታወሻ አስቀምጥ">Set Reminder</a>
+          <p class="service-desc">Start your week with powerful morning prayer every Sunday.</p>
+          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);">Set Reminder</a>
         </div>
 
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-sun"></i></div>
-          <h3 data-en="Sunday Worship" data-am="የእሁድ አምልኮ">Sunday Worship</h3>
+          <h3>Sunday Worship</h3>
           <div class="service-time">3:00 – 6:30</div>
-          <p class="service-desc" data-en="In-person worship, powerful messages & full livestream." data-am="በአካል አምልኮ፣ ኃያል መልእክቶች እና ሙሉ የቀጥታ ስርጭት።">In-person worship, powerful messages & full livestream.</p>
-          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);" data-en="Set Reminder" data-am="አስታወሻ አስቀምጥ">Set Reminder</a>
+          <p class="service-desc">In-person worship, powerful messages & full livestream.</p>
+          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);">Set Reminder</a>
         </div>
 
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-hands-praying"></i></div>
-          <h3 data-en="Prayer Service" data-am="የጸሎት አገልግሎት">Prayer Service</h3>
+          <h3>Prayer Service</h3>
           <div class="service-time">11:30 – 2:00</div>
-          <p class="service-desc" data-en="Deep intercessory prayer every Tuesday." data-am="በየማክሰኞ ጥልቅ አማላጅ ጸሎት።">Deep intercessory prayer every Tuesday.</p>
-          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);" data-en="Set Reminder" data-am="አስታወሻ አስቀምጥ">Set Reminder</a>
+          <p class="service-desc">Deep intercessory prayer every Tuesday.</p>
+          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);">Set Reminder</a>
         </div>
 
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-fire"></i></div>
-          <h3 data-en="Intercessory Prayer" data-am="የአማላጅ ጸሎት">Intercessory Prayer</h3>
+          <h3>Intercessory Prayer</h3>
           <div class="service-time">3:00 – 7:00</div>
-          <p class="service-desc" data-en="Intense intercessory prayer every Friday." data-am="በየአርብ ጠንካራ አማላጅ ጸሎት።">Intense intercessory prayer every Friday.</p>
-          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);" data-en="Set Reminder" data-am="አስታወሻ አስቀምጥ">Set Reminder</a>
+          <p class="service-desc">Intense intercessory prayer every Friday.</p>
+          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);">Set Reminder</a>
         </div>
 
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-healing"></i></div>
-          <h3 data-en="Healing & Evangelistic" data-am="ፈውስ እና ወንጌላዊ">Healing & Evangelistic</h3>
+          <h3>Healing & Evangelistic</h3>
           <div class="service-time">11:30 – 2:30</div>
-          <p class="service-desc" data-en="Miracle healing and evangelistic outreach every Friday." data-am="በየአርብ ተአምራዊ ፈውስ እና የወንጌል ዘርፊያ።">Miracle healing and evangelistic outreach every Friday.</p>
-          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);" data-en="Set Reminder" data-am="አስታወሻ አስቀምጥ">Set Reminder</a>
+          <p class="service-desc">Miracle healing and evangelistic outreach every Friday.</p>
+          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);">Set Reminder</a>
         </div>
 
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-users"></i></div>
-          <h3 data-en="Youth Service" data-am="የወጣቶች አገልግሎት">Youth Service</h3>
+          <h3>Youth Service</h3>
           <div class="service-time">12:00 – 2:00</div>
-          <p class="service-desc" data-en="Empowering next-gen leaders every Saturday." data-am="በየቅዳሜ የቀጣይ ትውልድ መሪዎችን ማበረታታት።">Empowering next-gen leaders every Saturday.</p>
-          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);" data-en="Set Reminder" data-am="አስታወሻ አስቀምጥ">Set Reminder</a>
+          <p class="service-desc">Empowering next-gen leaders every Saturday.</p>
+          <a href="events.html" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;margin-top:16px;transition:var(--transition-smooth);">Set Reminder</a>
         </div>
       </div>
     </div>
@@ -1253,29 +1232,29 @@
   <section class="gallery-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-images"></i> <span data-en="CHURCH LIFE" data-am="የቤተክርስቲያን ህይወት">CHURCH LIFE</span></span>
-        <h2 class="section-title"><span data-en="Our" data-am="የእኛ">Our</span> <span class="gold" data-en="Community" data-am="ማህበረሰብ">Community</span></h2>
-        <p class="section-subtitle" data-en="Explore a vibrant gallery of fellowship, active service, and deep spiritual moments." data-am="የህብረት፣ ንቁ አገልግሎት እና ጥልቅ መንፈሳዊ ጊዜያት ንቁ ጋለሪ ያስሱ።">Explore a vibrant gallery of fellowship, active service, and deep spiritual moments.</p>
+        <span class="pill-badge"><i class="fas fa-images"></i> CHURCH LIFE</span>
+        <h2 class="section-title">Our <span class="gold">Community</span></h2>
+        <p class="section-subtitle">Explore a vibrant gallery of fellowship, active service, and deep spiritual moments.</p>
       </div>
 
       <div class="gallery-filters reveal">
-        <button class="filter-btn active" data-filter="all" data-en="All" data-am="ሁሉም">All</button>
-        <button class="filter-btn" data-filter="worship" data-en="Worship" data-am="አምልኮ">Worship</button>
-        <button class="filter-btn" data-filter="youth" data-en="Youth" data-am="ወጣቶች">Youth</button>
-        <button class="filter-btn" data-filter="community" data-en="Community" data-am="ማህበረሰብ">Community</button>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="worship">Worship</button>
+        <button class="filter-btn" data-filter="youth">Youth</button>
+        <button class="filter-btn" data-filter="community">Community</button>
       </div>
 
       <div class="gallery-masonry" id="gallery">
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="Bible_study_2.jpg" alt="Bible Study" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Bible+Study'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Bible Study" data-am="መጽሐፍ ቅዱስ ጥናት">Bible Study</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="Donation_3.jpg" alt="Donation" loading="lazy" onerror="this.src='https://placehold.co/400x600/FFFFFF/1E4C8F?text=Donation'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Donation" data-am="ልገሳ">Donation</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="Donation_7.jpg" alt="Donation" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Donation'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Donation" data-am="ልገሳ">Donation</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="worship"><img src="Keyboard_2.jpg" alt="Worship" loading="lazy" onerror="this.src='https://placehold.co/500x500/FFFFFF/1E4C8F?text=Worship'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Worship" data-am="አምልኮ">Worship</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="worship"><img src="Keyboard_3.jpg" alt="Worship" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Worship'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Worship" data-am="አምልኮ">Worship</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="youth"><img src="Keyboard_6jpg.jpg" alt="Youth" loading="lazy" onerror="this.src='https://placehold.co/400x600/FFFFFF/1E4C8F?text=Youth'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Youth" data-am="ወጣቶች">Youth</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="OLD_3.jpg" alt="Church Life" loading="lazy" onerror="this.src='https://placehold.co/600x500/FFFFFF/1E4C8F?text=Church+Life'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Church Life" data-am="የቤተክርስቲያን ህይወት">Church Life</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="worship"><img src="Worship_1.jpg" alt="Worship" loading="lazy" onerror="this.src='https://placehold.co/500x600/FFFFFF/1E4C8F?text=Worship'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Worship" data-am="አምልኮ">Worship</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="youth"><img src="youth_12.jpg" alt="Youth" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Youth'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Youth" data-am="ወጣቶች">Youth</span></span></div></div>
-        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="youth"><img src="Youth_13.jpg" alt="Youth" loading="lazy" onerror="this.src='https://placehold.co/400x600/FFFFFF/1E4C8F?text=Youth'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> <span data-en="Youth" data-am="ወጣቶች">Youth</span></span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="Bible_study_2.jpg" alt="Bible Study" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Bible+Study'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Bible Study</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="Donation_3.jpg" alt="Donation" loading="lazy" onerror="this.src='https://placehold.co/400x600/FFFFFF/1E4C8F?text=Donation'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Donation</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="Donation_7.jpg" alt="Donation" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Donation'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Donation</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="worship"><img src="Keyboard_2.jpg" alt="Worship" loading="lazy" onerror="this.src='https://placehold.co/500x500/FFFFFF/1E4C8F?text=Worship'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Worship</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="worship"><img src="Keyboard_3.jpg" alt="Worship" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Worship'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Worship</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="youth"><img src="Keyboard_6jpg.jpg" alt="Youth" loading="lazy" onerror="this.src='https://placehold.co/400x600/FFFFFF/1E4C8F?text=Youth'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Youth</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="community"><img src="OLD_3.jpg" alt="Church Life" loading="lazy" onerror="this.src='https://placehold.co/600x500/FFFFFF/1E4C8F?text=Church+Life'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Church Life</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="worship"><img src="Worship_1.jpg" alt="Worship" loading="lazy" onerror="this.src='https://placehold.co/500x600/FFFFFF/1E4C8F?text=Worship'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Worship</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="youth"><img src="youth_12.jpg" alt="Youth" loading="lazy" onerror="this.src='https://placehold.co/600x400/FFFFFF/1E4C8F?text=Youth'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Youth</span></div></div>
+        <div class="gallery-item reveal-scale cursor-hover-img" data-cat="youth"><img src="Youth_13.jpg" alt="Youth" loading="lazy" onerror="this.src='https://placehold.co/400x600/FFFFFF/1E4C8F?text=Youth'"/><div class="gallery-item-overlay"><span><i class="fas fa-expand"></i> Youth</span></div></div>
       </div>
     </div>
   </section>
@@ -1284,46 +1263,46 @@
   <section class="beliefs-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-book-bible"></i> <span data-en="DOCTRINE" data-am="ትምህርት">DOCTRINE</span></span>
-        <h2 class="section-title"><span data-en="What We" data-am="እኛ የምናምነው">What We</span> <span class="gold" data-en="Believe" data-am="እናምናለን">Believe</span></h2>
-        <p class="section-subtitle" data-en="Click each pillar to reveal the scripture and depth of our belief system." data-am="የእኛን የእምነት ስርዓት ጥልቀት እና የመጽሐፍ ቅዱስ ማጣቀሻዎችን ለማየት እያንዳንዱን ምሰሶ ጠቅ ያድርጉ።">Click each pillar to reveal the scripture and depth of our belief system.</p>
+        <span class="pill-badge"><i class="fas fa-book-bible"></i> DOCTRINE</span>
+        <h2 class="section-title">What We <span class="gold">Believe</span></h2>
+        <p class="section-subtitle">Click each pillar to reveal the scripture and depth of our belief system.</p>
       </div>
 
       <div class="beliefs-grid">
         <div class="belief-card reveal" onclick="toggleBelief(this)">
           <div class="belief-header">
             <div class="belief-icon"><i class="fas fa-cross"></i></div>
-            <div class="belief-header-text"><h3 data-en="Salvation by Grace" data-am="በጸጋ መዳን">Salvation by Grace</h3><p data-en="Through faith alone in Christ Jesus" data-am="በኢየሱስ ክርስቶስ በእምነት ብቻ">Through faith alone in Christ Jesus</p></div>
+            <div class="belief-header-text"><h3>Salvation by Grace</h3><p>Through faith alone in Christ Jesus</p></div>
             <div class="belief-expand-icon"><i class="fas fa-chevron-down"></i></div>
           </div>
-          <div class="belief-details"><span data-en="We believe salvation is a gift from God, entirely apart from human works, received through repentance and faith." data-am="መዳን ከእግዚአብሔር ስጦታ እንደሆነ፣ ሙሉ በሙሉ ከሰው ሥራ ውጪ፣ በንስሐ እና በእምነት የምንቀበለው እናምናለን።">We believe salvation is a gift from God, entirely apart from human works, received through repentance and faith.</span> <br><strong>Ephesians 2:8-9</strong></div>
+          <div class="belief-details">We believe salvation is a gift from God, entirely apart from human works, received through repentance and faith. <br><strong>Ephesians 2:8-9</strong></div>
         </div>
 
         <div class="belief-card reveal" onclick="toggleBelief(this)">
           <div class="belief-header">
             <div class="belief-icon"><i class="fas fa-dove"></i></div>
-            <div class="belief-header-text"><h3 data-en="Holy Spirit Baptism" data-am="የመንፈስ ቅዱስ ጥምቀት">Holy Spirit Baptism</h3><p data-en="The empowerment of the believer" data-am="የአማኙ ማጎልበት">The empowerment of the believer</p></div>
+            <div class="belief-header-text"><h3>Holy Spirit Baptism</h3><p>The empowerment of the believer</p></div>
             <div class="belief-expand-icon"><i class="fas fa-chevron-down"></i></div>
           </div>
-          <div class="belief-details"><span data-en="Empowering the Church for effective witness, service, and walking in spiritual gifts." data-am="ቤተክርስቲያንን ለውጤታማ ምስክርነት፣ አገልግሎት እና በመንፈሳዊ ስጦታዎች ለመመላለስ ያበረታታል።">Empowering the Church for effective witness, service, and walking in spiritual gifts.</span> <br><strong>Acts 1:8, Acts 2:4</strong></div>
+          <div class="belief-details">Empowering the Church for effective witness, service, and walking in spiritual gifts. <br><strong>Acts 1:8, Acts 2:4</strong></div>
         </div>
 
         <div class="belief-card reveal" onclick="toggleBelief(this)">
           <div class="belief-header">
             <div class="belief-icon"><i class="fas fa-hand-holding-heart"></i></div>
-            <div class="belief-header-text"><h3 data-en="Divine Healing" data-am="መለኮታዊ ፈውስ">Divine Healing</h3><p data-en="By His stripes we are made whole" data-am="በቆስሎቹ ተፈውሰናል">By His stripes we are made whole</p></div>
+            <div class="belief-header-text"><h3>Divine Healing</h3><p>By His stripes we are made whole</p></div>
             <div class="belief-expand-icon"><i class="fas fa-chevron-down"></i></div>
           </div>
-          <div class="belief-details"><span data-en="We believe healing for the body, soul, and mind is fully provided in the atonement of Christ." data-am="ለአካል፣ ለነፍስ እና ለአዕምሮ ፈውስ በክርስቶስ ክፍያ ሙሉ በሙሉ ተዘጋጅቷል ብለን እናምናለን።">We believe healing for the body, soul, and mind is fully provided in the atonement of Christ.</span> <br><strong>Isaiah 53:5</strong></div>
+          <div class="belief-details">We believe healing for the body, soul, and mind is fully provided in the atonement of Christ. <br><strong>Isaiah 53:5</strong></div>
         </div>
 
         <div class="belief-card reveal" onclick="toggleBelief(this)">
           <div class="belief-header">
             <div class="belief-icon"><i class="fas fa-cloud-sun"></i></div>
-            <div class="belief-header-text"><h3 data-en="The Blessed Hope" data-am="የተባረከ ተስፋ">The Blessed Hope</h3><p data-en="The physical return of our Lord" data-am="የጌታችን አካላዊ መምጣት">The physical return of our Lord</p></div>
+            <div class="belief-header-text"><h3>The Blessed Hope</h3><p>The physical return of our Lord</p></div>
             <div class="belief-expand-icon"><i class="fas fa-chevron-down"></i></div>
           </div>
-          <div class="belief-details"><span data-en="We anticipate the literal second coming of Jesus Christ to rule and reign with all His saints forever." data-am="የኢየሱስ ክርስቶስ ቀጥተኛ ሁለተኛ መምጣት ከቅዱሳኑ ጋር ለዘለአለም ለመግዛት እንጠብቃለን።">We anticipate the literal second coming of Jesus Christ to rule and reign with all His saints forever.</span> <br><strong>Titus 2:13</strong></div>
+          <div class="belief-details">We anticipate the literal second coming of Jesus Christ to rule and reign with all His saints forever. <br><strong>Titus 2:13</strong></div>
         </div>
       </div>
     </div>
@@ -1334,11 +1313,11 @@
     <div class="container">
       <div class="youth-box reveal-scale">
         <div class="youth-text">
-          <span class="pill-badge" style="background:rgba(30,76,143,0.12);color:var(--accent-light);border-color:rgba(30,76,143,0.25);"><i class="fas fa-fire"></i> <span data-en="NEXT GENERATION" data-am="ቀጣይ ትውልድ">NEXT GENERATION</span></span>
-          <h2 class="amharic"><span data-en="Join Our" data-am="የእኛን ይቀላቀሉ">Join Our</span> <span class="gold" data-en="Youth Revival" data-am="የወጣቶች መነቃቃት">Youth Revival</span></h2>
-          <p data-en="Equipping and raising a passionate generation of leaders, worshipers, and world-changers for the Kingdom of God." data-am="ለእግዚአብሔር መንግስት ቀናተኛ የሆኑ መሪዎችን፣ አምላኪዎችን እና የዓለም ቀያሪዎችን ትውልድ ማዘጋጀት እና ማሳደግ።">Equipping and raising a passionate generation of leaders, worshipers, and world-changers for the Kingdom of God.</p>
-          <div class="youth-info-card"><div class="youth-info-title"><i class="far fa-calendar-alt" style="color:var(--accent-light);margin-right:8px;"></i> <span data-en="Saturday Youth Service" data-am="የቅዳሜ ወጣቶች አገልግሎት">Saturday Youth Service</span></div><div class="youth-info-detail">12:00 – 2:00</div></div>
-          <a href="events.html" class="btn btn-primary" style="padding:16px 40px;" data-en="Connect With Youth" data-am="ከወጣቶች ጋር ተገናኙ"><i class="fas fa-calendar-check"></i> Connect With Youth</a>
+          <span class="pill-badge" style="background:rgba(30,76,143,0.12);color:var(--accent-light);border-color:rgba(30,76,143,0.25);"><i class="fas fa-fire"></i> NEXT GENERATION</span>
+          <h2 class="amharic">Join Our <span class="gold">Youth Revival</span></h2>
+          <p>Equipping and raising a passionate generation of leaders, worshipers, and world-changers for the Kingdom of God.</p>
+          <div class="youth-info-card"><div class="youth-info-title"><i class="far fa-calendar-alt" style="color:var(--accent-light);margin-right:8px;"></i> Saturday Youth Service</div><div class="youth-info-detail">12:00 – 2:00</div></div>
+          <a href="events.html" class="btn btn-primary" style="padding:16px 40px;"><i class="fas fa-calendar-check"></i> Connect With Youth</a>
         </div>
 
         <div class="youth-carousel" id="youthCarousel">
@@ -1355,9 +1334,9 @@
   <section class="sermons-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-play-circle"></i> <span data-en="LATEST WORD" data-am="የቅርብ ጊዜ ቃል">LATEST WORD</span></span>
-        <h2 class="section-title"><span data-en="Encounter God's" data-am="የእግዚአብሔርን መልእክት ተቀበል">Encounter God's</span> <span class="gold" data-en="Message" data-am="መልእክት">Message</span></h2>
-        <p class="section-subtitle" data-en="Engage with deep, scripture-based sermons and beautiful moments of prophetic praise." data-am="በጥልቅ በመጽሐፍ ቅዱስ ላይ የተመሰረቱ ስብከቶች እና ቆንጆ የትንቢት ምስጋና ጊዜያት ይሳተፉ።">Engage with deep, scripture-based sermons and beautiful moments of prophetic praise.</p>
+        <span class="pill-badge"><i class="fas fa-play-circle"></i> LATEST WORD</span>
+        <h2 class="section-title">Encounter God's <span class="gold">Message</span></h2>
+        <p class="section-subtitle">Engage with deep, scripture-based sermons and beautiful moments of prophetic praise.</p>
       </div>
 
       <div class="sermon-hub">
@@ -1366,11 +1345,11 @@
         </div>
 
         <div class="sermon-info reveal-right">
-          <span class="pill-badge" style="margin-bottom:16px;"><i class="fas fa-broadcast-tower"></i> <span data-en="NOW STREAMING" data-am="አሁን በቀጥታ እየተላለፈ ነው">NOW STREAMING</span></span>
-          <h3 data-en="የየረር በር ሙሉ ወንጌል ኤልሮኢ ዝማሬ ህብረት" data-am="የየረር በር ሙሉ ወንጌል ኤልሮኢ ዝማሬ ህብረት">የየረር በር ሙሉ ወንጌል ኤልሮኢ ዝማሬ ህብረት</h3>
+          <span class="pill-badge" style="margin-bottom:16px;"><i class="fas fa-broadcast-tower"></i> NOW STREAMING</span>
+          <h3>የየረር በር ሙሉ ወንጌል ኤልሮኢ ዝማሬ ህብረት</h3>
           <div class="sermon-meta"><span><i class="far fa-calendar"></i> March 23, 2024</span><span><i class="far fa-clock"></i> 1h 42m</span><span><i class="far fa-eye"></i> 4.2K views</span></div>
-          <p class="sermon-desc" data-en="Immerse yourself in a spirit-filled night of deep adoration and celebration with our worship choir. Experience the dynamic manifestation of His presence right from your home." data-am="ከኛ የአምልኮ መዝሙር ቡድን ጋር ጥልቅ አምልኮ እና ክብረ በዓል በመንፈስ በተሞላ ምሽት ውስጥ ይግቡ። የእርሱን መገኛ ተለዋዋጭ መገለጫ ከቤትዎ ይሞክሩ።">Immerse yourself in a spirit-filled night of deep adoration and celebration with our worship choir. Experience the dynamic manifestation of His presence right from your home.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;"><a href="sermons.html" class="btn btn-primary" data-en="Watch Now" data-am="አሁን ተመልከት"><i class="fas fa-play"></i> Watch Now</a><a href="#" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;transition:var(--transition-smooth);" data-en="Share" data-am="አጋራ"><i class="fas fa-share-alt"></i> Share</a></div>
+          <p class="sermon-desc">Immerse yourself in a spirit-filled night of deep adoration and celebration with our worship choir. Experience the dynamic manifestation of His presence right from your home.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;"><a href="sermons.html" class="btn btn-primary"><i class="fas fa-play"></i> Watch Now</a><a href="#" class="btn btn-secondary" style="padding:12px 28px;font-size:0.85rem;border:2px solid var(--glass-border-strong);border-radius:var(--radius-full);display:inline-flex;align-items:center;gap:8px;color:var(--primary);text-decoration:none;transition:var(--transition-smooth);"><i class="fas fa-share-alt"></i> Share</a></div>
         </div>
       </div>
     </div>
@@ -1380,17 +1359,17 @@
   <section class="testimony-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="pill-badge"><i class="fas fa-book-open"></i> <span data-en="PROPHETIC WORD" data-am="ትንቢታዊ ቃል">PROPHETIC WORD</span></span>
-        <h2 class="section-title"><span data-en="The Scriptural" data-am="የመጽሐፍ ቅዱስ">The Scriptural</span> <span class="gold" data-en="Wall" data-am="ግድግዳ">Wall</span></h2>
-        <p class="section-subtitle" data-en="Receive courage from His Holy Word. Click 'Amen' to agree in spiritual prayer." data-am="ከቅዱስ ቃሉ ድፍረትን ተቀበል። በመንፈሳዊ ጸሎት ለመስማማት 'አሜን' ን ጠቅ ያድርጉ።">Receive courage from His Holy Word. Click 'Amen' to agree in spiritual prayer.</p>
+        <span class="pill-badge"><i class="fas fa-book-open"></i> PROPHETIC WORD</span>
+        <h2 class="section-title">The Scriptural <span class="gold">Wall</span></h2>
+        <p class="section-subtitle">Receive courage from His Holy Word. Click 'Amen' to agree in spiritual prayer.</p>
       </div>
 
       <div class="testimony-grid">
-        <div class="testimony-card reveal"><div class="testimony-quote">"</div><p class="testimony-text" data-en="For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future." data-am="እኔ ስለ እናንተ የማስበውን ሐሳብ አውቃለሁ፥ ይላል እግዚአብሔር፥ ለማበልጸግ እንጂ ላለማጥፋት፥ ተስፋና መጻጽር ለመስጠት ያስባለሁ።">For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.</p><p class="testimony-ref">— Jeremiah 29:11</p><div class="amen-interactive"><button class="amen-btn" onclick="triggerAmen(this, 'ac1')"><i class="fas fa-hands-praying"></i> <span data-en="Amen" data-am="አሜን">Amen</span></button><span class="amen-count"><strong id="ac1">147</strong> <span data-en="agreed" data-am="ተስማሙ">agreed</span></span></div></div>
+        <div class="testimony-card reveal"><div class="testimony-quote">"</div><p class="testimony-text">For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.</p><p class="testimony-ref">— Jeremiah 29:11</p><div class="amen-interactive"><button class="amen-btn" onclick="triggerAmen(this, 'ac1')"><i class="fas fa-hands-praying"></i> Amen</button><span class="amen-count"><strong id="ac1">147</strong> agreed</span></div></div>
 
-        <div class="testimony-card reveal"><div class="testimony-quote">"</div><p class="testimony-text" data-en="But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint." data-am="እግዚአብሔርን የሚጠባበቁ ግን ኃይላቸውን ያድሳሉ፤ እንደ ንስሮች ክንፍ አድርገው ይወጣሉ፤ ይሮጣሉ እንጂ አይደክሙም፤ ይራመዳሉ እንጂ አይታክቱም።">But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.</p><p class="testimony-ref">— Isaiah 40:31</p><div class="amen-interactive"><button class="amen-btn" onclick="triggerAmen(this, 'ac2')"><i class="fas fa-hands-praying"></i> <span data-en="Amen" data-am="አሜን">Amen</span></button><span class="amen-count"><strong id="ac2">89</strong> <span data-en="agreed" data-am="ተስማሙ">agreed</span></span></div></div>
+        <div class="testimony-card reveal"><div class="testimony-quote">"</div><p class="testimony-text">But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint.</p><p class="testimony-ref">— Isaiah 40:31</p><div class="amen-interactive"><button class="amen-btn" onclick="triggerAmen(this, 'ac2')"><i class="fas fa-hands-praying"></i> Amen</button><span class="amen-count"><strong id="ac2">89</strong> agreed</span></div></div>
 
-        <div class="testimony-card reveal"><div class="testimony-quote">"</div><p class="testimony-text" data-en="I can do all things through Christ who strengthens me." data-am="በሚያስችለኝ በክርስቶስ ሁሉን እችላለሁ።">I can do all things through Christ who strengthens me.</p><p class="testimony-ref">— Philippians 4:13</p><div class="amen-interactive"><button class="amen-btn" onclick="triggerAmen(this, 'ac3')"><i class="fas fa-hands-praying"></i> <span data-en="Amen" data-am="አሜን">Amen</span></button><span class="amen-count"><strong id="ac3">112</strong> <span data-en="agreed" data-am="ተስማሙ">agreed</span></span></div></div>
+        <div class="testimony-card reveal"><div class="testimony-quote">"</div><p class="testimony-text">I can do all things through Christ who strengthens me.</p><p class="testimony-ref">— Philippians 4:13</p><div class="amen-interactive"><button class="amen-btn" onclick="triggerAmen(this, 'ac3')"><i class="fas fa-hands-praying"></i> Amen</button><span class="amen-count"><strong id="ac3">112</strong> agreed</span></div></div>
       </div>
     </div>
   </section>
@@ -1400,19 +1379,19 @@
     <div class="container">
       <div class="giving-card reveal-scale">
         <span class="icon-big"><i class="fas fa-hand-holding-heart"></i></span>
-        <h2><span data-en="Support the" data-am="አገልግሎቱን ይደግፉ">Support the</span> <span class="gold" data-en="Ministry" data-am="አገልግሎት">Ministry</span></h2>
-        <p class="sub-text" data-en="Partner with us in spreading the Gospel through your generous giving." data-am="በልግስና ስጦታዎ ወንጌልን በማስፋት ከእኛ ጋር ይተባበሩ።">Partner with us in spreading the Gospel through your generous giving.</p>
+        <h2>Support the <span class="gold">Ministry</span></h2>
+        <p class="sub-text">Partner with us in spreading the Gospel through your generous giving.</p>
 
         <div class="account-grid">
-          <div class="account-box"><div class="account-label"><i class="fas fa-pray"></i> <span data-en="በመባ እና አስራት" data-am="በመባ እና አስራት">በመባ እና አስራት</span></div><div class="account-number">1000029580905</div><div class="account-bank">ንግድ ባንክ / CBE</div><button class="copy-btn-sm" onclick="copyAccount('1000029580905')"><i class="fas fa-copy"></i> <span data-en="Copy" data-am="ቅዳ">Copy</span></button></div>
-          <div class="account-box"><div class="account-label"><i class="fas fa-globe-africa"></i> <span data-en="ሚሽን አገልግሎት" data-am="ሚሽን አገልግሎት">ሚሽን አገልግሎት</span></div><div class="account-number">1000067757762</div><div class="account-bank">ንግድ ባንክ / CBE</div><button class="copy-btn-sm" onclick="copyAccount('1000067757762')"><i class="fas fa-copy"></i> <span data-en="Copy" data-am="ቅዳ">Copy</span></button></div>
-          <div class="account-box"><div class="account-label"><i class="fas fa-hands-helping"></i> <span data-en="መልካም ስራ" data-am="መልካም ስራ">መልካም ስራ</span></div><div class="account-number">2600770029597</div><div class="account-bank">ብርሃን ባንክ</div><button class="copy-btn-sm" onclick="copyAccount('2600770029597')"><i class="fas fa-copy"></i> <span data-en="Copy" data-am="ቅዳ">Copy</span></button></div>
-          <div class="account-box"><div class="account-label"><i class="fas fa-building"></i> <span data-en="ህንጻ ግንባታ" data-am="ህንጻ ግንባታ">ህንጻ ግንባታ</span></div><div class="account-number">1000660592699</div><div class="account-bank">ንግድ ባንክ / CBE</div><button class="copy-btn-sm" onclick="copyAccount('1000660592699')"><i class="fas fa-copy"></i> <span data-en="Copy" data-am="ቅዳ">Copy</span></button></div>
-          <div class="account-box" style="grid-column: span 2;"><div class="account-label"><i class="fas fa-building"></i> <span data-en="ህንጻ ግንባታ" data-am="ህንጻ ግንባታ">ህንጻ ግንባታ</span></div><div class="account-number">1000350653900</div><div class="account-bank">ብርሃን ባንክ</div><button class="copy-btn-sm" onclick="copyAccount('1000350653900')"><i class="fas fa-copy"></i> <span data-en="Copy" data-am="ቅዳ">Copy</span></button></div>
+          <div class="account-box"><div class="account-label"><i class="fas fa-pray"></i> መባ እና አስራት</div><div class="account-number">1000029580905</div><div class="account-bank">ንግድ ባንክ / CBE</div><button class="copy-btn-sm" onclick="copyAccount('1000029580905')"><i class="fas fa-copy"></i> Copy</button></div>
+          <div class="account-box"><div class="account-label"><i class="fas fa-globe-africa"></i> ሚሽን አገልግሎት</div><div class="account-number">1000067757762</div><div class="account-bank">ንግድ ባንክ / CBE</div><button class="copy-btn-sm" onclick="copyAccount('1000067757762')"><i class="fas fa-copy"></i> Copy</button></div>
+          <div class="account-box"><div class="account-label"><i class="fas fa-hands-helping"></i> መልካም ስራ</div><div class="account-number">2600770029597</div><div class="account-bank">ብርሃን ባንክ</div><button class="copy-btn-sm" onclick="copyAccount('2600770029597')"><i class="fas fa-copy"></i> Copy</button></div>
+          <div class="account-box"><div class="account-label"><i class="fas fa-building"></i> ህንጻ ግንባታ</div><div class="account-number">1000660592699</div><div class="account-bank">ንግድ ባንክ / CBE</div><button class="copy-btn-sm" onclick="copyAccount('1000660592699')"><i class="fas fa-copy"></i> Copy</button></div>
+          <div class="account-box" style="grid-column: span 2;"><div class="account-label"><i class="fas fa-building"></i> ህንጻ ግንባታ</div><div class="account-number">1000350653900</div><div class="account-bank">ብርሃን ባንክ</div><button class="copy-btn-sm" onclick="copyAccount('1000350653900')"><i class="fas fa-copy"></i> Copy</button></div>
         </div>
 
-        <a href="give.html" class="btn-donate" data-en="Donate Now" data-am="አሁን ይለግሱ"><i class="fas fa-arrow-right"></i> Donate Now</a>
-        <p class="donate-note" data-en="* All donations are tax-deductible and go directly to ministry work." data-am="* ሁሉም ልገሳዎች ከቀረጥ ነፃ የሆኑ እና በቀጥታ ለአገልግሎት ሥራ ይሄዳሉ።">* All donations are tax-deductible and go directly to ministry work.</p>
+        <a href="give.html" class="btn-donate"><i class="fas fa-arrow-right"></i> Donate Now</a>
+        <p class="donate-note">* All donations are tax-deductible and go directly to ministry work.</p>
       </div>
     </div>
   </section>
@@ -1421,12 +1400,12 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-brand"><h3 class="amharic">የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</h3><p data-en="Worshiping in Spirit and Truth. A place of deep grace, recovery, community, and prophetic destiny in Addis Ababa, Ethiopia." data-am="በመንፈስ እና በእውነት አምልኮ። በአዲስ አበባ ፣ ኢትዮጵያ ጥልቅ ጸጋ ፣ ማገገሚያ ፣ ማህበረሰብ እና ትንቢታዊ ዕጣ ቦታ።">Worshiping in Spirit and Truth. A place of deep grace, recovery, community, and prophetic destiny in Addis Ababa, Ethiopia.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
-        <div class="footer-col"><h4 data-en="Quick Links" data-am="ፈጣን አገናኞች">Quick Links</h4><ul><li><a href="index.html" data-en="Home" data-am="መግቢያ">Home</a></li><li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li><li><a href="sermons.html" data-en="Sermons" data-am="ስብከቶች">Sermons</a></li><li><a href="events.html" data-en="Events" data-am="ዝግጅቶች">Events</a></li><li><a href="give.html" data-en="Give" data-am="መዋጮ">Give</a></li></ul></div>
-        <div class="footer-col"><h4 data-en="Ministries" data-am="አገልግሎቶች">Ministries</h4><ul><li><a href="events.html" data-en="Youth Ministry" data-am="የወጣቶች አገልግሎት">Youth Ministry</a></li><li><a href="events.html" data-en="Women's Fellowship" data-am="የሴቶች ህብረት">Women's Fellowship</a></li><li><a href="events.html" data-en="Men's Ministry" data-am="የወንዶች አገልግሎት">Men's Ministry</a></li><li><a href="events.html" data-en="Prayer Warriors" data-am="የጸሎት ተዋጊዎች">Prayer Warriors</a></li><li><a href="events.html" data-en="Missions" data-am="ተልዕኮዎች">Missions</a></li></ul></div>
-        <div class="footer-col footer-contact"><h4 data-en="Get in Touch" data-am="ግንኙነት ያድርጉ">Get in Touch</h4><p><i class="fas fa-map-pin"></i> <span data-en="Yerer, Addis Ababa, Ethiopia" data-am="የረር፣ አዲስ አበባ፣ ኢትዮጵያ">Yerer, Addis Ababa, Ethiopia</span></p><p><i class="fas fa-envelope"></i> info@yerergospel.org</p></div>
+        <div class="footer-brand"><h3 class="amharic">የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን</h3><p>Worshiping in Spirit and Truth. A place of deep grace, recovery, community, and prophetic destiny in Addis Ababa, Ethiopia.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-telegram"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="sermons.html">Sermons</a></li><li><a href="events.html">Events</a></li><li><a href="give.html">Give</a></li></ul></div>
+        <div class="footer-col"><h4>Ministries</h4><ul><li><a href="events.html">Youth Ministry</a></li><li><a href="events.html">Women's Fellowship</a></li><li><a href="events.html">Men's Ministry</a></li><li><a href="events.html">Prayer Warriors</a></li><li><a href="events.html">Missions</a></li></ul></div>
+        <div class="footer-col footer-contact"><h4>Get in Touch</h4><p><i class="fas fa-map-pin"></i> Yerer, Addis Ababa, Ethiopia</p><p><i class="fas fa-envelope"></i> info@yerergospel.org</p></div>
       </div>
-      <div class="footer-bottom"><p>&copy; 2026 የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን · Yerer Ber Full Gospel Believers Church. <span data-en="All rights reserved." data-am="ሁሉም መብቶች የተጠበቁ ናቸው።">All rights reserved.</span></p></div>
+      <div class="footer-bottom"><p>&copy; 2026 የረር በር ሙሉ ወንጌል አማኞች ቤተክርስቲያን · Yerer Ber Full Gospel Believers Church. All rights reserved.</p></div>
     </div>
   </footer>
 
@@ -1641,7 +1620,7 @@
       navigator.clipboard.writeText(num).then(() => {
         const btns = document.querySelectorAll('.copy-btn-sm');
         btns.forEach(btn => {
-          if (btn.textContent.trim() === 'Copy' || btn.textContent.trim() === 'ቅዳ') {
+          if (btn.textContent.trim() === 'Copy') {
             const orig = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
             btn.style.background = '#4A7FC1';
@@ -1651,157 +1630,6 @@
         });
       });
     }
-
-    // ================================================================
-    // LANGUAGE TOGGLE
-    // ================================================================
-    let currentLang = 'en'; // 'en' or 'am'
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'am' : 'en';
-      const label = document.getElementById('langLabel');
-      label.textContent = currentLang === 'en' ? 'አማርኛ' : 'English';
-      
-      // Toggle all elements with data-en and data-am
-      document.querySelectorAll('[data-en][data-am]').forEach(el => {
-        const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-am');
-        if (text) {
-          // Keep inner HTML except we replace text content, but preserve child elements like icons
-          // For simplicity, we'll replace only text nodes
-          const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-          const nodes = [];
-          let node;
-          while (node = walker.nextNode()) {
-            nodes.push(node);
-          }
-          // If there are multiple text nodes, we only replace the first one (the main text)
-          // For complex elements with nested children, we'll use a simpler approach: set innerHTML but preserve icons
-          // Better approach: replace text content of the element while keeping child elements
-          // We'll use a safer method: replace the text content of direct child text nodes
-          const childNodes = el.childNodes;
-          let foundText = false;
-          for (let i = 0; i < childNodes.length; i++) {
-            if (childNodes[i].nodeType === Node.TEXT_NODE && childNodes[i].textContent.trim() !== '') {
-              // Only replace if it's not an icon or special character
-              if (!childNodes[i].textContent.includes('•') && !childNodes[i].textContent.includes('*')) {
-                childNodes[i].textContent = text;
-                foundText = true;
-                break;
-              }
-            }
-          }
-          // If no text node found, just set innerHTML (fallback)
-          if (!foundText && !el.querySelector('i, svg, .fa, .fas, .far, .fab')) {
-            el.innerHTML = text;
-          } else if (!foundText) {
-            // For elements with icons, we need to insert text after the icon
-            const icon = el.querySelector('i, svg, .fa, .fas, .far, .fab');
-            if (icon && icon.nextSibling && icon.nextSibling.nodeType === Node.TEXT_NODE) {
-              icon.nextSibling.textContent = ' ' + text;
-            } else {
-              // Fallback: append a text node
-              const textNode = document.createTextNode(' ' + text);
-              el.appendChild(textNode);
-            }
-          }
-        }
-      });
-
-      // Special handling for elements with nested structure (like hero title)
-      document.querySelectorAll('.hero-title .gradient-text').forEach(el => {
-        const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-am');
-        if (text) {
-          // Replace text content of the gradient-text span, but keep the span itself
-          // Remove all child text nodes and replace with new text
-          el.textContent = text;
-        }
-      });
-
-      // Special handling for hero title (the main title has multiple parts)
-      const heroTitle = document.querySelector('.hero-title');
-      if (heroTitle) {
-        const parts = heroTitle.querySelectorAll('[data-en]');
-        parts.forEach(el => {
-          const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-am');
-          if (text && !el.classList.contains('gradient-text')) {
-            // Replace text for non-gradient parts
-            const childNodes = el.childNodes;
-            for (let i = 0; i < childNodes.length; i++) {
-              if (childNodes[i].nodeType === Node.TEXT_NODE && childNodes[i].textContent.trim() !== '') {
-                childNodes[i].textContent = text;
-                break;
-              }
-            }
-          }
-        });
-        // Also handle the gradient text parts
-        heroTitle.querySelectorAll('.gradient-text').forEach(el => {
-          const text = currentLang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-am');
-          if (text) {
-            el.textContent = text;
-          }
-        });
-      }
-
-      // Special handling for sermon title (which has a specific structure)
-      const sermonTitle = document.querySelector('.sermon-info h3');
-      if (sermonTitle) {
-        const text = currentLang === 'en' ? sermonTitle.getAttribute('data-en') : sermonTitle.getAttribute('data-am');
-        if (text) {
-          sermonTitle.textContent = text;
-        }
-      }
-    }
-
-    // Also handle the initial state: set to English
-    document.addEventListener('DOMContentLoaded', () => {
-      // Ensure all data-en/data-am elements show English initially
-      document.querySelectorAll('[data-en][data-am]').forEach(el => {
-        const text = el.getAttribute('data-en');
-        if (text) {
-          const childNodes = el.childNodes;
-          for (let i = 0; i < childNodes.length; i++) {
-            if (childNodes[i].nodeType === Node.TEXT_NODE && childNodes[i].textContent.trim() !== '') {
-              if (!childNodes[i].textContent.includes('•') && !childNodes[i].textContent.includes('*')) {
-                childNodes[i].textContent = text;
-                break;
-              }
-            }
-          }
-        }
-      });
-      // Fix hero title
-      const heroTitle = document.querySelector('.hero-title');
-      if (heroTitle) {
-        heroTitle.querySelectorAll('[data-en]').forEach(el => {
-          if (!el.classList.contains('gradient-text')) {
-            const text = el.getAttribute('data-en');
-            if (text) {
-              const childNodes = el.childNodes;
-              for (let i = 0; i < childNodes.length; i++) {
-                if (childNodes[i].nodeType === Node.TEXT_NODE && childNodes[i].textContent.trim() !== '') {
-                  childNodes[i].textContent = text;
-                  break;
-                }
-              }
-            }
-          }
-        });
-        heroTitle.querySelectorAll('.gradient-text').forEach(el => {
-          const text = el.getAttribute('data-en');
-          if (text) {
-            el.textContent = text;
-          }
-        });
-      }
-      const sermonTitle = document.querySelector('.sermon-info h3');
-      if (sermonTitle) {
-        const text = sermonTitle.getAttribute('data-en');
-        if (text) {
-          sermonTitle.textContent = text;
-        }
-      }
-    });
   </script>
 </body>
 </html>
