@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>⛪ Yerer Full Gospel · Member Management</title>
-    <!-- Font Awesome 6 (Free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <!-- Google Font: Inter + Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
     <style>
-        /* ----- RESET & GLOBAL ----- */
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +22,7 @@
                               radial-gradient(circle at 90% 80%, rgba(160, 200, 255, 0.06) 0%, transparent 50%);
         }
 
-        /* ===== SIDEBAR — LUXURY DARK ===== */
+        /* ===== SIDEBAR ===== */
         .sidebar {
             width: 290px;
             background: linear-gradient(160deg, #0b1a2a 0%, #142b42 100%);
@@ -166,6 +163,21 @@
 
         .sidebar-footer i {
             margin-right: 6px;
+        }
+
+        /* ===== PAGE SECTIONS ===== */
+        .page-section {
+            display: none;
+            animation: fadeInSection 0.3s ease;
+        }
+
+        .page-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeInSection {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== MAIN CONTENT ===== */
@@ -487,7 +499,35 @@
             color: #1f4462;
         }
 
-        /* ===== ENHANCED MODAL ===== */
+        /* Placeholder pages */
+        .placeholder-page {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .placeholder-page i {
+            font-size: 4rem;
+            color: #1f4462;
+            opacity: 0.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .placeholder-page h2 {
+            color: #0b1f2f;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .placeholder-page p {
+            color: #4f6f89;
+            font-size: 1.1rem;
+        }
+
+        /* ===== MODAL ===== */
         .modal {
             display: none;
             position: fixed;
@@ -558,10 +598,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
-        }
-
-        .form-row .full-width {
-            grid-column: 1 / -1;
         }
 
         .modal-card label {
@@ -657,7 +693,6 @@
             box-shadow: 0 10px 28px rgba(29, 107, 71, 0.35);
         }
 
-        /* Toast notification */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -687,7 +722,6 @@
             font-size: 1.2rem;
         }
 
-        /* responsive */
         @media (max-width: 1024px) {
             .sidebar { width: 100px; padding: 1.2rem 0.6rem; }
             .sidebar-brand .brand-text small,
@@ -727,13 +761,13 @@
         </div>
         <nav class="sidebar-nav">
             <div class="nav-label">Main</div>
-            <a href="#" class="active"><i class="fas fa-home"></i><span>Dashboard</span></a>
-            <a href="#"><i class="fas fa-users"></i><span>Members</span><span class="badge" id="memberBadge">0</span></a>
-            <a href="#"><i class="fas fa-boxes"></i><span>Inventory</span></a>
-            <a href="#"><i class="fas fa-coins"></i><span>Tithes</span><span class="badge">$</span></a>
-            <a href="#"><i class="fas fa-sign-out-alt"></i><span>Departures</span></a>
+            <a href="#" class="active" data-page="dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a>
+            <a href="#" data-page="members"><i class="fas fa-users"></i><span>Members</span><span class="badge" id="memberBadge">0</span></a>
+            <a href="#" data-page="inventory"><i class="fas fa-boxes"></i><span>Inventory</span></a>
+            <a href="#" data-page="tithes"><i class="fas fa-coins"></i><span>Tithes</span><span class="badge">$</span></a>
+            <a href="#" data-page="departures"><i class="fas fa-sign-out-alt"></i><span>Departures</span></a>
             <div class="nav-label" style="margin-top:1.8rem;">Analytics</div>
-            <a href="#"><i class="fas fa-chart-pie"></i><span>Reports</span></a>
+            <a href="#" data-page="reports"><i class="fas fa-chart-pie"></i><span>Reports</span></a>
         </nav>
         <div class="sidebar-footer">
             <span><i class="fas fa-cog"></i> v3.0</span>
@@ -743,79 +777,184 @@
 
     <!-- ===== MAIN ===== -->
     <main class="main-content">
-        <div class="top-bar">
-            <div class="page-title">
-                <h1>👥 Members</h1>
-                <p>Manage your church family with grace &amp; excellence</p>
-            </div>
-            <div class="top-actions">
-                <button class="btn btn-outline" id="resetDemoBtn"><i class="fas fa-sync-alt"></i> Reset</button>
-                <button class="btn btn-glow" id="addMemberBtn"><i class="fas fa-plus-circle"></i> Add Member</button>
-            </div>
-        </div>
 
-        <!-- stats -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number" id="totalMembers">0</div>
-                <div class="stat-label">Total Members</div>
-                <div class="stat-change"><i class="fas fa-arrow-up"></i> +2 this week</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-user-check"></i></div>
-                <div class="stat-number" id="activeMembers">0</div>
-                <div class="stat-label">Active</div>
-                <div class="stat-change" style="background:#e3edf5; color:#1f4462;"><i class="fas fa-arrow-up"></i> 82%</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-calendar-plus"></i></div>
-                <div class="stat-number" id="newThisMonth">0</div>
-                <div class="stat-label">Joined This Month</div>
-                <div class="stat-change"><i class="fas fa-arrow-up"></i> growing</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-coins"></i></div>
-                <div class="stat-number" id="totalTithing">$0</div>
-                <div class="stat-label">Total Tithes</div>
-                <div class="stat-change" style="background:#f7f0d0; color:#a07c1a;"><i class="fas fa-gift"></i> faithful</div>
-            </div>
-        </div>
-
-        <!-- table -->
-        <div class="table-card">
-            <div class="table-header">
-                <h3><i class="fas fa-list-ul"></i> Member Directory</h3>
-                <div class="search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Search name, phone, service..." />
+        <!-- ===== DASHBOARD PAGE ===== -->
+        <div class="page-section active-section" id="page-dashboard">
+            <div class="top-bar">
+                <div class="page-title">
+                    <h1>📊 Dashboard</h1>
+                    <p>Church overview &amp; key metrics</p>
+                </div>
+                <div class="top-actions">
+                    <button class="btn btn-outline" id="resetDemoBtn"><i class="fas fa-sync-alt"></i> Reset</button>
+                    <button class="btn btn-glow" id="addMemberBtn"><i class="fas fa-plus-circle"></i> Add Member</button>
                 </div>
             </div>
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Member</th>
-                            <th>Age</th>
-                            <th>Phone</th>
-                            <th>Joined</th>
-                            <th>Services</th>
-                            <th>Status</th>
-                            <th style="text-align:center;">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                </table>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" id="totalMembers">0</div>
+                    <div class="stat-label">Total Members</div>
+                    <div class="stat-change"><i class="fas fa-arrow-up"></i> +2 this week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="stat-number" id="activeMembers">0</div>
+                    <div class="stat-label">Active</div>
+                    <div class="stat-change" style="background:#e3edf5; color:#1f4462;"><i class="fas fa-arrow-up"></i> 82%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-plus"></i></div>
+                    <div class="stat-number" id="newThisMonth">0</div>
+                    <div class="stat-label">Joined This Month</div>
+                    <div class="stat-change"><i class="fas fa-arrow-up"></i> growing</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-coins"></i></div>
+                    <div class="stat-number" id="totalTithing">$0</div>
+                    <div class="stat-label">Total Tithes</div>
+                    <div class="stat-change" style="background:#f7f0d0; color:#a07c1a;"><i class="fas fa-gift"></i> faithful</div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h3><i class="fas fa-list-ul"></i> Recent Members</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search name, phone, service..." />
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Age</th>
+                                <th>Phone</th>
+                                <th>Joined</th>
+                                <th>Services</th>
+                                <th>Status</th>
+                                <th style="text-align:center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
+        <!-- ===== MEMBERS PAGE ===== -->
+        <div class="page-section" id="page-members">
+            <div class="top-bar">
+                <div class="page-title">
+                    <h1>👥 Members</h1>
+                    <p>Manage your church family with grace &amp; excellence</p>
+                </div>
+                <div class="top-actions">
+                    <button class="btn btn-outline" id="resetDemoBtn2"><i class="fas fa-sync-alt"></i> Reset</button>
+                    <button class="btn btn-glow" id="addMemberBtn2"><i class="fas fa-plus-circle"></i> Add Member</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" id="totalMembers2">0</div>
+                    <div class="stat-label">Total Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="stat-number" id="activeMembers2">0</div>
+                    <div class="stat-label">Active</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-plus"></i></div>
+                    <div class="stat-number" id="newThisMonth2">0</div>
+                    <div class="stat-label">Joined This Month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-coins"></i></div>
+                    <div class="stat-number" id="totalTithing2">$0</div>
+                    <div class="stat-label">Total Tithes</div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <h3><i class="fas fa-list-ul"></i> Member Directory</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput2" placeholder="Search name, phone, service..." />
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Member</th>
+                                <th>Age</th>
+                                <th>Phone</th>
+                                <th>Joined</th>
+                                <th>Services</th>
+                                <th>Status</th>
+                                <th style="text-align:center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody2"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== INVENTORY PAGE ===== -->
+        <div class="page-section" id="page-inventory">
+            <div class="placeholder-page">
+                <i class="fas fa-boxes"></i>
+                <h2>📦 Inventory Management</h2>
+                <p>Track church assets, equipment, and supplies.</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #6f8aa3;">Coming soon: Full inventory tracking system.</p>
+            </div>
+        </div>
+
+        <!-- ===== TITHES PAGE ===== -->
+        <div class="page-section" id="page-tithes">
+            <div class="placeholder-page">
+                <i class="fas fa-coins"></i>
+                <h2>💰 Tithes &amp; Offerings</h2>
+                <p>Manage financial records and giving history.</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #6f8aa3;">Coming soon: Complete tithes management system.</p>
+            </div>
+        </div>
+
+        <!-- ===== DEPARTURES PAGE ===== -->
+        <div class="page-section" id="page-departures">
+            <div class="placeholder-page">
+                <i class="fas fa-sign-out-alt"></i>
+                <h2>🚪 Departures</h2>
+                <p>Track members who have left the church.</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #6f8aa3;">Coming soon: Departure tracking system.</p>
+            </div>
+        </div>
+
+        <!-- ===== REPORTS PAGE ===== -->
+        <div class="page-section" id="page-reports">
+            <div class="placeholder-page">
+                <i class="fas fa-chart-pie"></i>
+                <h2>📊 Reports &amp; Analytics</h2>
+                <p>View detailed reports and church growth metrics.</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #6f8aa3;">Coming soon: Comprehensive reporting dashboard.</p>
+            </div>
+        </div>
+
     </main>
 
-    <!-- ===== ENHANCED MODAL ===== -->
+    <!-- ===== MODAL ===== -->
     <div class="modal" id="memberModal">
         <div class="modal-card">
             <h2 id="modalTitle"><i class="fas fa-user-plus"></i> Add Member</h2>
             <form id="memberForm" enctype="multipart/form-data">
-                <!-- Photo Upload -->
                 <label>Profile Photo</label>
                 <div class="photo-upload">
                     <img id="photoPreview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Ccircle cx='35' cy='35' r='35' fill='%23dce6f0'/%3E%3Ctext x='35' y='42' text-anchor='middle' fill='%236f8aa3' font-size='28' font-family='FontAwesome'%3E%3C/text%3E%3C/svg%3E" alt="Preview" class="photo-preview" />
@@ -885,7 +1024,6 @@
         </div>
     </div>
 
-    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <i class="fas fa-check-circle"></i>
         <span id="toastMessage">Member saved successfully!</span>
@@ -897,7 +1035,6 @@
             let members = [];
             let nextId = 1;
 
-            // Default members with extended fields
             const defaultMembers = [{
                 id: 1,
                 name: 'Mary Johnson',
@@ -986,9 +1123,8 @@
                         const parsed = JSON.parse(stored);
                         if (Array.isArray(parsed) && parsed.length > 0) {
                             members = parsed;
-                            // Fix: Ensure each member has all required fields
                             members = members.map(m => ({
-                                ...defaultMembers[0], // fallback template
+                                ...defaultMembers[0],
                                 ...m
                             }));
                             let max = 0;
@@ -1006,7 +1142,7 @@
             function saveToStorage() {
                 try {
                     localStorage.setItem('yererChurchMembers', JSON.stringify(members));
-                    console.log('Data saved successfully:', members.length, 'members');
+                    console.log('Data saved:', members.length, 'members');
                 } catch (e) {
                     console.error('Failed to save data:', e);
                 }
@@ -1021,19 +1157,9 @@
                 showToast('Default data loaded successfully!');
             }
 
-            // Try to load from storage, if fails, init default
-            const loaded = loadFromStorage();
-            if (!loaded) {
+            if (!loadFromStorage()) {
                 initDefaultData();
-            } else {
-                // Verify data integrity
-                if (members.length === 0) {
-                    initDefaultData();
-                }
             }
-
-            // Debug: Log current state
-            console.log('Current members:', members.length);
 
             // ---------- TOAST ----------
             let toastTimeout;
@@ -1049,7 +1175,68 @@
                 }, 3000);
             }
 
-            // ---------- RENDER ----------
+            // ---------- NAVIGATION ----------
+            function navigateTo(page) {
+                // Hide all sections
+                document.querySelectorAll('.page-section').forEach(el => {
+                    el.classList.remove('active-section');
+                });
+
+                // Show target section
+                const target = document.getElementById('page-' + page);
+                if (target) {
+                    target.classList.add('active-section');
+                }
+
+                // Update sidebar active state
+                document.querySelectorAll('.sidebar-nav a').forEach(el => {
+                    el.classList.remove('active');
+                    if (el.dataset.page === page) {
+                        el.classList.add('active');
+                    }
+                });
+
+                // Update page title
+                const pageNames = {
+                    dashboard: 'Dashboard',
+                    members: 'Members',
+                    inventory: 'Inventory',
+                    tithes: 'Tithes',
+                    departures: 'Departures',
+                    reports: 'Reports'
+                };
+                const titleEl = document.querySelector('.page-title h1');
+                if (titleEl && pageNames[page]) {
+                    const icons = {
+                        dashboard: '📊',
+                        members: '👥',
+                        inventory: '📦',
+                        tithes: '💰',
+                        departures: '🚪',
+                        reports: '📊'
+                    };
+                    titleEl.textContent = icons[page] + ' ' + pageNames[page];
+                }
+
+                // If navigating to members or dashboard, refresh data
+                if (page === 'members' || page === 'dashboard') {
+                    renderTable(document.getElementById('searchInput')?.value || '');
+                    renderTable2(document.getElementById('searchInput2')?.value || '');
+                }
+            }
+
+            // Sidebar click handlers
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.dataset.page;
+                    if (page) {
+                        navigateTo(page);
+                    }
+                });
+            });
+
+            // ---------- RENDER (Dashboard) ----------
             function renderTable(filter = '') {
                 const tbody = document.getElementById('tableBody');
                 const searchTerm = filter.trim().toLowerCase();
@@ -1098,7 +1285,121 @@
                     }).join('');
                 }
 
-                // stats
+                // Update stats
+                updateStats();
+            }
+
+            // ---------- RENDER (Members page) ----------
+            function renderTable2(filter = '') {
+                const tbody = document.getElementById('tableBody2');
+                const searchTerm = filter.trim().toLowerCase();
+                let filtered = members;
+                if (searchTerm) {
+                    filtered = members.filter(m =>
+                        m.name.toLowerCase().includes(searchTerm) ||
+                        m.phone.includes(searchTerm) ||
+                        (m.services && m.services.toLowerCase().includes(searchTerm)) ||
+                        (m.occupation && m.occupation.toLowerCase().includes(searchTerm))
+                    );
+                }
+
+                if (filtered.length === 0) {
+                    tbody.innerHTML =
+                        `<tr class="empty-row"><td colspan="7"><i class="fas fa-people-arrows"></i> No members found</td></tr>`;
+                } else {
+                    tbody.innerHTML = filtered.map((m, idx) => {
+                        const realIndex = members.indexOf(m);
+                        const statusClass = m.status === 'Active' ? '' : 'inactive';
+                        const photoSrc = m.photo || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38"%3E%3Ccircle cx="19" cy="19" r="19" fill="%23dce6f0"/%3E%3Ctext x="19" y="24" text-anchor="middle" fill="%236f8aa3" font-size="16" font-family="FontAwesome"%3E%3C/text%3E%3C/svg%3E';
+
+                        let servicesHtml = '';
+                        if (m.services) {
+                            const tags = m.services.split(',').map(s => s.trim()).filter(Boolean);
+                            servicesHtml = tags.map(t => `<span class="services-tag">${t}</span>`).join(' ');
+                        }
+
+                        return `
+                            <tr>
+                                <td>
+                                    <img src="${photoSrc}" alt="${m.name}" class="member-avatar" />
+                                    ${m.name}
+                                </td>
+                                <td>${m.age}</td>
+                                <td>${m.phone}</td>
+                                <td>${m.date}</td>
+                                <td>${servicesHtml || '—'}</td>
+                                <td><span class="status-badge ${statusClass}">${m.status}</span></td>
+                                <td style="text-align:center;" class="action-icons">
+                                    <i class="fas fa-edit" data-action="edit2" data-index="${realIndex}" title="Edit"></i>
+                                    <i class="fas fa-trash-alt" data-action="delete2" data-index="${realIndex}" title="Delete"></i>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+
+                // Update stats on members page
+                const total = members.length;
+                const active = members.filter(m => m.status === 'Active').length;
+                const now = new Date();
+                const thisMonth = now.getMonth();
+                const thisYear = now.getFullYear();
+                const newThisMonth = members.filter(m => {
+                    const d = new Date(m.date);
+                    return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
+                }).length;
+                const totalTithing = members.reduce((sum, m) => sum + (m.tithing || 0), 0);
+
+                document.getElementById('totalMembers2').textContent = total;
+                document.getElementById('activeMembers2').textContent = active;
+                document.getElementById('newThisMonth2').textContent = newThisMonth;
+                document.getElementById('totalTithing2').textContent = `$${totalTithing.toFixed(0)}`;
+
+                // Attach events for members page
+                document.querySelectorAll('[data-action="edit2"]').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        openEditModal(idx);
+                    });
+                });
+                document.querySelectorAll('[data-action="delete2"]').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm(`Remove "${members[idx].name}" from the church roll?`)) {
+                            const name = members[idx].name;
+                            members.splice(idx, 1);
+                            saveToStorage();
+                            renderTable(document.getElementById('searchInput')?.value || '');
+                            renderTable2(document.getElementById('searchInput2')?.value || '');
+                            showToast(`"${name}" removed successfully`);
+                        }
+                    });
+                });
+
+                // Also attach events from dashboard
+                document.querySelectorAll('[data-action="edit"]').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        openEditModal(idx);
+                    });
+                });
+                document.querySelectorAll('[data-action="delete"]').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const idx = parseInt(this.dataset.index);
+                        if (confirm(`Remove "${members[idx].name}" from the church roll?`)) {
+                            const name = members[idx].name;
+                            members.splice(idx, 1);
+                            saveToStorage();
+                            renderTable(document.getElementById('searchInput')?.value || '');
+                            renderTable2(document.getElementById('searchInput2')?.value || '');
+                            showToast(`"${name}" removed successfully`);
+                        }
+                    });
+                });
+            }
+
+            // ---------- UPDATE STATS ----------
+            function updateStats() {
                 const total = members.length;
                 const active = members.filter(m => m.status === 'Active').length;
                 const now = new Date();
@@ -1115,26 +1416,6 @@
                 document.getElementById('newThisMonth').textContent = newThisMonth;
                 document.getElementById('totalTithing').textContent = `$${totalTithing.toFixed(0)}`;
                 document.getElementById('memberBadge').textContent = total;
-
-                // attach events
-                document.querySelectorAll('[data-action="edit"]').forEach(el => {
-                    el.addEventListener('click', function() {
-                        const idx = parseInt(this.dataset.index);
-                        openEditModal(idx);
-                    });
-                });
-                document.querySelectorAll('[data-action="delete"]').forEach(el => {
-                    el.addEventListener('click', function() {
-                        const idx = parseInt(this.dataset.index);
-                        if (confirm(`Remove "${members[idx].name}" from the church roll?`)) {
-                            const name = members[idx].name;
-                            members.splice(idx, 1);
-                            saveToStorage();
-                            renderTable(document.getElementById('searchInput').value);
-                            showToast(`"${name}" removed successfully`);
-                        }
-                    });
-                });
             }
 
             // ---------- MODAL ----------
@@ -1156,7 +1437,6 @@
             const editIndexInput = document.getElementById('editIndex');
             const memberForm = document.getElementById('memberForm');
 
-            // Photo preview
             photoInput.addEventListener('change', function(e) {
                 const file = this.files[0];
                 if (file) {
@@ -1279,23 +1559,43 @@
                 }
                 saveToStorage();
                 closeModal();
-                renderTable(document.getElementById('searchInput').value);
+                const searchVal = document.getElementById('searchInput')?.value || '';
+                const searchVal2 = document.getElementById('searchInput2')?.value || '';
+                renderTable(searchVal);
+                renderTable2(searchVal2);
                 showToast(`Member "${name}" ${action} successfully!`);
             });
 
             // ---------- EVENTS ----------
             document.getElementById('addMemberBtn').addEventListener('click', openAddModal);
+            document.getElementById('addMemberBtn2').addEventListener('click', openAddModal);
 
             document.getElementById('resetDemoBtn').addEventListener('click', function() {
                 if (confirm('Reset to default member list? All current data will be lost.')) {
                     initDefaultData();
                     document.getElementById('searchInput').value = '';
+                    document.getElementById('searchInput2').value = '';
                     renderTable('');
+                    renderTable2('');
+                }
+            });
+
+            document.getElementById('resetDemoBtn2').addEventListener('click', function() {
+                if (confirm('Reset to default member list? All current data will be lost.')) {
+                    initDefaultData();
+                    document.getElementById('searchInput').value = '';
+                    document.getElementById('searchInput2').value = '';
+                    renderTable('');
+                    renderTable2('');
                 }
             });
 
             document.getElementById('searchInput').addEventListener('input', function(e) {
                 renderTable(this.value);
+            });
+
+            document.getElementById('searchInput2').addEventListener('input', function(e) {
+                renderTable2(this.value);
             });
 
             document.addEventListener('keydown', function(e) {
@@ -1304,8 +1604,14 @@
                 }
             });
 
-            // ---------- START ----------
+            // ---------- INIT ----------
             renderTable('');
+            renderTable2('');
+            updateStats();
+
+            // Set default page to dashboard
+            navigateTo('dashboard');
+
         })();
     </script>
 
