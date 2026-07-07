@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>⛪ Glory Church · Member Management</title>
+    <title>⛪ Yerer Full Gospel · Member Management</title>
     <!-- Font Awesome 6 (Free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Font: Inter + Playfair Display -->
@@ -242,17 +242,6 @@
         .btn-outline {
             background: transparent;
             border: 1px solid #dce6f0;
-        }
-
-        .btn-danger-outline {
-            background: transparent;
-            border: 1px solid #e0c0c0;
-            color: #b13e3e;
-        }
-
-        .btn-danger-outline:hover {
-            background: #fdf0f0;
-            border-color: #b13e3e;
         }
 
         /* stats */
@@ -730,9 +719,9 @@
     <!-- ===== SIDEBAR ===== -->
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <img src="logo.jpg" alt="Church Logo" class="brand-logo" />
+            <img src="logo.jpg" alt="Yerer Full Gospel Logo" class="brand-logo" />
             <div class="brand-text">
-                Glory Church
+                Yerer Full Gospel
                 <small>⛪ Grace &amp; Truth</small>
             </div>
         </div>
@@ -851,7 +840,7 @@
                     </div>
                     <div>
                         <label for="emailInput">Email</label>
-                        <input type="email" id="emailInput" placeholder="grace@church.org" />
+                        <input type="email" id="emailInput" placeholder="grace@yererchurch.org" />
                     </div>
                 </div>
 
@@ -914,7 +903,7 @@
                 name: 'Mary Johnson',
                 age: 34,
                 phone: '+1 234 567 890',
-                email: 'mary@church.org',
+                email: 'mary@yererchurch.org',
                 date: '2026-07-06',
                 status: 'Active',
                 tithing: 320,
@@ -927,7 +916,7 @@
                 name: 'John Mwangi',
                 age: 28,
                 phone: '+254 712 345 678',
-                email: 'john@church.org',
+                email: 'john@yererchurch.org',
                 date: '2026-06-15',
                 status: 'Active',
                 tithing: 150,
@@ -940,7 +929,7 @@
                 name: 'Grace Oduya',
                 age: 41,
                 phone: '+1 987 654 321',
-                email: 'grace@church.org',
+                email: 'grace@yererchurch.org',
                 date: '2026-05-20',
                 status: 'Active',
                 tithing: 210,
@@ -953,7 +942,7 @@
                 name: 'David Kimani',
                 age: 55,
                 phone: '+254 722 111 222',
-                email: 'david@church.org',
+                email: 'david@yererchurch.org',
                 date: '2026-04-02',
                 status: 'Inactive',
                 tithing: 0,
@@ -966,7 +955,7 @@
                 name: 'Sarah Njoroge',
                 age: 29,
                 phone: '+1 456 789 012',
-                email: 'sarah@church.org',
+                email: 'sarah@yererchurch.org',
                 date: '2026-07-01',
                 status: 'Active',
                 tithing: 180,
@@ -979,7 +968,7 @@
                 name: 'Michael Roberts',
                 age: 47,
                 phone: '+44 20 7946 0958',
-                email: 'michael@church.org',
+                email: 'michael@yererchurch.org',
                 date: '2026-03-12',
                 status: 'Active',
                 tithing: 420,
@@ -991,24 +980,36 @@
 
             // ---------- STORAGE ----------
             function loadFromStorage() {
-                const stored = localStorage.getItem('gloryChurchMembersEnhanced');
+                const stored = localStorage.getItem('yererChurchMembers');
                 if (stored) {
                     try {
                         const parsed = JSON.parse(stored);
-                        if (Array.isArray(parsed) && parsed.length) {
+                        if (Array.isArray(parsed) && parsed.length > 0) {
                             members = parsed;
+                            // Fix: Ensure each member has all required fields
+                            members = members.map(m => ({
+                                ...defaultMembers[0], // fallback template
+                                ...m
+                            }));
                             let max = 0;
                             members.forEach(m => { if (m.id && m.id > max) max = m.id; });
                             nextId = max + 1;
                             return true;
                         }
-                    } catch (e) {}
+                    } catch (e) {
+                        console.warn('Failed to parse stored data:', e);
+                    }
                 }
                 return false;
             }
 
             function saveToStorage() {
-                localStorage.setItem('gloryChurchMembersEnhanced', JSON.stringify(members));
+                try {
+                    localStorage.setItem('yererChurchMembers', JSON.stringify(members));
+                    console.log('Data saved successfully:', members.length, 'members');
+                } catch (e) {
+                    console.error('Failed to save data:', e);
+                }
             }
 
             function initDefaultData() {
@@ -1020,9 +1021,19 @@
                 showToast('Default data loaded successfully!');
             }
 
-            if (!loadFromStorage()) {
+            // Try to load from storage, if fails, init default
+            const loaded = loadFromStorage();
+            if (!loaded) {
                 initDefaultData();
+            } else {
+                // Verify data integrity
+                if (members.length === 0) {
+                    initDefaultData();
+                }
             }
+
+            // Debug: Log current state
+            console.log('Current members:', members.length);
 
             // ---------- TOAST ----------
             let toastTimeout;
@@ -1116,10 +1127,11 @@
                     el.addEventListener('click', function() {
                         const idx = parseInt(this.dataset.index);
                         if (confirm(`Remove "${members[idx].name}" from the church roll?`)) {
+                            const name = members[idx].name;
                             members.splice(idx, 1);
                             saveToStorage();
                             renderTable(document.getElementById('searchInput').value);
-                            showToast(`"${members[idx]?.name || 'Member'}" removed successfully`);
+                            showToast(`"${name}" removed successfully`);
                         }
                     });
                 });
