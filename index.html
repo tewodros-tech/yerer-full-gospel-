@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>⛪ Yerer Full Gospel · Complete Church System</title>
+    <title>⛪ Yerer Full Gospel · Database System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
     <style>
@@ -56,11 +56,6 @@
             box-shadow: 0 0 24px rgba(247, 212, 74, 0.15);
             flex-shrink: 0;
             background: #1f3b57;
-        }
-        .sidebar-brand .brand-logo:hover {
-            transform: scale(1.05) rotate(-2deg);
-            border-color: #f7d44a;
-            box-shadow: 0 0 36px rgba(247, 212, 74, 0.25);
         }
         .sidebar-brand .brand-text {
             font-size: 1.7rem;
@@ -244,6 +239,14 @@
         .btn-sm {
             padding: 0.4rem 1.2rem;
             font-size: 0.8rem;
+        }
+        .btn-primary {
+            background: #1f4462;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #14344b;
         }
 
         .stats-grid {
@@ -463,6 +466,21 @@
             margin-bottom: 10px;
         }
 
+        /* DB Status */
+        .db-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: #1d6b47;
+            background: #dff0e0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+        }
+        .db-status i {
+            font-size: 0.6rem;
+        }
+
         /* ===== MODAL ===== */
         .modal {
             display: none;
@@ -620,36 +638,6 @@
             font-size: 1.2rem;
         }
 
-        /* Inventory item card */
-        .inv-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-        }
-        .inv-item:last-child {
-            border-bottom: none;
-        }
-        .inv-item .inv-name {
-            font-weight: 600;
-            color: #0b1f2f;
-        }
-        .inv-item .inv-qty {
-            background: rgba(31, 68, 98, 0.08);
-            padding: 0.1rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-        }
-        .inv-item .inv-actions i {
-            margin-left: 8px;
-            cursor: pointer;
-            color: #4f6f89;
-        }
-        .inv-item .inv-actions i:hover {
-            color: #0b1f2f;
-        }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .sidebar { width: 100px; padding: 1.2rem 0.6rem; }
@@ -692,18 +680,18 @@
             <a href="#" class="active" data-page="dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a>
             <a href="#" data-page="members"><i class="fas fa-users"></i><span>Members</span><span class="badge" id="memberBadge">0</span></a>
             <a href="#" data-page="inventory"><i class="fas fa-boxes"></i><span>Inventory</span><span class="badge" id="invBadge">0</span></a>
-            <a href="#" data-page="tithes"><i class="fas fa-coins"></i><span>Tithes</span><span class="badge" id="titheBadge">$</span></a>
+            <a href="#" data-page="tithes"><i class="fas fa-coins"></i><span>Tithes</span><span class="badge" id="titheBadge">$0</span></a>
             <a href="#" data-page="departures"><i class="fas fa-sign-out-alt"></i><span>Departures</span><span class="badge" id="depBadge">0</span></a>
             <div class="nav-label">Analytics</div>
             <a href="#" data-page="reports"><i class="fas fa-chart-pie"></i><span>Reports</span></a>
         </nav>
         <div class="sidebar-footer">
-            <span><i class="fas fa-cog"></i> v4.0</span>
+            <span><i class="fas fa-database"></i> IndexedDB</span>
             <span><i class="fas fa-calendar-alt"></i> 2026</span>
         </div>
     </aside>
 
-    <!-- ===== MAIN CONTENT ===== -->
+    <!-- ===== MAIN ===== -->
     <main class="main-content">
 
         <!-- ===== DASHBOARD ===== -->
@@ -711,43 +699,21 @@
             <div class="top-bar">
                 <div class="page-title">
                     <h1>📊 Dashboard</h1>
-                    <p>Church overview &amp; key metrics</p>
+                    <p>Church overview &amp; key metrics <span class="db-status"><i class="fas fa-circle"></i> Database Connected</span></p>
                 </div>
                 <div class="top-actions">
                     <button class="btn btn-outline" id="resetAllBtn"><i class="fas fa-sync-alt"></i> Reset All</button>
+                    <button class="btn btn-outline" id="exportDataBtn"><i class="fas fa-download"></i> Export Data</button>
+                    <button class="btn btn-outline" id="importDataBtn"><i class="fas fa-upload"></i> Import Data</button>
                 </div>
             </div>
             <div class="stats-grid" id="dashStats">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-users"></i></div>
-                    <div class="stat-number" id="dashTotalMembers">0</div>
-                    <div class="stat-label">Total Members</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-user-check"></i></div>
-                    <div class="stat-number" id="dashActiveMembers">0</div>
-                    <div class="stat-label">Active</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-boxes"></i></div>
-                    <div class="stat-number" id="dashTotalItems">0</div>
-                    <div class="stat-label">Inventory Items</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-coins"></i></div>
-                    <div class="stat-number" id="dashTotalTithes">$0</div>
-                    <div class="stat-label">Total Tithes</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-sign-out-alt"></i></div>
-                    <div class="stat-number" id="dashDepartures">0</div>
-                    <div class="stat-label">Departures</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fas fa-calendar-plus"></i></div>
-                    <div class="stat-number" id="dashNewMembers">0</div>
-                    <div class="stat-label">New This Month</div>
-                </div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number" id="dashTotalMembers">0</div><div class="stat-label">Total Members</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-user-check"></i></div><div class="stat-number" id="dashActiveMembers">0</div><div class="stat-label">Active</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-boxes"></i></div><div class="stat-number" id="dashTotalItems">0</div><div class="stat-label">Inventory Items</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-coins"></i></div><div class="stat-number" id="dashTotalTithes">$0</div><div class="stat-label">Total Tithes</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-sign-out-alt"></i></div><div class="stat-number" id="dashDepartures">0</div><div class="stat-label">Departures</div></div>
+                <div class="stat-card"><div class="stat-icon"><i class="fas fa-calendar-plus"></i></div><div class="stat-number" id="dashNewMembers">0</div><div class="stat-label">New This Month</div></div>
             </div>
             <div class="table-card">
                 <div class="table-header">
@@ -762,10 +728,7 @@
         <!-- ===== MEMBERS ===== -->
         <div class="page-section" id="page-members">
             <div class="top-bar">
-                <div class="page-title">
-                    <h1>👥 Members</h1>
-                    <p>Manage your church family</p>
-                </div>
+                <div class="page-title"><h1>👥 Members</h1><p>Manage your church family</p></div>
                 <div class="top-actions">
                     <button class="btn btn-outline btn-sm" id="resetMembersBtn"><i class="fas fa-sync-alt"></i> Reset</button>
                     <button class="btn btn-glow" id="addMemberBtn"><i class="fas fa-plus-circle"></i> Add Member</button>
@@ -793,10 +756,7 @@
         <!-- ===== INVENTORY ===== -->
         <div class="page-section" id="page-inventory">
             <div class="top-bar">
-                <div class="page-title">
-                    <h1>📦 Inventory</h1>
-                    <p>Manage church assets &amp; equipment</p>
-                </div>
+                <div class="page-title"><h1>📦 Inventory</h1><p>Manage church assets &amp; equipment</p></div>
                 <div class="top-actions">
                     <button class="btn btn-outline btn-sm" id="resetInvBtn"><i class="fas fa-sync-alt"></i> Reset</button>
                     <button class="btn btn-glow" id="addItemBtn"><i class="fas fa-plus-circle"></i> Add Item</button>
@@ -824,10 +784,7 @@
         <!-- ===== TITHES ===== -->
         <div class="page-section" id="page-tithes">
             <div class="top-bar">
-                <div class="page-title">
-                    <h1>💰 Tithes &amp; Offerings</h1>
-                    <p>Track financial giving</p>
-                </div>
+                <div class="page-title"><h1>💰 Tithes &amp; Offerings</h1><p>Track financial giving</p></div>
                 <div class="top-actions">
                     <button class="btn btn-outline btn-sm" id="resetTithesBtn"><i class="fas fa-sync-alt"></i> Reset</button>
                     <button class="btn btn-glow" id="addTitheBtn"><i class="fas fa-plus-circle"></i> Record Tithe</button>
@@ -855,10 +812,7 @@
         <!-- ===== DEPARTURES ===== -->
         <div class="page-section" id="page-departures">
             <div class="top-bar">
-                <div class="page-title">
-                    <h1>🚪 Departures</h1>
-                    <p>Track members who have left</p>
-                </div>
+                <div class="page-title"><h1>🚪 Departures</h1><p>Track members who have left</p></div>
                 <div class="top-actions">
                     <button class="btn btn-outline btn-sm" id="resetDepBtn"><i class="fas fa-sync-alt"></i> Reset</button>
                     <button class="btn btn-glow" id="addDepartureBtn"><i class="fas fa-plus-circle"></i> Record Departure</button>
@@ -886,10 +840,7 @@
         <!-- ===== REPORTS ===== -->
         <div class="page-section" id="page-reports">
             <div class="top-bar">
-                <div class="page-title">
-                    <h1>📊 Reports &amp; Analytics</h1>
-                    <p>View detailed church metrics</p>
-                </div>
+                <div class="page-title"><h1>📊 Reports</h1><p>View detailed church metrics</p></div>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 2rem;">
                 <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number" id="repMembers">0</div><div class="stat-label">Total Members</div><div class="stat-change">Active: <span id="repActivePct">0</span>%</div></div>
@@ -898,9 +849,7 @@
                 <div class="stat-card"><div class="stat-icon"><i class="fas fa-sign-out-alt"></i></div><div class="stat-number" id="repDepartures">0</div><div class="stat-label">Departures</div><div class="stat-change">Returned: <span id="repReturned">0</span></div></div>
             </div>
             <div class="table-card">
-                <div class="table-header">
-                    <h3><i class="fas fa-chart-pie"></i> Quick Stats</h3>
-                </div>
+                <div class="table-header"><h3><i class="fas fa-chart-pie"></i> Quick Stats</h3></div>
                 <div style="padding: 1.5rem;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                         <div><strong>📈 Growth Rate:</strong> <span id="repGrowth">0</span>%</div>
@@ -914,7 +863,8 @@
 
     </main>
 
-    <!-- ===== MEMBER MODAL ===== -->
+    <!-- ===== MODALS ===== -->
+    <!-- Member Modal -->
     <div class="modal" id="memberModal">
         <div class="modal-card">
             <h2 id="memberModalTitle"><i class="fas fa-user-plus"></i> Add Member</h2>
@@ -939,10 +889,8 @@
                     <div><label>Tithes (USD)</label><input type="number" id="memTithing" placeholder="0" step="0.01" min="0" value="0" /></div>
                     <div><label>Occupation</label><input type="text" id="memOccupation" placeholder="Teacher" /></div>
                 </div>
-                <label>Services</label>
-                <input type="text" id="memServices" placeholder="Choir, Usher, Youth" />
-                <label>Notes</label>
-                <textarea id="memNotes" placeholder="Additional info..."></textarea>
+                <label>Services</label><input type="text" id="memServices" placeholder="Choir, Usher, Youth" />
+                <label>Notes</label><textarea id="memNotes" placeholder="Additional info..."></textarea>
                 <input type="hidden" id="memEditIndex" value="-1" />
                 <input type="hidden" id="memPhotoData" value="" />
                 <div class="modal-actions">
@@ -953,7 +901,7 @@
         </div>
     </div>
 
-    <!-- ===== INVENTORY MODAL ===== -->
+    <!-- Inventory Modal -->
     <div class="modal" id="invModal">
         <div class="modal-card">
             <h2 id="invModalTitle"><i class="fas fa-box"></i> Add Item</h2>
@@ -977,19 +925,17 @@
         </div>
     </div>
 
-    <!-- ===== TITHE MODAL ===== -->
+    <!-- Tithe Modal -->
     <div class="modal" id="titheModal">
         <div class="modal-card">
             <h2><i class="fas fa-coins"></i> Record Tithe</h2>
             <form id="titheForm">
-                <label>Member *</label>
-                <select id="titheMember" required></select>
+                <label>Member *</label><select id="titheMember" required></select>
                 <div class="form-row">
                     <div><label>Amount *</label><input type="number" id="titheAmount" placeholder="0.00" step="0.01" min="0" required /></div>
                     <div><label>Date *</label><input type="date" id="titheDate" required /></div>
                 </div>
-                <label>Type</label>
-                <select id="titheType"><option value="Tithe">Tithe</option><option value="Offering">Offering</option><option value="Special">Special</option></select>
+                <label>Type</label><select id="titheType"><option value="Tithe">Tithe</option><option value="Offering">Offering</option><option value="Special">Special</option></select>
                 <input type="hidden" id="titheEditIndex" value="-1" />
                 <div class="modal-actions">
                     <button type="button" class="btn btn-ghost" id="closeTitheModal">Cancel</button>
@@ -999,21 +945,18 @@
         </div>
     </div>
 
-    <!-- ===== DEPARTURE MODAL ===== -->
+    <!-- Departure Modal -->
     <div class="modal" id="depModal">
         <div class="modal-card">
             <h2><i class="fas fa-sign-out-alt"></i> Record Departure</h2>
             <form id="depForm">
-                <label>Member *</label>
-                <select id="depMember" required></select>
+                <label>Member *</label><select id="depMember" required></select>
                 <div class="form-row">
                     <div><label>Date Left *</label><input type="date" id="depDate" required /></div>
                     <div><label>Status</label><select id="depStatus"><option value="Left">Left</option><option value="Transferred">Transferred</option><option value="Returned">Returned</option></select></div>
                 </div>
-                <label>Reason</label>
-                <input type="text" id="depReason" placeholder="Moved to another city" />
-                <label>Destination</label>
-                <input type="text" id="depDest" placeholder="New church or city" />
+                <label>Reason</label><input type="text" id="depReason" placeholder="Moved to another city" />
+                <label>Destination</label><input type="text" id="depDest" placeholder="New church or city" />
                 <input type="hidden" id="depEditIndex" value="-1" />
                 <div class="modal-actions">
                     <button type="button" class="btn btn-ghost" id="closeDepModal">Cancel</button>
@@ -1026,50 +969,224 @@
     <!-- ===== TOAST ===== -->
     <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toastMessage">Success!</span></div>
 
+    <!-- ======================================================= -->
+    <!-- ===== DATABASE LAYER (IndexedDB) ===== -->
+    <!-- ======================================================= -->
     <script>
-        (function() {
-            // ============================================
-            // DATA STORE
-            // ============================================
-            let members = [];
-            let inventory = [];
-            let tithes = [];
-            let departures = [];
-            let nextId = { member: 1, item: 1, tithe: 1, dep: 1 };
-            let activityLog = [];
+        // ============================================================
+        // DATABASE CLASS — Handles all IndexedDB operations
+        // ============================================================
+        class ChurchDB {
+            constructor() {
+                this.dbName = 'YererFullGospelDB';
+                this.dbVersion = 2;
+                this.db = null;
+                this.stores = {
+                    members: { keyPath: 'id', indexes: ['name', 'status', 'date'] },
+                    inventory: { keyPath: 'id', indexes: ['name', 'status'] },
+                    tithes: { keyPath: 'id', indexes: ['memberId', 'date'] },
+                    departures: { keyPath: 'id', indexes: ['memberId', 'date', 'status'] }
+                };
+                this.initialized = false;
+            }
 
-            // Default data
+            // Open / create database
+            async init() {
+                if (this.initialized && this.db) return this.db;
+
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(this.dbName, this.dbVersion);
+
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        // Create object stores if they don't exist
+                        for (const [storeName, config] of Object.entries(this.stores)) {
+                            if (!db.objectStoreNames.contains(storeName)) {
+                                const store = db.createObjectStore(storeName, { keyPath: config.keyPath });
+                                for (const index of config.indexes) {
+                                    store.createIndex(index, index, { unique: false });
+                                }
+                            }
+                        }
+                    };
+
+                    request.onsuccess = (event) => {
+                        this.db = event.target.result;
+                        this.initialized = true;
+                        resolve(this.db);
+                    };
+
+                    request.onerror = (event) => {
+                        reject(new Error(`IndexedDB error: ${event.target.error}`));
+                    };
+                });
+            }
+
+            // Generic CRUD operations
+            async add(storeName, data) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readwrite');
+                    const store = tx.objectStore(storeName);
+                    const request = store.add(data);
+                    request.onsuccess = () => resolve(data);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async getAll(storeName) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readonly');
+                    const store = tx.objectStore(storeName);
+                    const request = store.getAll();
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async get(storeName, id) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readonly');
+                    const store = tx.objectStore(storeName);
+                    const request = store.get(id);
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async update(storeName, data) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readwrite');
+                    const store = tx.objectStore(storeName);
+                    const request = store.put(data);
+                    request.onsuccess = () => resolve(data);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async delete(storeName, id) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readwrite');
+                    const store = tx.objectStore(storeName);
+                    const request = store.delete(id);
+                    request.onsuccess = () => resolve();
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            async clear(storeName) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readwrite');
+                    const store = tx.objectStore(storeName);
+                    const request = store.clear();
+                    request.onsuccess = () => resolve();
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            // Get all records from a store with optional filter
+            async query(storeName, indexName, value) {
+                await this.init();
+                return new Promise((resolve, reject) => {
+                    const tx = this.db.transaction(storeName, 'readonly');
+                    const store = tx.objectStore(storeName);
+                    const index = store.index(indexName);
+                    const request = index.getAll(value);
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+
+            // Export all data
+            async exportAll() {
+                const members = await this.getAll('members');
+                const inventory = await this.getAll('inventory');
+                const tithes = await this.getAll('tithes');
+                const departures = await this.getAll('departures');
+                return { members, inventory, tithes, departures };
+            }
+
+            // Import data (clears and replaces)
+            async importAll(data) {
+                await this.clear('members');
+                await this.clear('inventory');
+                await this.clear('tithes');
+                await this.clear('departures');
+
+                if (data.members) {
+                    for (const item of data.members) await this.add('members', item);
+                }
+                if (data.inventory) {
+                    for (const item of data.inventory) await this.add('inventory', item);
+                }
+                if (data.tithes) {
+                    for (const item of data.tithes) await this.add('tithes', item);
+                }
+                if (data.departures) {
+                    for (const item of data.departures) await this.add('departures', item);
+                }
+            }
+
+            // Reset to defaults
+            async resetAll(defaultData) {
+                await this.clear('members');
+                await this.clear('inventory');
+                await this.clear('tithes');
+                await this.clear('departures');
+
+                for (const item of defaultData.members) await this.add('members', item);
+                for (const item of defaultData.inventory) await this.add('inventory', item);
+                for (const item of defaultData.tithes) await this.add('tithes', item);
+                for (const item of defaultData.departures) await this.add('departures', item);
+            }
+        }
+
+        // ============================================================
+        // APPLICATION — Uses the database
+        // ============================================================
+        (async function() {
+            // --- Initialize Database ---
+            const db = new ChurchDB();
+            await db.init();
+            console.log('✅ Database connected successfully');
+
+            // --- Default Data ---
             const defaultMembers = [
-                { id: 1, name: 'Mary Johnson', age: 34, phone: '+1 234 567 890', email: 'mary@church.org', date: '2026-07-06',
-                    status: 'Active', tithing: 320, occupation: 'Nurse', services: 'Choir, Usher', notes: 'Plays piano',
-                    photo: '' },
+                { id: 1, name: 'Mary Johnson', age: 34, phone: '+1 234 567 890', email: 'mary@church.org',
+                    date: '2026-07-06', status: 'Active', tithing: 320, occupation: 'Nurse',
+                    services: 'Choir, Usher', notes: 'Plays piano', photo: '' },
                 { id: 2, name: 'John Mwangi', age: 28, phone: '+254 712 345 678', email: 'john@church.org',
-                    date: '2026-06-15', status: 'Active', tithing: 150, occupation: 'Engineer', services: 'Youth, Media',
-                    notes: 'Tech support', photo: '' },
+                    date: '2026-06-15', status: 'Active', tithing: 150, occupation: 'Engineer',
+                    services: 'Youth, Media', notes: 'Tech support', photo: '' },
                 { id: 3, name: 'Grace Oduya', age: 41, phone: '+1 987 654 321', email: 'grace@church.org',
-                    date: '2026-05-20', status: 'Active', tithing: 210, occupation: 'Teacher', services: 'Children, Choir',
-                    notes: 'Leads children ministry', photo: '' },
+                    date: '2026-05-20', status: 'Active', tithing: 210, occupation: 'Teacher',
+                    services: 'Children, Choir', notes: 'Leads children ministry', photo: '' },
                 { id: 4, name: 'David Kimani', age: 55, phone: '+254 722 111 222', email: 'david@church.org',
-                    date: '2026-04-02', status: 'Inactive', tithing: 0, occupation: 'Retired', services: 'Elder, Prayer',
-                    notes: 'Moving to another city', photo: '' },
+                    date: '2026-04-02', status: 'Inactive', tithing: 0, occupation: 'Retired',
+                    services: 'Elder, Prayer', notes: 'Moving to another city', photo: '' },
                 { id: 5, name: 'Sarah Njoroge', age: 29, phone: '+1 456 789 012', email: 'sarah@church.org',
-                    date: '2026-07-01', status: 'Active', tithing: 180, occupation: 'Designer', services: 'Worship, Media',
-                    notes: 'Graphic designer', photo: '' },
+                    date: '2026-07-01', status: 'Active', tithing: 180, occupation: 'Designer',
+                    services: 'Worship, Media', notes: 'Graphic designer', photo: '' },
                 { id: 6, name: 'Michael Roberts', age: 47, phone: '+44 20 7946 0958', email: 'michael@church.org',
-                    date: '2026-03-12', status: 'Active', tithing: 420, occupation: 'Pastor', services: 'Teaching, Counseling',
-                    notes: 'Associate pastor', photo: '' }
+                    date: '2026-03-12', status: 'Active', tithing: 420, occupation: 'Pastor',
+                    services: 'Teaching, Counseling', notes: 'Associate pastor', photo: '' }
             ];
 
             const defaultInventory = [
                 { id: 1, name: 'Projector', category: 'Electronics', qty: 2, status: 'Available', value: 450,
-                location: 'Main Hall' },
+                    location: 'Main Hall' },
                 { id: 2, name: 'Sound System', category: 'Audio', qty: 1, status: 'Available', value: 1200,
                     location: 'Sanctuary' },
                 { id: 3, name: 'Choir Robes', category: 'Apparel', qty: 25, status: 'Available', value: 500,
-                location: 'Storage' },
+                    location: 'Storage' },
                 { id: 4, name: 'Bibles', category: 'Books', qty: 50, status: 'Available', value: 250, location: 'Library' },
                 { id: 5, name: 'Microphones', category: 'Audio', qty: 4, status: 'Maintenance', value: 80,
-                location: 'Tech Room' }
+                    location: 'Tech Room' }
             ];
 
             const defaultTithes = [
@@ -1085,77 +1202,35 @@
                     destination: 'Nairobi', status: 'Left' }
             ];
 
-            // ============================================
-            // STORAGE
-            // ============================================
-            function loadAll() {
-                try {
-                    const m = localStorage.getItem('yfg_members');
-                    const i = localStorage.getItem('yfg_inventory');
-                    const t = localStorage.getItem('yfg_tithes');
-                    const d = localStorage.getItem('yfg_departures');
-                    const ids = localStorage.getItem('yfg_ids');
+            const defaultData = {
+                members: defaultMembers,
+                inventory: defaultInventory,
+                tithes: defaultTithes,
+                departures: defaultDepartures
+            };
 
-                    if (m) { members = JSON.parse(m); }
-                    if (i) { inventory = JSON.parse(i); }
-                    if (t) { tithes = JSON.parse(t); }
-                    if (d) { departures = JSON.parse(d); }
-                    if (ids) { nextId = JSON.parse(ids); }
+            // --- Check if DB has data, if not seed ---
+            let hasData = false;
+            try {
+                const existing = await db.getAll('members');
+                if (existing && existing.length > 0) hasData = true;
+            } catch (e) { hasData = false; }
 
-                    // Ensure data exists
-                    if (members.length === 0) members = defaultMembers.map(m => ({ ...m }));
-                    if (inventory.length === 0) inventory = defaultInventory.map(m => ({ ...m }));
-                    if (tithes.length === 0) tithes = defaultTithes.map(m => ({ ...m }));
-                    if (departures.length === 0) departures = defaultDepartures.map(m => ({ ...m }));
-
-                    // Fix IDs
-                    let maxM = 0,
-                        maxI = 0,
-                        maxT = 0,
-                        maxD = 0;
-                    members.forEach(m => { if (m.id > maxM) maxM = m.id; });
-                    inventory.forEach(m => { if (m.id > maxI) maxI = m.id; });
-                    tithes.forEach(m => { if (m.id > maxT) maxT = m.id; });
-                    departures.forEach(m => { if (m.id > maxD) maxD = m.id; });
-                    nextId.member = Math.max(nextId.member || 0, maxM) + 1;
-                    nextId.item = Math.max(nextId.item || 0, maxI) + 1;
-                    nextId.tithe = Math.max(nextId.tithe || 0, maxT) + 1;
-                    nextId.dep = Math.max(nextId.dep || 0, maxD) + 1;
-
-                    saveAll();
-                    return true;
-                } catch (e) {
-                    console.error('Load error:', e);
-                    return false;
-                }
+            if (!hasData) {
+                await db.resetAll(defaultData);
+                console.log('✅ Seeded default data');
             }
 
-            function saveAll() {
-                try {
-                    localStorage.setItem('yfg_members', JSON.stringify(members));
-                    localStorage.setItem('yfg_inventory', JSON.stringify(inventory));
-                    localStorage.setItem('yfg_tithes', JSON.stringify(tithes));
-                    localStorage.setItem('yfg_departures', JSON.stringify(departures));
-                    localStorage.setItem('yfg_ids', JSON.stringify(nextId));
-                } catch (e) { console.error('Save error:', e); }
-            }
-
-            // ============================================
-            // TOAST
-            // ============================================
-            let toastTimer;
-
+            // --- Helper functions ---
             function showToast(msg) {
                 const t = document.getElementById('toast');
                 document.getElementById('toastMessage').textContent = msg;
                 t.classList.add('show');
-                clearTimeout(toastTimer);
-                toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+                clearTimeout(window.toastTimer);
+                window.toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
             }
 
-            // ============================================
-            // NAVIGATION
-            // ============================================
+            // --- Navigation ---
             function navigateTo(page) {
                 document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active-section'));
                 const target = document.getElementById('page-' + page);
@@ -1166,7 +1241,7 @@
                     if (el.dataset.page === page) el.classList.add('active');
                 });
 
-                // Refresh data on navigation
+                // Refresh data
                 if (page === 'dashboard') updateDashboard();
                 if (page === 'members') renderMembers();
                 if (page === 'inventory') renderInventory();
@@ -1182,10 +1257,13 @@
                 });
             });
 
-            // ============================================
-            // DASHBOARD
-            // ============================================
-            function updateDashboard() {
+            // --- Dashboard ---
+            async function updateDashboard() {
+                const members = await db.getAll('members');
+                const inventory = await db.getAll('inventory');
+                const tithes = await db.getAll('tithes');
+                const departures = await db.getAll('departures');
+
                 const total = members.length;
                 const active = members.filter(m => m.status === 'Active').length;
                 const totalTithes = tithes.reduce((s, t) => s + t.amount, 0);
@@ -1196,52 +1274,46 @@
                     const d = new Date(m.date);
                     return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
                 }).length;
-                const totalItems = inventory.length;
-                const availableItems = inventory.filter(i => i.status === 'Available').length;
 
                 document.getElementById('dashTotalMembers').textContent = total;
                 document.getElementById('dashActiveMembers').textContent = active;
-                document.getElementById('dashTotalItems').textContent = totalItems;
+                document.getElementById('dashTotalItems').textContent = inventory.length;
                 document.getElementById('dashTotalTithes').textContent = '$' + totalTithes.toFixed(0);
                 document.getElementById('dashDepartures').textContent = departures.length;
                 document.getElementById('dashNewMembers').textContent = newMembers;
 
                 document.getElementById('memberBadge').textContent = total;
-                document.getElementById('invBadge').textContent = totalItems;
+                document.getElementById('invBadge').textContent = inventory.length;
                 document.getElementById('titheBadge').textContent = '$' + totalTithes.toFixed(0);
                 document.getElementById('depBadge').textContent = departures.length;
 
                 // Recent activity
                 const activity = [];
                 members.slice(-3).forEach(m => activity.push({ text: `➕ Member added: ${m.name}`, time: m.date }));
-                tithes.slice(-2).forEach(t => activity.push({ text: `💰 Tithe recorded: $${t.amount} from ${t.memberName}`, time: t
+                tithes.slice(-2).forEach(t => activity.push({ text: `💰 Tithe: $${t.amount} from ${t.memberName}`, time: t
                         .date }));
-                departures.slice(-2).forEach(d => activity.push({ text: `🚪 Departure: ${d.memberName} (${d.status})`, time: d
-                        .date }));
+                departures.slice(-2).forEach(d => activity.push({ text: `🚪 Departure: ${d.memberName}`, time: d.date }));
                 activity.sort((a, b) => new Date(b.time) - new Date(a.time));
 
                 const container = document.getElementById('recentActivity');
                 if (activity.length === 0) {
-                    container.innerHTML = '<p style="color: #6f8aa3; text-align: center; padding: 1rem;">No recent activity</p>';
+                    container.innerHTML = '<p style="color:#6f8aa3;text-align:center;padding:1rem;">No recent activity</p>';
                 } else {
                     container.innerHTML = activity.slice(0, 8).map(a =>
-                        `<div style="display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid rgba(0,0,0,0.04);">
+                        `<div style="display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid rgba(0,0,0,0.04);">
                             <span>${a.text}</span>
-                            <span style="color:#6f8aa3; font-size:0.8rem;">${a.time}</span>
+                            <span style="color:#6f8aa3;font-size:0.8rem;">${a.time}</span>
                         </div>`
                     ).join('');
                 }
             }
 
-            // ============================================
-            // MEMBERS
-            // ============================================
-            function renderMembers(filter = '') {
-                const tbody = document.getElementById('membersTableBody');
+            // --- Members ---
+            async function renderMembers(filter = '') {
+                let members = await db.getAll('members');
                 const search = filter.toLowerCase();
-                let filtered = members;
                 if (search) {
-                    filtered = members.filter(m =>
+                    members = members.filter(m =>
                         m.name.toLowerCase().includes(search) ||
                         m.phone.includes(search) ||
                         (m.services && m.services.toLowerCase().includes(search))
@@ -1258,11 +1330,12 @@
                 document.getElementById('memInactive').textContent = inactive;
                 document.getElementById('memTithes').textContent = '$' + totalTithes.toFixed(0);
 
-                if (filtered.length === 0) {
-                    tbody.innerHTML = `<tr class="empty-row"><td colspan="7"><i class="fas fa-users"></i>No members found</td></tr>`;
+                const tbody = document.getElementById('membersTableBody');
+                if (members.length === 0) {
+                    tbody.innerHTML =
+                        `<tr class="empty-row"><td colspan="7"><i class="fas fa-users"></i>No members found</td></tr>`;
                 } else {
-                    tbody.innerHTML = filtered.map((m, idx) => {
-                        const realIdx = members.indexOf(m);
+                    tbody.innerHTML = members.map((m, idx) => {
                         const photoSrc = m.photo ||
                             'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"%3E%3Ccircle cx="18" cy="18" r="18" fill="%23dce6f0"/%3E%3Ctext x="18" y="23" text-anchor="middle" fill="%236f8aa3" font-size="14" font-family="FontAwesome"%3E%3C/text%3E%3C/svg%3E';
                         let servicesHtml = '';
@@ -1280,17 +1353,17 @@
                             <td>${servicesHtml || '—'}</td>
                             <td><span class="status-badge ${statusClass}">${m.status}</span></td>
                             <td class="action-icons" style="text-align:center;">
-                                <i class="fas fa-edit" onclick="editMember(${realIdx})"></i>
-                                <i class="fas fa-trash-alt" onclick="deleteMember(${realIdx})"></i>
+                                <i class="fas fa-edit" onclick="editMember(${m.id})"></i>
+                                <i class="fas fa-trash-alt" onclick="deleteMember(${m.id})"></i>
                             </td>
                         </tr>`;
                     }).join('');
                 }
             }
 
-            // Make functions global for inline onclick
-            window.editMember = function(idx) {
-                const m = members[idx];
+            // Global functions for inline onclick
+            window.editMember = async function(id) {
+                const m = await db.get('members', id);
                 if (!m) return;
                 document.getElementById('memberModalTitle').innerHTML = '<i class="fas fa-user-edit"></i> Edit Member';
                 document.getElementById('memName').value = m.name || '';
@@ -1306,24 +1379,25 @@
                 document.getElementById('memPhotoData').value = m.photo || '';
                 document.getElementById('memPhotoPreview').src = m.photo ||
                     'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"%3E%3Ccircle cx="32" cy="32" r="32" fill="%23dce6f0"/%3E%3Ctext x="32" y="40" text-anchor="middle" fill="%236f8aa3" font-size="24" font-family="FontAwesome"%3E%3C/text%3E%3C/svg%3E';
-                document.getElementById('memEditIndex').value = idx;
+                document.getElementById('memEditIndex').value = id;
                 document.getElementById('memberModal').style.display = 'flex';
             };
 
-            window.deleteMember = function(idx) {
-                if (confirm(`Remove "${members[idx].name}" from the church?`)) {
-                    const name = members[idx].name;
-                    members.splice(idx, 1);
-                    saveAll();
+            window.deleteMember = async function(id) {
+                const m = await db.get('members', id);
+                if (!m) return;
+                if (confirm(`Remove "${m.name}" from the church?`)) {
+                    await db.delete('members', id);
+                    showToast(`"${m.name}" removed`);
                     renderMembers(document.getElementById('searchMembers').value);
                     updateDashboard();
-                    showToast(`"${name}" removed`);
                 }
             };
 
-            // Member form
-            document.getElementById('memberForm').addEventListener('submit', function(e) {
+            // Member form submit
+            document.getElementById('memberForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                const id = parseInt(document.getElementById('memEditIndex').value);
                 const name = document.getElementById('memName').value.trim();
                 const age = parseInt(document.getElementById('memAge').value);
                 const phone = document.getElementById('memPhone').value.trim();
@@ -1335,68 +1409,56 @@
                 const services = document.getElementById('memServices').value.trim();
                 const notes = document.getElementById('memNotes').value.trim();
                 const photo = document.getElementById('memPhotoData').value;
-                const idx = parseInt(document.getElementById('memEditIndex').value);
 
                 if (!name || !age || !phone || !date) {
                     alert('Please fill in all required fields.');
                     return;
                 }
 
-                if (idx >= 0 && idx < members.length) {
-                    members[idx] = { ...members[idx], name, age, phone, email, date, status, tithing, occupation, services,
-                        notes, photo: photo || members[idx].photo };
+                const member = { id, name, age, phone, email, date, status, tithing, occupation, services, notes, photo };
+
+                if (id > 0) {
+                    await db.update('members', member);
                 } else {
-                    members.push({ id: nextId.member++, name, age, phone, email, date, status, tithing, occupation,
-                        services, notes, photo });
+                    const all = await db.getAll('members');
+                    const maxId = all.reduce((max, m) => Math.max(max, m.id || 0), 0);
+                    member.id = maxId + 1;
+                    await db.add('members', member);
                 }
-                saveAll();
+
                 document.getElementById('memberModal').style.display = 'none';
                 renderMembers(document.getElementById('searchMembers').value);
                 updateDashboard();
                 showToast(`Member "${name}" saved!`);
             });
 
-            document.getElementById('memPhotoInput').addEventListener('change', function(e) {
-                const file = this.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(ev) {
-                        document.getElementById('memPhotoPreview').src = ev.target.result;
-                        document.getElementById('memPhotoData').value = ev.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            // ============================================
-            // INVENTORY
-            // ============================================
-            function renderInventory(filter = '') {
-                const tbody = document.getElementById('invTableBody');
+            // --- Inventory ---
+            async function renderInventory(filter = '') {
+                let items = await db.getAll('inventory');
                 const search = filter.toLowerCase();
-                let filtered = inventory;
                 if (search) {
-                    filtered = inventory.filter(i =>
+                    items = items.filter(i =>
                         i.name.toLowerCase().includes(search) ||
                         (i.category && i.category.toLowerCase().includes(search))
                     );
                 }
 
-                const total = inventory.length;
-                const available = inventory.filter(i => i.status === 'Available').length;
-                const unavailable = inventory.filter(i => i.status === 'Unavailable').length;
-                const totalValue = inventory.reduce((s, i) => s + (i.value || 0), 0);
+                const total = items.length;
+                const available = items.filter(i => i.status === 'Available').length;
+                const unavailable = items.filter(i => i.status === 'Unavailable').length;
+                const totalValue = items.reduce((s, i) => s + (i.value || 0), 0);
 
                 document.getElementById('invTotal').textContent = total;
                 document.getElementById('invAvailable').textContent = available;
                 document.getElementById('invUnavailable').textContent = unavailable;
                 document.getElementById('invValue').textContent = '$' + totalValue.toFixed(0);
 
-                if (filtered.length === 0) {
-                    tbody.innerHTML = `<tr class="empty-row"><td colspan="6"><i class="fas fa-boxes"></i>No items found</td></tr>`;
+                const tbody = document.getElementById('invTableBody');
+                if (items.length === 0) {
+                    tbody.innerHTML =
+                        `<tr class="empty-row"><td colspan="6"><i class="fas fa-boxes"></i>No items found</td></tr>`;
                 } else {
-                    tbody.innerHTML = filtered.map((i, idx) => {
-                        const realIdx = inventory.indexOf(i);
+                    tbody.innerHTML = items.map((i) => {
                         const statusClass = i.status === 'Available' ? '' : (i.status === 'Maintenance' ? 'pending' :
                             'inactive');
                         return `<tr>
@@ -1406,16 +1468,16 @@
                             <td><span class="status-badge ${statusClass}">${i.status}</span></td>
                             <td>$${(i.value || 0).toFixed(0)}</td>
                             <td class="action-icons" style="text-align:center;">
-                                <i class="fas fa-edit" onclick="editItem(${realIdx})"></i>
-                                <i class="fas fa-trash-alt" onclick="deleteItem(${realIdx})"></i>
+                                <i class="fas fa-edit" onclick="editItem(${i.id})"></i>
+                                <i class="fas fa-trash-alt" onclick="deleteItem(${i.id})"></i>
                             </td>
                         </tr>`;
                     }).join('');
                 }
             }
 
-            window.editItem = function(idx) {
-                const i = inventory[idx];
+            window.editItem = async function(id) {
+                const i = await db.get('inventory', id);
                 if (!i) return;
                 document.getElementById('invModalTitle').innerHTML = '<i class="fas fa-box"></i> Edit Item';
                 document.getElementById('invName').value = i.name || '';
@@ -1424,54 +1486,56 @@
                 document.getElementById('invStatus').value = i.status || 'Available';
                 document.getElementById('invValueInput').value = i.value || 0;
                 document.getElementById('invLocation').value = i.location || '';
-                document.getElementById('invEditIndex').value = idx;
+                document.getElementById('invEditIndex').value = id;
                 document.getElementById('invModal').style.display = 'flex';
             };
 
-            window.deleteItem = function(idx) {
-                if (confirm(`Remove "${inventory[idx].name}" from inventory?`)) {
-                    const name = inventory[idx].name;
-                    inventory.splice(idx, 1);
-                    saveAll();
+            window.deleteItem = async function(id) {
+                const i = await db.get('inventory', id);
+                if (!i) return;
+                if (confirm(`Remove "${i.name}" from inventory?`)) {
+                    await db.delete('inventory', id);
+                    showToast(`"${i.name}" removed`);
                     renderInventory(document.getElementById('searchInv').value);
                     updateDashboard();
-                    showToast(`"${name}" removed`);
                 }
             };
 
-            document.getElementById('invForm').addEventListener('submit', function(e) {
+            document.getElementById('invForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                const id = parseInt(document.getElementById('invEditIndex').value);
                 const name = document.getElementById('invName').value.trim();
                 const category = document.getElementById('invCategory').value.trim();
                 const qty = parseInt(document.getElementById('invQty').value);
                 const status = document.getElementById('invStatus').value;
                 const value = parseFloat(document.getElementById('invValueInput').value) || 0;
                 const location = document.getElementById('invLocation').value.trim();
-                const idx = parseInt(document.getElementById('invEditIndex').value);
 
                 if (!name || !qty) { alert('Name and quantity are required.'); return; }
 
-                if (idx >= 0 && idx < inventory.length) {
-                    inventory[idx] = { ...inventory[idx], name, category, qty, status, value, location };
+                const item = { id, name, category, qty, status, value, location };
+
+                if (id > 0) {
+                    await db.update('inventory', item);
                 } else {
-                    inventory.push({ id: nextId.item++, name, category, qty, status, value, location });
+                    const all = await db.getAll('inventory');
+                    const maxId = all.reduce((max, i) => Math.max(max, i.id || 0), 0);
+                    item.id = maxId + 1;
+                    await db.add('inventory', item);
                 }
-                saveAll();
+
                 document.getElementById('invModal').style.display = 'none';
                 renderInventory(document.getElementById('searchInv').value);
                 updateDashboard();
                 showToast(`Item "${name}" saved!`);
             });
 
-            // ============================================
-            // TITHES
-            // ============================================
-            function renderTithes(filter = '') {
-                const tbody = document.getElementById('tithesTableBody');
+            // --- Tithes ---
+            async function renderTithes(filter = '') {
+                let tithes = await db.getAll('tithes');
                 const search = filter.toLowerCase();
-                let filtered = tithes;
                 if (search) {
-                    filtered = tithes.filter(t =>
+                    tithes = tithes.filter(t =>
                         t.memberName.toLowerCase().includes(search) ||
                         t.type.toLowerCase().includes(search)
                     );
@@ -1493,120 +1557,123 @@
                 document.getElementById('titheGivers').textContent = givers;
                 document.getElementById('titheAvg').textContent = '$' + avg.toFixed(0);
 
-                if (filtered.length === 0) {
+                const tbody = document.getElementById('tithesTableBody');
+                if (tithes.length === 0) {
                     tbody.innerHTML =
-                    `<tr class="empty-row"><td colspan="5"><i class="fas fa-coins"></i>No tithe records</td></tr>`;
+                        `<tr class="empty-row"><td colspan="5"><i class="fas fa-coins"></i>No tithe records</td></tr>`;
                 } else {
-                    tbody.innerHTML = filtered.map((t, idx) => {
-                        const realIdx = tithes.indexOf(t);
+                    tbody.innerHTML = tithes.map((t) => {
                         return `<tr>
                             <td>${t.memberName}</td>
                             <td><strong>$${t.amount.toFixed(0)}</strong></td>
                             <td>${t.date}</td>
                             <td><span class="status-badge">${t.type}</span></td>
                             <td class="action-icons" style="text-align:center;">
-                                <i class="fas fa-edit" onclick="editTithe(${realIdx})"></i>
-                                <i class="fas fa-trash-alt" onclick="deleteTithe(${realIdx})"></i>
+                                <i class="fas fa-edit" onclick="editTithe(${t.id})"></i>
+                                <i class="fas fa-trash-alt" onclick="deleteTithe(${t.id})"></i>
                             </td>
                         </tr>`;
                     }).join('');
                 }
             }
 
-            window.editTithe = function(idx) {
-                const t = tithes[idx];
+            window.editTithe = async function(id) {
+                const t = await db.get('tithes', id);
                 if (!t) return;
-                populateTitheSelect(t.memberId);
+                await populateTitheSelect(t.memberId);
                 document.getElementById('titheAmount').value = t.amount || 0;
                 document.getElementById('titheDate').value = t.date || '';
                 document.getElementById('titheType').value = t.type || 'Tithe';
-                document.getElementById('titheEditIndex').value = idx;
+                document.getElementById('titheEditIndex').value = id;
                 document.getElementById('titheModal').style.display = 'flex';
             };
 
-            window.deleteTithe = function(idx) {
+            window.deleteTithe = async function(id) {
                 if (confirm('Delete this tithe record?')) {
-                    tithes.splice(idx, 1);
-                    saveAll();
+                    await db.delete('tithes', id);
+                    showToast('Tithe record deleted');
                     renderTithes(document.getElementById('searchTithes').value);
                     updateDashboard();
-                    showToast('Tithe record deleted');
                 }
             };
 
-            function populateTitheSelect(selected) {
+            async function populateTitheSelect(selected) {
+                const members = await db.getAll('members');
                 const sel = document.getElementById('titheMember');
                 sel.innerHTML = members.map(m =>
                     `<option value="${m.id}" ${m.id === selected ? 'selected' : ''}>${m.name}</option>`
                 ).join('');
             }
 
-            document.getElementById('addTitheBtn').addEventListener('click', function() {
+            document.getElementById('addTitheBtn').addEventListener('click', async function() {
                 document.getElementById('titheModal').style.display = 'flex';
                 document.getElementById('titheEditIndex').value = '-1';
                 document.getElementById('titheAmount').value = '';
                 document.getElementById('titheDate').value = new Date().toISOString().split('T')[0];
                 document.getElementById('titheType').value = 'Tithe';
-                populateTitheSelect();
+                await populateTitheSelect();
             });
 
-            document.getElementById('titheForm').addEventListener('submit', function(e) {
+            document.getElementById('titheForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                const id = parseInt(document.getElementById('titheEditIndex').value);
                 const memberId = parseInt(document.getElementById('titheMember').value);
+                const members = await db.getAll('members');
                 const memberName = members.find(m => m.id === memberId)?.name || 'Unknown';
                 const amount = parseFloat(document.getElementById('titheAmount').value);
                 const date = document.getElementById('titheDate').value;
                 const type = document.getElementById('titheType').value;
-                const idx = parseInt(document.getElementById('titheEditIndex').value);
 
                 if (!memberId || !amount || !date) { alert('Please fill in all fields.'); return; }
 
-                if (idx >= 0 && idx < tithes.length) {
-                    tithes[idx] = { ...tithes[idx], memberId, memberName, amount, date, type };
+                const tithe = { id, memberId, memberName, amount, date, type };
+
+                if (id > 0) {
+                    await db.update('tithes', tithe);
                 } else {
-                    tithes.push({ id: nextId.tithe++, memberId, memberName, amount, date, type });
+                    const all = await db.getAll('tithes');
+                    const maxId = all.reduce((max, t) => Math.max(max, t.id || 0), 0);
+                    tithe.id = maxId + 1;
+                    await db.add('tithes', tithe);
                 }
-                saveAll();
+
                 document.getElementById('titheModal').style.display = 'none';
                 renderTithes(document.getElementById('searchTithes').value);
                 updateDashboard();
                 showToast(`Tithe recorded: $${amount.toFixed(0)}`);
             });
 
-            // ============================================
-            // DEPARTURES
-            // ============================================
-            function renderDepartures(filter = '') {
-                const tbody = document.getElementById('depTableBody');
+            // --- Departures ---
+            async function renderDepartures(filter = '') {
+                let deps = await db.getAll('departures');
                 const search = filter.toLowerCase();
-                let filtered = departures;
                 if (search) {
-                    filtered = departures.filter(d =>
+                    deps = deps.filter(d =>
                         d.memberName.toLowerCase().includes(search) ||
                         (d.reason && d.reason.toLowerCase().includes(search))
                     );
                 }
 
-                const total = departures.length;
-                const thisMonth = departures.filter(d => {
+                const total = deps.length;
+                const now = new Date();
+                const thisMonth = deps.filter(d => {
                     const d2 = new Date(d.date);
-                    const now = new Date();
                     return d2.getMonth() === now.getMonth() && d2.getFullYear() === now.getFullYear();
                 }).length;
-                const transfers = departures.filter(d => d.status === 'Transferred').length;
-                const returned = departures.filter(d => d.status === 'Returned').length;
+                const transfers = deps.filter(d => d.status === 'Transferred').length;
+                const returned = deps.filter(d => d.status === 'Returned').length;
 
                 document.getElementById('depTotal').textContent = total;
                 document.getElementById('depMonth').textContent = thisMonth;
                 document.getElementById('depTransfer').textContent = transfers;
                 document.getElementById('depReturned').textContent = returned;
 
-                if (filtered.length === 0) {
+                const tbody = document.getElementById('depTableBody');
+                if (deps.length === 0) {
                     tbody.innerHTML =
                         `<tr class="empty-row"><td colspan="6"><i class="fas fa-sign-out-alt"></i>No departures</td></tr>`;
                 } else {
-                    tbody.innerHTML = filtered.map((d, idx) => {
-                        const realIdx = departures.indexOf(d);
+                    tbody.innerHTML = deps.map((d) => {
                         const statusClass = d.status === 'Returned' ? '' : (d.status === 'Transferred' ? 'pending' :
                             'inactive');
                         return `<tr>
@@ -1616,81 +1683,90 @@
                             <td>${d.destination || '—'}</td>
                             <td><span class="status-badge ${statusClass}">${d.status}</span></td>
                             <td class="action-icons" style="text-align:center;">
-                                <i class="fas fa-edit" onclick="editDeparture(${realIdx})"></i>
-                                <i class="fas fa-trash-alt" onclick="deleteDeparture(${realIdx})"></i>
+                                <i class="fas fa-edit" onclick="editDeparture(${d.id})"></i>
+                                <i class="fas fa-trash-alt" onclick="deleteDeparture(${d.id})"></i>
                             </td>
                         </tr>`;
                     }).join('');
                 }
             }
 
-            window.editDeparture = function(idx) {
-                const d = departures[idx];
+            window.editDeparture = async function(id) {
+                const d = await db.get('departures', id);
                 if (!d) return;
-                populateDepSelect(d.memberId);
+                await populateDepSelect(d.memberId);
                 document.getElementById('depDate').value = d.date || '';
                 document.getElementById('depStatus').value = d.status || 'Left';
                 document.getElementById('depReason').value = d.reason || '';
                 document.getElementById('depDest').value = d.destination || '';
-                document.getElementById('depEditIndex').value = idx;
+                document.getElementById('depEditIndex').value = id;
                 document.getElementById('depModal').style.display = 'flex';
             };
 
-            window.deleteDeparture = function(idx) {
+            window.deleteDeparture = async function(id) {
                 if (confirm('Delete this departure record?')) {
-                    departures.splice(idx, 1);
-                    saveAll();
+                    await db.delete('departures', id);
+                    showToast('Departure record deleted');
                     renderDepartures(document.getElementById('searchDep').value);
                     updateDashboard();
-                    showToast('Departure record deleted');
                 }
             };
 
-            function populateDepSelect(selected) {
+            async function populateDepSelect(selected) {
+                const members = await db.getAll('members');
                 const sel = document.getElementById('depMember');
                 sel.innerHTML = members.map(m =>
                     `<option value="${m.id}" ${m.id === selected ? 'selected' : ''}>${m.name}</option>`
                 ).join('');
             }
 
-            document.getElementById('addDepartureBtn').addEventListener('click', function() {
+            document.getElementById('addDepartureBtn').addEventListener('click', async function() {
                 document.getElementById('depModal').style.display = 'flex';
                 document.getElementById('depEditIndex').value = '-1';
                 document.getElementById('depDate').value = new Date().toISOString().split('T')[0];
                 document.getElementById('depStatus').value = 'Left';
                 document.getElementById('depReason').value = '';
                 document.getElementById('depDest').value = '';
-                populateDepSelect();
+                await populateDepSelect();
             });
 
-            document.getElementById('depForm').addEventListener('submit', function(e) {
+            document.getElementById('depForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
+                const id = parseInt(document.getElementById('depEditIndex').value);
                 const memberId = parseInt(document.getElementById('depMember').value);
+                const members = await db.getAll('members');
                 const memberName = members.find(m => m.id === memberId)?.name || 'Unknown';
                 const date = document.getElementById('depDate').value;
                 const status = document.getElementById('depStatus').value;
                 const reason = document.getElementById('depReason').value.trim();
                 const destination = document.getElementById('depDest').value.trim();
-                const idx = parseInt(document.getElementById('depEditIndex').value);
 
                 if (!memberId || !date) { alert('Please fill in all required fields.'); return; }
 
-                if (idx >= 0 && idx < departures.length) {
-                    departures[idx] = { ...departures[idx], memberId, memberName, date, status, reason, destination };
+                const dep = { id, memberId, memberName, date, status, reason, destination };
+
+                if (id > 0) {
+                    await db.update('departures', dep);
                 } else {
-                    departures.push({ id: nextId.dep++, memberId, memberName, date, status, reason, destination });
+                    const all = await db.getAll('departures');
+                    const maxId = all.reduce((max, d) => Math.max(max, d.id || 0), 0);
+                    dep.id = maxId + 1;
+                    await db.add('departures', dep);
                 }
-                saveAll();
+
                 document.getElementById('depModal').style.display = 'none';
                 renderDepartures(document.getElementById('searchDep').value);
                 updateDashboard();
                 showToast(`Departure recorded for ${memberName}`);
             });
 
-            // ============================================
-            // REPORTS
-            // ============================================
-            function renderReports() {
+            // --- Reports ---
+            async function renderReports() {
+                const members = await db.getAll('members');
+                const inventory = await db.getAll('inventory');
+                const tithes = await db.getAll('tithes');
+                const departures = await db.getAll('departures');
+
                 const total = members.length;
                 const active = members.filter(m => m.status === 'Active').length;
                 const totalTithes = tithes.reduce((s, t) => s + t.amount, 0);
@@ -1709,7 +1785,7 @@
                 document.getElementById('repDepartures').textContent = depTotal;
                 document.getElementById('repReturned').textContent = returned;
 
-                // Calculate growth (compare to previous month)
+                // Growth
                 const now = new Date();
                 const thisMonth = now.getMonth();
                 const thisYear = now.getFullYear();
@@ -1729,11 +1805,9 @@
                     100) : thisMonthMembers > 0 ? 100 : 0;
                 document.getElementById('repGrowth').textContent = growth;
 
-                // Turnover
                 const turnover = total > 0 ? Math.round(depTotal / total * 100) : 0;
                 document.getElementById('repTurnover').textContent = turnover;
 
-                // Avg tenure - simplified
                 const avgTenure = members.length > 0 ? Math.round(members.reduce((s, m) => {
                     const d = new Date(m.date);
                     const months = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
@@ -1741,15 +1815,12 @@
                 }, 0) / members.length) : 0;
                 document.getElementById('repTenure').textContent = avgTenure;
 
-                // Engagement (active + services)
                 const engaged = members.filter(m => m.status === 'Active' && m.services && m.services.length > 0).length;
                 const engagement = total > 0 ? Math.round(engaged / total * 100) : 0;
                 document.getElementById('repEngagement').textContent = engagement;
             }
 
-            // ============================================
-            // MODAL CLOSE HANDLERS
-            // ============================================
+            // --- Modal close handlers ---
             document.getElementById('closeMemberModal').addEventListener('click', function() {
                 document.getElementById('memberModal').style.display = 'none';
             });
@@ -1763,16 +1834,13 @@
                 document.getElementById('depModal').style.display = 'none';
             });
 
-            // Click outside to close modals
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === this) this.style.display = 'none';
                 });
             });
 
-            // ============================================
-            // SEARCH HANDLERS
-            // ============================================
+            // --- Search handlers ---
             document.getElementById('searchMembers').addEventListener('input', function() {
                 renderMembers(this.value);
             });
@@ -1786,9 +1854,7 @@
                 renderDepartures(this.value);
             });
 
-            // ============================================
-            // ADD BUTTONS
-            // ============================================
+            // --- Add buttons ---
             document.getElementById('addMemberBtn').addEventListener('click', function() {
                 document.getElementById('memberModalTitle').innerHTML = '<i class="fas fa-user-plus"></i> Add Member';
                 document.getElementById('memEditIndex').value = '-1';
@@ -1820,56 +1886,63 @@
                 document.getElementById('invModal').style.display = 'flex';
             });
 
-            // ============================================
-            // RESET BUTTONS
-            // ============================================
-            document.getElementById('resetMembersBtn').addEventListener('click', function() {
+            // --- Photo preview ---
+            document.getElementById('memPhotoInput').addEventListener('change', function(e) {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(ev) {
+                        document.getElementById('memPhotoPreview').src = ev.target.result;
+                        document.getElementById('memPhotoData').value = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // --- Reset buttons ---
+            document.getElementById('resetMembersBtn').addEventListener('click', async function() {
                 if (confirm('Reset members to default data?')) {
-                    members = defaultMembers.map(m => ({ ...m }));
-                    saveAll();
+                    await db.clear('members');
+                    for (const m of defaultMembers) await db.add('members', m);
                     renderMembers('');
                     updateDashboard();
                     showToast('Members reset to default');
                 }
             });
 
-            document.getElementById('resetInvBtn').addEventListener('click', function() {
+            document.getElementById('resetInvBtn').addEventListener('click', async function() {
                 if (confirm('Reset inventory to default data?')) {
-                    inventory = defaultInventory.map(m => ({ ...m }));
-                    saveAll();
+                    await db.clear('inventory');
+                    for (const i of defaultInventory) await db.add('inventory', i);
                     renderInventory('');
                     updateDashboard();
                     showToast('Inventory reset to default');
                 }
             });
 
-            document.getElementById('resetTithesBtn').addEventListener('click', function() {
+            document.getElementById('resetTithesBtn').addEventListener('click', async function() {
                 if (confirm('Reset tithes to default data?')) {
-                    tithes = defaultTithes.map(m => ({ ...m }));
-                    saveAll();
+                    await db.clear('tithes');
+                    for (const t of defaultTithes) await db.add('tithes', t);
                     renderTithes('');
                     updateDashboard();
                     showToast('Tithes reset to default');
                 }
             });
 
-            document.getElementById('resetDepBtn').addEventListener('click', function() {
+            document.getElementById('resetDepBtn').addEventListener('click', async function() {
                 if (confirm('Reset departures to default data?')) {
-                    departures = defaultDepartures.map(m => ({ ...m }));
-                    saveAll();
+                    await db.clear('departures');
+                    for (const d of defaultDepartures) await db.add('departures', d);
                     renderDepartures('');
                     updateDashboard();
                     showToast('Departures reset to default');
                 }
             });
 
-            document.getElementById('resetAllBtn').addEventListener('click', function() {
+            document.getElementById('resetAllBtn').addEventListener('click', async function() {
                 if (confirm('Reset ALL data to defaults? This cannot be undone!')) {
-                    members = defaultMembers.map(m => ({ ...m }));
-                    inventory = defaultInventory.map(m => ({ ...m }));
-                    tithes = defaultTithes.map(m => ({ ...m }));
-                    departures = defaultDepartures.map(m => ({ ...m }));
-                    saveAll();
+                    await db.resetAll(defaultData);
                     renderMembers('');
                     renderInventory('');
                     renderTithes('');
@@ -1879,23 +1952,72 @@
                 }
             });
 
-            // ============================================
-            // KEYBOARD SHORTCUTS
-            // ============================================
+            // --- Export / Import ---
+            document.getElementById('exportDataBtn').addEventListener('click', async function() {
+                const data = await db.exportAll();
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `yerer_church_data_${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                showToast('Data exported successfully!');
+            });
+
+            document.getElementById('importDataBtn').addEventListener('click', function() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '.json';
+                input.onchange = async function(e) {
+                    const file = this.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = async function(ev) {
+                        try {
+                            const data = JSON.parse(ev.target.result);
+                            if (!data.members || !data.inventory || !data.tithes || !data.departures) {
+                                alert('Invalid data format. Please export from this app.');
+                                return;
+                            }
+                            if (confirm('Import will replace all current data. Continue?')) {
+                                await db.importAll(data);
+                                renderMembers('');
+                                renderInventory('');
+                                renderTithes('');
+                                renderDepartures('');
+                                updateDashboard();
+                                showToast('Data imported successfully!');
+                            }
+                        } catch (err) {
+                            alert('Error importing data: ' + err.message);
+                        }
+                    };
+                    reader.readAsText(file);
+                };
+                input.click();
+            });
+
+            // --- Keyboard shortcut ---
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
                 }
             });
 
-            // ============================================
-            // INIT
-            // ============================================
-            loadAll();
-            navigateTo('dashboard');
+            // --- Initial render ---
+            await updateDashboard();
+            await renderMembers();
+            await renderInventory();
+            await renderTithes();
+            await renderDepartures();
+            await renderReports();
+
+            console.log('✅ Application ready with IndexedDB database');
 
             // Expose for debugging
-            window.__data = { members, inventory, tithes, departures };
+            window.__db = db;
+            window.__data = async () => await db.exportAll();
 
         })();
     </script>
